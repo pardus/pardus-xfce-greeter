@@ -1,3 +1,3 @@
-# pardus-kaptan
+# Kaptan
 
-Pardus için "Hoşgeldiniz" uygulaması.
+Pardus için "Hoş geldiniz" uygulaması.
