@@ -2,7 +2,7 @@ import subprocess
 
 defaultDPI = 96
 
-def scale(percent):
+def setScale(percent):
     newDPI = 96 * percent / 100
     subprocess.call([
         "xfconf-query",
@@ -12,7 +12,6 @@ def scale(percent):
         "--type", "int",
         "--create"
     ])
-                
 def setPanelSize(px):
     subprocess.call([
         "xfconf-query",
@@ -43,6 +42,14 @@ def setDesktopIconSize(px):
         "--create"
     ])
 
+def getScale():
+    dpi = int(subprocess.check_output([
+        "xfconf-query",
+        "-c", "xsettings",
+        "-p", "/Xft/DPI",
+    ]).decode("utf-8").rstrip())
+
+    return int(dpi * 100 / 96)
 def getPanelSize():
     return int(subprocess.check_output([
         "xfconf-query",

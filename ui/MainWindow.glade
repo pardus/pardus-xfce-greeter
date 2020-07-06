@@ -1,55 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkAdjustment" id="adj_desktopIconSize">
-    <property name="lower">16</property>
-    <property name="upper">192</property>
+    <property name="lower">32</property>
+    <property name="upper">96</property>
     <property name="value">42</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
   <object class="GtkAdjustment" id="adj_panelIconSize">
-    <property name="lower">8</property>
-    <property name="upper">128</property>
+    <property name="lower">24</property>
+    <property name="upper">44</property>
     <property name="value">32</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
   <object class="GtkAdjustment" id="adj_panelSize">
-    <property name="lower">16</property>
-    <property name="upper">128</property>
+    <property name="lower">28</property>
+    <property name="upper">48</property>
     <property name="value">32</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
-  </object>
-  <object class="GtkListStore" id="lst_themes">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Arayuz Temasi1</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Arayuz Temasi2</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkListStore" id="lst_windowThemes">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Pencere Temasi</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">XFWM4 temasi</col>
-      </row>
-    </data>
   </object>
   <object class="GtkApplicationWindow" id="window">
     <property name="can_focus">False</property>
@@ -93,7 +65,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="opacity">0.59999999999999998</property>
-                <property name="label" translatable="yes">• Görünümü Özelleştirin</property>
+                <property name="label" translatable="yes">• Duvar Kağıdı</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -132,7 +104,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="pixel_size">32</property>
-                <property name="icon_name">emblem-pardus-symbolic</property>
+                <property name="icon_name">computer</property>
                 <property name="icon_size">6</property>
               </object>
               <packing>
@@ -253,7 +225,7 @@ Bişeyler bişeyler.
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes">Görünümü Özelleştirin</property>
+                    <property name="label" translatable="yes">Duvar Kağıdı</property>
                     <attributes>
                       <attribute name="size" value="18000"/>
                     </attributes>
@@ -262,77 +234,6 @@ Bişeyler bişeyler.
                     <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">Pencere Çubuğu Temaları</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBox" id="cmb_windowTheme">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="model">lst_windowThemes</property>
-                    <property name="active">0</property>
-                    <property name="popup_fixed_width">False</property>
-                    <property name="id_column">0</property>
-                    <signal name="changed" handler="on_cmb_windowTheme_changed" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="name"/>
-                      <attributes>
-                        <attribute name="height">100</attribute>
-                        <attribute name="text">0</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">Arayüz Stili Temaları</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBox" id="cmb_theme">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="model">lst_themes</property>
-                    <property name="active">0</property>
-                    <property name="popup_fixed_width">False</property>
-                    <property name="id_column">0</property>
-                    <signal name="changed" handler="on_cmb_theme_changed" swapped="no"/>
-                    <child>
-                      <object class="GtkCellRendererText" id="name1"/>
-                      <attributes>
-                        <attribute name="text">0</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">4</property>
                   </packing>
                 </child>
                 <child>
@@ -450,7 +351,6 @@ Bişeyler bişeyler.
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="active">True</property>
                             <property name="draw_indicator">False</property>
                             <property name="group">rb_scale100</property>
                             <signal name="toggled" handler="on_rb_scale125_toggled" swapped="no"/>
@@ -775,5 +675,33 @@ Bişeyler bişeyler.
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkListStore" id="lst_themes">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Arayuz Temasi1</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Arayuz Temasi2</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="lst_windowThemes">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Pencere Temasi</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">XFWM4 temasi</col>
+      </row>
+    </data>
   </object>
 </interface>

@@ -10,12 +10,13 @@ prefixs = ["jpg","png","bmp","jpeg"]
 def getWallpaperList():
     pictures = []
     for path in folders:
-        files = os.listdir( path )
-        for file in files:
-            for prefix in prefixs:
-                if file[-3:] == prefix:
-                    pictures.append((path + file))
-                    break
+        paths = os.walk( path )
+        for (dirpath, _, files) in paths:
+            for file in files:
+                for prefix in prefixs:
+                    if file[-3:] == prefix:
+                        pictures.append(f"{dirpath}/{file}")
+                        break
     
     return pictures
 

@@ -26,9 +26,6 @@ class MainWindow:
         # Put Wallpapers on a Grid
         self.addWallpapers(WallpaperManager.getWallpaperList())
 
-        # Add Themes to Comboboxes:
-        self.addThemes(ThemeManager.getThemeList())
-
         # Set scales to system-default:
         self.setScalingDefaults()
 
@@ -45,14 +42,18 @@ class MainWindow:
         # - Display Settings:
         self.lst_themes = self.builder.get_object("lst_themes")
         self.lst_windowThemes = self.builder.get_object("lst_windowThemes")
-        self.cmb_theme = self.builder.get_object("cmb_theme")
-        self.cmb_windowTheme = self.builder.get_object("cmb_windowTheme")
         self.flow_wallpapers = self.builder.get_object("flow_wallpapers")
 
         # - Scaling Settings:
         self.sli_panel = self.builder.get_object("sli_panel")
         self.sli_panelIcon = self.builder.get_object("sli_panelIcon")
         self.sli_desktopIcon = self.builder.get_object("sli_desktopIcon")
+
+        self.rb_scale100 = self.builder.get_object("rb_scale100")
+        self.rb_scale125 = self.builder.get_object("rb_scale125")
+        self.rb_scale150 = self.builder.get_object("rb_scale150")
+        self.rb_scale175 = self.builder.get_object("rb_scale175")
+        self.rb_scale200 = self.builder.get_object("rb_scale200")
 
     def defineVariables(self):
         # Global stack pages:
@@ -97,34 +98,22 @@ class MainWindow:
             self.flow_wallpapers.insert(img_wallpaper, -1)
         self.flow_wallpapers.show_all()
     
-    # Add themes to comboboxes
-    def addThemes(self, themeList):
-        currentThemeIndex = 0
-        currentWindowThemeIndex = 0
-        currentTheme = ThemeManager.getTheme()
-        currentWindowTheme = ThemeManager.getWindowTheme()
-
-        self.lst_themes.clear()
-        self.lst_windowThemes.clear()
-
-        for i in range(len(themeList[0])):
-            self.lst_themes.append([themeList[0][i]])
-            if themeList[0][i] == currentTheme:
-                currentThemeIndex = i
-        
-        for i in range(len(themeList[1])):
-            self.lst_windowThemes.append([themeList[1][i]])
-            if themeList[1][i] == currentWindowTheme:
-                currentWindowThemeIndex = i
-                
-        self.cmb_theme.set_active(currentThemeIndex)
-        self.cmb_windowTheme.set_active(currentWindowThemeIndex)
-    
     def setScalingDefaults(self):
         self.sli_panel.set_value(ScaleManager.getPanelSize())
         self.sli_panelIcon.set_value(ScaleManager.getPanelIconSize())
         self.sli_desktopIcon.set_value(ScaleManager.getDesktopIconSize())
-
+        
+        currentScale = ScaleManager.getScale()
+        if currentScale == 100:
+            self.rb_scale100.set_active(True)
+        elif currentScale == 125:
+            self.rb_scale125.set_active(True)
+        elif currentScale == 150:
+            self.rb_scale150.set_active(True)
+        elif currentScale == 175:
+            self.rb_scale175.set_active(True)
+        elif currentScale == 200:
+            self.rb_scale200.set_active(True)
 
     # SIGNALS:
     # - NAVIGATION:
@@ -139,43 +128,33 @@ class MainWindow:
     def on_wallpaper_selected(self, flowbox, wallpaper):
         filename = str(wallpaper.get_children()[0].file)
         WallpaperManager.setWallpaper(filename)
-    
-    # - Theme Select:
-    def on_cmb_windowTheme_changed(self, combobox):
-        tree_iter = combobox.get_active_iter()
-        if tree_iter:
-            model = combobox.get_model()
-            windowTheme = model[tree_iter][0]
-            ThemeManager.setWindowTheme(windowTheme)
-    
-    def on_cmb_theme_changed(self, combobox):
-        tree_iter = combobox.get_active_iter()
-        if tree_iter:
-            model = combobox.get_model()
-            theme = model[tree_iter][0]
-            ThemeManager.setTheme(theme)
 
 
     # - Scale Changed:
     def on_rb_scale100_toggled(self, btn):
         if btn.get_active():
-            ScaleManager.scale(100)
+            ScaleManager.setScale(100)
+            ThemeManager.setWindowTheme("Default")
     
     def on_rb_scale125_toggled(self, btn):
         if btn.get_active():
-            ScaleManager.scale(125)
+            ScaleManager.setScale(125)
+            ThemeManager.setWindowTheme("Default")
     
     def on_rb_scale150_toggled(self, btn):
         if btn.get_active():
-            ScaleManager.scale(150)
-    
+            ScaleManager.setScale(150)
+            ThemeManager.setWindowTheme("Default-hdpi")
+       
     def on_rb_scale175_toggled(self, btn):
         if btn.get_active():
-            ScaleManager.scale(175)
+            ScaleManager.setScale(175)
+            ThemeManager.setWindowTheme("Default-hdpi")
     
     def on_rb_scale200_toggled(self, btn):
         if btn.get_active():
-            ScaleManager.scale(200)
+            ScaleManager.setScale(200)
+            ThemeManager.setWindowTheme("Default-xhdpi")
     
     
 
