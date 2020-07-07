@@ -34,7 +34,6 @@ class MainWindow:
     
     def defineComponents(self):
         # Navigation:
-        self.box_headerLabels = self.builder.get_object("box_headerLabels")
         self.stk_stackPages = self.builder.get_object("stk_stackPages")
         self.btn_next = self.builder.get_object("btn_next")
         self.btn_prev = self.builder.get_object("btn_prev")
@@ -59,9 +58,6 @@ class MainWindow:
         # Global stack pages:
         self.currentPage = 0
         self.pageCount = len(self.stk_stackPages.get_children())
-        
-        # Get bold attribute from first label in glade
-        self.boldAttribute = self.box_headerLabels.get_children()[0].get_attributes()
 
     def changePage(self, number):
         # Set current page number
@@ -70,14 +66,6 @@ class MainWindow:
         # Set button sensivities
         self.btn_next.set_sensitive(not (self.currentPage == self.pageCount-1))
         self.btn_prev.set_sensitive(not (self.currentPage == 0))
-
-        # Change current header label style
-        for lbl_child in self.box_headerLabels.get_children():
-            if isinstance(lbl_child, Gtk.Label):
-                lbl_child.set_opacity(0.6)
-                lbl_child.set_attributes(None)
-        self.box_headerLabels.get_children()[self.currentPage].set_opacity(1)
-        self.box_headerLabels.get_children()[self.currentPage].set_attributes(self.boldAttribute)
 
         # Change current stack page
         self.stk_stackPages.set_visible_child_name(f"page{number}")
@@ -100,7 +88,6 @@ class MainWindow:
     
     def setScalingDefaults(self):
         self.sli_panel.set_value(ScaleManager.getPanelSize())
-        self.sli_panelIcon.set_value(ScaleManager.getPanelIconSize())
         self.sli_desktopIcon.set_value(ScaleManager.getDesktopIconSize())
         
         currentScale = ScaleManager.getScale()
