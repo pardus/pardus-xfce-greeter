@@ -22,10 +22,5 @@ def getWallpaperList():
 
 def setWallpaper(wallpaper):
     subprocess.call([
-        "xfconf-query",
-        "-c", "xfce4-desktop",
-        "-p", "/backdrop/screen0/monitor0/workspace0/last-image",
-        "-s", wallpaper,
-        "--type", "string",
-        "--create"
+        "/bin/sh", "-c", f"xfconf-query -c xfce4-desktop -l | grep last-image | while read path; do xfconf-query -c xfce4-desktop -p $path -s {wallpaper}; done"
     ])       
