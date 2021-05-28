@@ -1,10 +1,17 @@
+import sys
 import gi
+from utils import getenv, ErrorDialog
+
 gi.require_version('Gtk', '3.0')
 from gi.repository import GLib, Gio, Gtk, GdkPixbuf
 
-import WallpaperManager
-import ThemeManager
-import ScaleManager
+if "xfce" in getenv("SESSION").lower() or "xfce" in getenv("XDG_CURRENT_DESKTOP").lower():
+    import xfce.WallpaperManager as WallpaperManager
+    import xfce.ThemeManager as ThemeManager
+    import xfce.ScaleManager as ScaleManager
+else:
+    ErrorDialog("Error","Your desktop environment is not supported yet.")
+    exit(0)
 
 class MainWindow:
     def __init__(self, application):
