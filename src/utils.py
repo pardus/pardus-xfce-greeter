@@ -8,6 +8,10 @@ def getenv(name):
     else:
         return ""
 
+def check_live():
+    f=open("/proc/cmdline","r").read()
+    return "boot=live" in f
+
 class Dialog(Gtk.MessageDialog):
     def __init__(self, style, buttons, title, text, text2=None, parent=None):
         Gtk.MessageDialog.__init__(self, parent, 0, style, buttons)
