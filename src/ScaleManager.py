@@ -43,11 +43,14 @@ def setDesktopIconSize(px):
     ])
 
 def getScale():
-    dpi = int(subprocess.check_output([
-        "xfconf-query",
-        "-c", "xsettings",
-        "-p", "/Xft/DPI",
-    ]).decode("utf-8").rstrip())
+    try:
+        dpi = int(subprocess.check_output([
+            "xfconf-query",
+            "-c", "xsettings",
+            "-p", "/Xft/DPI",
+        ]).decode("utf-8").rstrip())
+    except:
+        return 96
 
     return int(dpi * 100 / 96)
 def getPanelSize():
@@ -65,8 +68,11 @@ def getPanelIconSize():
     ]).decode("utf-8").rstrip())
 
 def getDesktopIconSize():
-    return int(subprocess.check_output([
-        "xfconf-query",
-        "-c", "xfce4-desktop",
-        "-p", "/desktop-icons/icon-size"
-    ]).decode("utf-8").rstrip())
+    try:
+        return int(subprocess.check_output([
+            "xfconf-query",
+            "-c", "xfce4-desktop",
+            "-p", "/desktop-icons/icon-size"
+        ]).decode("utf-8").rstrip())
+    except:
+        return 48 # default value
