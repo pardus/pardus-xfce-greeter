@@ -18,46 +18,25 @@ def getThemeList():
             for file in files:
                 if file.is_dir():
                     themes.append(file.name)
-                    
-                    if os.path.isdir(f"{path}/{file.name}/xfwm4"):
-                        windowThemes.append(file.name)
         except FileNotFoundError as error:
             pass
     
     themes.sort()
-    windowThemes.sort()
     return [themes, windowThemes]
 
 def setTheme(theme):
     subprocess.call([
-        "xfconf-query",
-        "-c", "xsettings",
-        "-p", "/Net/ThemeName",
-        "-s", theme,
-        "--type", "string",
-        "--create"
-    ])
-
-def setWindowTheme(theme):
-    subprocess.call([
-        "xfconf-query",
-        "-c", "xfwm4",
-        "-p", "/general/theme",
-        "-s", theme,
-        "--type", "string",
-        "--create"
+        "gsettings",
+        "set",
+        "org.gnome.desktop.interface",
+        "gtk-theme",
+        f"'{theme}'"
     ])
 
 def getTheme():
     return subprocess.check_output([
-        "xfconf-query",
-        "-c", "xsettings",
-        "-p", "/Net/ThemeName"
-    ]).decode("utf-8").rstrip()
-
-def getWindowTheme():
-    return subprocess.check_output([
-        "xfconf-query",
-        "-c", "xfwm4",
-        "-p", "/general/theme"
+        "gsettings",
+        "get",
+        "org.gnome.desktop.interface",
+        "gtk-theme"
     ]).decode("utf-8").rstrip()

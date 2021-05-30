@@ -22,5 +22,9 @@ def getWallpaperList():
 
 def setWallpaper(wallpaper):
     subprocess.call([
-        "/bin/sh", "-c", f"xfconf-query -c xfce4-desktop -l | grep last-image | while read path; do xfconf-query -c xfce4-desktop -p $path -s {wallpaper}; done"
-    ])       
+        "gsettings",
+        "set",
+        "org.gnome.desktop.background",
+        "picture-uri",
+        f"file://{wallpaper}"
+    ])
