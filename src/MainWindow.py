@@ -1,9 +1,22 @@
-import sys
+import os
 import gi
 from utils import getenv, ErrorDialog
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import GLib, Gio, Gtk, GdkPixbuf
+from gi.repository import Gtk, GdkPixbuf
+
+import locale
+from locale import gettext as tr
+
+# Translation Constants:
+APPNAME = "pardus-welcome"
+TRANSLATIONS_PATH = "/usr/share/locale"
+SYSTEM_LANGUAGE = os.environ.get("LANG")
+
+# Translation functions:
+locale.bindtextdomain(APPNAME, TRANSLATIONS_PATH)
+locale.textdomain(APPNAME)
+locale.setlocale(locale.LC_ALL, SYSTEM_LANGUAGE)
 
 currentDesktop = ""
 if "xfce" in getenv("SESSION").lower() or "xfce" in getenv("XDG_CURRENT_DESKTOP").lower():
@@ -26,6 +39,9 @@ class MainWindow:
         self.builder = Gtk.Builder()
         self.builder.add_from_file("../ui/MainWindow.glade")
         self.builder.connect_signals(self)
+
+        # Translate things on glade:
+        self.builder.set_translation_domain(APPNAME)
 
         # Add Window
         self.window = self.builder.get_object("window")
