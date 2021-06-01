@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-01 14:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../ui/MainWindow.glade:133
+msgid ""
+"Welcome.\n"
+"\n"
+"This tool helps you to get Pardus ready."
+msgstr ""
+
+#: ../ui/MainWindow.glade:148
+msgid "Welcome"
+msgstr ""
+
+#: ../ui/MainWindow.glade:162
+msgid "Select Wallpaper:"
+msgstr ""
+
+#: ../ui/MainWindow.glade:215
+msgid "Wallpaper"
+msgstr ""
+
+#: ../ui/MainWindow.glade:230
+msgid "Theme Settings:"
+msgstr ""
+
+#: ../ui/MainWindow.glade:280
+msgid "Light"
+msgstr ""
+
+#: ../ui/MainWindow.glade:338
+msgid "Dark"
+msgstr ""
+
+#: ../ui/MainWindow.glade:385
+msgid "Theme"
+msgstr ""
+
+#: ../ui/MainWindow.glade:400
+msgid "Display Settings:"
+msgstr ""
+
+#: ../ui/MainWindow.glade:461
+msgid "<b>Display Scaling:</b>"
+msgstr ""
+
+#: ../ui/MainWindow.glade:493
+msgid "<b>Panel Size</b> (px):"
+msgstr ""
+
+#: ../ui/MainWindow.glade:523
+msgid "<b>Desktop Icon Size</b> (px):"
+msgstr ""
+
+#: ../ui/MainWindow.glade:558
+msgid "Display"
+msgstr ""
+
+#: ../ui/MainWindow.glade:573 ../ui/MainWindow.glade:664
+msgid "Support & Community"
+msgstr ""
+
+#: ../ui/MainWindow.glade:634
+msgid ""
+"<span size=\"16000\">Website:</span>\n"
+"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>\n"
+"\n"
+"<span size=\"16000\">Forum:</span>\n"
+"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>\n"
+"\n"
+"<span size=\"16000\">Documentations:</span>\n"
+"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>\n"
+"\n"
+"<span size=\"16000\">Support:</span>\n"
+"<a href=\"https://talep.pardus.org.tr\">talep.pardus.org.tr</a>"
+msgstr ""
+
+#: ../ui/MainWindow.glade:752
+msgid "Arayuz Temasi1"
+msgstr ""
+
+#: ../ui/MainWindow.glade:755
+msgid "Arayuz Temasi2"
+msgstr ""
+
+#: ../ui/MainWindow.glade:766
+msgid "Pencere Temasi"
+msgstr ""
+
+#: ../ui/MainWindow.glade:769
+msgid "XFWM4 temasi"
+msgstr ""

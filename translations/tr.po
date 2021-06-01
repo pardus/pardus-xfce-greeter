@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Emin fedar <emin.fedar@pardus.org.tr>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-01 14:16+0300\n"
+"PO-Revision-Date: 2021-06-01 14:19+0300\n"
+"Last-Translator: Emin fedar <emin.fedar@pardus.org.tr>\n"
+"Language-Team: Turkish <gelistirici@pardus.org.tr>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Gtranslator 3.38.0\n"
+
+#: ../ui/MainWindow.glade:133
+msgid ""
+"Welcome.\n"
+"\n"
+"This tool helps you to get Pardus ready."
+msgstr ""
+"Hoşgeldiniz.\n"
+"\n"
+"Bu uygulama Pardus'u hazırlamanız için size yardımcı olacaktır."
+
+#: ../ui/MainWindow.glade:148
+msgid "Welcome"
+msgstr "Hoşgeldiniz"
+
+#: ../ui/MainWindow.glade:162
+msgid "Select Wallpaper:"
+msgstr "Duvar Kağıdı Seçin:"
+
+#: ../ui/MainWindow.glade:215
+msgid "Wallpaper"
+msgstr "Duvar Kağıdı"
+
+#: ../ui/MainWindow.glade:230
+msgid "Theme Settings:"
+msgstr "Tema Ayarları:"
+
+#: ../ui/MainWindow.glade:280
+msgid "Light"
+msgstr "Açık"
+
+#: ../ui/MainWindow.glade:338
+msgid "Dark"
+msgstr "Koyu"
+
+#: ../ui/MainWindow.glade:385
+msgid "Theme"
+msgstr "Tema"
+
+#: ../ui/MainWindow.glade:400
+msgid "Display Settings:"
+msgstr "Görüntü Ayarları:"
+
+#: ../ui/MainWindow.glade:461
+msgid "<b>Display Scaling:</b>"
+msgstr "<b>Görüntü Ölçekleme:</b>"
+
+#: ../ui/MainWindow.glade:493
+msgid "<b>Panel Size</b> (px):"
+msgstr "<b>Panel Boyutu</b> (px):"
+
+#: ../ui/MainWindow.glade:523
+msgid "<b>Desktop Icon Size</b> (px):"
+msgstr "<b>Masaüstü Ikon Boyutu</b> (px):"
+
+#: ../ui/MainWindow.glade:558
+msgid "Display"
+msgstr "Görüntü"
+
+#: ../ui/MainWindow.glade:573 ../ui/MainWindow.glade:664
+msgid "Support & Community"
+msgstr "Destek & Topluluk"
+
+#: ../ui/MainWindow.glade:634
+msgid ""
+"<span size=\"16000\">Website:</span>\n"
+"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>\n"
+"\n"
+"<span size=\"16000\">Forum:</span>\n"
+"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>\n"
+"\n"
+"<span size=\"16000\">Documentations:</span>\n"
+"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>\n"
+"\n"
+"<span size=\"16000\">Support:</span>\n"
+"<a href=\"https://talep.pardus.org.tr\">talep.pardus.org.tr</a>"
+msgstr ""
+"<span size=\"16000\">Web sitesi:</span>\n"
+"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>\n"
+"\n"
+"<span size=\"16000\">Forum:</span>\n"
+"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>\n"
+"\n"
+"<span size=\"16000\">Belgeler:</span>\n"
+"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>\n"
+"\n"
+"<span size=\"16000\">Destek:</span>\n"
+"<a href=\"https://talep.pardus.org.tr\">talep.pardus.org.tr</a>"
+
+#: ../ui/MainWindow.glade:752
+msgid "Arayuz Temasi1"
+msgstr ""
+
+#: ../ui/MainWindow.glade:755
+msgid "Arayuz Temasi2"
+msgstr ""
+
+#: ../ui/MainWindow.glade:766
+msgid "Pencere Temasi"
+msgstr ""
+
+#: ../ui/MainWindow.glade:769
+msgid "XFWM4 temasi"
+msgstr ""

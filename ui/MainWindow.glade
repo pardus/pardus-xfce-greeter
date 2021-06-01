@@ -101,7 +101,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Pardus 21</property>
+                        <property name="label">Pardus 21</property>
                         <attributes>
                           <attribute name="weight" value="bold"/>
                           <attribute name="size" value="21000"/>
@@ -129,9 +129,12 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="halign">start</property>
-                        <property name="label" translatable="yes">Hoşgeldiniz. Bu araç size ön hazırlık için yardımcı olacaktır.</property>
+                        <property name="halign">center</property>
+                        <property name="label" translatable="yes">Welcome.
+
+This tool helps you to get Pardus ready.</property>
                         <property name="use-markup">True</property>
+                        <property name="justify">center</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -142,7 +145,7 @@
                   </object>
                   <packing>
                     <property name="name">page0</property>
-                    <property name="title" translatable="yes">Welcome!</property>
+                    <property name="title" translatable="yes">Welcome</property>
                   </packing>
                 </child>
                 <child>
@@ -429,7 +432,6 @@
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="margin-bottom">1</property>
                             <property name="pixel-size">200</property>
                             <property name="icon-name">computer</property>
                           </object>
@@ -456,7 +458,7 @@
                             <property name="can-focus">False</property>
                             <property name="halign">start</property>
                             <property name="valign">start</property>
-                            <property name="label" translatable="yes">&lt;b&gt;Display Scaling&lt;/b&gt; (%):</property>
+                            <property name="label" translatable="yes">&lt;b&gt;Display Scaling:&lt;/b&gt;</property>
                             <property name="use-markup">True</property>
                           </object>
                           <packing>
@@ -591,10 +593,70 @@
                       </packing>
                     </child>
                     <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">start</property>
+                        <property name="margin-top">20</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">14</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../pardus-logo.svg</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkSeparator">
+                            <property name="width-request">250</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="halign">center</property>
+                            <property name="valign">start</property>
+                            <property name="label" translatable="yes">&lt;span size="16000"&gt;Website:&lt;/span&gt;
+&lt;a href="https://www.pardus.org.tr/"&gt;pardus.org.tr&lt;/a&gt;
+
+&lt;span size="16000"&gt;Forum:&lt;/span&gt;
+&lt;a href="https://forum.pardus.org.tr/"&gt;forum.pardus.org.tr&lt;/a&gt;
+
+&lt;span size="16000"&gt;Documentations:&lt;/span&gt;
+&lt;a href="https://belge.pardus.org.tr/"&gt;belge.pardus.org.tr&lt;/a&gt;
+
+&lt;span size="16000"&gt;Support:&lt;/span&gt;
+&lt;a href="https://talep.pardus.org.tr"&gt;talep.pardus.org.tr&lt;/a&gt;</property>
+                            <property name="use-markup">True</property>
+                            <property name="justify">center</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
                     </child>
                   </object>
                   <packing>
@@ -667,8 +729,8 @@
         <property name="decoration-layout">:minimize,maximize,close</property>
         <child type="title">
           <object class="GtkStackSwitcher">
-            <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <property name="no-show-all">True</property>
             <property name="halign">center</property>
             <property name="valign">end</property>
             <property name="stack">stk_stackPages</property>
