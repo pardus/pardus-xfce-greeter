@@ -99,8 +99,8 @@ class MainWindow:
         self.currentPage = number
 
         # Set button sensivities
-        self.btn_next.set_visible(not (self.currentPage == self.pageCount-1))
-        self.btn_prev.set_visible(not (self.currentPage == 0))
+        self.btn_next.set_sensitive(not (self.currentPage == self.pageCount-1))
+        self.btn_prev.set_sensitive(not (self.currentPage == 0))
 
         # Change current stack page
         self.stk_stackPages.set_visible_child_name(f"page{number}")
@@ -144,6 +144,15 @@ class MainWindow:
     def on_wallpaper_selected(self, flowbox, wallpaper):
         filename = str(wallpaper.get_children()[0].file)
         WallpaperManager.setWallpaper(filename)
+
+    # - Theme Selection:
+    def on_rb_lightTheme_toggled(self, rb):
+        if rb.get_active():
+            ThemeManager.setTheme("Adwaita")
+    
+    def on_rb_darkTheme_toggled(self, rb):
+        if rb.get_active():
+            ThemeManager.setTheme("Adwaita-dark")
 
 
     # - Scale Changed:
