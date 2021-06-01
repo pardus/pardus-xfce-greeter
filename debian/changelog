@@ -1,0 +1,21 @@
+pardus-welcome (0.1.0) unstable; urgency=medium
+
+  [ Emin Fedar ]
+  * Initial commit
+  * updated: windowThemes now setting with Scaling.
+  * updated: New UI Design
+  * updated: Now remembers system's scale.
+  * fixed: Wallpaper isn't changing.
+  * GNOME Support
+  * XFCE Scaling Fix
+  * Theme Selection Added
+  * Translations Added
+  * setup files
+
+  [ Ali Rıza KESKİN ]
+  * fix if key not exists
+  * desktop environment check mechanism added
+  * live mode exit
+
+
+ -- Emin Fedar <emin.fedar@pardus.org.tr>  Fri, 19 Jun 2020 00:04:20 +0300
