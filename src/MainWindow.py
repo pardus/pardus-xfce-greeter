@@ -37,7 +37,7 @@ class MainWindow:
     def __init__(self, application):
         # Gtk Builder
         self.builder = Gtk.Builder()
-        self.builder.add_from_file("../ui/MainWindow.glade")
+        self.builder.add_from_file(os.path.dirname(os.path.abspath(__file__)) + "/../ui/MainWindow.glade")
         self.builder.connect_signals(self)
 
         # Translate things on glade:
