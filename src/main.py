@@ -15,9 +15,6 @@ class Application(Gtk.Application):
     
     def do_activate(self):
         self.window = MainWindow(self)
-    
-    def onExit(self,a):
-        self.quit()
 
 
 if __name__ == "__main__":

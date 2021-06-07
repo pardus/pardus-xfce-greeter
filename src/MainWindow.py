@@ -54,7 +54,7 @@ class MainWindow:
         self.window = self.builder.get_object("window")
         self.window.set_position(Gtk.WindowPosition.CENTER)
         self.window.set_application(application)
-        self.window.connect('destroy', application.onExit)
+        self.window.connect('destroy', self.onDestroy)
 
         # Definitions
         self.defineComponents()
@@ -67,7 +67,7 @@ class MainWindow:
         self.addWallpapers(WallpaperManager.getWallpaperList())
 
         # Set scales to system-default:
-        self.setScalingDefaults()
+        self.getScalingDefaults()
 
         # Show Screen:
         self.window.show_all()
@@ -95,6 +95,7 @@ class MainWindow:
         self.lst_themes = self.builder.get_object("lst_themes")
         self.lst_windowThemes = self.builder.get_object("lst_windowThemes")
         self.flow_wallpapers = self.builder.get_object("flow_wallpapers")
+        self.rb_darkTheme = self.builder.get_object("rb_darkTheme")
 
         # - Scaling Settings:
         self.lbl_panelSize = self.builder.get_object("lbl_panelSize")
@@ -144,7 +145,7 @@ class MainWindow:
             self.flow_wallpapers.insert(img_wallpaper, -1)
         self.flow_wallpapers.show_all()
     
-    def setScalingDefaults(self):
+    def getScalingDefaults(self):
         if currentDesktop == "xfce":
             self.sli_panel.set_value(ScaleManager.getPanelSize())
             self.sli_desktopIcon.set_value(ScaleManager.getDesktopIconSize())
@@ -153,6 +154,9 @@ class MainWindow:
         self.sli_scaling.set_value(currentScale)
 
     # SIGNALS:
+    def onDestroy(self, b):
+        self.window.get_application().quit()
+
     # - NAVIGATION:
     def on_btn_next_clicked(self, btn):
         if self.currentPage < self.pageCount:

@@ -32,6 +32,7 @@
   </object>
   <object class="GtkApplicationWindow" id="window">
     <property name="can-focus">False</property>
+    <property name="title" translatable="yes">Welcome</property>
     <property name="window-position">center</property>
     <property name="default-width">850</property>
     <property name="default-height">650</property>
@@ -641,6 +642,7 @@ This tool helps you to get Pardus ready.</property>
 &lt;a href="https://belge.pardus.org.tr/"&gt;belge.pardus.org.tr&lt;/a&gt;
 
 &lt;span size="16000"&gt;Support:&lt;/span&gt;
+&lt;span size="16000"&gt;&lt;b&gt;444 5 773&lt;/b&gt;&lt;/span&gt;
 &lt;a href="https://talep.pardus.org.tr"&gt;talep.pardus.org.tr&lt;/a&gt;</property>
                             <property name="use-markup">True</property>
                             <property name="justify">center</property>
@@ -649,6 +651,26 @@ This tool helps you to get Pardus ready.</property>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
                             <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="label">gtk-close</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="halign">center</property>
+                            <property name="margin-top">20</property>
+                            <property name="use-stock">True</property>
+                            <signal name="clicked" handler="onDestroy" swapped="no"/>
+                            <style>
+                              <class name="destructive-action"/>
+                            </style>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">3</property>
                           </packing>
                         </child>
                       </object>
@@ -718,26 +740,6 @@ This tool helps you to get Pardus ready.</property>
             <property name="pack-type">end</property>
             <property name="position">2</property>
           </packing>
-        </child>
-      </object>
-    </child>
-    <child type="titlebar">
-      <object class="GtkHeaderBar">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="show-close-button">True</property>
-        <property name="decoration-layout">:minimize,maximize,close</property>
-        <child type="title">
-          <object class="GtkStackSwitcher">
-            <property name="can-focus">False</property>
-            <property name="no-show-all">True</property>
-            <property name="halign">center</property>
-            <property name="valign">end</property>
-            <property name="stack">stk_stackPages</property>
-          </object>
-        </child>
-        <child>
-          <placeholder/>
         </child>
       </object>
     </child>

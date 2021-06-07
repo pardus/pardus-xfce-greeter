@@ -5,7 +5,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import GLib, Gio, Gtk
 
 folders = ["/usr/share/backgrounds/"]
-prefixs = ["jpg","png","bmp","jpeg"]
+prefixs = ["jpg","png","bmp","jpeg","svg"]
 
 def getWallpaperList():
     pictures = []
