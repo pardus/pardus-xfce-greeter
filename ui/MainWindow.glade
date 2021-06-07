@@ -630,27 +630,61 @@ This tool helps you to get Pardus ready.</property>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="halign">center</property>
-                            <property name="valign">start</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes">&lt;span size="16000"&gt;Website:&lt;/span&gt;
-&lt;a href="https://www.pardus.org.tr/"&gt;pardus.org.tr&lt;/a&gt;
-
-&lt;span size="16000"&gt;Forum:&lt;/span&gt;
-&lt;a href="https://forum.pardus.org.tr/"&gt;forum.pardus.org.tr&lt;/a&gt;
-
-&lt;span size="16000"&gt;Documentations:&lt;/span&gt;
-&lt;a href="https://belge.pardus.org.tr/"&gt;belge.pardus.org.tr&lt;/a&gt;
-
-&lt;span size="16000"&gt;Support:&lt;/span&gt;
-&lt;span size="16000"&gt;&lt;b&gt;444 5 773&lt;/b&gt;&lt;/span&gt;
-&lt;a href="https://talep.pardus.org.tr"&gt;talep.pardus.org.tr&lt;/a&gt;</property>
+&lt;a href="https://www.pardus.org.tr/"&gt;pardus.org.tr&lt;/a&gt;</property>
                             <property name="use-markup">True</property>
-                            <property name="justify">center</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
                             <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">&lt;span size="16000"&gt;Forum:&lt;/span&gt;
+&lt;a href="https://forum.pardus.org.tr/"&gt;forum.pardus.org.tr&lt;/a&gt;</property>
+                            <property name="use-markup">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">&lt;span size="16000"&gt;Documentations:&lt;/span&gt;
+&lt;a href="https://belge.pardus.org.tr/"&gt;belge.pardus.org.tr&lt;/a&gt;</property>
+                            <property name="use-markup">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">4</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">&lt;span size="16000"&gt;Support:&lt;/span&gt;
+&lt;span size="16000"&gt;&lt;b&gt;444 5 773&lt;/b&gt;&lt;/span&gt;
+&lt;a href="https://talep.pardus.org.tr"&gt;talep.pardus.org.tr&lt;/a&gt;</property>
+                            <property name="use-markup">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">5</property>
                           </packing>
                         </child>
                         <child>
@@ -670,7 +704,7 @@ This tool helps you to get Pardus ready.</property>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="position">3</property>
+                            <property name="position">6</property>
                           </packing>
                         </child>
                       </object>
@@ -749,27 +783,11 @@ This tool helps you to get Pardus ready.</property>
       <!-- column-name name -->
       <column type="gchararray"/>
     </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Arayuz Temasi1</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Arayuz Temasi2</col>
-      </row>
-    </data>
   </object>
   <object class="GtkListStore" id="lst_windowThemes">
     <columns>
       <!-- column-name name -->
       <column type="gchararray"/>
     </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Pencere Temasi</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">XFWM4 temasi</col>
-      </row>
-    </data>
   </object>
 </interface>

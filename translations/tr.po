@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-01 14:16+0300\n"
+"POT-Creation-Date: 2021-06-07 19:58+0300\n"
 "PO-Revision-Date: 2021-06-01 14:19+0300\n"
 "Last-Translator: Emin fedar <emin.fedar@pardus.org.tr>\n"
 "Language-Team: Turkish <gelistirici@pardus.org.tr>\n"
@@ -19,7 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Gtranslator 3.38.0\n"
 
-#: ../ui/MainWindow.glade:133
+#: ../ui/MainWindow.glade:35 ../ui/MainWindow.glade:149
+msgid "Welcome"
+msgstr "Hoşgeldiniz"
+
+#: ../ui/MainWindow.glade:134
 msgid ""
 "Welcome.\n"
 "\n"
@@ -29,96 +33,84 @@ msgstr ""
 "\n"
 "Bu uygulama Pardus'u hazırlamanız için size yardımcı olacaktır."
 
-#: ../ui/MainWindow.glade:148
-msgid "Welcome"
-msgstr "Hoşgeldiniz"
-
-#: ../ui/MainWindow.glade:162
+#: ../ui/MainWindow.glade:163
 msgid "Select Wallpaper:"
 msgstr "Duvar Kağıdı Seçin:"
 
-#: ../ui/MainWindow.glade:215
+#: ../ui/MainWindow.glade:216
 msgid "Wallpaper"
 msgstr "Duvar Kağıdı"
 
-#: ../ui/MainWindow.glade:230
+#: ../ui/MainWindow.glade:231
 msgid "Theme Settings:"
 msgstr "Tema Ayarları:"
 
-#: ../ui/MainWindow.glade:280
+#: ../ui/MainWindow.glade:281
 msgid "Light"
 msgstr "Açık"
 
-#: ../ui/MainWindow.glade:338
+#: ../ui/MainWindow.glade:339
 msgid "Dark"
 msgstr "Koyu"
 
-#: ../ui/MainWindow.glade:385
+#: ../ui/MainWindow.glade:386
 msgid "Theme"
 msgstr "Tema"
 
-#: ../ui/MainWindow.glade:400
+#: ../ui/MainWindow.glade:401
 msgid "Display Settings:"
 msgstr "Görüntü Ayarları:"
 
-#: ../ui/MainWindow.glade:461
+#: ../ui/MainWindow.glade:462
 msgid "<b>Display Scaling:</b>"
 msgstr "<b>Görüntü Ölçekleme:</b>"
 
-#: ../ui/MainWindow.glade:493
+#: ../ui/MainWindow.glade:494
 msgid "<b>Panel Size</b> (px):"
 msgstr "<b>Panel Boyutu</b> (px):"
 
-#: ../ui/MainWindow.glade:523
+#: ../ui/MainWindow.glade:524
 msgid "<b>Desktop Icon Size</b> (px):"
 msgstr "<b>Masaüstü Ikon Boyutu</b> (px):"
 
-#: ../ui/MainWindow.glade:558
+#: ../ui/MainWindow.glade:559
 msgid "Display"
 msgstr "Görüntü"
 
-#: ../ui/MainWindow.glade:573 ../ui/MainWindow.glade:664
+#: ../ui/MainWindow.glade:574 ../ui/MainWindow.glade:720
 msgid "Support & Community"
 msgstr "Destek & Topluluk"
 
 #: ../ui/MainWindow.glade:634
 msgid ""
 "<span size=\"16000\">Website:</span>\n"
-"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>\n"
-"\n"
+"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
+msgstr ""
+"<span size=\"16000\">Website:</span>\n"
+"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
+
+#: ../ui/MainWindow.glade:649
+msgid ""
 "<span size=\"16000\">Forum:</span>\n"
-"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>\n"
-"\n"
+"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
+msgstr ""
+"<span size=\"16000\">Forum:</span>\n"
+"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
+
+#: ../ui/MainWindow.glade:664
+msgid ""
 "<span size=\"16000\">Documentations:</span>\n"
-"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>\n"
-"\n"
-"<span size=\"16000\">Support:</span>\n"
-"<a href=\"https://talep.pardus.org.tr\">talep.pardus.org.tr</a>"
+"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
 msgstr ""
-"<span size=\"16000\">Web sitesi:</span>\n"
-"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>\n"
-"\n"
-"<span size=\"16000\">Forum:</span>\n"
-"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>\n"
-"\n"
 "<span size=\"16000\">Belgeler:</span>\n"
-"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>\n"
-"\n"
-"<span size=\"16000\">Destek:</span>\n"
+"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
+
+#: ../ui/MainWindow.glade:679
+msgid ""
+"<span size=\"16000\">Support:</span>\n"
+"<span size=\"16000\"><b>444 5 773</b></span>\n"
 "<a href=\"https://talep.pardus.org.tr\">talep.pardus.org.tr</a>"
-
-#: ../ui/MainWindow.glade:752
-msgid "Arayuz Temasi1"
 msgstr ""
-
-#: ../ui/MainWindow.glade:755
-msgid "Arayuz Temasi2"
-msgstr ""
-
-#: ../ui/MainWindow.glade:766
-msgid "Pencere Temasi"
-msgstr ""
-
-#: ../ui/MainWindow.glade:769
-msgid "XFWM4 temasi"
-msgstr ""
+"<span size=\"16000\">Destek:</span>\n"
+"<span size=\"16000\"><b>444 5 773</b></span>\n"
+"<a href=\"https://talep.pardus.org.tr\">talep.pardus.org.tr</a>"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-01 14:16+0300\n"
+"POT-Creation-Date: 2021-06-07 19:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,92 +17,86 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../ui/MainWindow.glade:133
+#: ../ui/MainWindow.glade:35 ../ui/MainWindow.glade:149
+msgid "Welcome"
+msgstr ""
+
+#: ../ui/MainWindow.glade:134
 msgid ""
 "Welcome.\n"
 "\n"
 "This tool helps you to get Pardus ready."
 msgstr ""
 
-#: ../ui/MainWindow.glade:148
-msgid "Welcome"
-msgstr ""
-
-#: ../ui/MainWindow.glade:162
+#: ../ui/MainWindow.glade:163
 msgid "Select Wallpaper:"
 msgstr ""
 
-#: ../ui/MainWindow.glade:215
+#: ../ui/MainWindow.glade:216
 msgid "Wallpaper"
 msgstr ""
 
-#: ../ui/MainWindow.glade:230
+#: ../ui/MainWindow.glade:231
 msgid "Theme Settings:"
 msgstr ""
 
-#: ../ui/MainWindow.glade:280
+#: ../ui/MainWindow.glade:281
 msgid "Light"
 msgstr ""
 
-#: ../ui/MainWindow.glade:338
+#: ../ui/MainWindow.glade:339
 msgid "Dark"
 msgstr ""
 
-#: ../ui/MainWindow.glade:385
+#: ../ui/MainWindow.glade:386
 msgid "Theme"
 msgstr ""
 
-#: ../ui/MainWindow.glade:400
+#: ../ui/MainWindow.glade:401
 msgid "Display Settings:"
 msgstr ""
 
-#: ../ui/MainWindow.glade:461
+#: ../ui/MainWindow.glade:462
 msgid "<b>Display Scaling:</b>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:493
+#: ../ui/MainWindow.glade:494
 msgid "<b>Panel Size</b> (px):"
 msgstr ""
 
-#: ../ui/MainWindow.glade:523
+#: ../ui/MainWindow.glade:524
 msgid "<b>Desktop Icon Size</b> (px):"
 msgstr ""
 
-#: ../ui/MainWindow.glade:558
+#: ../ui/MainWindow.glade:559
 msgid "Display"
 msgstr ""
 
-#: ../ui/MainWindow.glade:573 ../ui/MainWindow.glade:664
+#: ../ui/MainWindow.glade:574 ../ui/MainWindow.glade:720
 msgid "Support & Community"
 msgstr ""
 
 #: ../ui/MainWindow.glade:634
 msgid ""
 "<span size=\"16000\">Website:</span>\n"
-"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>\n"
-"\n"
+"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
+msgstr ""
+
+#: ../ui/MainWindow.glade:649
+msgid ""
 "<span size=\"16000\">Forum:</span>\n"
-"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>\n"
-"\n"
+"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
+msgstr ""
+
+#: ../ui/MainWindow.glade:664
+msgid ""
 "<span size=\"16000\">Documentations:</span>\n"
-"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>\n"
-"\n"
+"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
+msgstr ""
+
+#: ../ui/MainWindow.glade:679
+msgid ""
 "<span size=\"16000\">Support:</span>\n"
+"<span size=\"16000\"><b>444 5 773</b></span>\n"
 "<a href=\"https://talep.pardus.org.tr\">talep.pardus.org.tr</a>"
-msgstr ""
-
-#: ../ui/MainWindow.glade:752
-msgid "Arayuz Temasi1"
-msgstr ""
-
-#: ../ui/MainWindow.glade:755
-msgid "Arayuz Temasi2"
-msgstr ""
-
-#: ../ui/MainWindow.glade:766
-msgid "Pencere Temasi"
-msgstr ""
-
-#: ../ui/MainWindow.glade:769
-msgid "XFWM4 temasi"
 msgstr ""
