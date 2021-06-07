@@ -8,6 +8,8 @@ from gi.repository import Gtk, GdkPixbuf
 import locale
 from locale import gettext as tr
 
+from pathlib import Path
+
 # Translation Constants:
 APPNAME = "pardus-welcome"
 TRANSLATIONS_PATH = "/usr/share/locale"
@@ -32,6 +34,11 @@ elif "gnome" in getenv("SESSION").lower() or "gnome" in getenv("XDG_CURRENT_DESK
 else:
     ErrorDialog("Error","Your desktop environment is not supported yet.")
     exit(0)
+
+try:
+    os.remove(str(Path.home()) + "/.config/autostart/tr.org.pardus.welcome.desktop")
+except OSError:
+    pass
 
 class MainWindow:
     def __init__(self, application):
