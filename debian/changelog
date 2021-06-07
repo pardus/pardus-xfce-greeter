@@ -1,4 +1,13 @@
-pardus-welcome (0.1.0) unstable; urgency=medium
+pardus-welcome (0.1.0~alpha1) unstable; urgency=medium
+
+  [ Emin Fedar ]
+  * Added .desktop file
+  * setup fixes
+  * Glade import path fix.
+
+  [ Fatih Altun ]
+  * Update default width and height
+  * Add autostart conf
 
   [ Emin Fedar ]
   * Initial commit
@@ -17,5 +26,4 @@ pardus-welcome (0.1.0) unstable; urgency=medium
   * desktop environment check mechanism added
   * live mode exit
 
-
- -- Emin Fedar <emin.fedar@pardus.org.tr>  Fri, 19 Jun 2020 00:04:20 +0300
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Mon, 07 Jun 2021 12:06:09 +0300
