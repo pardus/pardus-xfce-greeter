@@ -4,7 +4,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import GLib, Gio, Gtk
 
-folders = ["/usr/share/backgrounds/"]
+folders = ["/usr/share/backgrounds/", "/usr/share/desktop-base/active-theme/wallpaper/contents/images/"]
 prefixs = ["jpg","png","bmp","jpeg","svg"]
 
 def getWallpaperList():
@@ -22,5 +22,6 @@ def getWallpaperList():
 
 def setWallpaper(wallpaper):
     subprocess.call([
-        "/bin/sh", "-c", f"xfconf-query -c xfce4-desktop -l | grep last-image | while read path; do xfconf-query -c xfce4-desktop -p $path -s {wallpaper}; done"
+        "/bin/sh", "-c",
+        f"xfconf-query -c xfce4-desktop -l | grep last-image | while read path; do xfconf-query -c xfce4-desktop -p $path -s {wallpaper}; done"
     ])       

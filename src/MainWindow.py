@@ -135,14 +135,27 @@ class MainWindow:
 
     # Add wallpapers to the grid:
     def addWallpapers(self, wallpaperList):
-        for i in range(len(wallpaperList)):            
+        for i in range(len(wallpaperList)):    
+            # Image        
             bitmap = GdkPixbuf.Pixbuf.new_from_file(wallpaperList[i])
             bitmap = bitmap.scale_simple(240, 135, GdkPixbuf.InterpType.BILINEAR)
 
             img_wallpaper = Gtk.Image.new_from_pixbuf(bitmap)
             img_wallpaper.file = wallpaperList[i]
 
-            self.flow_wallpapers.insert(img_wallpaper, -1)
+            # Label
+            filename = wallpaperList[i].split("/")[-1].split(".")[0]
+            lbl = Gtk.Label(filename)
+            lbl.set_margin_top(3)
+            lbl.set_margin_bottom(13)
+            lbl.set_opacity(0.8)
+
+            # Box
+            box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+            box.add(img_wallpaper)
+            box.add(lbl)
+
+            self.flow_wallpapers.insert(box, -1)
         self.flow_wallpapers.show_all()
     
     def getScalingDefaults(self):
@@ -169,7 +182,7 @@ class MainWindow:
 
     # - Wallpaper Select:
     def on_wallpaper_selected(self, flowbox, wallpaper):
-        filename = str(wallpaper.get_children()[0].file)
+        filename = str(wallpaper.get_children()[0].get_children()[0].file)
         WallpaperManager.setWallpaper(filename)
 
     # - Theme Selection:
