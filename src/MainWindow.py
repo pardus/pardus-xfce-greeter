@@ -1,9 +1,9 @@
-import os
+import os, threading
 import gi
 from utils import getenv, ErrorDialog
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, GdkPixbuf
+from gi.repository import Gtk, GdkPixbuf, GLib, Gio
 
 import locale
 from locale import gettext as tr
@@ -64,7 +64,9 @@ class MainWindow:
         self.addWidgetSettings()
 
         # Put Wallpapers on a Grid
-        self.addWallpapers(WallpaperManager.getWallpaperList())
+        thread = threading.Thread(target=self.addWallpapers, args=(WallpaperManager.getWallpaperList(),))
+        thread.daemon = True
+        thread.start()
 
         # Set scales to system-default:
         self.getScalingDefaults()
@@ -135,17 +137,17 @@ class MainWindow:
 
     # Add wallpapers to the grid:
     def addWallpapers(self, wallpaperList):
-        for i in range(len(wallpaperList)):    
-            # Image        
+        for i in range(len(wallpaperList)):
+            # Image
             bitmap = GdkPixbuf.Pixbuf.new_from_file(wallpaperList[i])
             bitmap = bitmap.scale_simple(240, 135, GdkPixbuf.InterpType.BILINEAR)
 
             img_wallpaper = Gtk.Image.new_from_pixbuf(bitmap)
-            img_wallpaper.file = wallpaperList[i]
+            img_wallpaper.img_path = wallpaperList[i]
 
             # Label
             filename = wallpaperList[i].split("/")[-1].split(".")[0]
-            lbl = Gtk.Label(filename)
+            lbl = Gtk.Label(filename[0:25])
             lbl.set_margin_top(3)
             lbl.set_margin_bottom(13)
             lbl.set_opacity(0.8)
@@ -155,9 +157,9 @@ class MainWindow:
             box.add(img_wallpaper)
             box.add(lbl)
 
-            self.flow_wallpapers.insert(box, -1)
-        self.flow_wallpapers.show_all()
-    
+            GLib.idle_add(self.flow_wallpapers.insert, box, -1)
+            GLib.idle_add(self.flow_wallpapers.show_all)
+
     def getScalingDefaults(self):
         if currentDesktop == "xfce":
             self.sli_panel.set_value(ScaleManager.getPanelSize())
@@ -166,7 +168,7 @@ class MainWindow:
         currentScale = ScaleManager.getScale()
         self.sli_scaling.set_value(currentScale)
 
-    # SIGNALS:
+    # SIGNALS:    
     def onDestroy(self, b):
         self.window.get_application().quit()
 
@@ -182,17 +184,17 @@ class MainWindow:
 
     # - Wallpaper Select:
     def on_wallpaper_selected(self, flowbox, wallpaper):
-        filename = str(wallpaper.get_children()[0].get_children()[0].file)
+        filename = str(wallpaper.get_children()[0].get_children()[0].img_path)
         WallpaperManager.setWallpaper(filename)
 
     # - Theme Selection:
     def on_rb_lightTheme_toggled(self, rb):
         if rb.get_active():
-            ThemeManager.setTheme("Adwaita")
+            GLib.idle_add(ThemeManager.setTheme, "Adwaita")
     
     def on_rb_darkTheme_toggled(self, rb):
         if rb.get_active():
-            ThemeManager.setTheme("Adwaita-dark")
+            GLib.idle_add(ThemeManager.setTheme, "Adwaita-dark")
 
 
     # - Scale Changed:
