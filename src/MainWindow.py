@@ -113,11 +113,11 @@ class MainWindow:
     
     def addWidgetSettings(self):        
         # Add scaling marks
-        self.sli_scaling.add_mark(1, Gtk.PositionType.BOTTOM, "%100")
-        self.sli_scaling.add_mark(1.25, Gtk.PositionType.BOTTOM, "%125")
-        self.sli_scaling.add_mark(1.5, Gtk.PositionType.BOTTOM, "%150")
-        self.sli_scaling.add_mark(1.75, Gtk.PositionType.BOTTOM, "%175")
-        self.sli_scaling.add_mark(2, Gtk.PositionType.BOTTOM, "%200")        
+        self.sli_scaling.add_mark(0, Gtk.PositionType.BOTTOM, "%100")
+        self.sli_scaling.add_mark(1, Gtk.PositionType.BOTTOM, "%125")
+        self.sli_scaling.add_mark(2, Gtk.PositionType.BOTTOM, "%150")
+        self.sli_scaling.add_mark(3, Gtk.PositionType.BOTTOM, "%175")
+        self.sli_scaling.add_mark(4, Gtk.PositionType.BOTTOM, "%200")        
 
 
     def changePage(self, number):
@@ -165,7 +165,7 @@ class MainWindow:
             self.sli_panel.set_value(ScaleManager.getPanelSize())
             self.sli_desktopIcon.set_value(ScaleManager.getDesktopIconSize())
         
-        currentScale = ScaleManager.getScale()
+        currentScale = ScaleManager.getScale() - 1
         self.sli_scaling.set_value(currentScale)
 
     # SIGNALS:    
@@ -199,10 +199,11 @@ class MainWindow:
 
     # - Scale Changed:
     def on_sli_scaling_button_release(self, slider, b):
-        ScaleManager.setScale(float(slider.get_value()))
+        value = int(slider.get_value()) * 0.25 + 1
+        ScaleManager.setScale(value)
     
     def on_sli_scaling_format_value(self, sli, value):
-        return f"%{int(value*100)}"
+        return f"%{int(value * 25 + 100)}"
     
 
     # - Panel Size Changed:
