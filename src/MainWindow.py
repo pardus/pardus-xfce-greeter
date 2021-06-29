@@ -25,6 +25,7 @@ if "xfce" in getenv("SESSION").lower() or "xfce" in getenv("XDG_CURRENT_DESKTOP"
     import xfce.WallpaperManager as WallpaperManager
     import xfce.ThemeManager as ThemeManager
     import xfce.ScaleManager as ScaleManager
+    import xfce.KeyboardManager as KeyboardManager
     currentDesktop = "xfce"
 elif "gnome" in getenv("SESSION").lower() or "gnome" in getenv("XDG_CURRENT_DESKTOP").lower():
     import gnome.WallpaperManager as WallpaperManager
@@ -88,7 +89,7 @@ class MainWindow:
             self.lbl_desktopIconSize.set_visible(False)
 
     def defineComponents(self):
-        # Navigation:
+        # - Navigation:
         self.stk_stackPages = self.builder.get_object("stk_stackPages")
         self.btn_next = self.builder.get_object("btn_next")
         self.btn_prev = self.builder.get_object("btn_prev")
@@ -105,6 +106,15 @@ class MainWindow:
         self.sli_panel = self.builder.get_object("sli_panel")
         self.sli_scaling = self.builder.get_object("sli_scaling")
         self.sli_desktopIcon = self.builder.get_object("sli_desktopIcon")
+
+        # - Keyboard Settings:
+        self.stk_trf = self.builder.get_object("stk_trf")
+        self.stk_trq = self.builder.get_object("stk_trq")
+        self.stk_en = self.builder.get_object("stk_en")
+        self.btn_trq_remove = self.builder.get_object("btn_trq_remove")
+        self.btn_trf_remove = self.builder.get_object("btn_trf_remove")
+        self.btn_en_remove = self.builder.get_object("btn_en_remove")
+        self.sw_lang_indicator = self.builder.get_object("sw_lang_indicator")
 
     def defineVariables(self):
         # Global stack pages:
@@ -167,6 +177,35 @@ class MainWindow:
         
         currentScale = ScaleManager.getScale() - 1
         self.sli_scaling.set_value(currentScale)
+    
+    # Keyboard Settings:
+    def setKeyboardDefaults(self):
+        states = KeyboardManager.getKeyboardState()
+        if states[0] == True:
+            self.stk_trf.set_visible_child_name("remove")
+        else:
+            self.stk_trf.set_visible_child_name("add")
+        
+        if states[1] == True:
+            self.stk_trq.set_visible_child_name("remove")
+        else:
+            self.stk_trq.set_visible_child_name("add")
+        
+        if states[2] == True:
+            self.stk_en.set_visible_child_name("remove")
+        else:
+            self.stk_en.set_visible_child_name("add")
+
+        self.disableIfOnlyOneRemains()
+        
+        keyboardPlugin = KeyboardManager.getKeyboardPlugin()
+        self.sw_lang_indicator.set_active(len(keyboardPlugin) > 0)
+    
+    def disableIfOnlyOneRemains(self):
+        # print(f"trq:{self.stk_trq.get_visible_child_name()}, trf:{self.stk_trf.get_visible_child_name()}, en:{self.stk_en.get_visible_child_name()}")
+        self.btn_trf_remove.set_sensitive(self.stk_trq.get_visible_child_name() == "remove" or self.stk_en.get_visible_child_name() == "remove")
+        self.btn_trq_remove.set_sensitive(self.stk_trf.get_visible_child_name() == "remove" or self.stk_en.get_visible_child_name() == "remove")
+        self.btn_en_remove.set_sensitive(self.stk_trq.get_visible_child_name() == "remove" or self.stk_trf.get_visible_child_name() == "remove")
 
     # SIGNALS:    
     def onDestroy(self, b):
