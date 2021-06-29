@@ -72,6 +72,10 @@ class MainWindow:
         # Set scales to system-default:
         self.getScalingDefaults()
 
+        # Keyboard
+        if currentDesktop == "xfce":
+            self.getKeyboardDefaults()
+
         # Show Screen:
         self.window.show_all()
 
@@ -115,11 +119,16 @@ class MainWindow:
         self.btn_trf_remove = self.builder.get_object("btn_trf_remove")
         self.btn_en_remove = self.builder.get_object("btn_en_remove")
         self.sw_lang_indicator = self.builder.get_object("sw_lang_indicator")
+        self.box_keyboardPage = self.builder.get_object("box_keyboardPage")
 
     def defineVariables(self):
         # Global stack pages:
         self.currentPage = 0
-        self.pageCount = len(self.stk_stackPages.get_children())
+        if currentDesktop != "xfce":
+            self.box_keyboardPage.set_no_show_all(False)
+            self.box_keyboardPage.set_visible(False)
+        
+        self.stackPages = list(filter(lambda a: a.get_visible(), self.stk_stackPages.get_children()))
     
     def addWidgetSettings(self):        
         # Add scaling marks
@@ -135,11 +144,11 @@ class MainWindow:
         self.currentPage = number
 
         # Set button sensivities
-        self.btn_next.set_sensitive(not (self.currentPage == self.pageCount-1))
+        self.btn_next.set_sensitive(not (self.currentPage == len(self.stackPages)-1))
         self.btn_prev.set_sensitive(not (self.currentPage == 0))
 
         # Change current stack page
-        self.stk_stackPages.set_visible_child_name(f"page{number}")
+        self.stk_stackPages.set_visible_child(self.stackPages[self.currentPage])
     
     
 
@@ -179,17 +188,21 @@ class MainWindow:
         self.sli_scaling.set_value(currentScale)
     
     # Keyboard Settings:
-    def setKeyboardDefaults(self):
+    def getKeyboardDefaults(self):
+        # We can choose the layout:
+        KeyboardManager.initializeSettings()
+
         states = KeyboardManager.getKeyboardState()
+
         if states[0] == True:
-            self.stk_trf.set_visible_child_name("remove")
-        else:
-            self.stk_trf.set_visible_child_name("add")
-        
-        if states[1] == True:
             self.stk_trq.set_visible_child_name("remove")
         else:
             self.stk_trq.set_visible_child_name("add")
+        
+        if states[1] == True:
+            self.stk_trf.set_visible_child_name("remove")
+        else:
+            self.stk_trf.set_visible_child_name("add")
         
         if states[2] == True:
             self.stk_en.set_visible_child_name("remove")
@@ -213,7 +226,7 @@ class MainWindow:
 
     # - NAVIGATION:
     def on_btn_next_clicked(self, btn):
-        if self.currentPage < self.pageCount:
+        if self.currentPage < len(self.stackPages):
             self.changePage(self.currentPage + 1)
     def on_btn_prev_clicked(self, btn):
         if self.currentPage > 0:
@@ -251,3 +264,40 @@ class MainWindow:
     
     def on_sli_desktopIcon_value_changed(self, sli):
         ScaleManager.setDesktopIconSize(int(sli.get_value()))
+
+    # - Keyboard Layout Changed:
+    def on_btn_trf_add_clicked(self, button):
+        KeyboardManager.setTurkishF(True)
+        self.stk_trf.set_visible_child_name("remove")
+        self.disableIfOnlyOneRemains()
+
+    def on_btn_trf_remove_clicked(self, button):
+        KeyboardManager.setTurkishF(False)
+        self.stk_trf.set_visible_child_name("add")
+        self.disableIfOnlyOneRemains()
+    
+    def on_btn_trq_add_clicked(self, button):
+        KeyboardManager.setTurkishQ(True)
+        self.stk_trq.set_visible_child_name("remove")
+        self.disableIfOnlyOneRemains()
+
+    def on_btn_trq_remove_clicked(self, button):
+        KeyboardManager.setTurkishQ(False)
+        self.stk_trq.set_visible_child_name("add")
+        self.disableIfOnlyOneRemains()
+    
+    def on_btn_en_add_clicked(self, button):
+        KeyboardManager.setEnglish(True)
+        self.stk_en.set_visible_child_name("remove")
+        self.disableIfOnlyOneRemains()
+
+    def on_btn_en_remove_clicked(self, button):
+        KeyboardManager.setEnglish(False)
+        self.stk_en.set_visible_child_name("add")
+        self.disableIfOnlyOneRemains()
+
+    def on_sw_lang_indicator_state_set(self, switch, state):
+        if state:
+            KeyboardManager.createKeyboardPlugin()
+        else:
+            KeyboardManager.removeKeyboardPlugin()

@@ -1,10 +1,42 @@
 import subprocess, re
 
 keyboardLayouts = ["tr","tr","us"]
-keyboardVariants = ["f", "", ""]
+keyboardVariants = ["", "f", ""]
 keyboardStatus = [False, False, False]
 
 keyboardPlugin = ""
+
+def initializeSettings():
+    # Don't get Layouts on System, but from user preferences.
+    subprocess.call([
+        "xfconf-query",
+        "-c", "keyboard-layout",
+        "-p", "/Default/XkbDisable",
+        "-s", "false",
+        "--type", "bool",
+        "--create"
+    ])
+
+    # Add Super + Space combination to change layouts
+    subprocess.call([
+        "xfconf-query",
+        "-c", "keyboard-layout",
+        "-p", "/Default/XkbOptions/Group",
+        "-s", "grp:win_space_toggle",
+        "--type", "string",
+        "--create"
+    ])
+
+    """ OLD
+    subprocess.call([
+        "xfconf-query",
+        "-c", "keyboard-layout",
+        "-p", "/Default/XkbDisplay",
+        "-s", "false",
+        "--type", "bool",
+        "--create"
+    ])
+    """
 
 def setKeyboardState():
     layoutString = ""
@@ -34,11 +66,12 @@ def setKeyboardState():
         "--create"
     ])
 
-def setTurkishF(state):
+# Add Keyboard Layouts:
+def setTurkishQ(state):
     keyboardStatus[0] = state
     setKeyboardState()
 
-def setTurkishQ(state):
+def setTurkishF(state):
     keyboardStatus[1] = state
     setKeyboardState()
 
@@ -46,6 +79,7 @@ def setEnglish(state):
     keyboardStatus[2] = state
     setKeyboardState()
 
+# Get Current Keyboard State
 def getKeyboardState():
     try:
         layouts = subprocess.check_output([
@@ -145,15 +179,3 @@ def getKeyboardPlugin():
             return keyboardPlugin
     
     return ""
-
-def disableSystemsKeyboard():
-    subprocess.call([
-        "xfconf-query",
-        "-c", "keyboard-layout",
-        "-p", f"/Default/XkbDisplay",
-        "-s", "false",
-        "--type", "bool",
-        "--create"
-    ])
-
-disableSystemsKeyboard()

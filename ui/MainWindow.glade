@@ -561,7 +561,7 @@ This tool helps you to get Pardus ready.</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="box_keyboardPage">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
@@ -598,7 +598,8 @@ This tool helps you to get Pardus ready.</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
+                        <property name="valign">start</property>
+                        <property name="margin-top">40</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">7</property>
                         <child>
@@ -636,6 +637,8 @@ This tool helps you to get Pardus ready.</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
+                                        <property name="margin-start">7</property>
+                                        <property name="margin-end">7</property>
                                         <child>
                                           <object class="GtkBox">
                                             <property name="visible">True</property>
@@ -661,6 +664,7 @@ This tool helps you to get Pardus ready.</property>
                                                 <property name="can-focus">True</property>
                                                 <property name="receives-default">True</property>
                                                 <property name="use-stock">True</property>
+                                                <signal name="clicked" handler="on_btn_trf_add_clicked" swapped="no"/>
                                                 <style>
                                                   <class name="suggested-action"/>
                                                 </style>
@@ -702,6 +706,10 @@ This tool helps you to get Pardus ready.</property>
                                                 <property name="can-focus">True</property>
                                                 <property name="receives-default">True</property>
                                                 <property name="use-stock">True</property>
+                                                <signal name="clicked" handler="on_btn_trf_remove_clicked" swapped="no"/>
+                                                <style>
+                                                  <class name="destructive-action"/>
+                                                </style>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -732,6 +740,8 @@ This tool helps you to get Pardus ready.</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
+                                        <property name="margin-start">7</property>
+                                        <property name="margin-end">7</property>
                                         <child>
                                           <object class="GtkBox">
                                             <property name="visible">True</property>
@@ -757,6 +767,7 @@ This tool helps you to get Pardus ready.</property>
                                                 <property name="can-focus">True</property>
                                                 <property name="receives-default">True</property>
                                                 <property name="use-stock">True</property>
+                                                <signal name="clicked" handler="on_btn_trq_add_clicked" swapped="no"/>
                                                 <style>
                                                   <class name="suggested-action"/>
                                                 </style>
@@ -798,6 +809,10 @@ This tool helps you to get Pardus ready.</property>
                                                 <property name="can-focus">True</property>
                                                 <property name="receives-default">True</property>
                                                 <property name="use-stock">True</property>
+                                                <signal name="clicked" handler="on_btn_trq_remove_clicked" swapped="no"/>
+                                                <style>
+                                                  <class name="destructive-action"/>
+                                                </style>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -828,6 +843,8 @@ This tool helps you to get Pardus ready.</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
+                                        <property name="margin-start">7</property>
+                                        <property name="margin-end">7</property>
                                         <child>
                                           <object class="GtkBox">
                                             <property name="visible">True</property>
@@ -853,6 +870,7 @@ This tool helps you to get Pardus ready.</property>
                                                 <property name="can-focus">True</property>
                                                 <property name="receives-default">True</property>
                                                 <property name="use-stock">True</property>
+                                                <signal name="clicked" handler="on_btn_en_add_clicked" swapped="no"/>
                                                 <style>
                                                   <class name="suggested-action"/>
                                                 </style>
@@ -894,6 +912,10 @@ This tool helps you to get Pardus ready.</property>
                                                 <property name="can-focus">True</property>
                                                 <property name="receives-default">True</property>
                                                 <property name="use-stock">True</property>
+                                                <signal name="clicked" handler="on_btn_en_remove_clicked" swapped="no"/>
+                                                <style>
+                                                  <class name="destructive-action"/>
+                                                </style>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -965,6 +987,8 @@ This tool helps you to get Pardus ready.</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
+                                        <property name="margin-start">7</property>
+                                        <property name="margin-end">7</property>
                                         <property name="spacing">7</property>
                                         <child>
                                           <object class="GtkLabel">
@@ -983,7 +1007,7 @@ This tool helps you to get Pardus ready.</property>
                                           <object class="GtkSwitch" id="sw_lang_indicator">
                                             <property name="visible">True</property>
                                             <property name="can-focus">True</property>
-                                            <property name="active">True</property>
+                                            <signal name="state-set" handler="on_sw_lang_indicator_state_set" swapped="no"/>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
