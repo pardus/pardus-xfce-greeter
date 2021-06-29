@@ -1,3 +1,16 @@
+pardus-welcome (0.1.0~alpha2) unstable; urgency=medium
+
+  [ Emin Fedar ]
+  * Fixes
+  * Translations updated
+  * Added Wallpaper names to bottom of img.
+  * Added Non-Blocking Wallpaper Loading.
+
+  [ Fatih Altun ]
+  * Add app icon to hicolor
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Sun, 20 Jun 2021 05:11:22 +0300
+
 pardus-welcome (0.1.0~alpha1) unstable; urgency=medium
 
   [ Emin Fedar ]

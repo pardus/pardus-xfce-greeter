@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from setuptools import setup, find_packages, os
+from shutil import copyfile
 
 changelog = 'debian/changelog'
 if os.path.exists(changelog):
@@ -13,6 +14,8 @@ if os.path.exists(changelog):
     f.write(version)
     f.close()
 
+copyfile("icon.svg", "pardus-welcome.svg")
+
 data_files = [
     ("/usr/share/applications/", ["tr.org.pardus.welcome.desktop"]),
     ("/usr/share/locale/tr/LC_MESSAGES/", ["translations/tr/LC_MESSAGES/pardus-welcome.mo"]),
@@ -22,7 +25,8 @@ data_files = [
     ("/usr/share/pardus/pardus-welcome/src/gnome", ["src/gnome/WallpaperManager.py", "src/gnome/ThemeManager.py", "src/gnome/ScaleManager.py"]),
     ("/usr/share/pardus/pardus-welcome/ui", ["ui/MainWindow.glade"]),
     ("/usr/bin/", ["pardus-welcome"]),
-    ("/etc/skel/.config/autostart", ["tr.org.pardus.welcome.desktop"])
+    ("/etc/skel/.config/autostart", ["tr.org.pardus.welcome.desktop"]),
+    ("/usr/share/icons/hicolor/scalable/apps/", ["pardus-welcome.svg"])
 ]
 
 setup(
