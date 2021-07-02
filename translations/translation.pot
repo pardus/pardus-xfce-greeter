@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-07 19:58+0300\n"
+"POT-Creation-Date: 2021-07-02 16:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,86 +17,123 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../ui/MainWindow.glade:35 ../ui/MainWindow.glade:149
-msgid "Welcome"
-msgstr ""
-
-#: ../ui/MainWindow.glade:134
+#: ../ui/MainWindow.glade:132
 msgid ""
 "Welcome.\n"
 "\n"
 "This tool helps you to get Pardus ready."
 msgstr ""
 
-#: ../ui/MainWindow.glade:163
+#: ../ui/MainWindow.glade:160
 msgid "Select Wallpaper:"
 msgstr ""
 
-#: ../ui/MainWindow.glade:216
-msgid "Wallpaper"
-msgstr ""
-
-#: ../ui/MainWindow.glade:231
+#: ../ui/MainWindow.glade:227
 msgid "Theme Settings:"
 msgstr ""
 
-#: ../ui/MainWindow.glade:281
+#: ../ui/MainWindow.glade:277
 msgid "Light"
 msgstr ""
 
-#: ../ui/MainWindow.glade:339
+#: ../ui/MainWindow.glade:335
 msgid "Dark"
 msgstr ""
 
-#: ../ui/MainWindow.glade:386
-msgid "Theme"
-msgstr ""
-
-#: ../ui/MainWindow.glade:401
+#: ../ui/MainWindow.glade:396
 msgid "Display Settings:"
 msgstr ""
 
-#: ../ui/MainWindow.glade:462
+#: ../ui/MainWindow.glade:457
 msgid "<b>Display Scaling:</b>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:494
+#: ../ui/MainWindow.glade:489
 msgid "<b>Panel Size</b> (px):"
 msgstr ""
 
-#: ../ui/MainWindow.glade:524
+#: ../ui/MainWindow.glade:519
 msgid "<b>Desktop Icon Size</b> (px):"
 msgstr ""
 
-#: ../ui/MainWindow.glade:559
-msgid "Display"
+#: ../ui/MainWindow.glade:568
+msgid "Keyboard Settings:"
 msgstr ""
 
-#: ../ui/MainWindow.glade:574 ../ui/MainWindow.glade:720
+#: ../ui/MainWindow.glade:604
+msgid "Add / Remove Keyboard layouts"
+msgstr ""
+
+#: ../ui/MainWindow.glade:646 ../ui/MainWindow.glade:688
+msgid "Turkish - F Keyboard"
+msgstr ""
+
+#: ../ui/MainWindow.glade:676 ../ui/MainWindow.glade:779
+#: ../ui/MainWindow.glade:882
+msgid "page0"
+msgstr ""
+
+#: ../ui/MainWindow.glade:718 ../ui/MainWindow.glade:821
+#: ../ui/MainWindow.glade:924
+msgid "page1"
+msgstr ""
+
+#: ../ui/MainWindow.glade:749 ../ui/MainWindow.glade:791
+msgid "Turkish - Q Keyboard"
+msgstr ""
+
+#: ../ui/MainWindow.glade:852 ../ui/MainWindow.glade:894
+msgid "English Keyboard"
+msgstr ""
+
+#: ../ui/MainWindow.glade:949
+msgid ""
+"<span size=\"10000\">You can switch between keyboard layouts with:\n"
+"<b>Super + Space</b></span>"
+msgstr ""
+
+#: ../ui/MainWindow.glade:992
+msgid "Show Language Indicator on Panel"
+msgstr ""
+
+#: ../ui/MainWindow.glade:1053
+msgid "Start Menu Settings:"
+msgstr ""
+
+#: ../ui/MainWindow.glade:1091
+msgid "label"
+msgstr ""
+
+#: ../ui/MainWindow.glade:1172 ../ui/MainWindow.glade:1318
 msgid "Support & Community"
 msgstr ""
 
-#: ../ui/MainWindow.glade:634
+#: ../ui/MainWindow.glade:1232
 msgid ""
 "<span size=\"16000\">Website:</span>\n"
 "<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:649
+#: ../ui/MainWindow.glade:1247
 msgid ""
 "<span size=\"16000\">Forum:</span>\n"
 "<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:664
+#: ../ui/MainWindow.glade:1262
 msgid ""
 "<span size=\"16000\">Documentations:</span>\n"
 "<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:679
+#: ../ui/MainWindow.glade:1277
 msgid ""
 "<span size=\"16000\">Support:</span>\n"
 "<span size=\"16000\"><b>444 5 773</b></span>\n"
-"<a href=\"https://talep.pardus.org.tr\">talep.pardus.org.tr</a>"
+"<a href=\"https://talep.pardus.org.tr/servicedesk/customer/portal/1\">talep."
+"pardus.org.tr</a>"
+msgstr ""
+
+#: ../ui/MainWindow.glade:1382
+msgid "Welcome"
 msgstr ""

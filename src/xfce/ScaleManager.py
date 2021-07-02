@@ -12,6 +12,10 @@ def setScale(scaling_factor):
         "--type", "int",
         "--create"
     ])
+    subprocess.call([
+        "xfce4-panel",
+        "-r"
+    ])
 def setPanelSize(px):
     subprocess.call([
         "xfconf-query",
@@ -51,7 +55,7 @@ def getScale():
         ]).decode("utf-8").rstrip())
     except:
         return 1
-    
+        
     return float(dpi / 96)
 
 def getPanelSize():

@@ -21,7 +21,7 @@ data_files = [
     ("/usr/share/locale/tr/LC_MESSAGES/", ["translations/tr/LC_MESSAGES/pardus-welcome.mo"]),
     ("/usr/share/pardus/pardus-welcome/", ["icon.svg", "pardus-logo.svg", "theme-light.png", "theme-dark.png"]),
     ("/usr/share/pardus/pardus-welcome/src", ["src/main.py", "src/MainWindow.py", "src/utils.py"]),
-    ("/usr/share/pardus/pardus-welcome/src/xfce", ["src/xfce/WallpaperManager.py", "src/xfce/ThemeManager.py", "src/xfce/ScaleManager.py"]),
+    ("/usr/share/pardus/pardus-welcome/src/xfce", ["src/xfce/WallpaperManager.py", "src/xfce/ThemeManager.py", "src/xfce/ScaleManager.py", "src/xfce/KeyboardManager.py", "src/xfce/WhiskerManager.py"]),
     ("/usr/share/pardus/pardus-welcome/src/gnome", ["src/gnome/WallpaperManager.py", "src/gnome/ThemeManager.py", "src/gnome/ScaleManager.py"]),
     ("/usr/share/pardus/pardus-welcome/ui", ["ui/MainWindow.glade"]),
     ("/usr/bin/", ["pardus-welcome"]),

@@ -69,8 +69,6 @@
               <object class="GtkStack" id="stk_stackPages">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="margin-left">7</property>
-                <property name="margin-right">7</property>
                 <property name="margin-start">7</property>
                 <property name="margin-end">7</property>
                 <property name="margin-top">14</property>
@@ -146,7 +144,6 @@ This tool helps you to get Pardus ready.</property>
                   </object>
                   <packing>
                     <property name="name">page0</property>
-                    <property name="title" translatable="yes">Welcome</property>
                   </packing>
                 </child>
                 <child>
@@ -213,7 +210,6 @@ This tool helps you to get Pardus ready.</property>
                   </object>
                   <packing>
                     <property name="name">page1</property>
-                    <property name="title" translatable="yes">Wallpaper</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
@@ -383,7 +379,6 @@ This tool helps you to get Pardus ready.</property>
                   </object>
                   <packing>
                     <property name="name">page2</property>
-                    <property name="title" translatable="yes">Theme</property>
                     <property name="position">2</property>
                   </packing>
                 </child>
@@ -556,12 +551,11 @@ This tool helps you to get Pardus ready.</property>
                   </object>
                   <packing>
                     <property name="name">page3</property>
-                    <property name="title" translatable="yes">Display</property>
                     <property name="position">3</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="box_keyboardPage">
+                  <object class="GtkBox" id="page_keyboardSettings">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
@@ -1042,8 +1036,126 @@ This tool helps you to get Pardus ready.</property>
                   </object>
                   <packing>
                     <property name="name">page4</property>
-                    <property name="title" translatable="yes">Keyboard</property>
                     <property name="position">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="page_startMenuSettings">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">7</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Start Menu Settings:</property>
+                        <attributes>
+                          <attribute name="size" value="18000"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">start</property>
+                        <property name="margin-top">20</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">label</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="pixbuf">../whisker.png</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="name">page6</property>
+                    <property name="position">5</property>
                   </packing>
                 </child>
                 <child>
@@ -1164,7 +1276,7 @@ This tool helps you to get Pardus ready.</property>
                             <property name="halign">start</property>
                             <property name="label" translatable="yes">&lt;span size="16000"&gt;Support:&lt;/span&gt;
 &lt;span size="16000"&gt;&lt;b&gt;444 5 773&lt;/b&gt;&lt;/span&gt;
-&lt;a href="https://talep.pardus.org.tr"&gt;talep.pardus.org.tr&lt;/a&gt;</property>
+&lt;a href="https://talep.pardus.org.tr/servicedesk/customer/portal/1"&gt;talep.pardus.org.tr&lt;/a&gt;</property>
                             <property name="use-markup">True</property>
                           </object>
                           <packing>
@@ -1204,7 +1316,7 @@ This tool helps you to get Pardus ready.</property>
                   <packing>
                     <property name="name">page5</property>
                     <property name="title" translatable="yes">Support &amp; Community</property>
-                    <property name="position">5</property>
+                    <property name="position">6</property>
                   </packing>
                 </child>
               </object>

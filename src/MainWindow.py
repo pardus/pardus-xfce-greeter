@@ -20,12 +20,14 @@ locale.bindtextdomain(APPNAME, TRANSLATIONS_PATH)
 locale.textdomain(APPNAME)
 locale.setlocale(locale.LC_ALL, SYSTEM_LANGUAGE)
 
+
 currentDesktop = ""
 if "xfce" in getenv("SESSION").lower() or "xfce" in getenv("XDG_CURRENT_DESKTOP").lower():
     import xfce.WallpaperManager as WallpaperManager
     import xfce.ThemeManager as ThemeManager
     import xfce.ScaleManager as ScaleManager
     import xfce.KeyboardManager as KeyboardManager
+    #import xfce.WhiskerManager as WhiskerManager
     currentDesktop = "xfce"
 elif "gnome" in getenv("SESSION").lower() or "gnome" in getenv("XDG_CURRENT_DESKTOP").lower():
     import gnome.WallpaperManager as WallpaperManager
@@ -82,16 +84,6 @@ class MainWindow:
         # Hide widgets:
         self.hideWidgets()
 
-    def hideWidgets(self):
-        self.changePage(0)
-
-        # Remove panel and desktop icon sizes
-        if currentDesktop == "gnome":
-            self.sli_panel.set_visible(False)
-            self.sli_desktopIcon.set_visible(False)
-            self.lbl_panelSize.set_visible(False)
-            self.lbl_desktopIconSize.set_visible(False)
-
     def defineComponents(self):
         # - Navigation:
         self.stk_stackPages = self.builder.get_object("stk_stackPages")
@@ -119,17 +111,31 @@ class MainWindow:
         self.btn_trf_remove = self.builder.get_object("btn_trf_remove")
         self.btn_en_remove = self.builder.get_object("btn_en_remove")
         self.sw_lang_indicator = self.builder.get_object("sw_lang_indicator")
-        self.box_keyboardPage = self.builder.get_object("box_keyboardPage")
+        self.page_keyboardSettings = self.builder.get_object("page_keyboardSettings")
+        self.page_startMenuSettings = self.builder.get_object("page_startMenuSettings")
 
     def defineVariables(self):
         # Global stack pages:
         self.currentPage = 0
         if currentDesktop != "xfce":
-            self.box_keyboardPage.set_no_show_all(False)
-            self.box_keyboardPage.set_visible(False)
+            self.page_keyboardSettings.set_no_show_all(False)
+            self.page_keyboardSettings.set_visible(False)
+        self.page_startMenuSettings.set_no_show_all(False)
+        self.page_startMenuSettings.set_visible(False)
         
         self.stackPages = list(filter(lambda a: a.get_visible(), self.stk_stackPages.get_children()))
     
+    # =========== UI Preparing functions:
+    def hideWidgets(self):
+        self.changePage(0)
+
+        # Remove panel and desktop icon sizes
+        if currentDesktop == "gnome":
+            self.sli_panel.set_visible(False)
+            self.sli_desktopIcon.set_visible(False)
+            self.lbl_panelSize.set_visible(False)
+            self.lbl_desktopIconSize.set_visible(False)
+
     def addWidgetSettings(self):        
         # Add scaling marks
         self.sli_scaling.add_mark(0, Gtk.PositionType.BOTTOM, "%100")
@@ -152,7 +158,7 @@ class MainWindow:
     
     
 
-    # FUNCTIONS ABOUT PAGES
+    # =========== Settings Functions:
 
     # Add wallpapers to the grid:
     def addWallpapers(self, wallpaperList):
@@ -184,7 +190,7 @@ class MainWindow:
             self.sli_panel.set_value(ScaleManager.getPanelSize())
             self.sli_desktopIcon.set_value(ScaleManager.getDesktopIconSize())
         
-        currentScale = ScaleManager.getScale() - 1
+        currentScale = int((ScaleManager.getScale() / 0.25) - 4)
         self.sli_scaling.set_value(currentScale)
     
     # Keyboard Settings:
@@ -209,18 +215,18 @@ class MainWindow:
         else:
             self.stk_en.set_visible_child_name("add")
 
-        self.disableIfOnlyOneRemains()
+        self.keyboardSelectionDisablingCheck()
         
         keyboardPlugin = KeyboardManager.getKeyboardPlugin()
         self.sw_lang_indicator.set_active(len(keyboardPlugin) > 0)
     
-    def disableIfOnlyOneRemains(self):
+    def keyboardSelectionDisablingCheck(self):
         # print(f"trq:{self.stk_trq.get_visible_child_name()}, trf:{self.stk_trf.get_visible_child_name()}, en:{self.stk_en.get_visible_child_name()}")
         self.btn_trf_remove.set_sensitive(self.stk_trq.get_visible_child_name() == "remove" or self.stk_en.get_visible_child_name() == "remove")
         self.btn_trq_remove.set_sensitive(self.stk_trf.get_visible_child_name() == "remove" or self.stk_en.get_visible_child_name() == "remove")
         self.btn_en_remove.set_sensitive(self.stk_trq.get_visible_child_name() == "remove" or self.stk_trf.get_visible_child_name() == "remove")
 
-    # SIGNALS:    
+    # =========== SIGNALS:    
     def onDestroy(self, b):
         self.window.get_application().quit()
 
@@ -238,6 +244,7 @@ class MainWindow:
     def on_wallpaper_selected(self, flowbox, wallpaper):
         filename = str(wallpaper.get_children()[0].get_children()[0].img_path)
         WallpaperManager.setWallpaper(filename)
+
 
     # - Theme Selection:
     def on_rb_lightTheme_toggled(self, rb):
@@ -265,36 +272,37 @@ class MainWindow:
     def on_sli_desktopIcon_value_changed(self, sli):
         ScaleManager.setDesktopIconSize(int(sli.get_value()))
 
+
     # - Keyboard Layout Changed:
     def on_btn_trf_add_clicked(self, button):
         KeyboardManager.setTurkishF(True)
         self.stk_trf.set_visible_child_name("remove")
-        self.disableIfOnlyOneRemains()
+        self.keyboardSelectionDisablingCheck()
 
     def on_btn_trf_remove_clicked(self, button):
         KeyboardManager.setTurkishF(False)
         self.stk_trf.set_visible_child_name("add")
-        self.disableIfOnlyOneRemains()
+        self.keyboardSelectionDisablingCheck()
     
     def on_btn_trq_add_clicked(self, button):
         KeyboardManager.setTurkishQ(True)
         self.stk_trq.set_visible_child_name("remove")
-        self.disableIfOnlyOneRemains()
+        self.keyboardSelectionDisablingCheck()
 
     def on_btn_trq_remove_clicked(self, button):
         KeyboardManager.setTurkishQ(False)
         self.stk_trq.set_visible_child_name("add")
-        self.disableIfOnlyOneRemains()
+        self.keyboardSelectionDisablingCheck()
     
     def on_btn_en_add_clicked(self, button):
         KeyboardManager.setEnglish(True)
         self.stk_en.set_visible_child_name("remove")
-        self.disableIfOnlyOneRemains()
+        self.keyboardSelectionDisablingCheck()
 
     def on_btn_en_remove_clicked(self, button):
         KeyboardManager.setEnglish(False)
         self.stk_en.set_visible_child_name("add")
-        self.disableIfOnlyOneRemains()
+        self.keyboardSelectionDisablingCheck()
 
     def on_sw_lang_indicator_state_set(self, switch, state):
         if state:
