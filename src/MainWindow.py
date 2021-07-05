@@ -113,6 +113,7 @@ class MainWindow:
         self.sw_lang_indicator = self.builder.get_object("sw_lang_indicator")
         self.page_keyboardSettings = self.builder.get_object("page_keyboardSettings")
         self.page_startMenuSettings = self.builder.get_object("page_startMenuSettings")
+        self.lbl_headerTitle = self.builder.get_object("lbl_headerTitle")
 
     def defineVariables(self):
         # Global stack pages:
@@ -122,6 +123,10 @@ class MainWindow:
             self.page_keyboardSettings.set_visible(False)
         self.page_startMenuSettings.set_no_show_all(False)
         self.page_startMenuSettings.set_visible(False)
+
+        titles = [tr("Welcome"), tr("Select Wallpaper"), tr("Theme Settings"), tr("Display Settings"), tr("Keyboard Settings"), tr("Start Menu Settings"), tr("Support & Community")]
+        for i in range(len(self.stk_stackPages.get_children())):
+            self.stk_stackPages.get_children()[i].title = titles[i]
         
         self.stackPages = list(filter(lambda a: a.get_visible(), self.stk_stackPages.get_children()))
     
@@ -155,7 +160,8 @@ class MainWindow:
 
         # Change current stack page
         self.stk_stackPages.set_visible_child(self.stackPages[self.currentPage])
-    
+
+        self.lbl_headerTitle.set_text(self.stackPages[self.currentPage].title)
     
 
     # =========== Settings Functions:
