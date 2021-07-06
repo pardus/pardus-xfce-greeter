@@ -118,6 +118,9 @@ class MainWindow:
         self.page_keyboardSettings = self.builder.get_object("page_keyboardSettings")
         self.page_startMenuSettings = self.builder.get_object("page_startMenuSettings")
 
+        tabTitle = self.nb_pages.get_tab_label_text(self.nb_pages.get_nth_page(self.nb_pages.get_current_page()))
+        self.lbl_headerTitle.set_text(tabTitle)
+
     def defineVariables(self):
         pass
     

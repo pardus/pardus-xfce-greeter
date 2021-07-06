@@ -33,7 +33,7 @@
     <property name="window-position">center</property>
     <property name="default-width">850</property>
     <property name="default-height">650</property>
-    <property name="icon">../assets/icon.svg</property>
+    <property name="icon">../assets/pardus-welcome.svg</property>
     <property name="show-menubar">False</property>
     <child>
       <object class="GtkBox">
@@ -226,13 +226,12 @@ This tool helps you to get Pardus ready.</property>
                             </child>
                             <child>
                               <object class="GtkRadioButton" id="rb_lightTheme">
-                                <property name="label">gtk-apply</property>
+                                <property name="label" translatable="yes">Apply</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="halign">center</property>
                                 <property name="margin-top">14</property>
-                                <property name="use-stock">True</property>
                                 <property name="active">True</property>
                                 <property name="draw-indicator">False</property>
                                 <signal name="toggled" handler="on_rb_lightTheme_toggled" swapped="no"/>
@@ -284,13 +283,12 @@ This tool helps you to get Pardus ready.</property>
                             </child>
                             <child>
                               <object class="GtkRadioButton" id="rb_darkTheme">
-                                <property name="label">gtk-apply</property>
+                                <property name="label" translatable="yes">Apply</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="halign">center</property>
                                 <property name="margin-top">14</property>
-                                <property name="use-stock">True</property>
                                 <property name="draw-indicator">False</property>
                                 <property name="group">rb_lightTheme</property>
                                 <signal name="toggled" handler="on_rb_darkTheme_toggled" swapped="no"/>
@@ -532,117 +530,10 @@ This tool helps you to get Pardus ready.</property>
                                     <property name="can-focus">True</property>
                                     <property name="selectable">False</property>
                                     <child>
-                                      <object class="GtkStack" id="stk_trf">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
-                                        <property name="valign">center</property>
-                                        <property name="margin-left">7</property>
-                                        <property name="margin-right">7</property>
-                                        <property name="margin-start">7</property>
-                                        <property name="margin-end">7</property>
-                                        <child>
-                                          <object class="GtkBox">
-                                            <property name="visible">True</property>
-                                            <property name="can-focus">False</property>
-                                            <child>
-                                              <object class="GtkLabel">
-                                                <property name="visible">True</property>
-                                                <property name="can-focus">False</property>
-                                                <property name="opacity">0.59999999999999998</property>
-                                                <property name="halign">start</property>
-                                                <property name="label" translatable="yes">Turkish - F Keyboard</property>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="fill">True</property>
-                                                <property name="position">0</property>
-                                              </packing>
-                                            </child>
-                                            <child>
-                                              <object class="GtkButton" id="btn_trf_add">
-                                                <property name="label">gtk-add</property>
-                                                <property name="visible">True</property>
-                                                <property name="can-focus">True</property>
-                                                <property name="receives-default">True</property>
-                                                <property name="use-stock">True</property>
-                                                <signal name="clicked" handler="on_btn_trf_add_clicked" swapped="no"/>
-                                                <style>
-                                                  <class name="suggested-action"/>
-                                                </style>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="fill">True</property>
-                                                <property name="pack-type">end</property>
-                                                <property name="position">1</property>
-                                              </packing>
-                                            </child>
-                                          </object>
-                                          <packing>
-                                            <property name="name">add</property>
-                                            <property name="title" translatable="yes">page0</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkBox">
-                                            <property name="visible">True</property>
-                                            <property name="can-focus">False</property>
-                                            <child>
-                                              <object class="GtkLabel">
-                                                <property name="visible">True</property>
-                                                <property name="can-focus">False</property>
-                                                <property name="halign">start</property>
-                                                <property name="label" translatable="yes">Turkish - F Keyboard</property>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="fill">True</property>
-                                                <property name="position">0</property>
-                                              </packing>
-                                            </child>
-                                            <child>
-                                              <object class="GtkButton" id="btn_trf_remove">
-                                                <property name="label">gtk-remove</property>
-                                                <property name="visible">True</property>
-                                                <property name="can-focus">True</property>
-                                                <property name="receives-default">True</property>
-                                                <property name="use-stock">True</property>
-                                                <signal name="clicked" handler="on_btn_trf_remove_clicked" swapped="no"/>
-                                                <style>
-                                                  <class name="destructive-action"/>
-                                                </style>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="fill">True</property>
-                                                <property name="pack-type">end</property>
-                                                <property name="position">1</property>
-                                              </packing>
-                                            </child>
-                                          </object>
-                                          <packing>
-                                            <property name="name">remove</property>
-                                            <property name="title" translatable="yes">page1</property>
-                                            <property name="position">1</property>
-                                          </packing>
-                                        </child>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkListBoxRow">
-                                    <property name="height-request">45</property>
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="selectable">False</property>
-                                    <child>
                                       <object class="GtkStack" id="stk_trq">
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
-                                        <property name="margin-left">7</property>
-                                        <property name="margin-right">7</property>
                                         <property name="margin-start">7</property>
                                         <property name="margin-end">7</property>
                                         <child>
@@ -665,11 +556,10 @@ This tool helps you to get Pardus ready.</property>
                                             </child>
                                             <child>
                                               <object class="GtkButton" id="btn_trq_add">
-                                                <property name="label">gtk-add</property>
+                                                <property name="label" translatable="yes">Add</property>
                                                 <property name="visible">True</property>
                                                 <property name="can-focus">True</property>
                                                 <property name="receives-default">True</property>
-                                                <property name="use-stock">True</property>
                                                 <signal name="clicked" handler="on_btn_trq_add_clicked" swapped="no"/>
                                                 <style>
                                                   <class name="suggested-action"/>
@@ -707,12 +597,112 @@ This tool helps you to get Pardus ready.</property>
                                             </child>
                                             <child>
                                               <object class="GtkButton" id="btn_trq_remove">
-                                                <property name="label">gtk-remove</property>
+                                                <property name="label" translatable="yes">Remove</property>
                                                 <property name="visible">True</property>
                                                 <property name="can-focus">True</property>
                                                 <property name="receives-default">True</property>
-                                                <property name="use-stock">True</property>
                                                 <signal name="clicked" handler="on_btn_trq_remove_clicked" swapped="no"/>
+                                                <style>
+                                                  <class name="destructive-action"/>
+                                                </style>
+                                              </object>
+                                              <packing>
+                                                <property name="expand">False</property>
+                                                <property name="fill">True</property>
+                                                <property name="pack-type">end</property>
+                                                <property name="position">1</property>
+                                              </packing>
+                                            </child>
+                                          </object>
+                                          <packing>
+                                            <property name="name">remove</property>
+                                            <property name="title" translatable="yes">page1</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkListBoxRow">
+                                    <property name="height-request">45</property>
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">True</property>
+                                    <property name="selectable">False</property>
+                                    <child>
+                                      <object class="GtkStack" id="stk_trf">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="valign">center</property>
+                                        <property name="margin-start">7</property>
+                                        <property name="margin-end">7</property>
+                                        <child>
+                                          <object class="GtkBox">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <child>
+                                              <object class="GtkLabel">
+                                                <property name="visible">True</property>
+                                                <property name="can-focus">False</property>
+                                                <property name="opacity">0.59999999999999998</property>
+                                                <property name="halign">start</property>
+                                                <property name="label" translatable="yes">Turkish - F Keyboard</property>
+                                              </object>
+                                              <packing>
+                                                <property name="expand">False</property>
+                                                <property name="fill">True</property>
+                                                <property name="position">0</property>
+                                              </packing>
+                                            </child>
+                                            <child>
+                                              <object class="GtkButton" id="btn_trf_add">
+                                                <property name="label" translatable="yes">Add</property>
+                                                <property name="visible">True</property>
+                                                <property name="can-focus">True</property>
+                                                <property name="receives-default">True</property>
+                                                <signal name="clicked" handler="on_btn_trf_add_clicked" swapped="no"/>
+                                                <style>
+                                                  <class name="suggested-action"/>
+                                                </style>
+                                              </object>
+                                              <packing>
+                                                <property name="expand">False</property>
+                                                <property name="fill">True</property>
+                                                <property name="pack-type">end</property>
+                                                <property name="position">1</property>
+                                              </packing>
+                                            </child>
+                                          </object>
+                                          <packing>
+                                            <property name="name">add</property>
+                                            <property name="title" translatable="yes">page0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkBox">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <child>
+                                              <object class="GtkLabel">
+                                                <property name="visible">True</property>
+                                                <property name="can-focus">False</property>
+                                                <property name="halign">start</property>
+                                                <property name="label" translatable="yes">Turkish - F Keyboard</property>
+                                              </object>
+                                              <packing>
+                                                <property name="expand">False</property>
+                                                <property name="fill">True</property>
+                                                <property name="position">0</property>
+                                              </packing>
+                                            </child>
+                                            <child>
+                                              <object class="GtkButton" id="btn_trf_remove">
+                                                <property name="label" translatable="yes">Remove</property>
+                                                <property name="visible">True</property>
+                                                <property name="can-focus">True</property>
+                                                <property name="receives-default">True</property>
+                                                <signal name="clicked" handler="on_btn_trf_remove_clicked" swapped="no"/>
                                                 <style>
                                                   <class name="destructive-action"/>
                                                 </style>
@@ -746,8 +736,6 @@ This tool helps you to get Pardus ready.</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
-                                        <property name="margin-left">7</property>
-                                        <property name="margin-right">7</property>
                                         <property name="margin-start">7</property>
                                         <property name="margin-end">7</property>
                                         <child>
@@ -770,11 +758,10 @@ This tool helps you to get Pardus ready.</property>
                                             </child>
                                             <child>
                                               <object class="GtkButton" id="btn_en_add">
-                                                <property name="label">gtk-add</property>
+                                                <property name="label" translatable="yes">Add</property>
                                                 <property name="visible">True</property>
                                                 <property name="can-focus">True</property>
                                                 <property name="receives-default">True</property>
-                                                <property name="use-stock">True</property>
                                                 <signal name="clicked" handler="on_btn_en_add_clicked" swapped="no"/>
                                                 <style>
                                                   <class name="suggested-action"/>
@@ -812,11 +799,10 @@ This tool helps you to get Pardus ready.</property>
                                             </child>
                                             <child>
                                               <object class="GtkButton" id="btn_en_remove">
-                                                <property name="label">gtk-remove</property>
+                                                <property name="label" translatable="yes">Remove</property>
                                                 <property name="visible">True</property>
                                                 <property name="can-focus">True</property>
                                                 <property name="receives-default">True</property>
-                                                <property name="use-stock">True</property>
                                                 <signal name="clicked" handler="on_btn_en_remove_clicked" swapped="no"/>
                                                 <style>
                                                   <class name="destructive-action"/>
@@ -984,7 +970,6 @@ This tool helps you to get Pardus ready.</property>
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">label</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -1165,13 +1150,12 @@ This tool helps you to get Pardus ready.</property>
                         </child>
                         <child>
                           <object class="GtkButton">
-                            <property name="label">gtk-close</property>
+                            <property name="label" translatable="yes">Close</property>
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="receives-default">True</property>
                             <property name="halign">center</property>
                             <property name="margin-top">20</property>
-                            <property name="use-stock">True</property>
                             <signal name="clicked" handler="onDestroy" swapped="no"/>
                             <style>
                               <class name="destructive-action"/>
@@ -1482,11 +1466,10 @@ This tool helps you to get Pardus ready.</property>
                 </child>
                 <child>
                   <object class="GtkButton" id="btn_next">
-                    <property name="label">gtk-media-next</property>
+                    <property name="label" translatable="yes">Next</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <property name="use-stock">True</property>
                     <signal name="clicked" handler="on_btn_next_clicked" swapped="no"/>
                   </object>
                   <packing>
@@ -1498,11 +1481,10 @@ This tool helps you to get Pardus ready.</property>
                 </child>
                 <child>
                   <object class="GtkButton" id="btn_prev">
-                    <property name="label">gtk-media-previous</property>
+                    <property name="label" translatable="yes">Previous</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <property name="use-stock">True</property>
                     <signal name="clicked" handler="on_btn_prev_clicked" swapped="no"/>
                   </object>
                   <packing>
