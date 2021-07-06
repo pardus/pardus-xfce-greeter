@@ -63,8 +63,8 @@ class MainWindow:
         self.defineComponents()
         self.defineVariables()
 
-        # Hide some settings if different DE
-        self.addWidgetSettings()
+        # Add Scaling Slider Marks
+        self.addSliderMarks()
 
         # Put Wallpapers on a Grid
         thread = threading.Thread(target=self.addWallpapers, args=(WallpaperManager.getWallpaperList(),))
@@ -86,9 +86,11 @@ class MainWindow:
 
     def defineComponents(self):
         # - Navigation:
-        self.stk_stackPages = self.builder.get_object("stk_stackPages")
+        self.lbl_headerTitle = self.builder.get_object("lbl_headerTitle")
+        self.nb_pages = self.builder.get_object("nb_pages")
         self.btn_next = self.builder.get_object("btn_next")
         self.btn_prev = self.builder.get_object("btn_prev")
+        self.box_progressDots = self.builder.get_object("box_progressDots")
         
         # - Display Settings:
         self.lst_themes = self.builder.get_object("lst_themes")
@@ -111,57 +113,39 @@ class MainWindow:
         self.btn_trf_remove = self.builder.get_object("btn_trf_remove")
         self.btn_en_remove = self.builder.get_object("btn_en_remove")
         self.sw_lang_indicator = self.builder.get_object("sw_lang_indicator")
+
+        # - Stack Pages:
         self.page_keyboardSettings = self.builder.get_object("page_keyboardSettings")
         self.page_startMenuSettings = self.builder.get_object("page_startMenuSettings")
-        self.lbl_headerTitle = self.builder.get_object("lbl_headerTitle")
 
     def defineVariables(self):
-        # Global stack pages:
-        self.currentPage = 0
-        if currentDesktop != "xfce":
-            self.page_keyboardSettings.set_no_show_all(False)
-            self.page_keyboardSettings.set_visible(False)
-        self.page_startMenuSettings.set_no_show_all(False)
-        self.page_startMenuSettings.set_visible(False)
-
-        titles = [tr("Welcome"), tr("Select Wallpaper"), tr("Theme Settings"), tr("Display Settings"), tr("Keyboard Settings"), tr("Start Menu Settings"), tr("Support & Community")]
-        for i in range(len(self.stk_stackPages.get_children())):
-            self.stk_stackPages.get_children()[i].title = titles[i]
-        
-        self.stackPages = list(filter(lambda a: a.get_visible(), self.stk_stackPages.get_children()))
+        pass
     
     # =========== UI Preparing functions:
     def hideWidgets(self):
-        self.changePage(0)
-
-        # Remove panel and desktop icon sizes
+        # Remove panel and desktop icon sizes if GNOME
         if currentDesktop == "gnome":
             self.sli_panel.set_visible(False)
             self.sli_desktopIcon.set_visible(False)
             self.lbl_panelSize.set_visible(False)
             self.lbl_desktopIconSize.set_visible(False)
+        
+        # Remove Keyboard & Start Menu Settings if XFCE
+        if currentDesktop != "xfce":
+            self.nb_pages.detach_tab(self.page_keyboardSettings)
+            self.box_progressDots.remove(self.box_progressDots.get_children()[0])
+        
+        self.nb_pages.detach_tab(self.page_startMenuSettings) # it is not ready, remove for xfce too.
+        self.box_progressDots.remove(self.box_progressDots.get_children()[0])
 
-    def addWidgetSettings(self):        
-        # Add scaling marks
+        self.updateProgressDots()
+
+    def addSliderMarks(self):        
         self.sli_scaling.add_mark(0, Gtk.PositionType.BOTTOM, "%100")
         self.sli_scaling.add_mark(1, Gtk.PositionType.BOTTOM, "%125")
         self.sli_scaling.add_mark(2, Gtk.PositionType.BOTTOM, "%150")
         self.sli_scaling.add_mark(3, Gtk.PositionType.BOTTOM, "%175")
-        self.sli_scaling.add_mark(4, Gtk.PositionType.BOTTOM, "%200")        
-
-
-    def changePage(self, number):
-        # Set current page number
-        self.currentPage = number
-
-        # Set button sensivities
-        self.btn_next.set_sensitive(not (self.currentPage == len(self.stackPages)-1))
-        self.btn_prev.set_sensitive(not (self.currentPage == 0))
-
-        # Change current stack page
-        self.stk_stackPages.set_visible_child(self.stackPages[self.currentPage])
-
-        self.lbl_headerTitle.set_text(self.stackPages[self.currentPage].title)
+        self.sli_scaling.add_mark(4, Gtk.PositionType.BOTTOM, "%200")
     
 
     # =========== Settings Functions:
@@ -231,6 +215,15 @@ class MainWindow:
         self.btn_trf_remove.set_sensitive(self.stk_trq.get_visible_child_name() == "remove" or self.stk_en.get_visible_child_name() == "remove")
         self.btn_trq_remove.set_sensitive(self.stk_trf.get_visible_child_name() == "remove" or self.stk_en.get_visible_child_name() == "remove")
         self.btn_en_remove.set_sensitive(self.stk_trq.get_visible_child_name() == "remove" or self.stk_trf.get_visible_child_name() == "remove")
+    
+    def updateProgressDots(self):
+        currentPage = self.nb_pages.get_current_page()
+
+        for i in range(len(self.box_progressDots.get_children())):
+            if i <= currentPage:
+                self.box_progressDots.get_children()[i].set_visible_child_name("on")
+            else:
+                self.box_progressDots.get_children()[i].set_visible_child_name("off")
 
     # =========== SIGNALS:    
     def onDestroy(self, b):
@@ -238,12 +231,28 @@ class MainWindow:
 
     # - NAVIGATION:
     def on_btn_next_clicked(self, btn):
-        if self.currentPage < len(self.stackPages):
-            self.changePage(self.currentPage + 1)
-    def on_btn_prev_clicked(self, btn):
-        if self.currentPage > 0:
-            self.changePage(self.currentPage - 1)
+        self.nb_pages.next_page()
+
+        self.btn_next.set_sensitive( self.nb_pages.get_current_page() != len(self.nb_pages.get_children())-1 )
+        self.btn_prev.set_sensitive( self.nb_pages.get_current_page() != 0 )
+
+        # Set Header Title
+        tabTitle = self.nb_pages.get_tab_label_text(self.nb_pages.get_nth_page(self.nb_pages.get_current_page()))
+        self.lbl_headerTitle.set_text(tabTitle)
+
+        self.updateProgressDots()
     
+    def on_btn_prev_clicked(self, btn):
+        self.nb_pages.prev_page()
+
+        self.btn_next.set_sensitive( self.nb_pages.get_current_page() != len(self.nb_pages.get_children())-1 )
+        self.btn_prev.set_sensitive( self.nb_pages.get_current_page() != 0 )
+
+        # Set Header Title
+        tabTitle = self.nb_pages.get_tab_label_text(self.nb_pages.get_nth_page(self.nb_pages.get_current_page()))
+        self.lbl_headerTitle.set_text(tabTitle)
+
+        self.updateProgressDots()
 
 
     # - Wallpaper Select:

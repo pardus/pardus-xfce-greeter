@@ -33,7 +33,7 @@
     <property name="window-position">center</property>
     <property name="default-width">850</property>
     <property name="default-height">650</property>
-    <property name="icon">../icon.svg</property>
+    <property name="icon">../assets/icon.svg</property>
     <property name="show-menubar">False</property>
     <child>
       <object class="GtkBox">
@@ -46,14 +46,11 @@
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkStack" id="stk_stackPages">
+              <object class="GtkNotebook" id="nb_pages">
                 <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="margin-start">7</property>
-                <property name="margin-end">7</property>
-                <property name="margin-top">14</property>
-                <property name="margin-bottom">14</property>
-                <property name="transition-type">slide-left-right</property>
+                <property name="can-focus">True</property>
+                <property name="show-tabs">False</property>
+                <property name="show-border">False</property>
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
@@ -67,7 +64,7 @@
                       <object class="GtkImage">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="pixbuf">../pardus-logo.svg</property>
+                        <property name="pixbuf">../assets/pardus-logo.svg</property>
                         <property name="pixel-size">92</property>
                       </object>
                       <packing>
@@ -123,6 +120,16 @@ This tool helps you to get Pardus ready.</property>
                     </child>
                   </object>
                 </child>
+                <child type="tab">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Welcome</property>
+                  </object>
+                  <packing>
+                    <property name="tab-fill">False</property>
+                  </packing>
+                </child>
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
@@ -153,13 +160,23 @@ This tool helps you to get Pardus ready.</property>
                       <packing>
                         <property name="expand">True</property>
                         <property name="fill">True</property>
-                        <property name="padding">10</property>
                         <property name="position">6</property>
                       </packing>
                     </child>
                   </object>
                   <packing>
                     <property name="position">1</property>
+                  </packing>
+                </child>
+                <child type="tab">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Select Wallpaper</property>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                    <property name="tab-fill">False</property>
                   </packing>
                 </child>
                 <child>
@@ -173,8 +190,8 @@ This tool helps you to get Pardus ready.</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
-                        <property name="valign">start</property>
-                        <property name="margin-top">20</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">20</property>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
@@ -184,7 +201,7 @@ This tool helps you to get Pardus ready.</property>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="pixbuf">../theme-light.png</property>
+                                <property name="pixbuf">../assets/theme-light.png</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -242,7 +259,7 @@ This tool helps you to get Pardus ready.</property>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="pixbuf">../theme-dark.png</property>
+                                <property name="pixbuf">../assets/theme-dark.png</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -303,6 +320,17 @@ This tool helps you to get Pardus ready.</property>
                     <property name="position">2</property>
                   </packing>
                 </child>
+                <child type="tab">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Theme Settings</property>
+                  </object>
+                  <packing>
+                    <property name="position">2</property>
+                    <property name="tab-fill">False</property>
+                  </packing>
+                </child>
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
@@ -314,8 +342,8 @@ This tool helps you to get Pardus ready.</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
-                        <property name="valign">start</property>
-                        <property name="margin-top">20</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">20</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">7</property>
                         <child>
@@ -447,6 +475,17 @@ This tool helps you to get Pardus ready.</property>
                     <property name="position">3</property>
                   </packing>
                 </child>
+                <child type="tab">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Display Settings</property>
+                  </object>
+                  <packing>
+                    <property name="position">3</property>
+                    <property name="tab-fill">False</property>
+                  </packing>
+                </child>
                 <child>
                   <object class="GtkBox" id="page_keyboardSettings">
                     <property name="visible">True</property>
@@ -458,8 +497,8 @@ This tool helps you to get Pardus ready.</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
-                        <property name="valign">start</property>
-                        <property name="margin-top">40</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">20</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">7</property>
                         <child>
@@ -497,6 +536,8 @@ This tool helps you to get Pardus ready.</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
+                                        <property name="margin-left">7</property>
+                                        <property name="margin-right">7</property>
                                         <property name="margin-start">7</property>
                                         <property name="margin-end">7</property>
                                         <child>
@@ -600,6 +641,8 @@ This tool helps you to get Pardus ready.</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
+                                        <property name="margin-left">7</property>
+                                        <property name="margin-right">7</property>
                                         <property name="margin-start">7</property>
                                         <property name="margin-end">7</property>
                                         <child>
@@ -703,6 +746,8 @@ This tool helps you to get Pardus ready.</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
+                                        <property name="margin-left">7</property>
+                                        <property name="margin-right">7</property>
                                         <property name="margin-start">7</property>
                                         <property name="margin-end">7</property>
                                         <child>
@@ -847,6 +892,8 @@ This tool helps you to get Pardus ready.</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
+                                        <property name="margin-left">7</property>
+                                        <property name="margin-right">7</property>
                                         <property name="margin-start">7</property>
                                         <property name="margin-end">7</property>
                                         <property name="spacing">7</property>
@@ -894,7 +941,7 @@ This tool helps you to get Pardus ready.</property>
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
+                        <property name="expand">True</property>
                         <property name="fill">True</property>
                         <property name="position">2</property>
                       </packing>
@@ -902,6 +949,17 @@ This tool helps you to get Pardus ready.</property>
                   </object>
                   <packing>
                     <property name="position">4</property>
+                  </packing>
+                </child>
+                <child type="tab">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Keyboard Settings</property>
+                  </object>
+                  <packing>
+                    <property name="position">4</property>
+                    <property name="tab-fill">False</property>
                   </packing>
                 </child>
                 <child>
@@ -965,7 +1023,7 @@ This tool helps you to get Pardus ready.</property>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="pixbuf">../whisker.png</property>
+                                <property name="pixbuf">../assets/whisker.png</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -995,6 +1053,17 @@ This tool helps you to get Pardus ready.</property>
                     <property name="position">5</property>
                   </packing>
                 </child>
+                <child type="tab">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Start Menu Settings</property>
+                  </object>
+                  <packing>
+                    <property name="position">5</property>
+                    <property name="tab-fill">False</property>
+                  </packing>
+                </child>
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
@@ -1006,15 +1075,14 @@ This tool helps you to get Pardus ready.</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
-                        <property name="valign">start</property>
-                        <property name="margin-top">20</property>
+                        <property name="valign">center</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">14</property>
                         <child>
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="pixbuf">../pardus-logo.svg</property>
+                            <property name="pixbuf">../assets/pardus-logo.svg</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1127,36 +1195,279 @@ This tool helps you to get Pardus ready.</property>
                     <property name="position">6</property>
                   </packing>
                 </child>
+                <child type="tab">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Support &amp; Community</property>
+                  </object>
+                  <packing>
+                    <property name="position">6</property>
+                    <property name="tab-fill">False</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
               <object class="GtkSeparator">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="margin-top">7</property>
                 <property name="margin-bottom">7</property>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="margin-left">7</property>
-                <property name="margin-right">7</property>
-                <property name="margin-start">7</property>
-                <property name="margin-end">7</property>
+                <property name="margin-start">14</property>
+                <property name="margin-end">14</property>
                 <property name="margin-bottom">7</property>
                 <property name="spacing">7</property>
+                <child type="center">
+                  <object class="GtkBox" id="box_progressDots">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <child>
+                      <object class="GtkStack">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-off.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">off</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-on.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">on</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkStack">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-off.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">off</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-on.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">on</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkStack">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-off.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">off</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-on.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">on</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkStack">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-off.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">off</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-on.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">on</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkStack">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-off.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">off</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-on.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">on</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">4</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkStack">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-off.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">off</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-on.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">on</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkStack">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-off.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">off</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-on.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">on</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">7</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
@@ -1205,7 +1516,7 @@ This tool helps you to get Pardus ready.</property>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">2</property>
+                <property name="position">3</property>
               </packing>
             </child>
           </object>
@@ -1224,9 +1535,6 @@ This tool helps you to get Pardus ready.</property>
         <property name="title" translatable="yes">Welcome</property>
         <property name="has-subtitle">False</property>
         <property name="show-close-button">True</property>
-        <child>
-          <placeholder/>
-        </child>
         <child>
           <object class="GtkLabel" id="lbl_headerTitle">
             <property name="visible">True</property>
