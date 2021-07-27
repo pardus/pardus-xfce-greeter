@@ -7,16 +7,6 @@ keyboardStatus = [False, False, False]
 keyboardPlugin = ""
 
 def initializeSettings():
-    # Don't get Layouts on System, but from user preferences.
-    subprocess.call([
-        "xfconf-query",
-        "-c", "keyboard-layout",
-        "-p", "/Default/XkbDisable",
-        "-s", "false",
-        "--type", "bool",
-        "--create"
-    ])
-
     # Add Super + Space combination to change layouts
     subprocess.call([
         "xfconf-query",
@@ -27,16 +17,16 @@ def initializeSettings():
         "--create"
     ])
 
-    """ OLD
-    subprocess.call([
+    # Get system settings if disabled
+    useSystemKeyboard = subprocess.check_output([
         "xfconf-query",
         "-c", "keyboard-layout",
-        "-p", "/Default/XkbDisplay",
-        "-s", "false",
-        "--type", "bool",
-        "--create"
-    ])
-    """
+        "-p", "/Default/XkbDisable",
+    ]).decode("utf-8").rstrip() == "true"
+
+    if useSystemKeyboard:
+        getSystemKeyboardState()
+        setKeyboardState()
 
 def setKeyboardState():
     layoutString = ""
@@ -65,6 +55,14 @@ def setKeyboardState():
         "--type", "string",
         "--create"
     ])
+    subprocess.call([
+        "xfconf-query",
+        "-c", "keyboard-layout",
+        "-p", "/Default/XkbDisable",
+        "-s", "false",
+        "--type", "bool",
+        "--create"
+    ])
 
 # Add Keyboard Layouts:
 def setTurkishQ(state):
@@ -78,6 +76,24 @@ def setTurkishF(state):
 def setEnglish(state):
     keyboardStatus[2] = state
     setKeyboardState()
+
+# Get System's Keyboard
+def getSystemKeyboardState():
+    layoutProcess = subprocess.run("cat /etc/default/keyboard | grep XKBLAYOUT | tr -d '\"'", shell=True, capture_output=True)
+    variantProcess = subprocess.run("cat /etc/default/keyboard | grep XKBVARIANT | tr -d '\"'", shell=True, capture_output=True)
+    
+    layout = layoutProcess.stdout.decode("utf-8").rstrip().split("=")[1]
+    variant = variantProcess.stdout.decode("utf-8").rstrip().split("=")[1]
+
+    global keyboardLayouts
+    global keyboardVariants
+    global keyboardStatus
+
+    for j in range(len(keyboardLayouts)):
+        if layout == keyboardLayouts[j] and variant == keyboardVariants[j]:
+            keyboardStatus[j] = True
+        
+    return keyboardStatus
 
 # Get Current Keyboard State
 def getKeyboardState():
@@ -104,8 +120,9 @@ def getKeyboardState():
         
         return keyboardStatus
     except subprocess.CalledProcessError:
-        setKeyboardState()
-        return getKeyboardState()
+        getSystemKeyboardState() # First get systemwide keyboard
+        setKeyboardState() # Save it
+        return keyboardStatus
 
 
 
