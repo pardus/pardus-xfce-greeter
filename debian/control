@@ -11,6 +11,7 @@ Architecture: amd64
 Depends: ${misc:Depends},
          ${python3:Depends},
          python3 (>=3.5),
-         python3-gi
+         python3-gi,
+         gir1.2-gtk-3.0
 Description: Pardus Welcome
  Simple Gtk+ and Python based greeter application after login.
