@@ -1,3 +1,13 @@
+pardus-welcome (0.1.0~beta3) unstable; urgency=medium
+
+  [ Emin Fedar ]
+  * Use system's keyboard if system enabled.
+  * Added git1.2-gtk-3.0 dependency
+  * aIcon path fix
+  * Icon full path to System
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Mon, 02 Aug 2021 17:01:53 +0300
+
 pardus-welcome (0.1.0~beta2) unstable; urgency=medium
 
   [ Emin Fedar ]
