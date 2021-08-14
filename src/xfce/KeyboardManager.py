@@ -135,6 +135,7 @@ def createKeyboardPlugin():
     ])
 
     getKeyboardPlugin()
+    changeKeyboardPluginPlacement()
     
     # Display Language Name (not country)
     subprocess.call([
@@ -196,3 +197,38 @@ def getKeyboardPlugin():
             return keyboardPlugin
     
     return ""
+
+def changeKeyboardPluginPlacement():
+    pluginList = subprocess.check_output([
+        "xfconf-query",
+        "-c", "xfce4-panel",
+        "-p", "/panels/panel-1/plugin-ids"
+    ]).decode("utf-8").splitlines()[2:]
+    
+    if keyboardPlugin.split("-")[1] == pluginList[-2]:
+        return
+    
+    pluginList[-1], pluginList[-2] = pluginList[-2], pluginList[-1]
+    
+
+    setArrayCommand = []
+    for i in range(len(pluginList)):
+        setArrayCommand.append("-t")
+        setArrayCommand.append("int")
+
+    for i in range(len(pluginList)):
+        setArrayCommand.append("-s")
+        setArrayCommand.append(pluginList[i])
+    
+
+    subprocess.call([
+        "xfconf-query",
+        "-c", "xfce4-panel",
+        "-p", "/panels/panel-1/plugin-ids",
+        "-n"
+    ] + setArrayCommand)
+
+    subprocess.call([
+        "xfce4-panel",
+        "-r"
+    ])
