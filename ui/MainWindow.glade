@@ -192,16 +192,30 @@ This tool helps you to get Pardus ready.</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">20</property>
+                        <property name="spacing">14</property>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="orientation">vertical</property>
+                            <property name="spacing">14</property>
                             <child>
-                              <object class="GtkImage">
+                              <object class="GtkRadioButton" id="rb_lightTheme">
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="pixbuf">../assets/theme-light.png</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">False</property>
+                                <property name="halign">center</property>
+                                <property name="margin-top">14</property>
+                                <property name="active">True</property>
+                                <property name="draw-indicator">False</property>
+                                <signal name="toggled" handler="on_rb_lightTheme_toggled" swapped="no"/>
+                                <child>
+                                  <object class="GtkImage">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="pixbuf">../assets/theme-light.png</property>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -224,24 +238,6 @@ This tool helps you to get Pardus ready.</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
-                            <child>
-                              <object class="GtkRadioButton" id="rb_lightTheme">
-                                <property name="label" translatable="yes">Apply</property>
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="halign">center</property>
-                                <property name="margin-top">14</property>
-                                <property name="active">True</property>
-                                <property name="draw-indicator">False</property>
-                                <signal name="toggled" handler="on_rb_lightTheme_toggled" swapped="no"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -254,11 +250,24 @@ This tool helps you to get Pardus ready.</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="orientation">vertical</property>
+                            <property name="spacing">14</property>
                             <child>
-                              <object class="GtkImage">
+                              <object class="GtkRadioButton" id="rb_darkTheme">
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="pixbuf">../assets/theme-dark.png</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">False</property>
+                                <property name="halign">center</property>
+                                <property name="margin-top">14</property>
+                                <property name="draw-indicator">False</property>
+                                <property name="group">rb_lightTheme</property>
+                                <signal name="toggled" handler="on_rb_darkTheme_toggled" swapped="no"/>
+                                <child>
+                                  <object class="GtkImage">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="pixbuf">../assets/theme-dark.png</property>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -279,24 +288,6 @@ This tool helps you to get Pardus ready.</property>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
                                 <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkRadioButton" id="rb_darkTheme">
-                                <property name="label" translatable="yes">Apply</property>
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="halign">center</property>
-                                <property name="margin-top">14</property>
-                                <property name="draw-indicator">False</property>
-                                <property name="group">rb_lightTheme</property>
-                                <signal name="toggled" handler="on_rb_darkTheme_toggled" swapped="no"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
                               </packing>
                             </child>
                           </object>
@@ -949,107 +940,6 @@ This tool helps you to get Pardus ready.</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="page_startMenuSettings">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">7</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">start</property>
-                        <property name="margin-top">20</property>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="pixbuf">../assets/whisker.png</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="position">5</property>
-                  </packing>
-                </child>
-                <child type="tab">
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Start Menu Settings</property>
-                  </object>
-                  <packing>
-                    <property name="position">5</property>
-                    <property name="tab-fill">False</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
@@ -1411,38 +1301,6 @@ This tool helps you to get Pardus ready.</property>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
                         <property name="position">5</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkStack">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <child>
-                          <object class="GtkImage">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="pixbuf">../assets/progress-dot-off.svg</property>
-                          </object>
-                          <packing>
-                            <property name="name">off</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkImage">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="pixbuf">../assets/progress-dot-on.svg</property>
-                          </object>
-                          <packing>
-                            <property name="name">on</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">7</property>
                       </packing>
                     </child>
                   </object>
