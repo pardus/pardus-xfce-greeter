@@ -88,6 +88,7 @@ class MainWindow:
         # - Navigation:
         self.lbl_headerTitle = self.builder.get_object("lbl_headerTitle")
         self.nb_pages = self.builder.get_object("nb_pages")
+        self.stk_btn_next = self.builder.get_object("stk_btn_next")
         self.btn_next = self.builder.get_object("btn_next")
         self.btn_prev = self.builder.get_object("btn_prev")
         self.box_progressDots = self.builder.get_object("box_progressDots")
@@ -232,7 +233,9 @@ class MainWindow:
     def on_btn_next_clicked(self, btn):
         self.nb_pages.next_page()
 
-        self.btn_next.set_sensitive( self.nb_pages.get_current_page() != len(self.nb_pages.get_children())-1 )
+        nextButtonPage = "next" if self.nb_pages.get_current_page() != len(self.nb_pages.get_children())-1 else "close"
+        self.stk_btn_next.set_visible_child_name(nextButtonPage)
+
         self.btn_prev.set_sensitive( self.nb_pages.get_current_page() != 0 )
 
         # Set Header Title
@@ -244,7 +247,8 @@ class MainWindow:
     def on_btn_prev_clicked(self, btn):
         self.nb_pages.prev_page()
 
-        self.btn_next.set_sensitive( self.nb_pages.get_current_page() != len(self.nb_pages.get_children())-1 )
+        nextButtonPage = "next" if self.nb_pages.get_current_page() != len(self.nb_pages.get_children())-1 else "close"
+        self.stk_btn_next.set_visible_child_name(nextButtonPage)
         self.btn_prev.set_sensitive( self.nb_pages.get_current_page() != 0 )
 
         # Set Header Title

@@ -1038,25 +1038,6 @@ This tool helps you to get Pardus ready.</property>
                             <property name="position">5</property>
                           </packing>
                         </child>
-                        <child>
-                          <object class="GtkButton">
-                            <property name="label" translatable="yes">Close</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">True</property>
-                            <property name="halign">center</property>
-                            <property name="margin-top">20</property>
-                            <signal name="clicked" handler="onDestroy" swapped="no"/>
-                            <style>
-                              <class name="destructive-action"/>
-                            </style>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">6</property>
-                          </packing>
-                        </child>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -1323,12 +1304,40 @@ This tool helps you to get Pardus ready.</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="btn_next">
-                    <property name="label" translatable="yes">Next</property>
+                  <object class="GtkStack" id="stk_btn_next">
                     <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
-                    <signal name="clicked" handler="on_btn_next_clicked" swapped="no"/>
+                    <property name="can-focus">False</property>
+                    <child>
+                      <object class="GtkButton" id="btn_next">
+                        <property name="label" translatable="yes">Next</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <signal name="clicked" handler="on_btn_next_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="name">next</property>
+                        <property name="title" translatable="yes">page0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="label" translatable="yes">Close</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <property name="halign">center</property>
+                        <signal name="clicked" handler="onDestroy" swapped="no"/>
+                        <style>
+                          <class name="destructive-action"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="name">close</property>
+                        <property name="title" translatable="yes">page1</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
