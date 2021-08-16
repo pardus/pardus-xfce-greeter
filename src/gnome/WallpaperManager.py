@@ -14,7 +14,7 @@ def getWallpaperList():
     desktopBaseFiles = os.walk(desktopBaseFolder)
     for (_, _, files) in desktopBaseFiles:
         for file in files:
-            desktopBaseResolutions.append(f"{file}")
+            desktopBaseResolutions.append(f"{desktopBaseFolder}{file}")
     
     # Add other wallpapers to list
     for path in folders:
@@ -31,7 +31,6 @@ def getWallpaperList():
         pictures.append(f"{desktopBaseFolder}{currentResolution}.svg")
     else:
         pictures = pictures + desktopBaseResolutions
-    
     return pictures
 
 def setWallpaper(wallpaper):
