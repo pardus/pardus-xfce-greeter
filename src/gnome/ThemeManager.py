@@ -33,10 +33,27 @@ def setTheme(theme):
         f"'{theme}'"
     ])
 
+def setIconTheme(theme):
+    subprocess.call([
+        "gsettings",
+        "set",
+        "org.gnome.desktop.interface",
+        "icon-theme",
+        f"'{theme}'"
+    ])
+
 def getTheme():
     return subprocess.check_output([
         "gsettings",
         "get",
         "org.gnome.desktop.interface",
         "gtk-theme"
+    ]).decode("utf-8").rstrip()
+
+def getIconTheme(theme):
+    return subprocess.check_output([
+        "gsettings",
+        "get",
+        "org.gnome.desktop.interface",
+        "icon-theme"
     ]).decode("utf-8").rstrip()

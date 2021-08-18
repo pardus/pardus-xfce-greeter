@@ -255,11 +255,27 @@ class MainWindow:
     # - Theme Selection:
     def on_rb_lightTheme_toggled(self, rb):
         if rb.get_active():
-            GLib.idle_add(ThemeManager.setTheme, "Adwaita")
+            GLib.idle_add(ThemeManager.setTheme, "pardus")
+            GLib.idle_add(ThemeManager.setIconTheme, "pardus")
+
+            # Window Theme
+            if currentDesktop == "xfce":
+                if ScaleManager.getScale() == 2.0:
+                    GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default-hdpi")
+                else:
+                    GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default")
     
     def on_rb_darkTheme_toggled(self, rb):
         if rb.get_active():
-            GLib.idle_add(ThemeManager.setTheme, "Adwaita-dark")
+            GLib.idle_add(ThemeManager.setTheme, "pardus-dark")
+            GLib.idle_add(ThemeManager.setIconTheme, "pardus-dark")
+            
+            # Window Theme
+            if currentDesktop == "xfce":
+                if ScaleManager.getScale() == 2.0:
+                    GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default-hdpi")
+                else:
+                    GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default")
 
 
     # - Scale Changed:

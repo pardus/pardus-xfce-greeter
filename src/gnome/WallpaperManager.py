@@ -20,7 +20,7 @@ def getWallpaperList():
             #print(f"Current: {currentResolutionTuple}, File: {fileResolution}, Fark:{abs(currentResolutionTuple[0] - fileResolution[0])}, {abs(currentResolutionTuple[1] - fileResolution[1])}")
             if abs(currentResolutionTuple[0] - fileResolution[0]) <= abs(currentResolutionTuple[0] - nearestResolution[0]):
                 if abs(currentResolutionTuple[1] - fileResolution[1]) <= abs(currentResolutionTuple[1] - nearestResolution[1]):
-                    print(f"en uygun bulundu: {fileResolution}, Fark:{abs(currentResolutionTuple[0] - nearestResolution[0])}, {abs(currentResolutionTuple[1] - nearestResolution[1])}")
+                    #print(f"en uygun bulundu: {fileResolution}, Fark:{abs(currentResolutionTuple[0] - nearestResolution[0])}, {abs(currentResolutionTuple[1] - nearestResolution[1])}")
                     nearestResolution = fileResolution
                     nearestResolutionFile = file
     

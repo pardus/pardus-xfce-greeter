@@ -48,6 +48,16 @@ def setWindowTheme(theme):
         "--create"
     ])
 
+def setIconTheme(theme):
+    subprocess.call([
+        "xfconf-query",
+        "-c", "xfwm4",
+        "-p", "/Net/IconThemeName",
+        "-s", theme,
+        "--type", "string",
+        "--create"
+    ])
+
 def getTheme():
     return subprocess.check_output([
         "xfconf-query",
@@ -60,4 +70,11 @@ def getWindowTheme():
         "xfconf-query",
         "-c", "xfwm4",
         "-p", "/general/theme"
+    ]).decode("utf-8").rstrip()
+
+def getIconTheme():
+    return subprocess.check_output([
+        "xfconf-query",
+        "-c", "xfwm4",
+        "-p", "/Net/IconThemeName",
     ]).decode("utf-8").rstrip()
