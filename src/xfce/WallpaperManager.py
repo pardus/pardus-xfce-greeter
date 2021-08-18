@@ -7,15 +7,26 @@ prefixs = ["jpg","png","bmp","jpeg","svg"]
 
 def getWallpaperList():
     currentResolution = getResolution()
-    desktopBaseResolutions = []
+    currentResolutionTuple = (int(currentResolution.split("x")[0]), int(currentResolution.split("x")[1]))
+    nearestResolution = (1, 1)
+    nearestResolutionFile = ""
     pictures = []
 
     # Get all resolutions from desktop-base and select Current system resolution if exists
     desktopBaseFiles = os.walk(desktopBaseFolder)
     for (_, _, files) in desktopBaseFiles:
         for file in files:
-            desktopBaseResolutions.append(f"{file}")
+            fileResolution = (int(file[:-4].split("x")[0]), int(file[:-4].split("x")[1]))
+            #print(f"Current: {currentResolutionTuple}, File: {fileResolution}, Fark:{abs(currentResolutionTuple[0] - fileResolution[0])}, {abs(currentResolutionTuple[1] - fileResolution[1])}")
+            if abs(currentResolutionTuple[0] - fileResolution[0]) <= abs(currentResolutionTuple[0] - nearestResolution[0]):
+                if abs(currentResolutionTuple[1] - fileResolution[1]) <= abs(currentResolutionTuple[1] - nearestResolution[1]):
+                    #print(f"en uygun bulundu: {fileResolution}, Fark:{abs(currentResolutionTuple[0] - nearestResolution[0])}, {abs(currentResolutionTuple[1] - nearestResolution[1])}")
+                    nearestResolution = fileResolution
+                    nearestResolutionFile = file
     
+    # Add desktop-base wallpaper to list
+    pictures.append(f"{desktopBaseFolder}{nearestResolutionFile}")
+
     # Add other wallpapers to list
     for path in folders:
         paths = os.walk( path )
@@ -26,21 +37,12 @@ def getWallpaperList():
                         pictures.append(f"{dirpath}/{file}")
                         break
     
-    # Add desktop-base wallpaper to list
-    if f"{currentResolution}.svg" in desktopBaseResolutions:
-        pictures.append(f"{desktopBaseFolder}{currentResolution}.svg")
-    else:
-        pictures = pictures + desktopBaseResolutions
-    
     return pictures
 
 def setWallpaper(wallpaper):
     subprocess.call([
-        "gsettings",
-        "set",
-        "org.gnome.desktop.background",
-        "picture-uri",
-        f"file://{wallpaper}"
+        "/bin/sh", "-c",
+        f"xfconf-query -c xfce4-desktop -l | grep last-image | while read path; do xfconf-query -c xfce4-desktop -p $path -s {wallpaper}; done"
     ])
 
 
