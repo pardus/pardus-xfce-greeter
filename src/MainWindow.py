@@ -212,6 +212,21 @@ class MainWindow:
                 self.box_progressDots.get_children()[i].set_visible_child_name("on")
             else:
                 self.box_progressDots.get_children()[i].set_visible_child_name("off")
+    
+    def changeWindowTheme(self, isHdpi, isDark):
+        if currentDesktop != "xfce":
+            return
+
+        if isHdpi:
+            if isDark:
+                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-dark-default-hdpi")
+            else:
+                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default-hdpi")
+        else:
+            if isDark:
+                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-dark-default")
+            else:
+                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default")
 
     # =========== SIGNALS:    
     def onDestroy(self, b):
@@ -259,32 +274,21 @@ class MainWindow:
             GLib.idle_add(ThemeManager.setIconTheme, "pardus")
 
             # Window Theme
-            if currentDesktop == "xfce":
-                if ScaleManager.getScale() == 2.0:
-                    GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default-hdpi")
-                else:
-                    GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default")
+            self.changeWindowTheme(ScaleManager.getScale() == 2.0, False)
     
     def on_rb_darkTheme_toggled(self, rb):
         if rb.get_active():
             GLib.idle_add(ThemeManager.setTheme, "pardus-dark")
             GLib.idle_add(ThemeManager.setIconTheme, "pardus-dark")
-            
+
             # Window Theme
-            if currentDesktop == "xfce":
-                if ScaleManager.getScale() == 2.0:
-                    GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default-hdpi")
-                else:
-                    GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default")
+            self.changeWindowTheme(ScaleManager.getScale() == 2.0, True)
 
 
     # - Scale Changed:
     def on_sli_scaling_button_release(self, slider, b):
         value = int(slider.get_value()) * 0.25 + 1
-        if value == 2.0:
-            GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default-hdpi")
-        else:
-            GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default")
+        self.changeWindowTheme(value == 2.0, ThemeManager.getTheme() == "pardus-dark")
         ScaleManager.setScale(value)
     
     def on_sli_scaling_format_value(self, sli, value):
