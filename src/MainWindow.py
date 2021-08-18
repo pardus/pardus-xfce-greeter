@@ -281,6 +281,10 @@ class MainWindow:
     # - Scale Changed:
     def on_sli_scaling_button_release(self, slider, b):
         value = int(slider.get_value()) * 0.25 + 1
+        if value == 2.0:
+            GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default-hdpi")
+        else:
+            GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default")
         ScaleManager.setScale(value)
     
     def on_sli_scaling_format_value(self, sli, value):
