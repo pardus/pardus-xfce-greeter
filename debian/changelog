@@ -1,3 +1,22 @@
+pardus-welcome (0.1.0~beta4) unstable; urgency=medium
+
+  [ Emin Fedar ]
+  * Theme selection buttons are now images.
+  * Next button turns into the Close button on last page.
+  * Change Keyboard Plugin Placement
+  * WallpaperManager only detect current resolution svg on desktop-base
+  * Wallpaper Path fix
+  * Desktop Base nearest wallpaper selection added.
+  * Removed wallpaper labels.
+  * UI Spacing
+  * Set all themes to "pardus"
+  * Scaling 2 to HDPI theme
+  * Added HDPI dark theme support
+  * XFCE fix icon theme not setting bug
+  * New Pardus Theme added
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Fri, 20 Aug 2021 01:25:35 +0300
+
 pardus-welcome (0.1.0~beta3) unstable; urgency=medium
 
   [ Emin Fedar ]
