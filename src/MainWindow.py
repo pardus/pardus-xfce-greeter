@@ -71,6 +71,9 @@ class MainWindow:
         thread.daemon = True
         thread.start()
 
+        # Set theme to system-default:
+        self.getThemeDefaults()
+
         # Set scales to system-default:
         self.getScalingDefaults()
 
@@ -98,6 +101,7 @@ class MainWindow:
         self.lst_windowThemes = self.builder.get_object("lst_windowThemes")
         self.flow_wallpapers = self.builder.get_object("flow_wallpapers")
         self.rb_darkTheme = self.builder.get_object("rb_darkTheme")
+        self.rb_lightTheme = self.builder.get_object("rb_lightTheme")
 
         # - Scaling Settings:
         self.lbl_panelSize = self.builder.get_object("lbl_panelSize")
@@ -162,6 +166,14 @@ class MainWindow:
 
             GLib.idle_add(self.flow_wallpapers.insert, img_wallpaper, -1)
             GLib.idle_add(self.flow_wallpapers.show_all)
+    
+    def getThemeDefaults(self):
+        theme = ThemeManager.getTheme()
+
+        if theme == "pardus":
+            self.rb_lightTheme.set_active(True)
+        elif theme == "pardus-dark":
+            self.rb_darkTheme.set_active(True)
 
     def getScalingDefaults(self):
         if currentDesktop == "xfce":
@@ -268,7 +280,7 @@ class MainWindow:
 
 
     # - Theme Selection:
-    def on_rb_lightTheme_toggled(self, rb):
+    def on_rb_lightTheme_clicked(self, rb):
         if rb.get_active():
             GLib.idle_add(ThemeManager.setTheme, "pardus")
             GLib.idle_add(ThemeManager.setIconTheme, "pardus")
@@ -276,7 +288,7 @@ class MainWindow:
             # Window Theme
             self.changeWindowTheme(ScaleManager.getScale() == 2.0, False)
     
-    def on_rb_darkTheme_toggled(self, rb):
+    def on_rb_darkTheme_clicked(self, rb):
         if rb.get_active():
             GLib.idle_add(ThemeManager.setTheme, "pardus-dark")
             GLib.idle_add(ThemeManager.setIconTheme, "pardus-dark")

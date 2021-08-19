@@ -213,7 +213,7 @@ This tool helps you to get Pardus ready.</property>
                                 <property name="margin-top">14</property>
                                 <property name="active">True</property>
                                 <property name="draw-indicator">False</property>
-                                <signal name="toggled" handler="on_rb_lightTheme_toggled" swapped="no"/>
+                                <signal name="clicked" handler="on_rb_lightTheme_clicked" swapped="no"/>
                                 <child>
                                   <object class="GtkImage">
                                     <property name="visible">True</property>
@@ -265,7 +265,7 @@ This tool helps you to get Pardus ready.</property>
                                 <property name="margin-top">14</property>
                                 <property name="draw-indicator">False</property>
                                 <property name="group">rb_lightTheme</property>
-                                <signal name="toggled" handler="on_rb_darkTheme_toggled" swapped="no"/>
+                                <signal name="clicked" handler="on_rb_darkTheme_clicked" swapped="no"/>
                                 <child>
                                   <object class="GtkImage">
                                     <property name="visible">True</property>
