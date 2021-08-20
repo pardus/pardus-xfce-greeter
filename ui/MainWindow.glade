@@ -31,7 +31,7 @@
   <object class="GtkApplicationWindow" id="window">
     <property name="can-focus">False</property>
     <property name="window-position">center</property>
-    <property name="default-width">790</property>
+    <property name="default-width">815</property>
     <property name="default-height">650</property>
     <property name="icon-name">pardus-welcome</property>
     <property name="show-menubar">False</property>
@@ -344,7 +344,10 @@ This tool helps you to get Pardus ready.</property>
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="pixel-size">200</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="margin-bottom">35</property>
+                            <property name="pixel-size">150</property>
                             <property name="icon-name">computer-symbolic</property>
                           </object>
                           <packing>
@@ -962,7 +965,8 @@ This tool helps you to get Pardus ready.</property>
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="pixbuf">../assets/pardus-logo.svg</property>
+                            <property name="pixel-size">160</property>
+                            <property name="icon-name">emblem-pardus-symbolic</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
