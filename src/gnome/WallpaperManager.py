@@ -31,11 +31,12 @@ def getWallpaperList():
     for path in folders:
         paths = os.walk( path )
         for (dirpath, _, files) in paths:
-            for file in files:
-                for prefix in prefixs:
-                    if file[-3:] == prefix:
-                        pictures.append(f"{dirpath}/{file}")
-                        break
+            if dirpath != "/usr/share/backgrounds/xfce":
+                for file in files:
+                    for prefix in prefixs:
+                        if file[-3:] == prefix:
+                            pictures.append(f"{dirpath}/{file}")
+                            break
     
     return pictures
 
