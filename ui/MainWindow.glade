@@ -64,8 +64,8 @@
                       <object class="GtkImage">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="pixbuf">../assets/pardus-logo.svg</property>
-                        <property name="pixel-size">92</property>
+                        <property name="pixel-size">160</property>
+                        <property name="icon-name">emblem-pardus-symbolic</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -345,7 +345,7 @@ This tool helps you to get Pardus ready.</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="pixel-size">200</property>
-                            <property name="icon-name">computer</property>
+                            <property name="icon-name">computer-symbolic</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
