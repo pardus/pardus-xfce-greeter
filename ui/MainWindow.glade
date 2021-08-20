@@ -33,7 +33,7 @@
     <property name="window-position">center</property>
     <property name="default-width">790</property>
     <property name="default-height">650</property>
-    <property name="icon">../assets/pardus-welcome.svg</property>
+    <property name="icon-name">pardus-welcome</property>
     <property name="show-menubar">False</property>
     <child>
       <object class="GtkBox">
