@@ -1,3 +1,4 @@
+from re import sub
 import subprocess
 
 defaultDPI = 96
@@ -47,14 +48,18 @@ def setDesktopIconSize(px):
     ])
 
 def getScale():
+    dpi = 96
     try:
-        dpi = int(subprocess.check_output([
+        process = subprocess.run([
             "xfconf-query",
             "-c", "xsettings",
             "-p", "/Xft/DPI",
-        ]).decode("utf-8").rstrip())
+        ], capture_output=True)
+        
+        if process.returncode == 0:
+            dpi = int(process.stdout.decode("utf-8").rstrip())
     except:
-        return 1
+        return 1.0
         
     return float(dpi / 96)
 
