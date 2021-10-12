@@ -28,6 +28,16 @@
     <property name="step-increment">1</property>
     <property name="page-increment">1</property>
   </object>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">view-refresh</property>
+  </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">view-refresh</property>
+  </object>
   <object class="GtkApplicationWindow" id="window">
     <property name="can-focus">False</property>
     <property name="window-position">center</property>
@@ -108,7 +118,7 @@
                         <property name="halign">center</property>
                         <property name="label" translatable="yes">Welcome.
 
-This tool helps you to get Pardus ready.</property>
+This application helps you to configure Pardus.</property>
                         <property name="use-markup">True</property>
                         <property name="justify">center</property>
                       </object>
@@ -458,6 +468,40 @@ This tool helps you to get Pardus ready.</property>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
                             <property name="position">7</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="btn_restore_panel">
+                            <property name="label" translatable="yes">Restore Panel to Defaults</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="halign">start</property>
+                            <property name="image">image1</property>
+                            <property name="always-show-image">True</property>
+                            <signal name="clicked" handler="on_btn_restore_panel_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">8</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="btn_restore_all">
+                            <property name="label" translatable="yes">Restore ALL to Defaults</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="halign">start</property>
+                            <property name="image">image2</property>
+                            <property name="always-show-image">True</property>
+                            <signal name="clicked" handler="on_btn_restore_all_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">9</property>
                           </packing>
                         </child>
                       </object>
@@ -959,14 +1003,17 @@ This tool helps you to get Pardus ready.</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
+                        <property name="margin-bottom">90</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">14</property>
                         <child>
-                          <object class="GtkImage">
+                          <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="pixel-size">160</property>
-                            <property name="icon-name">emblem-pardus-symbolic</property>
+                            <property name="label" translatable="yes">Shortcuts</property>
+                            <attributes>
+                              <attribute name="size" value="16000"/>
+                            </attributes>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -976,9 +1023,106 @@ This tool helps you to get Pardus ready.</property>
                         </child>
                         <child>
                           <object class="GtkSeparator">
-                            <property name="width-request">250</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="spacing">30</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">&lt;b&gt;Show Desktop:&lt;/b&gt;
+Ctrl+Alt+D
+
+&lt;b&gt;Lock Screen:&lt;/b&gt;
+Super + L | Ctrl+Alt+L
+
+&lt;b&gt;Applications:&lt;/b&gt;
+Super
+
+&lt;b&gt;Terminal:&lt;/b&gt;
+Ctrl+Alt+T</property>
+                                <property name="use-markup">True</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkSeparator">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">&lt;b&gt;Change Workspace:&lt;/b&gt;
+Ctrl + Alt + ←  →
+
+&lt;b&gt;Change Program:&lt;/b&gt;
+Alt + Tab
+
+&lt;b&gt;Change Window:&lt;/b&gt;
+Super + Tab
+
+&lt;b&gt;View Split:&lt;/b&gt;
+Super + ←  →</property>
+                                <property name="use-markup">True</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-bottom">7</property>
+                        <property name="homogeneous">True</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="label" translatable="yes">&lt;span size="16000"&gt;Support:&lt;/span&gt;
+&lt;span size="16000"&gt;&lt;b&gt;444 5 773&lt;/b&gt;&lt;/span&gt;
+&lt;a href="https://talep.pardus.org.tr/servicedesk/customer/portal/1"&gt;talep.pardus.org.tr&lt;/a&gt;</property>
+                            <property name="use-markup">True</property>
+                            <property name="justify">center</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -990,10 +1134,10 @@ This tool helps you to get Pardus ready.</property>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="halign">start</property>
-                            <property name="label" translatable="yes">&lt;span size="16000"&gt;Website:&lt;/span&gt;
-&lt;a href="https://www.pardus.org.tr/"&gt;pardus.org.tr&lt;/a&gt;</property>
+                            <property name="label" translatable="yes">&lt;span size="16000"&gt;Documentations:&lt;/span&gt;
+&lt;a href="https://belge.pardus.org.tr/"&gt;belge.pardus.org.tr&lt;/a&gt;</property>
                             <property name="use-markup">True</property>
+                            <property name="justify">center</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1005,10 +1149,10 @@ This tool helps you to get Pardus ready.</property>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="halign">start</property>
                             <property name="label" translatable="yes">&lt;span size="16000"&gt;Forum:&lt;/span&gt;
 &lt;a href="https://forum.pardus.org.tr/"&gt;forum.pardus.org.tr&lt;/a&gt;</property>
                             <property name="use-markup">True</property>
+                            <property name="justify">center</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1020,10 +1164,10 @@ This tool helps you to get Pardus ready.</property>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="halign">start</property>
-                            <property name="label" translatable="yes">&lt;span size="16000"&gt;Documentations:&lt;/span&gt;
-&lt;a href="https://belge.pardus.org.tr/"&gt;belge.pardus.org.tr&lt;/a&gt;</property>
+                            <property name="label" translatable="yes">&lt;span size="16000"&gt;Website:&lt;/span&gt;
+&lt;a href="https://www.pardus.org.tr/"&gt;pardus.org.tr&lt;/a&gt;</property>
                             <property name="use-markup">True</property>
+                            <property name="justify">center</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1031,27 +1175,11 @@ This tool helps you to get Pardus ready.</property>
                             <property name="position">4</property>
                           </packing>
                         </child>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="halign">start</property>
-                            <property name="label" translatable="yes">&lt;span size="16000"&gt;Support:&lt;/span&gt;
-&lt;span size="16000"&gt;&lt;b&gt;444 5 773&lt;/b&gt;&lt;/span&gt;
-&lt;a href="https://talep.pardus.org.tr/servicedesk/customer/portal/1"&gt;talep.pardus.org.tr&lt;/a&gt;</property>
-                            <property name="use-markup">True</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">5</property>
-                          </packing>
-                        </child>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
+                        <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">2</property>
+                        <property name="position">1</property>
                       </packing>
                     </child>
                   </object>
@@ -1390,7 +1518,7 @@ This tool helps you to get Pardus ready.</property>
       <object class="GtkHeaderBar">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="title" translatable="yes">Welcome</property>
+        <property name="title" translatable="yes">Pardus Configurator</property>
         <property name="has-subtitle">False</property>
         <property name="show-close-button">True</property>
         <child>

@@ -1,4 +1,5 @@
 import os, threading
+import subprocess
 import gi
 from utils import getenv, ErrorDialog
 
@@ -27,7 +28,7 @@ if "xfce" in getenv("SESSION").lower() or "xfce" in getenv("XDG_CURRENT_DESKTOP"
     import xfce.ThemeManager as ThemeManager
     import xfce.ScaleManager as ScaleManager
     import xfce.KeyboardManager as KeyboardManager
-    #import xfce.WhiskerManager as WhiskerManager
+    import xfce.PanelManager as PanelManager
     currentDesktop = "xfce"
 elif "gnome" in getenv("SESSION").lower() or "gnome" in getenv("XDG_CURRENT_DESKTOP").lower():
     import gnome.WallpaperManager as WallpaperManager
@@ -351,3 +352,9 @@ class MainWindow:
             KeyboardManager.createKeyboardPlugin()
         else:
             KeyboardManager.removeKeyboardPlugin()
+    
+    def on_btn_restore_panel_clicked(self, button):
+        PanelManager.restoreDefaults()
+    
+    def on_btn_restore_all_clicked(self, button):
+        subprocess.run("rm -rf ~/.config/xfce4", shell=True)
