@@ -1487,6 +1487,7 @@ Super + ←  →</property>
                   <object class="GtkButton" id="btn_prev">
                     <property name="label" translatable="yes">Previous</property>
                     <property name="visible">True</property>
+                    <property name="sensitive">False</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
                     <signal name="clicked" handler="on_btn_prev_clicked" swapped="no"/>
