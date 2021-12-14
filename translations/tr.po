@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 15:46+0300\n"
+"POT-Creation-Date: 2021-12-14 13:33+0300\n"
 "PO-Revision-Date: 2021-06-01 14:19+0300\n"
 "Last-Translator: Emin fedar <emin.fedar@pardus.org.tr>\n"
 "Language-Team: Turkish <gelistirici@pardus.org.tr>\n"
@@ -23,89 +23,85 @@ msgstr ""
 msgid ""
 "Welcome.\n"
 "\n"
-"This tool helps you to get Pardus ready."
+"This application helps you to configure Pardus."
 msgstr ""
-"Hoşgeldiniz.\n"
+"Hoş Geldiniz.\n"
 "\n"
 "Bu uygulama Pardus'u hazırlamanız için size yardımcı olacaktır."
 
-#: ../ui/MainWindow.glade:127 ../ui/MainWindow.glade:1517
+#: ../ui/MainWindow.glade:127
 msgid "Welcome"
-msgstr "Hoşgeldiniz"
+msgstr "Hoş Geldiniz"
 
-#: ../ui/MainWindow.glade:175
+#: ../ui/MainWindow.glade:180
 msgid "Select Wallpaper"
 msgstr "Duvar Kağıdı Seçin"
 
-#: ../ui/MainWindow.glade:216
+#: ../ui/MainWindow.glade:235
 msgid "Light"
 msgstr "Açık"
 
-#: ../ui/MainWindow.glade:229 ../ui/MainWindow.glade:286
-msgid "Apply"
-msgstr "Uygula"
-
-#: ../ui/MainWindow.glade:273
+#: ../ui/MainWindow.glade:287
 msgid "Dark"
 msgstr "Koyu"
 
-#: ../ui/MainWindow.glade:325
+#: ../ui/MainWindow.glade:321
 msgid "Theme Settings"
 msgstr "Tema Ayarları"
 
-#: ../ui/MainWindow.glade:377
+#: ../ui/MainWindow.glade:376
 msgid "<b>Display Scaling:</b>"
 msgstr "<b>Görüntü Ölçekleme:</b>"
 
-#: ../ui/MainWindow.glade:409
+#: ../ui/MainWindow.glade:408
 msgid "<b>Panel Size</b> (px):"
 msgstr "<b>Panel Boyutu</b> (px):"
 
-#: ../ui/MainWindow.glade:439
+#: ../ui/MainWindow.glade:438
 msgid "<b>Desktop Icon Size</b> (px):"
 msgstr "<b>Masaüstü Ikon Boyutu</b> (px):"
 
-#: ../ui/MainWindow.glade:480
+#: ../ui/MainWindow.glade:479
 msgid "Display Settings"
 msgstr "Görüntü Ayarları"
 
-#: ../ui/MainWindow.glade:507
+#: ../ui/MainWindow.glade:506
 msgid "Add / Remove Keyboard layouts"
 msgstr "Klavye Yerleşimi Ekle / Çıkar"
 
-#: ../ui/MainWindow.glade:549 ../ui/MainWindow.glade:590
+#: ../ui/MainWindow.glade:548 ../ui/MainWindow.glade:589
 msgid "Turkish - Q Keyboard"
 msgstr "Türkçe - Q Klavye"
 
-#: ../ui/MainWindow.glade:559 ../ui/MainWindow.glade:660
-#: ../ui/MainWindow.glade:761
+#: ../ui/MainWindow.glade:558 ../ui/MainWindow.glade:659
+#: ../ui/MainWindow.glade:760
 msgid "Add"
 msgstr "Ekle"
 
-#: ../ui/MainWindow.glade:578 ../ui/MainWindow.glade:679
-#: ../ui/MainWindow.glade:780
+#: ../ui/MainWindow.glade:577 ../ui/MainWindow.glade:678
+#: ../ui/MainWindow.glade:779 ../ui/MainWindow.glade:1413
 msgid "page0"
 msgstr ""
 
-#: ../ui/MainWindow.glade:600 ../ui/MainWindow.glade:701
-#: ../ui/MainWindow.glade:802
+#: ../ui/MainWindow.glade:599 ../ui/MainWindow.glade:700
+#: ../ui/MainWindow.glade:801
 msgid "Remove"
 msgstr "Kaldır"
 
-#: ../ui/MainWindow.glade:619 ../ui/MainWindow.glade:720
-#: ../ui/MainWindow.glade:821
+#: ../ui/MainWindow.glade:618 ../ui/MainWindow.glade:719
+#: ../ui/MainWindow.glade:820 ../ui/MainWindow.glade:1430
 msgid "page1"
 msgstr ""
 
-#: ../ui/MainWindow.glade:650 ../ui/MainWindow.glade:691
+#: ../ui/MainWindow.glade:649 ../ui/MainWindow.glade:690
 msgid "Turkish - F Keyboard"
 msgstr "Türkçe - F Klavye"
 
-#: ../ui/MainWindow.glade:751 ../ui/MainWindow.glade:792
+#: ../ui/MainWindow.glade:750 ../ui/MainWindow.glade:791
 msgid "English Keyboard"
 msgstr "İngilizce Klavye"
 
-#: ../ui/MainWindow.glade:846
+#: ../ui/MainWindow.glade:845
 msgid ""
 "<span size=\"10000\">You can switch between keyboard layouts with:\n"
 "<b>Super + Space</b></span>"
@@ -113,43 +109,72 @@ msgstr ""
 "<span size=\"10000\">Klavye yerleşimini değiştirmek için:\n"
 "<b>Super + Boşluk</b></span>"
 
-#: ../ui/MainWindow.glade:891
+#: ../ui/MainWindow.glade:890
 msgid "Show Language Indicator on Panel"
 msgstr "Klavye Göstergesini Panel'de Göster"
 
-#: ../ui/MainWindow.glade:944
+#: ../ui/MainWindow.glade:943
 msgid "Keyboard Settings"
 msgstr "Klavye Ayarları"
 
-#: ../ui/MainWindow.glade:1045
-msgid "Start Menu Settings"
-msgstr "Başlangıç Menüsü Ayarları"
+#: ../ui/MainWindow.glade:969
+msgid "Shortcuts"
+msgstr "Kısayollar"
 
-#: ../ui/MainWindow.glade:1095
+#: ../ui/MainWindow.glade:1000
 msgid ""
-"<span size=\"16000\">Website:</span>\n"
-"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
+"<b>Show Desktop:</b>\n"
+"Ctrl+Alt+D\n"
+"\n"
+"<b>Lock Screen:</b>\n"
+"Super + L | Ctrl+Alt+L\n"
+"\n"
+"<b>Applications:</b>\n"
+"Super\n"
+"\n"
+"<b>Terminal:</b>\n"
+"Ctrl+Alt+T"
 msgstr ""
-"<span size=\"16000\">Website:</span>\n"
-"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
+"<b>Masaüstünü Göster:</b>\n"
+"Ctrl+Alt+D\n"
+"\n"
+"<b>Ekranı Kilitle:</b>\n"
+"Super + L | Ctrl+Alt+L\n"
+"\n"
+"<b>Uygulamalar:</b>\n"
+"Super\n"
+"\n"
+"<b>Uçbirim:</b>\n"
+"Ctrl+Alt+T"
 
-#: ../ui/MainWindow.glade:1110
+#: ../ui/MainWindow.glade:1034
 msgid ""
-"<span size=\"16000\">Forum:</span>\n"
-"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
+"<b>Change Workspace:</b>\n"
+"Ctrl + Alt + ←  →\n"
+"\n"
+"<b>Change Program:</b>\n"
+"Alt + Tab\n"
+"\n"
+"<b>Change Window:</b>\n"
+"Super + Tab\n"
+"\n"
+"<b>View Split:</b>\n"
+"Super + ←  →"
 msgstr ""
-"<span size=\"16000\">Forum:</span>\n"
-"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
+"<b>Çalışma Alanı Değiştir:</b>\n"
+"Ctrl + Alt + ←  →\n"
+"\n"
+"<b>Programlar Arası Geçiş:</b>\n"
+"Alt + Tab\n"
+"\n"
+"<b>Pencereler Arası Geçiş:</b>\n"
+"Super + Tab\n"
+"\n"
+"<b>Ekranı Böl:</b>\n"
+"Super + ←  →"
 
-#: ../ui/MainWindow.glade:1125
-msgid ""
-"<span size=\"16000\">Documentations:</span>\n"
-"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
-msgstr ""
-"<span size=\"16000\">Belgeler:</span>\n"
-"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
 
-#: ../ui/MainWindow.glade:1140
+#: ../ui/MainWindow.glade:1077
 msgid ""
 "<span size=\"16000\">Support:</span>\n"
 "<span size=\"16000\"><b>444 5 773</b></span>\n"
@@ -161,27 +186,61 @@ msgstr ""
 "<a href=\"https://talep.pardus.org.tr/servicedesk/customer/portal/1\">talep."
 "pardus.org.tr</a>"
 
-#: ../ui/MainWindow.glade:1153
-msgid "Close"
-msgstr "Kapat"
+#: ../ui/MainWindow.glade:1093
+msgid ""
+"<span size=\"16000\">Documentations:</span>\n"
+"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
+msgstr ""
+"<span size=\"16000\">Belgeler:</span>\n"
+"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
 
-#: ../ui/MainWindow.glade:1186
+#: ../ui/MainWindow.glade:1108
+msgid ""
+"<span size=\"16000\">Forum:</span>\n"
+"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
+msgstr ""
+"<span size=\"16000\">Forum:</span>\n"
+"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
+
+#: ../ui/MainWindow.glade:1123
+msgid ""
+"<span size=\"16000\">Website:</span>\n"
+"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
+msgstr ""
+"<span size=\"16000\">Website:</span>\n"
+"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
+
+#: ../ui/MainWindow.glade:1150
 msgid "Support & Community"
 msgstr "Destek & Topluluk"
 
-#: ../ui/MainWindow.glade:1469
+#: ../ui/MainWindow.glade:1405
 msgid "Next"
 msgstr "İleri"
 
-#: ../ui/MainWindow.glade:1484
+#: ../ui/MainWindow.glade:1418
+msgid "Close"
+msgstr "Kapat"
+
+#: ../ui/MainWindow.glade:1444
 msgid "Previous"
 msgstr "Geri"
 
-#~ msgid "Wallpaper"
-#~ msgstr "Duvar Kağıdı"
+#: ../ui/MainWindow.glade:1478
+msgid "Pardus Welcome"
+msgstr "Pardus Hoş Geldiniz"
 
-#~ msgid "Theme"
-#~ msgstr "Tema"
+msgid "Apply"
+msgstr "Uygula"
 
-#~ msgid "Display"
-#~ msgstr "Görüntü"
+msgid "Start Menu Settings"
+msgstr "Başlangıç Menüsü Ayarları"
+
+msgid "Wallpaper"
+msgstr "Duvar Kağıdı"
+
+msgid "Theme"
+msgstr "Tema"
+
+msgid "Display"
+msgstr "Görüntü"

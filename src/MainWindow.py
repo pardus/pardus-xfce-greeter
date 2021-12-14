@@ -110,7 +110,6 @@ class MainWindow:
         self.sli_panel = self.builder.get_object("sli_panel")
         self.sli_scaling = self.builder.get_object("sli_scaling")
         self.sli_desktopIcon = self.builder.get_object("sli_desktopIcon")
-        self.btn_restore_panel = self.builder.get_object("btn_restore_panel")
 
         # - Keyboard Settings:
         self.stk_trf = self.builder.get_object("stk_trf")
@@ -138,7 +137,6 @@ class MainWindow:
             self.sli_desktopIcon.set_visible(False)
             self.lbl_panelSize.set_visible(False)
             self.lbl_desktopIconSize.set_visible(False)
-            self.btn_restore_panel.set_visible(False)
         
         # Remove Keyboard settings if not XFCE
         if currentDesktop != "xfce":
@@ -355,8 +353,3 @@ class MainWindow:
         else:
             KeyboardManager.removeKeyboardPlugin()
     
-    def on_btn_restore_panel_clicked(self, button):
-        PanelManager.restoreDefaults()
-    
-    def on_btn_restore_all_clicked(self, button):
-        subprocess.run("rm -rf ~/.config/xfce4", shell=True)
