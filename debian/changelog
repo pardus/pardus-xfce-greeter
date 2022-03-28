@@ -1,3 +1,22 @@
+pardus-welcome (0.2.0) unstable; urgency=medium
+
+  [ Emin Fedar ]
+  * Added Restore Panel buttons Added Shortcuts page
+  * getScale bug fix
+  * Previous button default sensitive is False Restore Panel is visible only at XFCE
+  * Hoşgeldiniz -> Hoş Geldiniz, Restore buttons deleted.
+  * Added xfce.PanelManager file to setup.py
+  * Update 2021 to 2022
+  * Communities added.
+  * Added Separate GNOME & XFCE Shortcuts
+  * Added Turkish Translation
+  * Added Discord & Github logos
+
+  [ Fatih Altun ]
+  * Update Architecture as all
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Mon, 28 Mar 2022 16:15:19 +0300
+
 pardus-welcome (0.1.0) unstable; urgency=medium
 
   * Remove xfce folder from backgrounds list
