@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-28 12:36+0300\n"
+"POT-Creation-Date: 2022-03-28 15:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,7 +73,7 @@ msgid "Add"
 msgstr ""
 
 #: ../ui/MainWindow.glade:577 ../ui/MainWindow.glade:678
-#: ../ui/MainWindow.glade:779 ../ui/MainWindow.glade:1497
+#: ../ui/MainWindow.glade:779 ../ui/MainWindow.glade:1586
 msgid "page0"
 msgstr ""
 
@@ -84,7 +83,7 @@ msgid "Remove"
 msgstr ""
 
 #: ../ui/MainWindow.glade:618 ../ui/MainWindow.glade:719
-#: ../ui/MainWindow.glade:820 ../ui/MainWindow.glade:1514
+#: ../ui/MainWindow.glade:820 ../ui/MainWindow.glade:1603
 msgid "page1"
 msgstr ""
 
@@ -114,25 +113,37 @@ msgstr ""
 msgid "Shortcuts"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1002
+#: ../ui/MainWindow.glade:1006
 msgid ""
-"<b>Show Desktop:</b>\n"
-"Ctrl+Alt+D\n"
+"<b>Screenshot (Active Window):</b>\n"
+"Alt + Print Screen\n"
+"\n"
+"<b>Screenshot (Area):</b>\n"
+"Shift + Print Screen\n"
 "\n"
 "<b>Lock Screen:</b>\n"
-"Super + L | Ctrl+Alt+L\n"
+"Super + L | Ctrl + Alt + L\n"
 "\n"
 "<b>Applications:</b>\n"
 "Super\n"
 "\n"
+"<b>Show Desktop:</b>\n"
+"Ctrl + Alt + D\n"
+"\n"
 "<b>Terminal:</b>\n"
-"Ctrl+Alt+T"
+"Ctrl + Alt + T"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1036
+#: ../ui/MainWindow.glade:1046
 msgid ""
 "<b>Change Workspace:</b>\n"
-"Ctrl + Alt + ←  →\n"
+"Ctrl + Alt + ←  → ↑ ↓\n"
+"\n"
+"<b>Add/Remove Workspace:</b>\n"
+"Alt + Insert/Delete\n"
+"\n"
+"<b>Go to Workspace:</b>\n"
+"Ctrl + F1...F12\n"
 "\n"
 "<b>Change Program:</b>\n"
 "Alt + Tab\n"
@@ -144,7 +155,37 @@ msgid ""
 "Super + ←  →"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1073
+#: ../ui/MainWindow.glade:1085
+msgid ""
+"<b>Screenshot (Active Window):</b>\n"
+"Alt + Print Screen\n"
+"\n"
+"<b>Screenshot (Area):</b>\n"
+"Shift + Print Screen\n"
+"\n"
+"<b>Lock Screen:</b>\n"
+"Super + L\n"
+"\n"
+"<b>Applications:</b>\n"
+"Super"
+msgstr ""
+
+#: ../ui/MainWindow.glade:1119
+msgid ""
+"<b>Change Workspace:</b>\n"
+"Ctrl + Alt + ↑ ↓\n"
+"\n"
+"<b>Change Program:</b>\n"
+"Alt + Tab\n"
+"\n"
+"<b>Change Window:</b>\n"
+"Super + Tab\n"
+"\n"
+"<b>View Split:</b>\n"
+"Super + ←  →"
+msgstr ""
+
+#: ../ui/MainWindow.glade:1162
 msgid ""
 "<span size=\"14000\">Support:</span>\n"
 "+90 <span size=\"16000\"><b>444 5 773</b></span>\n"
@@ -152,46 +193,46 @@ msgid ""
 "pardus.org.tr</a>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1101
+#: ../ui/MainWindow.glade:1190
 msgid ""
 "<span size=\"14000\">Community:</span>\n"
 "<a href=\"https://gonullu.pardus.org.tr/\">gonullu.pardus.org.tr</a>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1177
+#: ../ui/MainWindow.glade:1266
 msgid ""
 "<span size=\"14000\">Documentations:</span>\n"
 "<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1192
+#: ../ui/MainWindow.glade:1281
 msgid ""
 "<span size=\"14000\">Forum:</span>\n"
 "<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1207
+#: ../ui/MainWindow.glade:1296
 msgid ""
 "<span size=\"14000\">Website:</span>\n"
 "<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1234
+#: ../ui/MainWindow.glade:1323
 msgid "Support & Community"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1489
+#: ../ui/MainWindow.glade:1578
 msgid "Next"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1502
+#: ../ui/MainWindow.glade:1591
 msgid "Close"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1528
+#: ../ui/MainWindow.glade:1617
 msgid "Previous"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1562
+#: ../ui/MainWindow.glade:1651
 msgid "Pardus Welcome"
 msgstr ""

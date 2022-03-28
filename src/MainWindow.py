@@ -89,39 +89,46 @@ class MainWindow:
         self.hideWidgets()
 
     def defineComponents(self):
+        def getUI(str):
+            return self.builder.get_object(str)
+        
         # - Navigation:
-        self.lbl_headerTitle = self.builder.get_object("lbl_headerTitle")
-        self.nb_pages = self.builder.get_object("nb_pages")
-        self.stk_btn_next = self.builder.get_object("stk_btn_next")
-        self.btn_next = self.builder.get_object("btn_next")
-        self.btn_prev = self.builder.get_object("btn_prev")
-        self.box_progressDots = self.builder.get_object("box_progressDots")
+        self.lbl_headerTitle    = getUI("lbl_headerTitle")
+        self.nb_pages           = getUI("nb_pages")
+        self.stk_btn_next       = getUI("stk_btn_next")
+        self.btn_next           = getUI("btn_next")
+        self.btn_prev           = getUI("btn_prev")
+        self.box_progressDots   = getUI("box_progressDots")
         
         # - Display Settings:
-        self.lst_themes = self.builder.get_object("lst_themes")
-        self.lst_windowThemes = self.builder.get_object("lst_windowThemes")
-        self.flow_wallpapers = self.builder.get_object("flow_wallpapers")
-        self.rb_darkTheme = self.builder.get_object("rb_darkTheme")
-        self.rb_lightTheme = self.builder.get_object("rb_lightTheme")
+        self.lst_themes         = getUI("lst_themes")
+        self.lst_windowThemes   = getUI("lst_windowThemes")
+        self.flow_wallpapers    = getUI("flow_wallpapers")
+        self.rb_darkTheme       = getUI("rb_darkTheme")
+        self.rb_lightTheme      = getUI("rb_lightTheme")
 
         # - Scaling Settings:
-        self.lbl_panelSize = self.builder.get_object("lbl_panelSize")
-        self.lbl_desktopIconSize = self.builder.get_object("lbl_desktopIconSize")
-        self.sli_panel = self.builder.get_object("sli_panel")
-        self.sli_scaling = self.builder.get_object("sli_scaling")
-        self.sli_desktopIcon = self.builder.get_object("sli_desktopIcon")
+        self.lbl_panelSize          = getUI("lbl_panelSize")
+        self.lbl_desktopIconSize    = getUI("lbl_desktopIconSize")
+        self.sli_panel              = getUI("sli_panel")
+        self.sli_scaling            = getUI("sli_scaling")
+        self.sli_desktopIcon        = getUI("sli_desktopIcon")
 
         # - Keyboard Settings:
-        self.stk_trf = self.builder.get_object("stk_trf")
-        self.stk_trq = self.builder.get_object("stk_trq")
-        self.stk_en = self.builder.get_object("stk_en")
-        self.btn_trq_remove = self.builder.get_object("btn_trq_remove")
-        self.btn_trf_remove = self.builder.get_object("btn_trf_remove")
-        self.btn_en_remove = self.builder.get_object("btn_en_remove")
-        self.sw_lang_indicator = self.builder.get_object("sw_lang_indicator")
+        self.stk_trf            = getUI("stk_trf")
+        self.stk_trq            = getUI("stk_trq")
+        self.stk_en             = getUI("stk_en")
+        self.btn_trq_remove     = getUI("btn_trq_remove")
+        self.btn_trf_remove     = getUI("btn_trf_remove")
+        self.btn_en_remove      = getUI("btn_en_remove")
+        self.sw_lang_indicator  = getUI("sw_lang_indicator")
 
         # - Stack Pages:
-        self.page_keyboardSettings = self.builder.get_object("page_keyboardSettings")
+        self.page_keyboardSettings = getUI("page_keyboardSettings")
+        
+        # - Shortcut Page
+        self.stk_shortcuts = getUI("stk_shortcuts")
+        self.stk_shortcuts.set_visible_child_name(currentDesktop)
 
         tabTitle = self.nb_pages.get_tab_label_text(self.nb_pages.get_nth_page(self.nb_pages.get_current_page()))
         self.lbl_headerTitle.set_text(tabTitle)

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-28 12:36+0300\n"
+"POT-Creation-Date: 2022-03-28 15:39+0300\n"
 "PO-Revision-Date: 2021-06-01 14:19+0300\n"
 "Last-Translator: Emin fedar <emin.fedar@pardus.org.tr>\n"
 "Language-Team: Turkish <gelistirici@pardus.org.tr>\n"
@@ -111,36 +111,54 @@ msgstr "Klavye Ayarları"
 msgid "Shortcuts"
 msgstr "Kısayollar"
 
-#: ../ui/MainWindow.glade:1002
+#: ../ui/MainWindow.glade:1006
 msgid ""
-"<b>Show Desktop:</b>\n"
-"Ctrl+Alt+D\n"
+"<b>Screenshot (Active Window):</b>\n"
+"Alt + Print Screen\n"
+"\n"
+"<b>Screenshot (Area):</b>\n"
+"Shift + Print Screen\n"
 "\n"
 "<b>Lock Screen:</b>\n"
-"Super + L | Ctrl+Alt+L\n"
+"Super + L | Ctrl + Alt + L\n"
 "\n"
 "<b>Applications:</b>\n"
 "Super\n"
 "\n"
+"<b>Show Desktop:</b>\n"
+"Ctrl + Alt + D\n"
+"\n"
 "<b>Terminal:</b>\n"
-"Ctrl+Alt+T"
+"Ctrl + Alt + T"
 msgstr ""
-"<b>Masaüstünü Göster:</b>\n"
-"Ctrl+Alt+D\n"
+"<b>Ekran Görüntüsü (Aktif Pencere):</b>\n"
+"Alt + Print Screen\n"
+"\n"
+"<b>Ekran Görüntüsü (Seçim):</b>\n"
+"Shift + Print Screen\n"
 "\n"
 "<b>Ekranı Kilitle:</b>\n"
-"Super + L | Ctrl+Alt+L\n"
+"Super + L | Ctrl + Alt + L\n"
 "\n"
 "<b>Uygulamalar:</b>\n"
 "Super\n"
 "\n"
+"<b>Masaüstünü Göster:</b>\n"
+"Ctrl + Alt + D\n"
+"\n"
 "<b>Uçbirim:</b>\n"
-"Ctrl+Alt+T"
+"Ctrl + Alt + T"
 
-#: ../ui/MainWindow.glade:1036
+#: ../ui/MainWindow.glade:1046
 msgid ""
 "<b>Change Workspace:</b>\n"
-"Ctrl + Alt + ←  →\n"
+"Ctrl + Alt + ←  → ↑ ↓\n"
+"\n"
+"<b>Add/Remove Workspace:</b>\n"
+"Alt + Insert/Delete\n"
+"\n"
+"<b>Go to Workspace:</b>\n"
+"Ctrl + F1...F12\n"
 "\n"
 "<b>Change Program:</b>\n"
 "Alt + Tab\n"
@@ -152,7 +170,13 @@ msgid ""
 "Super + ←  →"
 msgstr ""
 "<b>Çalışma Alanı Değiştir:</b>\n"
-"Ctrl + Alt + ←  →\n"
+"Ctrl + Alt + ←  → ↑ ↓\n"
+"\n"
+"<b>Çalışma Alanı Ekle/Çıkar:</b>\n"
+"Alt + Insert/Delete\n"
+"\n"
+"<b>Çalışma Alanına Git:</b>\n"
+"Ctrl + F1...F12\n"
 "\n"
 "<b>Programlar Arası Geçiş:</b>\n"
 "Alt + Tab\n"
@@ -163,7 +187,59 @@ msgstr ""
 "<b>Ekranı Böl:</b>\n"
 "Super + ←  →"
 
-#: ../ui/MainWindow.glade:1073
+#: ../ui/MainWindow.glade:1085
+msgid ""
+"<b>Screenshot (Active Window):</b>\n"
+"Alt + Print Screen\n"
+"\n"
+"<b>Screenshot (Area):</b>\n"
+"Shift + Print Screen\n"
+"\n"
+"<b>Lock Screen:</b>\n"
+"Super + L\n"
+"\n"
+"<b>Applications:</b>\n"
+"Super"
+msgstr ""
+"<b>Ekran Görüntüsü (Aktif Pencere):</b>\n"
+"Alt + Print Screen\n"
+"\n"
+"<b>Ekran Görüntüsü (Seçim):</b>\n"
+"Shift + Print Screen\n"
+"\n"
+"<b>Ekranı Kilitle:</b>\n"
+"Super + L\n"
+"\n"
+"<b>Uygulamalar:</b>\n"
+"Super"
+
+#: ../ui/MainWindow.glade:1119
+msgid ""
+"<b>Change Workspace:</b>\n"
+"Ctrl + Alt + ↑ ↓\n"
+"\n"
+"<b>Change Program:</b>\n"
+"Alt + Tab\n"
+"\n"
+"<b>Change Window:</b>\n"
+"Super + Tab\n"
+"\n"
+"<b>View Split:</b>\n"
+"Super + ←  →"
+msgstr ""
+"<b>Çalışma Alanı Değiştir:</b>\n"
+"Ctrl + Alt + ↑ ↓\n"
+"\n"
+"<b>Programlar Arası Geçiş:</b>\n"
+"Alt + Tab\n"
+"\n"
+"<b>Pencereler Arası Geçiş:</b>\n"
+"Super + Tab\n"
+"\n"
+"<b>Ekranı Böl:</b>\n"
+"Super + ←  →"
+
+#: ../ui/MainWindow.glade:1162
 msgid ""
 "<span size=\"14000\">Support:</span>\n"
 "+90 <span size=\"16000\"><b>444 5 773</b></span>\n"
@@ -175,15 +251,15 @@ msgstr ""
 "<a href=\"https://talep.pardus.org.tr/servicedesk/customer/portal/1\">talep."
 "pardus.org.tr</a>"
 
-#: ../ui/MainWindow.glade:1101
+#: ../ui/MainWindow.glade:1190
 msgid ""
-"<span size=\"14000\">Community::</span>\n"
+"<span size=\"14000\">Community:</span>\n"
 "<a href=\"https://gonullu.pardus.org.tr/\">gonullu.pardus.org.tr</a>"
 msgstr ""
 "<span size=\"14000\">Topluluk:</span>\n"
 "<a href=\"https://gonullu.pardus.org.tr/\">gonullu.pardus.org.tr</a>"
 
-#: ../ui/MainWindow.glade:1177
+#: ../ui/MainWindow.glade:1266
 msgid ""
 "<span size=\"14000\">Documentations:</span>\n"
 "<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
@@ -191,7 +267,7 @@ msgstr ""
 "<span size=\"14000\">Belgeler:</span>\n"
 "<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
 
-#: ../ui/MainWindow.glade:1192
+#: ../ui/MainWindow.glade:1281
 msgid ""
 "<span size=\"14000\">Forum:</span>\n"
 "<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
@@ -199,46 +275,30 @@ msgstr ""
 "<span size=\"14000\">Forum:</span>\n"
 "<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
 
-#: ../ui/MainWindow.glade:1207
-#, fuzzy
+#: ../ui/MainWindow.glade:1296
 msgid ""
 "<span size=\"14000\">Website:</span>\n"
 "<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
 msgstr ""
-"<span size=\"14000\">Website:</span>\n"
+"<span size=\"14000\">Web Sayfası:</span>\n"
 "<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
 
-#: ../ui/MainWindow.glade:1234
+#: ../ui/MainWindow.glade:1323
 msgid "Support & Community"
 msgstr "Destek & Topluluk"
 
-#: ../ui/MainWindow.glade:1489
+#: ../ui/MainWindow.glade:1578
 msgid "Next"
 msgstr "İleri"
 
-#: ../ui/MainWindow.glade:1502
+#: ../ui/MainWindow.glade:1591
 msgid "Close"
 msgstr "Kapat"
 
-#: ../ui/MainWindow.glade:1528
+#: ../ui/MainWindow.glade:1617
 msgid "Previous"
 msgstr "Geri"
 
-#: ../ui/MainWindow.glade:1562
+#: ../ui/MainWindow.glade:1651
 msgid "Pardus Welcome"
 msgstr "Pardus Hoş Geldiniz"
-
-#~ msgid "Apply"
-#~ msgstr "Uygula"
-
-#~ msgid "Start Menu Settings"
-#~ msgstr "Başlangıç Menüsü Ayarları"
-
-#~ msgid "Wallpaper"
-#~ msgstr "Duvar Kağıdı"
-
-#~ msgid "Theme"
-#~ msgstr "Tema"
-
-#~ msgid "Display"
-#~ msgstr "Görüntü"

@@ -991,50 +991,66 @@ This application helps you to configure Pardus.</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkBox">
+                          <object class="GtkStack" id="stk_shortcuts">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="spacing">30</property>
                             <child>
-                              <object class="GtkLabel">
+                              <object class="GtkBox">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">&lt;b&gt;Show Desktop:&lt;/b&gt;
-Ctrl+Alt+D
+                                <property name="spacing">30</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="label" translatable="yes">&lt;b&gt;Screenshot (Active Window):&lt;/b&gt;
+Alt + Print Screen
+
+&lt;b&gt;Screenshot (Area):&lt;/b&gt;
+Shift + Print Screen
 
 &lt;b&gt;Lock Screen:&lt;/b&gt;
-Super + L | Ctrl+Alt+L
+Super + L | Ctrl + Alt + L
 
 &lt;b&gt;Applications:&lt;/b&gt;
 Super
 
+&lt;b&gt;Show Desktop:&lt;/b&gt;
+Ctrl + Alt + D
+
 &lt;b&gt;Terminal:&lt;/b&gt;
-Ctrl+Alt+T</property>
-                                <property name="use-markup">True</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkSeparator">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">&lt;b&gt;Change Workspace:&lt;/b&gt;
-Ctrl + Alt + ←  →
+Ctrl + Alt + T</property>
+                                    <property name="use-markup">True</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkSeparator">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="label" translatable="yes">&lt;b&gt;Change Workspace:&lt;/b&gt;
+Ctrl + Alt + ←  → ↑ ↓
+
+&lt;b&gt;Add/Remove Workspace:&lt;/b&gt;
+Alt + Insert/Delete
+
+&lt;b&gt;Go to Workspace:&lt;/b&gt;
+Ctrl + F1...F12
 
 &lt;b&gt;Change Program:&lt;/b&gt;
 Alt + Tab
@@ -1044,12 +1060,85 @@ Super + Tab
 
 &lt;b&gt;View Split:&lt;/b&gt;
 Super + ←  →</property>
-                                <property name="use-markup">True</property>
+                                    <property name="use-markup">True</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">2</property>
+                                  </packing>
+                                </child>
                               </object>
                               <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
+                                <property name="name">xfce</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="spacing">30</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="label" translatable="yes">&lt;b&gt;Screenshot (Active Window):&lt;/b&gt;
+Alt + Print Screen
+
+&lt;b&gt;Screenshot (Area):&lt;/b&gt;
+Shift + Print Screen
+
+&lt;b&gt;Lock Screen:&lt;/b&gt;
+Super + L
+
+&lt;b&gt;Applications:&lt;/b&gt;
+Super</property>
+                                    <property name="use-markup">True</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkSeparator">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="label" translatable="yes">&lt;b&gt;Change Workspace:&lt;/b&gt;
+Ctrl + Alt + ↑ ↓
+
+&lt;b&gt;Change Program:&lt;/b&gt;
+Alt + Tab
+
+&lt;b&gt;Change Window:&lt;/b&gt;
+Super + Tab
+
+&lt;b&gt;View Split:&lt;/b&gt;
+Super + ←  →</property>
+                                    <property name="use-markup">True</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">2</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="name">gnome</property>
+                                <property name="position">1</property>
                               </packing>
                             </child>
                           </object>
