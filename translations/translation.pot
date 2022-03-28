@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-14 13:33+0300\n"
+"POT-Creation-Date: 2022-03-28 12:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,7 +74,7 @@ msgid "Add"
 msgstr ""
 
 #: ../ui/MainWindow.glade:577 ../ui/MainWindow.glade:678
-#: ../ui/MainWindow.glade:779 ../ui/MainWindow.glade:1413
+#: ../ui/MainWindow.glade:779 ../ui/MainWindow.glade:1497
 msgid "page0"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgid "Remove"
 msgstr ""
 
 #: ../ui/MainWindow.glade:618 ../ui/MainWindow.glade:719
-#: ../ui/MainWindow.glade:820 ../ui/MainWindow.glade:1430
+#: ../ui/MainWindow.glade:820 ../ui/MainWindow.glade:1514
 msgid "page1"
 msgstr ""
 
@@ -110,11 +110,11 @@ msgstr ""
 msgid "Keyboard Settings"
 msgstr ""
 
-#: ../ui/MainWindow.glade:969
+#: ../ui/MainWindow.glade:971
 msgid "Shortcuts"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1000
+#: ../ui/MainWindow.glade:1002
 msgid ""
 "<b>Show Desktop:</b>\n"
 "Ctrl+Alt+D\n"
@@ -129,7 +129,7 @@ msgid ""
 "Ctrl+Alt+T"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1034
+#: ../ui/MainWindow.glade:1036
 msgid ""
 "<b>Change Workspace:</b>\n"
 "Ctrl + Alt + ←  →\n"
@@ -144,48 +144,54 @@ msgid ""
 "Super + ←  →"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1077
+#: ../ui/MainWindow.glade:1073
 msgid ""
-"<span size=\"16000\">Support:</span>\n"
-"<span size=\"16000\"><b>444 5 773</b></span>\n"
+"<span size=\"14000\">Support:</span>\n"
+"+90 <span size=\"16000\"><b>444 5 773</b></span>\n"
 "<a href=\"https://talep.pardus.org.tr/servicedesk/customer/portal/1\">talep."
 "pardus.org.tr</a>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1093
+#: ../ui/MainWindow.glade:1101
 msgid ""
-"<span size=\"16000\">Documentations:</span>\n"
+"<span size=\"14000\">Community:</span>\n"
+"<a href=\"https://gonullu.pardus.org.tr/\">gonullu.pardus.org.tr</a>"
+msgstr ""
+
+#: ../ui/MainWindow.glade:1177
+msgid ""
+"<span size=\"14000\">Documentations:</span>\n"
 "<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1108
+#: ../ui/MainWindow.glade:1192
 msgid ""
-"<span size=\"16000\">Forum:</span>\n"
+"<span size=\"14000\">Forum:</span>\n"
 "<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1123
+#: ../ui/MainWindow.glade:1207
 msgid ""
-"<span size=\"16000\">Website:</span>\n"
+"<span size=\"14000\">Website:</span>\n"
 "<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1150
+#: ../ui/MainWindow.glade:1234
 msgid "Support & Community"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1405
+#: ../ui/MainWindow.glade:1489
 msgid "Next"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1418
+#: ../ui/MainWindow.glade:1502
 msgid "Close"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1444
+#: ../ui/MainWindow.glade:1528
 msgid "Previous"
 msgstr ""
 
-#: ../ui/MainWindow.glade:1478
+#: ../ui/MainWindow.glade:1562
 msgid "Pardus Welcome"
 msgstr ""
