@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Emin fedar <emin.fedar@pardus.org.tr>, 2021.
+# Fatih Altun <fatih.altun@pardus.org.tr>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-28 15:39+0300\n"
-"PO-Revision-Date: 2021-06-01 14:19+0300\n"
-"Last-Translator: Emin fedar <emin.fedar@pardus.org.tr>\n"
-"Language-Team: Turkish <gelistirici@pardus.org.tr>\n"
+"POT-Creation-Date: 2022-03-28 22:04+0300\n"
+"PO-Revision-Date: 2022-03-28 22:06+0300\n"
+"Last-Translator: Fatih Altun <fatih.altun@pardus.org.tr>\n"
+"Language-Team: Turkish <dev@pardus.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "X-Generator: Gtranslator 3.38.0\n"
 
 #: ../ui/MainWindow.glade:109
@@ -78,10 +79,20 @@ msgstr "Türkçe - Q Klavye"
 msgid "Add"
 msgstr "Ekle"
 
+#: ../ui/MainWindow.glade:577 ../ui/MainWindow.glade:678
+#: ../ui/MainWindow.glade:779 ../ui/MainWindow.glade:1692
+msgid "page0"
+msgstr ""
+
 #: ../ui/MainWindow.glade:599 ../ui/MainWindow.glade:700
 #: ../ui/MainWindow.glade:801
 msgid "Remove"
 msgstr "Kaldır"
+
+#: ../ui/MainWindow.glade:618 ../ui/MainWindow.glade:719
+#: ../ui/MainWindow.glade:820 ../ui/MainWindow.glade:1709
+msgid "page1"
+msgstr ""
 
 #: ../ui/MainWindow.glade:649 ../ui/MainWindow.glade:690
 msgid "Turkish - F Keyboard"
@@ -239,66 +250,85 @@ msgstr ""
 "<b>Ekranı Böl:</b>\n"
 "Super + ←  →"
 
-#: ../ui/MainWindow.glade:1162
-msgid ""
-"<span size=\"14000\">Support:</span>\n"
-"+90 <span size=\"16000\"><b>444 5 773</b></span>\n"
-"<a href=\"https://talep.pardus.org.tr/servicedesk/customer/portal/1\">talep."
-"pardus.org.tr</a>"
-msgstr ""
-"<span size=\"14000\">Destek:</span>\n"
-"+90 <span size=\"16000\"><b>444 5 773</b></span>\n"
-"<a href=\"https://talep.pardus.org.tr/servicedesk/customer/portal/1\">talep."
-"pardus.org.tr</a>"
+#: ../ui/MainWindow.glade:1178
+msgid "<span size=\"large\">Links</span>"
+msgstr "<span size=\"large\">Bağlantılar</span>"
 
-#: ../ui/MainWindow.glade:1190
+#: ../ui/MainWindow.glade:1191
 msgid ""
-"<span size=\"14000\">Community:</span>\n"
-"<a href=\"https://gonullu.pardus.org.tr/\">gonullu.pardus.org.tr</a>"
+"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org.tr"
+"\">Home Page</a>"
 msgstr ""
-"<span size=\"14000\">Topluluk:</span>\n"
-"<a href=\"https://gonullu.pardus.org.tr/\">gonullu.pardus.org.tr</a>"
+"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org.tr"
+"\">Ana Sayfa</a>"
 
-#: ../ui/MainWindow.glade:1266
+#: ../ui/MainWindow.glade:1204
 msgid ""
-"<span size=\"14000\">Documentations:</span>\n"
-"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
+"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org.tr"
+"\">Documentations</a>"
 msgstr ""
-"<span size=\"14000\">Belgeler:</span>\n"
-"<a href=\"https://belge.pardus.org.tr/\">belge.pardus.org.tr</a>"
+"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org.tr"
+"\">Belgeler</a>"
+
+#: ../ui/MainWindow.glade:1217
+msgid ""
+"<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
+"tr\">Community</a>"
+msgstr ""
+"<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
+"tr\">Topluluk</a>"
+
+#: ../ui/MainWindow.glade:1230
+msgid ""
+"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org.tr"
+"\">Forum</a>"
+msgstr ""
+"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org.tr"
+"\">Forum</a>"
+
+#: ../ui/MainWindow.glade:1266 ../ui/MainWindow.glade:1294
+msgid "<small></small>"
+msgstr ""
 
 #: ../ui/MainWindow.glade:1281
-msgid ""
-"<span size=\"14000\">Forum:</span>\n"
-"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
+msgid "<small>+90</small>"
 msgstr ""
-"<span size=\"14000\">Forum:</span>\n"
-"<a href=\"https://forum.pardus.org.tr/\">forum.pardus.org.tr</a>"
 
-#: ../ui/MainWindow.glade:1296
-msgid ""
-"<span size=\"14000\">Website:</span>\n"
-"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
+#: ../ui/MainWindow.glade:1322
+msgid "<span size=\"large\">Support</span>"
 msgstr ""
-"<span size=\"14000\">Web Sayfası:</span>\n"
-"<a href=\"https://www.pardus.org.tr/\">pardus.org.tr</a>"
 
-#: ../ui/MainWindow.glade:1323
+#: ../ui/MainWindow.glade:1335
+msgid "<span size=\"xx-large\"><b>444 5 773</b></span>"
+msgstr ""
+
+#: ../ui/MainWindow.glade:1429
 msgid "Support & Community"
 msgstr "Destek & Topluluk"
 
-#: ../ui/MainWindow.glade:1578
+#: ../ui/MainWindow.glade:1684
 msgid "Next"
 msgstr "İleri"
 
-#: ../ui/MainWindow.glade:1591
+#: ../ui/MainWindow.glade:1697
 msgid "Close"
 msgstr "Kapat"
 
-#: ../ui/MainWindow.glade:1617
+#: ../ui/MainWindow.glade:1723
 msgid "Previous"
 msgstr "Geri"
 
-#: ../ui/MainWindow.glade:1651
+#: ../ui/MainWindow.glade:1757
 msgid "Pardus Welcome"
 msgstr "Pardus Hoş Geldiniz"
+
+#~ msgid ""
+#~ "<span size=\"14000\">Support:</span>\n"
+#~ "+90 <span size=\"16000\"><b>444 5 773</b></span>\n"
+#~ "<a href=\"https://talep.pardus.org.tr/servicedesk/customer/"
+#~ "portal/1\">talep.pardus.org.tr</a>"
+#~ msgstr ""
+#~ "<span size=\"14000\">Destek:</span>\n"
+#~ "+90 <span size=\"16000\"><b>444 5 773</b></span>\n"
+#~ "<a href=\"https://talep.pardus.org.tr/servicedesk/customer/"
+#~ "portal/1\">talep.pardus.org.tr</a>"
