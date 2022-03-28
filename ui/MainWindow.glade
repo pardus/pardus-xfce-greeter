@@ -1188,7 +1188,7 @@ Super + ←  →</property>
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="label" translatable="yes">&lt;a href="https://gonullu.pardus.org.tr/"&gt;gonullu.pardus.org.tr&lt;/a&gt;</property>
+                                <property name="label" translatable="yes">&lt;a href="https://www.pardus.org.tr" title="https://www.pardus.org.tr"&gt;Home Page&lt;/a&gt;</property>
                                 <property name="use-markup">True</property>
                               </object>
                               <packing>
@@ -1201,7 +1201,7 @@ Super + ←  →</property>
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="label" translatable="yes">&lt;a href="https://forum.pardus.org.tr/"&gt;forum.pardus.org.tr&lt;/a&gt;</property>
+                                <property name="label" translatable="yes">&lt;a href="https://belge.pardus.org.tr" title="https://belge.pardus.org.tr"&gt;Documentations&lt;/a&gt;</property>
                                 <property name="use-markup">True</property>
                               </object>
                               <packing>
@@ -1213,8 +1213,8 @@ Super + ←  →</property>
                             <child>
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">&lt;a href="https://belge.pardus.org.tr/"&gt;belge.pardus.org.tr&lt;/a&gt;</property>
+                                <property name="can-focus">True</property>
+                                <property name="label" translatable="yes">&lt;a href="https://gonullu.pardus.org.tr" title="https://gonullu.pardus.org.tr"&gt;Community&lt;/a&gt;</property>
                                 <property name="use-markup">True</property>
                               </object>
                               <packing>
@@ -1227,7 +1227,7 @@ Super + ←  →</property>
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="label" translatable="yes">&lt;a href="https://www.pardus.org.tr/"&gt;pardus.org.tr&lt;/a&gt;</property>
+                                <property name="label" translatable="yes">&lt;a href="https://forum.pardus.org.tr" title="https://forum.pardus.org.tr"&gt;Forum&lt;/a&gt;</property>
                                 <property name="use-markup">True</property>
                               </object>
                               <packing>
