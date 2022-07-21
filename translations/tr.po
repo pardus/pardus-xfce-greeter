@@ -60,7 +60,7 @@ msgstr "<b>Panel Boyutu</b> (px):"
 
 #: ../ui/MainWindow.glade:438
 msgid "<b>Desktop Icon Size</b> (px):"
-msgstr "<b>Masaüstü Ikon Boyutu</b> (px):"
+msgstr "<b>Masaüstü İkon Boyutu</b> (px):"
 
 #: ../ui/MainWindow.glade:479
 msgid "Display Settings"
