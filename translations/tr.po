@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-28 22:04+0300\n"
-"PO-Revision-Date: 2022-03-28 22:06+0300\n"
+"PO-Revision-Date: 2022-07-21 17:13+0300\n"
 "Last-Translator: Fatih Altun <fatih.altun@pardus.org.tr>\n"
 "Language-Team: Turkish <dev@pardus.org.tr>\n"
 "Language: tr\n"
@@ -296,7 +296,7 @@ msgstr ""
 
 #: ../ui/MainWindow.glade:1322
 msgid "<span size=\"large\">Support</span>"
-msgstr ""
+msgstr "<span size=\"large\">Destek</span>"
 
 #: ../ui/MainWindow.glade:1335
 msgid "<span size=\"xx-large\"><b>444 5 773</b></span>"
