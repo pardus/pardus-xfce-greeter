@@ -1,6 +1,23 @@
 #!/usr/bin/env python3
-from setuptools import setup, find_packages, os
+# -*- coding: utf-8 -*-
+
+from setuptools import setup, find_packages
 from shutil import copyfile
+import os, subprocess
+
+
+def create_mo_files():
+    podir = "po"
+    mo = []
+    for po in os.listdir(podir):
+        if po.endswith(".po"):
+            os.makedirs("{}/{}/LC_MESSAGES".format(podir, po.split(".po")[0]), exist_ok=True)
+            mo_file = "{}/{}/LC_MESSAGES/{}".format(podir, po.split(".po")[0], "pardus-welcome.mo")
+            msgfmt_cmd = 'msgfmt {} -o {}'.format(podir + "/" + po, mo_file)
+            subprocess.call(msgfmt_cmd, shell=True)
+            mo.append(("/usr/share/locale/" + po.split(".po")[0] + "/LC_MESSAGES",
+                       ["po/" + po.split(".po")[0] + "/LC_MESSAGES/pardus-welcome.mo"]))
+    return mo
 
 changelog = 'debian/changelog'
 if os.path.exists(changelog):
@@ -16,7 +33,6 @@ if os.path.exists(changelog):
 
 data_files = [
     ("/usr/share/applications/", ["tr.org.pardus.welcome.desktop"]),
-    ("/usr/share/locale/tr/LC_MESSAGES/", ["translations/tr/LC_MESSAGES/pardus-welcome.mo"]),
     ("/usr/share/pardus/pardus-welcome/assets", ["assets/pardus-welcome.svg", "assets/pardus-logo.svg", "assets/theme-light.png", "assets/theme-dark.png", "assets/progress-dot-on.svg", "assets/progress-dot-off.svg", "assets/whisker.png", "assets/discord.svg", "assets/github.svg"]),
     ("/usr/share/pardus/pardus-welcome/src", ["src/main.py", "src/MainWindow.py", "src/utils.py"]),
     ("/usr/share/pardus/pardus-welcome/src/xfce", ["src/xfce/WallpaperManager.py", "src/xfce/ThemeManager.py", "src/xfce/ScaleManager.py", "src/xfce/KeyboardManager.py", "src/xfce/WhiskerManager.py", "src/xfce/PanelManager.py"]),
@@ -25,7 +41,7 @@ data_files = [
     ("/usr/bin/", ["pardus-welcome"]),
     ("/etc/skel/.config/autostart", ["tr.org.pardus.welcome.desktop"]),
     ("/usr/share/icons/hicolor/scalable/apps/", ["assets/pardus-welcome.svg"])
-]
+] + create_mo_files()
 
 setup(
     name="Pardus Welcome",
