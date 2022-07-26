@@ -46,13 +46,13 @@
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkNotebook" id="nb_pages">
+              <object class="GtkStack" id="stk_pages">
                 <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="show-tabs">False</property>
-                <property name="show-border">False</property>
+                <property name="can-focus">False</property>
+                <property name="transition-duration">250</property>
+                <property name="transition-type">slide-left-right</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="page_welcome">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">center</property>
@@ -119,19 +119,12 @@ This application helps you to configure Pardus.</property>
                       </packing>
                     </child>
                   </object>
-                </child>
-                <child type="tab">
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Welcome</property>
-                  </object>
                   <packing>
-                    <property name="tab-fill">False</property>
+                    <property name="name">0</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="page_wallpaper">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="margin-start">13</property>
@@ -170,22 +163,12 @@ This application helps you to configure Pardus.</property>
                     </child>
                   </object>
                   <packing>
+                    <property name="name">1</property>
                     <property name="position">1</property>
-                  </packing>
-                </child>
-                <child type="tab">
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Select Wallpaper</property>
-                  </object>
-                  <packing>
-                    <property name="position">1</property>
-                    <property name="tab-fill">False</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="page_theme">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
@@ -311,22 +294,12 @@ This application helps you to configure Pardus.</property>
                     </child>
                   </object>
                   <packing>
+                    <property name="name">2</property>
                     <property name="position">2</property>
-                  </packing>
-                </child>
-                <child type="tab">
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Theme Settings</property>
-                  </object>
-                  <packing>
-                    <property name="position">2</property>
-                    <property name="tab-fill">False</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="page_display">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
@@ -469,22 +442,12 @@ This application helps you to configure Pardus.</property>
                     </child>
                   </object>
                   <packing>
+                    <property name="name">3</property>
                     <property name="position">3</property>
-                  </packing>
-                </child>
-                <child type="tab">
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Display Settings</property>
-                  </object>
-                  <packing>
-                    <property name="position">3</property>
-                    <property name="tab-fill">False</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="page_keyboardSettings">
+                  <object class="GtkBox" id="page_keyboard">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
@@ -933,22 +896,12 @@ This application helps you to configure Pardus.</property>
                     </child>
                   </object>
                   <packing>
+                    <property name="name">4</property>
                     <property name="position">4</property>
-                  </packing>
-                </child>
-                <child type="tab">
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Keyboard Settings</property>
-                  </object>
-                  <packing>
-                    <property name="position">4</property>
-                    <property name="tab-fill">False</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="page_support">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="margin-bottom">7</property>
@@ -1419,25 +1372,15 @@ Super + ←  →</property>
                     </child>
                   </object>
                   <packing>
-                    <property name="position">6</property>
-                  </packing>
-                </child>
-                <child type="tab">
-                  <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Support &amp; Community</property>
-                  </object>
-                  <packing>
-                    <property name="position">6</property>
-                    <property name="tab-fill">False</property>
+                    <property name="name">5</property>
+                    <property name="position">5</property>
                   </packing>
                 </child>
               </object>
               <packing>
-                <property name="expand">True</property>
+                <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">0</property>
               </packing>
             </child>
             <child>
