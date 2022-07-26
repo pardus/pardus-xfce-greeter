@@ -1,0 +1,249 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-26 14:48+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui/MainWindow.glade:109
+msgid ""
+"Welcome.\n"
+"\n"
+"This application helps you to configure Pardus."
+msgstr ""
+
+#: ui/MainWindow.glade:218
+msgid "Light"
+msgstr ""
+
+#: ui/MainWindow.glade:270
+msgid "Dark"
+msgstr ""
+
+#: ui/MainWindow.glade:349
+msgid "<b>Display Scaling:</b>"
+msgstr ""
+
+#: ui/MainWindow.glade:381
+msgid "<b>Panel Size</b> (px):"
+msgstr ""
+
+#: ui/MainWindow.glade:411
+msgid "<b>Desktop Icon Size</b> (px):"
+msgstr ""
+
+#: ui/MainWindow.glade:469
+msgid "Add / Remove Keyboard layouts"
+msgstr ""
+
+#: ui/MainWindow.glade:511 ui/MainWindow.glade:552
+msgid "Turkish - Q Keyboard"
+msgstr ""
+
+#: ui/MainWindow.glade:521 ui/MainWindow.glade:622 ui/MainWindow.glade:723
+msgid "Add"
+msgstr ""
+
+#: ui/MainWindow.glade:540 ui/MainWindow.glade:641 ui/MainWindow.glade:742
+#: ui/MainWindow.glade:1635
+msgid "page0"
+msgstr ""
+
+#: ui/MainWindow.glade:562 ui/MainWindow.glade:663 ui/MainWindow.glade:764
+msgid "Remove"
+msgstr ""
+
+#: ui/MainWindow.glade:581 ui/MainWindow.glade:682 ui/MainWindow.glade:783
+#: ui/MainWindow.glade:1652
+msgid "page1"
+msgstr ""
+
+#: ui/MainWindow.glade:612 ui/MainWindow.glade:653
+msgid "Turkish - F Keyboard"
+msgstr ""
+
+#: ui/MainWindow.glade:713 ui/MainWindow.glade:754
+msgid "English Keyboard"
+msgstr ""
+
+#: ui/MainWindow.glade:808
+msgid ""
+"<span size=\"10000\">You can switch between keyboard layouts with:\n"
+"<b>Super + Space</b></span>"
+msgstr ""
+
+#: ui/MainWindow.glade:853
+msgid "Show Language Indicator on Panel"
+msgstr ""
+
+#: ui/MainWindow.glade:924
+msgid "Shortcuts"
+msgstr ""
+
+#: ui/MainWindow.glade:959
+msgid ""
+"<b>Screenshot (Active Window):</b>\n"
+"Alt + Print Screen\n"
+"\n"
+"<b>Screenshot (Area):</b>\n"
+"Shift + Print Screen\n"
+"\n"
+"<b>Lock Screen:</b>\n"
+"Super + L | Ctrl + Alt + L\n"
+"\n"
+"<b>Applications:</b>\n"
+"Super\n"
+"\n"
+"<b>Show Desktop:</b>\n"
+"Ctrl + Alt + D\n"
+"\n"
+"<b>Terminal:</b>\n"
+"Ctrl + Alt + T"
+msgstr ""
+
+#: ui/MainWindow.glade:999
+msgid ""
+"<b>Change Workspace:</b>\n"
+"Ctrl + Alt + ←  → ↑ ↓\n"
+"\n"
+"<b>Add/Remove Workspace:</b>\n"
+"Alt + Insert/Delete\n"
+"\n"
+"<b>Go to Workspace:</b>\n"
+"Ctrl + F1...F12\n"
+"\n"
+"<b>Change Program:</b>\n"
+"Alt + Tab\n"
+"\n"
+"<b>Change Window:</b>\n"
+"Super + Tab\n"
+"\n"
+"<b>View Split:</b>\n"
+"Super + ←  →"
+msgstr ""
+
+#: ui/MainWindow.glade:1038
+msgid ""
+"<b>Screenshot (Active Window):</b>\n"
+"Alt + Print Screen\n"
+"\n"
+"<b>Screenshot (Area):</b>\n"
+"Shift + Print Screen\n"
+"\n"
+"<b>Lock Screen:</b>\n"
+"Super + L\n"
+"\n"
+"<b>Applications:</b>\n"
+"Super"
+msgstr ""
+
+#: ui/MainWindow.glade:1072
+msgid ""
+"<b>Change Workspace:</b>\n"
+"Ctrl + Alt + ↑ ↓\n"
+"\n"
+"<b>Change Program:</b>\n"
+"Alt + Tab\n"
+"\n"
+"<b>Change Window:</b>\n"
+"Super + Tab\n"
+"\n"
+"<b>View Split:</b>\n"
+"Super + ←  →"
+msgstr ""
+
+#: ui/MainWindow.glade:1131
+msgid "<span size=\"large\">Links</span>"
+msgstr ""
+
+#: ui/MainWindow.glade:1144
+msgid ""
+"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org.tr"
+"\">Home Page</a>"
+msgstr ""
+
+#: ui/MainWindow.glade:1157
+msgid ""
+"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org.tr"
+"\">Documentations</a>"
+msgstr ""
+
+#: ui/MainWindow.glade:1170
+msgid ""
+"<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
+"tr\">Community</a>"
+msgstr ""
+
+#: ui/MainWindow.glade:1183
+msgid ""
+"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org.tr"
+"\">Forum</a>"
+msgstr ""
+
+#: ui/MainWindow.glade:1219 ui/MainWindow.glade:1247
+msgid "<small></small>"
+msgstr ""
+
+#: ui/MainWindow.glade:1234
+msgid "<small>+90</small>"
+msgstr ""
+
+#: ui/MainWindow.glade:1275
+msgid "<span size=\"large\">Support</span>"
+msgstr ""
+
+#: ui/MainWindow.glade:1288
+msgid "<span size=\"xx-large\"><b>444 5 773</b></span>"
+msgstr ""
+
+#: ui/MainWindow.glade:1627
+msgid "Next"
+msgstr ""
+
+#: ui/MainWindow.glade:1640
+msgid "Close"
+msgstr ""
+
+#: ui/MainWindow.glade:1666
+msgid "Previous"
+msgstr ""
+
+#: ui/MainWindow.glade:1700
+msgid "Pardus Welcome"
+msgstr ""
+
+#: src/MainWindow.py:114
+msgid "Welcome"
+msgstr ""
+
+#: src/MainWindow.py:115
+msgid "Select Wallpaper"
+msgstr ""
+
+#: src/MainWindow.py:116
+msgid "Theme Settings"
+msgstr ""
+
+#: src/MainWindow.py:117
+msgid "Display Settings"
+msgstr ""
+
+#: src/MainWindow.py:118
+msgid "Keyboard Settings"
+msgstr ""
+
+#: src/MainWindow.py:119
+msgid "Support & Community"
+msgstr ""
