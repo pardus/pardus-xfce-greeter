@@ -55,5 +55,5 @@ setup(
     description="Pardus Greeter at first login.",
     license="GPLv3",
     keywords="start setup settings theme wallpaper",
-    url="https://www.pardus.org.tr",
+    url="https://github.com/pardus/pardus-welcome",
 )
