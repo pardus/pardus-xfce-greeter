@@ -1,3 +1,21 @@
+pardus-welcome (0.3.0) unstable; urgency=medium
+
+  [ Hugo Carvalho ]
+  * Add Portuguese(pt) translation
+
+  [ Fatih Altun ]
+  * Update Turkish translations
+  * Fix typo
+  * Update changelog for 0.2.2 release
+  * Update .gitignore
+  * Update translations
+  * Update translate structure
+  * Update notebook to stack for adding animations
+  * Update project homepage
+  * Update compat to 10
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Thu, 04 Aug 2022 18:33:56 +0300
+
 pardus-welcome (0.2.2) unstable; urgency=medium
 
   * Update Turkish translations
