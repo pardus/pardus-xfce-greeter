@@ -1,9 +1,12 @@
 [Desktop Entry]
 Name=Pardus Greeter
+Name[pt]=Bem-vindo ao Pardus
 Name[tr]=Pardus Hoşgeldiniz
 GenericName=Welcome App
+GenericName[pt]=Aplicação de Boas-vindas
 GenericName[tr]=Hoşgeldiniz Uygulaması
 Comment=This tool helps you to get Pardus ready.
+Comment[pt]=Esta ferramenta ajuda-o a preparar o Pardus.
 Comment[tr]=Bu araç Pardus'u hazırlamanıza yardımcı olacaktır.
 Exec=pardus-welcome
 Icon=pardus-welcome
