@@ -2,7 +2,6 @@
 
 import sys
 import gi
-import utils
 gi.require_version('Gtk', '3.0')
 from gi.repository import GLib, Gio, Gtk
 
@@ -18,7 +17,5 @@ class Application(Gtk.Application):
 
 
 if __name__ == "__main__":
-    if utils.check_live():
-        exit(0)
     app = Application()
     app.run(sys.argv)

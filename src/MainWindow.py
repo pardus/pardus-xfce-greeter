@@ -1,6 +1,7 @@
 import os, threading
 import subprocess
 import gi
+import utils
 from utils import getenv, ErrorDialog
 
 gi.require_version('Gtk', '3.0')
@@ -39,8 +40,19 @@ else:
     ErrorDialog("Error","Your desktop environment is not supported yet.")
     exit(0)
 
+autostart_file = str(Path.home()) + "/.config/autostart/tr.org.pardus.welcome.desktop"
+
+# In live mode, the application should not welcome the user
+if utils.check_live() and os.path.isfile(autostart_file):
+    try:
+        os.remove(autostart_file)
+    except OSError:
+        pass
+    exit(0)
+
+# Let the application greet the user only on the first boot
 try:
-    os.remove(str(Path.home()) + "/.config/autostart/tr.org.pardus.welcome.desktop")
+    os.remove(autostart_file)
 except OSError:
     pass
 
