@@ -57,9 +57,9 @@
                     <property name="can-focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="margin-bottom">90</property>
+                    <property name="margin-bottom">89</property>
                     <property name="orientation">vertical</property>
-                    <property name="spacing">7</property>
+                    <property name="spacing">8</property>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>
@@ -131,7 +131,7 @@ This application helps you to configure Pardus.</property>
                     <property name="margin-end">13</property>
                     <property name="margin-top">13</property>
                     <property name="orientation">vertical</property>
-                    <property name="spacing">7</property>
+                    <property name="spacing">8</property>
                     <child>
                       <object class="GtkScrolledWindow">
                         <property name="visible">True</property>
@@ -172,28 +172,28 @@ This application helps you to configure Pardus.</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
-                    <property name="spacing">7</property>
+                    <property name="spacing">8</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="margin-bottom">20</property>
-                        <property name="spacing">14</property>
+                        <property name="margin-bottom">21</property>
+                        <property name="spacing">13</property>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="orientation">vertical</property>
-                            <property name="spacing">14</property>
+                            <property name="spacing">13</property>
                             <child>
                               <object class="GtkRadioButton" id="rb_lightTheme">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="halign">center</property>
-                                <property name="margin-top">14</property>
+                                <property name="margin-top">13</property>
                                 <property name="active">True</property>
                                 <property name="draw-indicator">False</property>
                                 <signal name="clicked" handler="on_rb_lightTheme_clicked" swapped="no"/>
@@ -238,14 +238,14 @@ This application helps you to configure Pardus.</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="orientation">vertical</property>
-                            <property name="spacing">14</property>
+                            <property name="spacing">13</property>
                             <child>
                               <object class="GtkRadioButton" id="rb_darkTheme">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">False</property>
                                 <property name="halign">center</property>
-                                <property name="margin-top">14</property>
+                                <property name="margin-top">13</property>
                                 <property name="draw-indicator">False</property>
                                 <property name="group">rb_lightTheme</property>
                                 <signal name="clicked" handler="on_rb_darkTheme_clicked" swapped="no"/>
@@ -303,23 +303,23 @@ This application helps you to configure Pardus.</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
-                    <property name="spacing">7</property>
+                    <property name="spacing">8</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="margin-bottom">20</property>
+                        <property name="margin-bottom">21</property>
                         <property name="orientation">vertical</property>
-                        <property name="spacing">7</property>
+                        <property name="spacing">8</property>
                         <child>
                           <object class="GtkImage">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
-                            <property name="margin-bottom">35</property>
+                            <property name="margin-bottom">34</property>
                             <property name="pixel-size">150</property>
                             <property name="icon-name">computer-symbolic</property>
                           </object>
@@ -451,16 +451,16 @@ This application helps you to configure Pardus.</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
-                    <property name="spacing">7</property>
+                    <property name="spacing">8</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="margin-bottom">20</property>
+                        <property name="margin-bottom">21</property>
                         <property name="orientation">vertical</property>
-                        <property name="spacing">7</property>
+                        <property name="spacing">8</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
@@ -496,8 +496,8 @@ This application helps you to configure Pardus.</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
-                                        <property name="margin-start">7</property>
-                                        <property name="margin-end">7</property>
+                                        <property name="margin-start">8</property>
+                                        <property name="margin-end">8</property>
                                         <child>
                                           <object class="GtkBox">
                                             <property name="visible">True</property>
@@ -597,8 +597,8 @@ This application helps you to configure Pardus.</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
-                                        <property name="margin-start">7</property>
-                                        <property name="margin-end">7</property>
+                                        <property name="margin-start">8</property>
+                                        <property name="margin-end">8</property>
                                         <child>
                                           <object class="GtkBox">
                                             <property name="visible">True</property>
@@ -698,8 +698,8 @@ This application helps you to configure Pardus.</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
-                                        <property name="margin-start">7</property>
-                                        <property name="margin-end">7</property>
+                                        <property name="margin-start">8</property>
+                                        <property name="margin-end">8</property>
                                         <child>
                                           <object class="GtkBox">
                                             <property name="visible">True</property>
@@ -821,8 +821,8 @@ This application helps you to configure Pardus.</property>
                             <property name="width-request">350</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="margin-top">40</property>
-                            <property name="margin-bottom">40</property>
+                            <property name="margin-top">34</property>
+                            <property name="margin-bottom">34</property>
                             <property name="label-xalign">0</property>
                             <property name="shadow-type">etched-out</property>
                             <child>
@@ -840,11 +840,9 @@ This application helps you to configure Pardus.</property>
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
                                         <property name="valign">center</property>
-                                        <property name="margin-left">7</property>
-                                        <property name="margin-right">7</property>
-                                        <property name="margin-start">7</property>
-                                        <property name="margin-end">7</property>
-                                        <property name="spacing">7</property>
+                                        <property name="margin-start">8</property>
+                                        <property name="margin-end">8</property>
+                                        <property name="spacing">8</property>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="visible">True</property>
@@ -904,19 +902,19 @@ This application helps you to configure Pardus.</property>
                   <object class="GtkBox" id="page_support">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="margin-bottom">7</property>
+                    <property name="margin-bottom">8</property>
                     <property name="orientation">vertical</property>
-                    <property name="spacing">7</property>
+                    <property name="spacing">8</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="margin-top">20</property>
-                        <property name="margin-bottom">20</property>
+                        <property name="margin-top">21</property>
+                        <property name="margin-bottom">21</property>
                         <property name="orientation">vertical</property>
-                        <property name="spacing">14</property>
+                        <property name="spacing">13</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
@@ -951,7 +949,7 @@ This application helps you to configure Pardus.</property>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="spacing">30</property>
+                                <property name="spacing">34</property>
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
@@ -1030,7 +1028,7 @@ Super + ←  →</property>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="spacing">30</property>
+                                <property name="spacing">34</property>
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
@@ -1113,7 +1111,7 @@ Super + ←  →</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>
-                        <property name="margin-bottom">20</property>
+                        <property name="margin-bottom">21</property>
                         <property name="vexpand">True</property>
                         <property name="homogeneous">True</property>
                         <child>
@@ -1230,7 +1228,7 @@ Super + ←  →</property>
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
                                     <property name="valign">center</property>
-                                    <property name="margin-bottom">10</property>
+                                    <property name="margin-bottom">8</property>
                                     <property name="label" translatable="yes">&lt;small&gt;+90&lt;/small&gt;</property>
                                     <property name="use-markup">True</property>
                                   </object>
@@ -1387,7 +1385,7 @@ Super + ←  →</property>
               <object class="GtkSeparator">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="margin-bottom">7</property>
+                <property name="margin-bottom">8</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -1399,10 +1397,10 @@ Super + ←  →</property>
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="margin-start">14</property>
-                <property name="margin-end">14</property>
-                <property name="margin-bottom">7</property>
-                <property name="spacing">7</property>
+                <property name="margin-start">13</property>
+                <property name="margin-end">13</property>
+                <property name="margin-bottom">8</property>
+                <property name="spacing">8</property>
                 <child type="center">
                   <object class="GtkBox" id="box_progressDots">
                     <property name="visible">True</property>
@@ -1610,7 +1608,7 @@ Super + ←  →</property>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label">TÜBİTAK ULAKBİM | 2022</property>
+                    <property name="label">TÜBİTAK ULAKBİM | 2023</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -1704,7 +1702,7 @@ Super + ←  →</property>
           <object class="GtkLabel" id="lbl_headerTitle">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="margin-left">6</property>
+            <property name="margin-start">5</property>
             <property name="label">Welcome</property>
             <attributes>
               <attribute name="size" value="15000"/>
