@@ -1,7 +1,9 @@
-from re import sub
+#!/usr/bin/env python3
+
 import subprocess
 
 defaultDPI = 96
+
 
 def setScale(scaling_factor):
     newDPI = 96 * scaling_factor
@@ -17,6 +19,8 @@ def setScale(scaling_factor):
         "xfce4-panel",
         "-r"
     ])
+
+
 def setPanelSize(px):
     subprocess.call([
         "xfconf-query",
@@ -26,6 +30,7 @@ def setPanelSize(px):
         "--type", "int",
         "--create"
     ])
+
 
 def setPanelIconSize(px):
     subprocess.call([
@@ -37,6 +42,7 @@ def setPanelIconSize(px):
         "--create"
     ])
 
+
 def setDesktopIconSize(px):
     subprocess.call([
         "xfconf-query",
@@ -47,6 +53,7 @@ def setDesktopIconSize(px):
         "--create"
     ])
 
+
 def getScale():
     dpi = 96
     try:
@@ -55,13 +62,14 @@ def getScale():
             "-c", "xsettings",
             "-p", "/Xft/DPI",
         ], capture_output=True)
-        
+
         if process.returncode == 0:
             dpi = int(process.stdout.decode("utf-8").rstrip())
     except:
         return 1.0
-        
+
     return float(dpi / 96)
+
 
 def getPanelSize():
     return int(subprocess.check_output([
@@ -70,12 +78,14 @@ def getPanelSize():
         "-p", "/panels/panel-1/size"
     ]).decode("utf-8").rstrip())
 
+
 def getPanelIconSize():
     return int(subprocess.check_output([
         "xfconf-query",
         "-c", "xfce4-panel",
         "-p", "/panels/panel-1/icon-size"
     ]).decode("utf-8").rstrip())
+
 
 def getDesktopIconSize():
     try:
@@ -85,4 +95,4 @@ def getDesktopIconSize():
             "-p", "/desktop-icons/icon-size"
         ]).decode("utf-8").rstrip())
     except:
-        return 48 # default value
+        return 48  # default value

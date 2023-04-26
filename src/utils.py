@@ -1,8 +1,12 @@
-import gi
+#!/usr/bin/env python3
+
 import os
+
+import gi
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
+
 
 def getenv(name):
     if name in os.environ:
@@ -10,9 +14,11 @@ def getenv(name):
     else:
         return ""
 
+
 def check_live():
-    f=open("/proc/cmdline","r").read()
+    f = open("/proc/cmdline", "r").read()
     return "boot=live" in f
+
 
 class Dialog(Gtk.MessageDialog):
     def __init__(self, style, buttons, title, text, text2=None, parent=None):
@@ -26,6 +32,7 @@ class Dialog(Gtk.MessageDialog):
             response = self.run()
         finally:
             self.destroy()
+
 
 def ErrorDialog(*args):
     dialog = Dialog(Gtk.MessageType.ERROR, Gtk.ButtonsType.NONE, *args)

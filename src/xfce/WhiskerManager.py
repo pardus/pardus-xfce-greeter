@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 
 # PATHS
@@ -9,6 +11,7 @@ configFileData = ""
 with open(WHISKER_FILE_PATH, 'r') as file:
     configFileData = file.read()
 
+
 def set(key, value):
     global configFileData
 
@@ -17,15 +20,16 @@ def set(key, value):
         if key in lines[i]:
             print(f"{key} found: {lines[i]}")
             lines[i] = f"{key}={value}"
-    
+
     configFileData = "\n".join(lines)
+
 
 def saveFile():
     global configFileData
-    
+
     with open(WHISKER_FILE_PATH, 'w') as file:
         file.write(configFileData)
 
-#print(configFileData) before
-#set("launcher-show-name", "true")
-#print(configFileData) after
+# print(configFileData) before
+# set("launcher-show-name", "true")
+# print(configFileData) after
