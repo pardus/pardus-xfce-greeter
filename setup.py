@@ -39,7 +39,7 @@ data_files = [
   ["assets/pardus-welcome.svg", "assets/pardus-logo.svg", "assets/theme-light.png",
    "assets/theme-dark.png", "assets/progress-dot-on.svg", "assets/progress-dot-off.svg",
    "assets/whisker.png", "assets/discord.svg", "assets/github.svg"]),
- ("/usr/share/pardus/pardus-welcome/src", ["src/main.py", "src/MainWindow.py", "src/utils.py"]),
+ ("/usr/share/pardus/pardus-welcome/src", ["src/Main.py", "src/MainWindow.py", "src/utils.py"]),
  ("/usr/share/pardus/pardus-welcome/src/xfce",
   ["src/xfce/WallpaperManager.py", "src/xfce/ThemeManager.py", "src/xfce/ScaleManager.py",
    "src/xfce/KeyboardManager.py", "src/xfce/WhiskerManager.py", "src/xfce/PanelManager.py"]),
