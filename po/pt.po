@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pardus-welcome\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-26 14:48+0300\n"
+"POT-Creation-Date: 2023-06-19 16:52+0300\n"
 "PO-Revision-Date: 2022-11-20 21:09+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <hugokarvalho@hotmail.com\n"
@@ -62,7 +62,7 @@ msgid "Add"
 msgstr "Adicionar"
 
 #: ui/MainWindow.glade:540 ui/MainWindow.glade:641 ui/MainWindow.glade:742
-#: ui/MainWindow.glade:1635
+#: ui/MainWindow.glade:1633
 msgid "page0"
 msgstr "página0"
 
@@ -71,7 +71,7 @@ msgid "Remove"
 msgstr "Remover"
 
 #: ui/MainWindow.glade:581 ui/MainWindow.glade:682 ui/MainWindow.glade:783
-#: ui/MainWindow.glade:1652
+#: ui/MainWindow.glade:1650
 msgid "page1"
 msgstr "página1"
 
@@ -91,15 +91,15 @@ msgstr ""
 "<span size=\"10000\">Pode alternar entre esquemas de teclado com:\n"
 "<b>Super + Espaço</b></span>"
 
-#: ui/MainWindow.glade:853
+#: ui/MainWindow.glade:851
 msgid "Show Language Indicator on Panel"
 msgstr "Mostrar indicador de idioma no painel"
 
-#: ui/MainWindow.glade:924
+#: ui/MainWindow.glade:922
 msgid "Shortcuts"
 msgstr "Atalhos"
 
-#: ui/MainWindow.glade:959
+#: ui/MainWindow.glade:957
 msgid ""
 "<b>Screenshot (Active Window):</b>\n"
 "Alt + Print Screen\n"
@@ -137,7 +137,7 @@ msgstr ""
 "<b>Terminal:</b>\n"
 "Ctrl + Alt + T"
 
-#: ui/MainWindow.glade:999
+#: ui/MainWindow.glade:997
 msgid ""
 "<b>Change Workspace:</b>\n"
 "Ctrl + Alt + ←  → ↑ ↓\n"
@@ -175,7 +175,7 @@ msgstr ""
 "<b>Vista dividida:</b>\n"
 "Super + ←  →"
 
-#: ui/MainWindow.glade:1038
+#: ui/MainWindow.glade:1036
 msgid ""
 "<b>Screenshot (Active Window):</b>\n"
 "Alt + Print Screen\n"
@@ -201,7 +201,7 @@ msgstr ""
 "<b>Aplicações:</b>\n"
 "Super"
 
-#: ui/MainWindow.glade:1072
+#: ui/MainWindow.glade:1070
 msgid ""
 "<b>Change Workspace:</b>\n"
 "Ctrl + Alt + ↑ ↓\n"
@@ -227,11 +227,11 @@ msgstr ""
 "<b>Vista dividida:</b>\n"
 "Super + ←  →"
 
-#: ui/MainWindow.glade:1131
+#: ui/MainWindow.glade:1129
 msgid "<span size=\"large\">Links</span>"
 msgstr "<span size=\"large\">Ligações</span>"
 
-#: ui/MainWindow.glade:1144
+#: ui/MainWindow.glade:1142
 msgid ""
 "<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org.tr"
 "\">Home Page</a>"
@@ -239,7 +239,7 @@ msgstr ""
 "<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org.tr"
 "\">Página inicial</a>"
 
-#: ui/MainWindow.glade:1157
+#: ui/MainWindow.glade:1155
 msgid ""
 "<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org.tr"
 "\">Documentations</a>"
@@ -247,7 +247,7 @@ msgstr ""
 "<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org.tr"
 "\">Documentação</a>"
 
-#: ui/MainWindow.glade:1170
+#: ui/MainWindow.glade:1168
 msgid ""
 "<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
 "tr\">Community</a>"
@@ -255,7 +255,7 @@ msgstr ""
 "<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
 "tr\">Comunidade</a>"
 
-#: ui/MainWindow.glade:1183
+#: ui/MainWindow.glade:1181
 msgid ""
 "<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org.tr"
 "\">Forum</a>"
@@ -263,58 +263,59 @@ msgstr ""
 "<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org.tr"
 "\">Fórum</a>"
 
-#: ui/MainWindow.glade:1219 ui/MainWindow.glade:1247
+#: ui/MainWindow.glade:1217 ui/MainWindow.glade:1245
 msgid "<small></small>"
 msgstr "<small></small>"
 
-#: ui/MainWindow.glade:1234
+#: ui/MainWindow.glade:1232
 msgid "<small>+90</small>"
 msgstr "<small>+90</small>"
 
-#: ui/MainWindow.glade:1275
+#: ui/MainWindow.glade:1273
 msgid "<span size=\"large\">Support</span>"
 msgstr "<span size=\"large\">Suporte</span>"
 
-#: ui/MainWindow.glade:1288
+#: ui/MainWindow.glade:1286
 msgid "<span size=\"xx-large\"><b>444 5 773</b></span>"
 msgstr "<span size=\"xx-large\"><b>444 5 773</b></span>"
 
-#: ui/MainWindow.glade:1627
+#: ui/MainWindow.glade:1625
 msgid "Next"
 msgstr "Seguinte"
 
-#: ui/MainWindow.glade:1640
+#: ui/MainWindow.glade:1638
 msgid "Close"
 msgstr "Fechar"
 
-#: ui/MainWindow.glade:1666
+#: ui/MainWindow.glade:1664
 msgid "Previous"
 msgstr "Anterior"
 
-#: ui/MainWindow.glade:1700
-msgid "Pardus Welcome"
+#: ui/MainWindow.glade:1698
+#, fuzzy
+msgid "Pardus Greeter"
 msgstr "Bem-vindo ao Pardus"
 
-#: src/MainWindow.py:114
+#: src/MainWindow.py:130
 msgid "Welcome"
 msgstr "Bem-vindo"
 
-#: src/MainWindow.py:115
+#: src/MainWindow.py:131
 msgid "Select Wallpaper"
 msgstr "Selecionar papel de parede"
 
-#: src/MainWindow.py:116
+#: src/MainWindow.py:132
 msgid "Theme Settings"
 msgstr "Definições do tema"
 
-#: src/MainWindow.py:117
+#: src/MainWindow.py:133
 msgid "Display Settings"
 msgstr "Definições do ecrã"
 
-#: src/MainWindow.py:118
+#: src/MainWindow.py:134
 msgid "Keyboard Settings"
 msgstr "Definições do teclado"
 
-#: src/MainWindow.py:119
+#: src/MainWindow.py:135
 msgid "Support & Community"
 msgstr "Suporte e Comunidade"

@@ -1,10 +1,10 @@
-# Pardus Welcome
+# Pardus Xfce Greeter
 
-Pardus Welcome is a greeter application that welcomes the user after login.
+Pardus Xfce Greeter is a greeter application that welcomes the user after login.
 
 It is currently a work in progress. Maintenance is done by <a href="https://www.pardus.org.tr/">Pardus</a> team.
 
-[![Packaging status](https://repology.org/badge/vertical-allrepos/pardus-welcome.svg)](https://repology.org/project/pardus-welcome/versions)
+[![Packaging status](https://repology.org/badge/vertical-allrepos/pardus-xfce-greeter.svg)](https://repology.org/project/pardus-xfce-greeter/versions)
 
 ### **Dependencies**
 
@@ -22,12 +22,12 @@ sudo apt install gir1.2-glib-2.0 gir1.2-gtk-3.0 python3-gi python3
 
 Clone the repository
 ```bash
-git clone https://github.com/pardus/pardus-welcome.git ~/pardus-welcome
+git clone https://github.com/pardus/pardus-xfce-greeter.git ~/pardus-xfce-greeter
 ```
 
 Run application
 ```bash
-python3 ~/pardus-welcome/src/Main.py
+python3 ~/pardus-xfce-greeter/src/Main.py
 ```
 
 ### **Build deb package**
@@ -35,15 +35,15 @@ python3 ~/pardus-welcome/src/Main.py
 ```bash
 sudo apt install devscripts git-buildpackage
 sudo mk-build-deps -ir
-gbp buildpackage --git-export-dir=/tmp/build/pardus-welcome -us -uc
+gbp buildpackage --git-export-dir=/tmp/build/pardus-xfce-greeter -us -uc
 ```
 
 ### **Screenshots**
 
-![Pardus Welcome 1](screenshots/pardus-welcome-1.png)
+![Pardus Greeter 1](screenshots/pardus-xfce-greeter-1.png)
 
-![Pardus Welcome 2](screenshots/pardus-welcome-2.png)
+![Pardus Greeter 2](screenshots/pardus-xfce-greeter-2.png)
 
-![Pardus Welcome 3](screenshots/pardus-welcome-3.png)
+![Pardus Greeter 3](screenshots/pardus-xfce-greeter-3.png)
 
-![Pardus Welcome 4](screenshots/pardus-welcome-4.png)
+![Pardus Greeter 4](screenshots/pardus-xfce-greeter-4.png)

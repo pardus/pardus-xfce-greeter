@@ -15,7 +15,7 @@ from locale import gettext as _
 from pathlib import Path
 
 # Translation Constants:
-APPNAME = "pardus-welcome"
+APPNAME = "pardus-xfce-greeter"
 TRANSLATIONS_PATH = "/usr/share/locale"
 # SYSTEM_LANGUAGE = os.environ.get("LANG")
 
@@ -43,7 +43,7 @@ else:
     ErrorDialog("Error", "Your desktop environment is not supported yet.")
     exit(0)
 
-autostart_file = str(Path.home()) + "/.config/autostart/tr.org.pardus.welcome.desktop"
+autostart_file = str(Path.home()) + "/.config/autostart/tr.org.pardus.xfce-greeter.desktop"
 
 # In live mode, the application should not welcome the user
 if utils.check_live() and os.path.isfile(autostart_file):

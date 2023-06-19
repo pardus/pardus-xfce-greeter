@@ -12,7 +12,7 @@ from MainWindow import MainWindow
 
 class Application(Gtk.Application):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, application_id="tr.org.pardus.welcome", **kwargs)
+        super().__init__(*args, application_id="tr.org.pardus.xfce-greeter", **kwargs)
         self.window = None
 
     def do_activate(self):
