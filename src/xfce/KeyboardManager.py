@@ -22,11 +22,15 @@ def initializeSettings():
     ])
 
     # Get system settings if disabled
-    useSystemKeyboard = subprocess.check_output([
-        "xfconf-query",
-        "-c", "keyboard-layout",
-        "-p", "/Default/XkbDisable",
-    ]).decode("utf-8").rstrip() == "true"
+    try:
+        useSystemKeyboard = subprocess.check_output([
+            "xfconf-query",
+            "-c", "keyboard-layout",
+            "-p", "/Default/XkbDisable",
+        ]).decode("utf-8").rstrip() == "true"
+    except Exception as e:
+        print("{}".format(e))
+        useSystemKeyboard = True
 
     if useSystemKeyboard:
         getSystemKeyboardState()
