@@ -211,9 +211,9 @@ class MainWindow:
     def getThemeDefaults(self):
         theme = ThemeManager.getTheme()
 
-        if theme == "pardus":
+        if theme == "pardus-xfce":
             self.rb_lightTheme.set_active(True)
-        elif theme == "pardus-dark":
+        elif theme == "pardus-xfce-dark":
             self.rb_darkTheme.set_active(True)
 
     def getScalingDefaults(self):
@@ -275,14 +275,14 @@ class MainWindow:
 
         if isHdpi:
             if isDark:
-                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-dark-default-hdpi")
+                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-xfce-dark-default-hdpi")
             else:
-                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default-hdpi")
+                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-xfce-default-hdpi")
         else:
             if isDark:
-                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-dark-default")
+                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-xfce-dark")
             else:
-                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-default")
+                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-xfce")
 
     # - stack prev and next page controls
     def get_next_page(self, page):
@@ -344,16 +344,16 @@ class MainWindow:
     # - Theme Selection:
     def on_rb_lightTheme_clicked(self, rb):
         if rb.get_active():
-            GLib.idle_add(ThemeManager.setTheme, "pardus")
-            GLib.idle_add(ThemeManager.setIconTheme, "pardus")
+            GLib.idle_add(ThemeManager.setTheme, "pardus-xfce")
+            GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce")
 
             # Window Theme
             self.changeWindowTheme(ScaleManager.getScale() == 2.0, False)
 
     def on_rb_darkTheme_clicked(self, rb):
         if rb.get_active():
-            GLib.idle_add(ThemeManager.setTheme, "pardus-dark")
-            GLib.idle_add(ThemeManager.setIconTheme, "pardus-dark")
+            GLib.idle_add(ThemeManager.setTheme, "pardus-xfce-dark")
+            GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce-dark")
 
             # Window Theme
             self.changeWindowTheme(ScaleManager.getScale() == 2.0, True)
@@ -361,7 +361,7 @@ class MainWindow:
     # - Scale Changed:
     def on_sli_scaling_button_release(self, slider, b):
         value = int(slider.get_value()) * 0.25 + 1
-        self.changeWindowTheme(value == 2.0, ThemeManager.getTheme() == "pardus-dark")
+        self.changeWindowTheme(value == 2.0, ThemeManager.getTheme() == "pardus-xfce-dark")
         ScaleManager.setScale(value)
 
     def on_sli_scaling_format_value(self, sli, value):
