@@ -33,14 +33,16 @@ if "xfce" in getenv("SESSION").lower() or "xfce" in getenv("XDG_CURRENT_DESKTOP"
     import xfce.KeyboardManager as KeyboardManager
 
     currentDesktop = "xfce"
-elif "gnome" in getenv("SESSION").lower() or "gnome" in getenv("XDG_CURRENT_DESKTOP").lower():
-    import gnome.WallpaperManager as WallpaperManager
-    import gnome.ThemeManager as ThemeManager
-    import gnome.ScaleManager as ScaleManager
 
-    currentDesktop = "gnome"
+# elif "gnome" in getenv("SESSION").lower() or "gnome" in getenv("XDG_CURRENT_DESKTOP").lower():
+#     import gnome.WallpaperManager as WallpaperManager
+#     import gnome.ThemeManager as ThemeManager
+#     import gnome.ScaleManager as ScaleManager
+#
+#     currentDesktop = "gnome"
+
 else:
-    ErrorDialog("Error", "Your desktop environment is not supported yet.")
+    ErrorDialog(_("Error"), _("Your desktop environment is not supported."))
     exit(0)
 
 autostart_file = str(Path.home()) + "/.config/autostart/tr.org.pardus.xfce-greeter.desktop"
