@@ -2,6 +2,11 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
+  <object class="GtkAdjustment" id="adj_cursorSize">
+    <property name="upper">3</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">1</property>
+  </object>
   <object class="GtkAdjustment" id="adj_desktopIconSize">
     <property name="lower">32</property>
     <property name="upper">96</property>
@@ -431,6 +436,37 @@ This application helps you to configure Pardus.</property>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
                             <property name="position">7</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">&lt;b&gt;Mouse Cursor Size&lt;/b&gt; (px):</property>
+                            <property name="use-markup">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">8</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkScale" id="sli_cursor">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="adjustment">adj_cursorSize</property>
+                            <property name="show-fill-level">True</property>
+                            <property name="round-digits">0</property>
+                            <property name="digits">0</property>
+                            <signal name="format-value" handler="on_sli_cursor_format_value" swapped="no"/>
+                            <signal name="value-changed" handler="on_sli_cursor_value_changed" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">9</property>
                           </packing>
                         </child>
                       </object>

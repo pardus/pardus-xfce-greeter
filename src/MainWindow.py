@@ -149,6 +149,7 @@ class MainWindow:
         self.sli_panel = getUI("sli_panel")
         self.sli_scaling = getUI("sli_scaling")
         self.sli_desktopIcon = getUI("sli_desktopIcon")
+        self.sli_cursor = getUI("sli_cursor")
 
         # - Keyboard Settings:
         self.stk_trf = getUI("stk_trf")
@@ -225,6 +226,8 @@ class MainWindow:
 
         currentScale = int((ScaleManager.getScale() / 0.25) - 4)
         self.sli_scaling.set_value(currentScale)
+        self.sli_cursor.set_value((ScaleManager.getPointerSize()/16)-1)
+
 
     # Keyboard Settings:
     def getKeyboardDefaults(self):
@@ -375,6 +378,12 @@ class MainWindow:
 
     def on_sli_desktopIcon_value_changed(self, sli):
         ScaleManager.setDesktopIconSize(int(sli.get_value()))
+
+    def on_sli_cursor_format_value(self, sli, value):
+        return f"{int(value + 1) * 16}"
+
+    def on_sli_cursor_value_changed(self, sli):
+        ScaleManager.setPointerSize(int(sli.get_value() + 1) * 16)
 
     # - Keyboard Layout Changed:
     def on_btn_trf_add_clicked(self, button):

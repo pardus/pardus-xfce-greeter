@@ -2,19 +2,23 @@
 
 import subprocess
 
+import gi
+
+gi.require_version('Xfconf', '0')
+from gi.repository import Xfconf
+
+Xfconf.init()
+xsettings = Xfconf.Channel.new("xsettings")
+xfce4_panel = Xfconf.Channel.new("xfce4-panel")
+xfce4_desktop = Xfconf.Channel.new("xfce4-desktop")
+
 defaultDPI = 96
 
 
 def setScale(scaling_factor):
-    newDPI = 96 * scaling_factor
-    subprocess.call([
-        "xfconf-query",
-        "-c", "xsettings",
-        "-p", "/Xft/DPI",
-        "-s", str(int(newDPI)),
-        "--type", "int",
-        "--create"
-    ])
+    newDPI = defaultDPI * scaling_factor
+    xsettings.set_int("/Xft/DPI", int(newDPI))
+
     subprocess.call([
         "xfce4-panel",
         "-r"
@@ -22,77 +26,40 @@ def setScale(scaling_factor):
 
 
 def setPanelSize(px):
-    subprocess.call([
-        "xfconf-query",
-        "-c", "xfce4-panel",
-        "-p", "/panels/panel-1/size",
-        "-s", str(px),
-        "--type", "int",
-        "--create"
-    ])
+    xfce4_panel.set_uint("/panels/panel-1/size", px)
 
 
 def setPanelIconSize(px):
-    subprocess.call([
-        "xfconf-query",
-        "-c", "xfce4-panel",
-        "-p", "/panels/panel-1/icon-size",
-        "-s", str(px),
-        "--type", "int",
-        "--create"
-    ])
+    xfce4_panel.set_uint("/panels/panel-1/icon-size", px)
 
 
 def setDesktopIconSize(px):
-    subprocess.call([
-        "xfconf-query",
-        "-c", "xfce4-desktop",
-        "-p", "/desktop-icons/icon-size",
-        "-s", str(px),
-        "--type", "int",
-        "--create"
-    ])
+    xfce4_desktop.set_uint("/desktop-icons/icon-size", px)
+
+
+def setPointerSize(px):
+    current_theme = xsettings.get_string("/Gtk/CursorThemeName", "Adwaita")
+    xsettings.set_int("/Gtk/CursorThemeSize", px)
+    xsettings.set_string("/Gtk/CursorThemeName", "Adwaita")
+    xsettings.set_string("/Gtk/CursorThemeName", current_theme)
 
 
 def getScale():
-    dpi = 96
-    try:
-        process = subprocess.run([
-            "xfconf-query",
-            "-c", "xsettings",
-            "-p", "/Xft/DPI",
-        ], capture_output=True)
-
-        if process.returncode == 0:
-            dpi = int(process.stdout.decode("utf-8").rstrip())
-    except:
-        return 1.0
-
-    return float(dpi / 96)
+    dpi = xsettings.get_int("/Xft/DPI", defaultDPI)
+    return float(dpi / defaultDPI)
 
 
 def getPanelSize():
-    return int(subprocess.check_output([
-        "xfconf-query",
-        "-c", "xfce4-panel",
-        "-p", "/panels/panel-1/size"
-    ]).decode("utf-8").rstrip())
+    return xfce4_panel.get_uint("/panels/panel-1/size", 34)
 
 
 def getPanelIconSize():
-    return int(subprocess.check_output([
-        "xfconf-query",
-        "-c", "xfce4-panel",
-        "-p", "/panels/panel-1/icon-size"
-    ]).decode("utf-8").rstrip())
+    return xfce4_panel.get_uint("/panels/panel-1/icon-size", 24)
 
 
 def getDesktopIconSize():
-    try:
-        return int(subprocess.check_output([
-            "xfconf-query",
-            "-c", "xfce4-desktop",
-            "-p", "/desktop-icons/icon-size"
-        ]).decode("utf-8").rstrip())
-    except:
-        return 48  # default value
+    return xfce4_desktop.get_uint("/desktop-icons/icon-size", 42)
+
+
+def getPointerSize():
+    return xsettings.get_int("/Gtk/CursorThemeSize", 16)
