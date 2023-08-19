@@ -112,6 +112,9 @@ class MainWindow:
         def getUI(str):
             return self.builder.get_object(str)
 
+        # about dialog
+        self.ui_about_dialog = self.builder.get_object("ui_about_dialog")
+
         # - Navigation:
         self.lbl_headerTitle = getUI("lbl_headerTitle")
         self.stk_pages = getUI("stk_pages")
@@ -309,6 +312,10 @@ class MainWindow:
     # =========== SIGNALS:    
     def onDestroy(self, b):
         self.window.get_application().quit()
+
+    def on_ui_about_button_clicked(self, button):
+        self.ui_about_dialog.run()
+        self.ui_about_dialog.hide()
 
     # - NAVIGATION:
     def on_btn_next_clicked(self, btn):
