@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-20 01:57+0300\n"
+"POT-Creation-Date: 2023-08-20 02:14+0300\n"
 "PO-Revision-Date: 2023-08-20 01:58+0300\n"
 "Last-Translator: Fatih Altun <fatih.altun@pardus.org.tr>\n"
 "Language-Team: Turkish <dev@pardus.org.tr>\n"
@@ -296,7 +296,7 @@ msgstr "Kapat"
 msgid "Previous"
 msgstr "Geri"
 
-#: ui/MainWindow.glade:1734
+#: ui/MainWindow.glade:1734 src/MainWindow.py:117
 msgid "Pardus Greeter"
 msgstr "Pardus Karşılayıcı"
 
@@ -312,27 +312,27 @@ msgstr "Hata"
 msgid "Your desktop environment is not supported."
 msgstr "Masaüstü ortamınız desteklenmiyor."
 
-#: src/MainWindow.py:135
+#: src/MainWindow.py:143
 msgid "Welcome"
 msgstr "Hoş Geldiniz"
 
-#: src/MainWindow.py:136
+#: src/MainWindow.py:144
 msgid "Select Wallpaper"
 msgstr "Duvar Kağıdı Seçin"
 
-#: src/MainWindow.py:137
+#: src/MainWindow.py:145
 msgid "Theme Settings"
 msgstr "Tema Ayarları"
 
-#: src/MainWindow.py:138
+#: src/MainWindow.py:146
 msgid "Display Settings"
 msgstr "Görüntü Ayarları"
 
-#: src/MainWindow.py:139
+#: src/MainWindow.py:147
 msgid "Keyboard Settings"
 msgstr "Klavye Ayarları"
 
-#: src/MainWindow.py:140
+#: src/MainWindow.py:148
 msgid "Support & Community"
 msgstr "Destek & Topluluk"
 
