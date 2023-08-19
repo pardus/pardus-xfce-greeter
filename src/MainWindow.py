@@ -114,6 +114,14 @@ class MainWindow:
 
         # about dialog
         self.ui_about_dialog = self.builder.get_object("ui_about_dialog")
+        self.ui_about_dialog.set_program_name(_("Pardus Greeter"))
+        # Set version
+        # If not getted from __version__ file then accept version in MainWindow.glade file
+        try:
+            version = open(os.path.dirname(os.path.abspath(__file__)) + "/__version__").readline()
+            self.ui_about_dialog.set_version(version)
+        except:
+            pass
 
         # - Navigation:
         self.lbl_headerTitle = getUI("lbl_headerTitle")
