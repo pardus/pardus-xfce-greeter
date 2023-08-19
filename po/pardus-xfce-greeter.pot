@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-20 01:57+0300\n"
+"POT-Creation-Date: 2023-08-20 02:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -224,7 +224,7 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
-#: ui/MainWindow.glade:1734
+#: ui/MainWindow.glade:1734 src/MainWindow.py:117
 msgid "Pardus Greeter"
 msgstr ""
 
@@ -240,26 +240,26 @@ msgstr ""
 msgid "Your desktop environment is not supported."
 msgstr ""
 
-#: src/MainWindow.py:135
+#: src/MainWindow.py:143
 msgid "Welcome"
 msgstr ""
 
-#: src/MainWindow.py:136
+#: src/MainWindow.py:144
 msgid "Select Wallpaper"
 msgstr ""
 
-#: src/MainWindow.py:137
+#: src/MainWindow.py:145
 msgid "Theme Settings"
 msgstr ""
 
-#: src/MainWindow.py:138
+#: src/MainWindow.py:146
 msgid "Display Settings"
 msgstr ""
 
-#: src/MainWindow.py:139
+#: src/MainWindow.py:147
 msgid "Keyboard Settings"
 msgstr ""
 
-#: src/MainWindow.py:140
+#: src/MainWindow.py:148
 msgid "Support & Community"
 msgstr ""
