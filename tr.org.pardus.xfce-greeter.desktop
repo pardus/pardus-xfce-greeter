@@ -12,6 +12,6 @@ Exec=pardus-xfce-greeter
 Icon=pardus-xfce-greeter
 Terminal=false
 Type=Application
-Categories=System;
+Categories=System;X-Pardus-Apps;
 StartupNotify=true
 Keywords=welcome;greeter;setup;configuration;settings
