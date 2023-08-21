@@ -82,7 +82,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label">Pardus 21</property>
+                        <property name="label">Pardus 23</property>
                         <attributes>
                           <attribute name="weight" value="bold"/>
                           <attribute name="size" value="21000"/>
