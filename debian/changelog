@@ -1,3 +1,25 @@
+pardus-xfce-greeter (1.0.0) unstable; urgency=medium
+
+  * Change name to pardus-xfce-greeter
+  * Add gio application flag
+  * Fix XkbDisable not found error
+  * Change pardus theme names
+  * Update supported desktop as only xfce
+  * Add cursor size to display settings
+  * Add X-Pardus-Apps to desktop file categories
+  * Update app icon
+  * Add about dialog
+  * Update pot file
+  * Update Turkish translations
+  * Fix typo
+  * Fix typo
+  * Fix about dialog name
+  * Update pot file
+  * Update Turkish translations
+  * Update pardus welcome text
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Mon, 21 Aug 2023 18:23:37 +0300
+
 pardus-welcome (0.3.2) unstable; urgency=medium
 
   * Reformat code
