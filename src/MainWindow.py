@@ -222,9 +222,11 @@ class MainWindow:
             tooltip = wallpaperList[i]
             try:
                 tooltip = os.path.basename(tooltip)
-                if "pardus-23-0_" in tooltip:
-                    tooltip = tooltip.split("pardus-23-0_")[2]
                 tooltip = os.path.splitext(tooltip)[0]
+                if "pardus23-0_" in tooltip:
+                    tooltip = tooltip.split("pardus23-0_")[1]
+                elif "pardus23-" in tooltip and "_" in tooltip:
+                    tooltip = tooltip.split("_")[1]
             except Exception as e:
                 print("{}".format(e))
                 pass
