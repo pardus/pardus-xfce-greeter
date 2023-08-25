@@ -225,10 +225,10 @@ class MainWindow:
                 tooltip = os.path.splitext(tooltip)[0]
                 if "pardus23-0_" in tooltip:
                     tooltip = tooltip.split("pardus23-0_")[1]
-                    tooltip.replace("-", " ")
+                    tooltip = tooltip.replace("-", " ")
                 elif "pardus23-" in tooltip and "_" in tooltip:
                     tooltip = tooltip.split("_")[1]
-                    tooltip.replace("-", " ")
+                    tooltip = tooltip.replace("-", " ")
             except Exception as e:
                 print("{}".format(e))
                 pass
