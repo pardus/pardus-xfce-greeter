@@ -2,24 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2022.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pardus-welcome\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-19 16:52+0300\n"
-"PO-Revision-Date: 2022-11-20 21:09+0000\n"
+"POT-Creation-Date: 2023-08-20 02:14+0300\n"
+"PO-Revision-Date: 2023-08-26 18:58+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
-"Language-Team: Portuguese <hugokarvalho@hotmail.com\n"
+"Language-Team: Portuguese <hugokarvalho@hotmail.com>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
-#: ui/MainWindow.glade:109
+#: ui/MainWindow.glade:114
 msgid ""
 "Welcome.\n"
 "\n"
@@ -29,61 +29,65 @@ msgstr ""
 "\n"
 "Esta aplicação ajuda-o a configurar o Pardus."
 
-#: ui/MainWindow.glade:218
+#: ui/MainWindow.glade:223
 msgid "Light"
 msgstr "Claro"
 
-#: ui/MainWindow.glade:270
+#: ui/MainWindow.glade:275
 msgid "Dark"
 msgstr "Escuro"
 
-#: ui/MainWindow.glade:349
+#: ui/MainWindow.glade:354
 msgid "<b>Display Scaling:</b>"
 msgstr "<b>Escala do ecrã:</b>"
 
-#: ui/MainWindow.glade:381
+#: ui/MainWindow.glade:386
 msgid "<b>Panel Size</b> (px):"
 msgstr "<b>Tamanho do painel</b> (px):"
 
-#: ui/MainWindow.glade:411
+#: ui/MainWindow.glade:416
 msgid "<b>Desktop Icon Size</b> (px):"
 msgstr "<b>Tamanho dos ícones da área de trabalho</b> (px):"
 
-#: ui/MainWindow.glade:469
+#: ui/MainWindow.glade:446
+msgid "<b>Mouse Cursor Size</b> (px):"
+msgstr "<b>Tamanho do cursor do rato</b> (px):"
+
+#: ui/MainWindow.glade:505
 msgid "Add / Remove Keyboard layouts"
-msgstr "Adicionar / Remover Esquemas de teclado"
+msgstr "Adicionar / Remover esquemas de teclado"
 
-#: ui/MainWindow.glade:511 ui/MainWindow.glade:552
+#: ui/MainWindow.glade:547 ui/MainWindow.glade:588
 msgid "Turkish - Q Keyboard"
-msgstr "Turco - Teclado Q"
+msgstr "Teclado Q - Turco"
 
-#: ui/MainWindow.glade:521 ui/MainWindow.glade:622 ui/MainWindow.glade:723
+#: ui/MainWindow.glade:557 ui/MainWindow.glade:658 ui/MainWindow.glade:759
 msgid "Add"
 msgstr "Adicionar"
 
-#: ui/MainWindow.glade:540 ui/MainWindow.glade:641 ui/MainWindow.glade:742
-#: ui/MainWindow.glade:1633
+#: ui/MainWindow.glade:576 ui/MainWindow.glade:677 ui/MainWindow.glade:778
+#: ui/MainWindow.glade:1669
 msgid "page0"
 msgstr "página0"
 
-#: ui/MainWindow.glade:562 ui/MainWindow.glade:663 ui/MainWindow.glade:764
+#: ui/MainWindow.glade:598 ui/MainWindow.glade:699 ui/MainWindow.glade:800
 msgid "Remove"
 msgstr "Remover"
 
-#: ui/MainWindow.glade:581 ui/MainWindow.glade:682 ui/MainWindow.glade:783
-#: ui/MainWindow.glade:1650
+#: ui/MainWindow.glade:617 ui/MainWindow.glade:718 ui/MainWindow.glade:819
+#: ui/MainWindow.glade:1686
 msgid "page1"
 msgstr "página1"
 
-#: ui/MainWindow.glade:612 ui/MainWindow.glade:653
+#: ui/MainWindow.glade:648 ui/MainWindow.glade:689
 msgid "Turkish - F Keyboard"
-msgstr "Turco - Teclado F"
+msgstr "Teclado F - Turco"
 
-#: ui/MainWindow.glade:713 ui/MainWindow.glade:754
+#: ui/MainWindow.glade:749 ui/MainWindow.glade:790
 msgid "English Keyboard"
 msgstr "Teclado Inglês"
 
-#: ui/MainWindow.glade:808
+#: ui/MainWindow.glade:844
 msgid ""
 "<span size=\"10000\">You can switch between keyboard layouts with:\n"
 "<b>Super + Space</b></span>"
@@ -91,15 +95,15 @@ msgstr ""
 "<span size=\"10000\">Pode alternar entre esquemas de teclado com:\n"
 "<b>Super + Espaço</b></span>"
 
-#: ui/MainWindow.glade:851
+#: ui/MainWindow.glade:887
 msgid "Show Language Indicator on Panel"
 msgstr "Mostrar indicador de idioma no painel"
 
-#: ui/MainWindow.glade:922
+#: ui/MainWindow.glade:958
 msgid "Shortcuts"
 msgstr "Atalhos"
 
-#: ui/MainWindow.glade:957
+#: ui/MainWindow.glade:993
 msgid ""
 "<b>Screenshot (Active Window):</b>\n"
 "Alt + Print Screen\n"
@@ -137,7 +141,7 @@ msgstr ""
 "<b>Terminal:</b>\n"
 "Ctrl + Alt + T"
 
-#: ui/MainWindow.glade:997
+#: ui/MainWindow.glade:1033
 msgid ""
 "<b>Change Workspace:</b>\n"
 "Ctrl + Alt + ←  → ↑ ↓\n"
@@ -175,7 +179,7 @@ msgstr ""
 "<b>Vista dividida:</b>\n"
 "Super + ←  →"
 
-#: ui/MainWindow.glade:1036
+#: ui/MainWindow.glade:1072
 msgid ""
 "<b>Screenshot (Active Window):</b>\n"
 "Alt + Print Screen\n"
@@ -201,7 +205,7 @@ msgstr ""
 "<b>Aplicações:</b>\n"
 "Super"
 
-#: ui/MainWindow.glade:1070
+#: ui/MainWindow.glade:1106
 msgid ""
 "<b>Change Workspace:</b>\n"
 "Ctrl + Alt + ↑ ↓\n"
@@ -227,27 +231,27 @@ msgstr ""
 "<b>Vista dividida:</b>\n"
 "Super + ←  →"
 
-#: ui/MainWindow.glade:1129
+#: ui/MainWindow.glade:1165
 msgid "<span size=\"large\">Links</span>"
 msgstr "<span size=\"large\">Ligações</span>"
 
-#: ui/MainWindow.glade:1142
+#: ui/MainWindow.glade:1178
 msgid ""
-"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org.tr"
-"\">Home Page</a>"
+"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
+"tr\">Home Page</a>"
 msgstr ""
-"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org.tr"
-"\">Página inicial</a>"
+"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
+"tr\">Página inicial</a>"
 
-#: ui/MainWindow.glade:1155
+#: ui/MainWindow.glade:1191
 msgid ""
-"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org.tr"
-"\">Documentations</a>"
+"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
+"tr\">Documentations</a>"
 msgstr ""
-"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org.tr"
-"\">Documentação</a>"
+"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
+"tr\">Documentação</a>"
 
-#: ui/MainWindow.glade:1168
+#: ui/MainWindow.glade:1204
 msgid ""
 "<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
 "tr\">Community</a>"
@@ -255,67 +259,78 @@ msgstr ""
 "<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
 "tr\">Comunidade</a>"
 
-#: ui/MainWindow.glade:1181
+#: ui/MainWindow.glade:1217
 msgid ""
-"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org.tr"
-"\">Forum</a>"
+"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
+"tr\">Forum</a>"
 msgstr ""
-"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org.tr"
-"\">Fórum</a>"
+"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
+"tr\">Fórum</a>"
 
-#: ui/MainWindow.glade:1217 ui/MainWindow.glade:1245
+#: ui/MainWindow.glade:1253 ui/MainWindow.glade:1281
 msgid "<small></small>"
 msgstr "<small></small>"
 
-#: ui/MainWindow.glade:1232
+#: ui/MainWindow.glade:1268
 msgid "<small>+90</small>"
 msgstr "<small>+90</small>"
 
-#: ui/MainWindow.glade:1273
+#: ui/MainWindow.glade:1309
 msgid "<span size=\"large\">Support</span>"
 msgstr "<span size=\"large\">Suporte</span>"
 
-#: ui/MainWindow.glade:1286
+#: ui/MainWindow.glade:1322
 msgid "<span size=\"xx-large\"><b>444 5 773</b></span>"
 msgstr "<span size=\"xx-large\"><b>444 5 773</b></span>"
 
-#: ui/MainWindow.glade:1625
+#: ui/MainWindow.glade:1661
 msgid "Next"
 msgstr "Seguinte"
 
-#: ui/MainWindow.glade:1638
+#: ui/MainWindow.glade:1674
 msgid "Close"
 msgstr "Fechar"
 
-#: ui/MainWindow.glade:1664
+#: ui/MainWindow.glade:1700
 msgid "Previous"
 msgstr "Anterior"
 
-#: ui/MainWindow.glade:1698
-#, fuzzy
+#: ui/MainWindow.glade:1734 src/MainWindow.py:117
 msgid "Pardus Greeter"
-msgstr "Bem-vindo ao Pardus"
+msgstr "Gestor de sessões Pardus"
 
-#: src/MainWindow.py:130
+#: ui/MainWindow.glade:1779
+msgid "Tool that helps you to get Pardus ready."
+msgstr "Ferramenta que o ajuda a preparar o Pardus."
+
+#: src/MainWindow.py:45
+msgid "Error"
+msgstr "Erro"
+
+#: src/MainWindow.py:45
+msgid "Your desktop environment is not supported."
+msgstr "O seu ambiente de trabalho não é suportado."
+
+#: src/MainWindow.py:143
 msgid "Welcome"
 msgstr "Bem-vindo"
 
-#: src/MainWindow.py:131
+#: src/MainWindow.py:144
 msgid "Select Wallpaper"
 msgstr "Selecionar papel de parede"
 
-#: src/MainWindow.py:132
+#: src/MainWindow.py:145
 msgid "Theme Settings"
 msgstr "Definições do tema"
 
-#: src/MainWindow.py:133
+#: src/MainWindow.py:146
 msgid "Display Settings"
 msgstr "Definições do ecrã"
 
-#: src/MainWindow.py:134
+#: src/MainWindow.py:147
 msgid "Keyboard Settings"
 msgstr "Definições do teclado"
 
-#: src/MainWindow.py:135
+#: src/MainWindow.py:148
 msgid "Support & Community"
 msgstr "Suporte e Comunidade"
