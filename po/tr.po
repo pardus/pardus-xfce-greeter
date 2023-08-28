@@ -9,16 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-20 02:14+0300\n"
-"PO-Revision-Date: 2023-08-27 18:57+0300\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"POT-Creation-Date: 2023-08-28 20:42+0300\n"
+"PO-Revision-Date: 2023-08-28 20:43+0300\n"
+"Last-Translator: Fatih Altun <fatih.altun@pardus.org.tr>\n"
 "Language-Team: Turkish <dev@pardus.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Gtranslator 3.38.0\n"
 
 #: ui/MainWindow.glade:114
 msgid ""
@@ -97,7 +97,7 @@ msgstr ""
 "<b>Super + Boşluk</b></span>"
 
 #: ui/MainWindow.glade:887
-msgid "Show Language Indicator on Panel"
+msgid "Show Keyboard Indicator on Panel"
 msgstr "Klavye Göstergesini Panelde Göster"
 
 #: ui/MainWindow.glade:958
@@ -238,19 +238,19 @@ msgstr "<span size=\"large\">Bağlantılar</span>"
 
 #: ui/MainWindow.glade:1178
 msgid ""
-"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
-"tr\">Home Page</a>"
+"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org.tr"
+"\">Home Page</a>"
 msgstr ""
-"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
-"tr\">Ana Sayfa</a>"
+"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org.tr"
+"\">Ana Sayfa</a>"
 
 #: ui/MainWindow.glade:1191
 msgid ""
-"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
-"tr\">Documentations</a>"
+"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org.tr"
+"\">Documentations</a>"
 msgstr ""
-"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
-"tr\">Belgeler</a>"
+"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org.tr"
+"\">Belgeler</a>"
 
 #: ui/MainWindow.glade:1204
 msgid ""
@@ -262,11 +262,11 @@ msgstr ""
 
 #: ui/MainWindow.glade:1217
 msgid ""
-"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
-"tr\">Forum</a>"
+"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org.tr"
+"\">Forum</a>"
 msgstr ""
-"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
-"tr\">Forum</a>"
+"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org.tr"
+"\">Forum</a>"
 
 #: ui/MainWindow.glade:1253 ui/MainWindow.glade:1281
 msgid "<small></small>"
