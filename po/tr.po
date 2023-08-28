@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-20 02:14+0300\n"
-"PO-Revision-Date: 2023-08-20 01:58+0300\n"
-"Last-Translator: Fatih Altun <fatih.altun@pardus.org.tr>\n"
+"PO-Revision-Date: 2023-08-27 18:57+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <dev@pardus.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Gtranslator 3.38.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: ui/MainWindow.glade:114
 msgid ""
@@ -48,15 +48,15 @@ msgstr "<b>Panel Boyutu</b> (px):"
 
 #: ui/MainWindow.glade:416
 msgid "<b>Desktop Icon Size</b> (px):"
-msgstr "<b>Masaüstü İkon Boyutu</b> (px):"
+msgstr "<b>Masaüstü Simge Boyutu</b> (px):"
 
 #: ui/MainWindow.glade:446
 msgid "<b>Mouse Cursor Size</b> (px):"
-msgstr "<b>Fare İşaretçi Boyutu</b> (px):"
+msgstr "<b>Fare İmleç Boyutu</b> (px):"
 
 #: ui/MainWindow.glade:505
 msgid "Add / Remove Keyboard layouts"
-msgstr "Klavye Yerleşimi Ekle / Çıkar"
+msgstr "Klavye Yerleşimi Ekle / Kaldır"
 
 #: ui/MainWindow.glade:547 ui/MainWindow.glade:588
 msgid "Turkish - Q Keyboard"
@@ -98,7 +98,7 @@ msgstr ""
 
 #: ui/MainWindow.glade:887
 msgid "Show Language Indicator on Panel"
-msgstr "Klavye Göstergesini Panel'de Göster"
+msgstr "Klavye Göstergesini Panelde Göster"
 
 #: ui/MainWindow.glade:958
 msgid "Shortcuts"
@@ -165,7 +165,7 @@ msgstr ""
 "<b>Çalışma Alanı Değiştir:</b>\n"
 "Ctrl + Alt + ←  → ↑ ↓\n"
 "\n"
-"<b>Çalışma Alanı Ekle/Çıkar:</b>\n"
+"<b>Çalışma Alanı Ekle/Kaldır:</b>\n"
 "Alt + Insert/Delete\n"
 "\n"
 "<b>Çalışma Alanına Git:</b>\n"
@@ -238,19 +238,19 @@ msgstr "<span size=\"large\">Bağlantılar</span>"
 
 #: ui/MainWindow.glade:1178
 msgid ""
-"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org.tr"
-"\">Home Page</a>"
+"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
+"tr\">Home Page</a>"
 msgstr ""
-"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org.tr"
-"\">Ana Sayfa</a>"
+"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
+"tr\">Ana Sayfa</a>"
 
 #: ui/MainWindow.glade:1191
 msgid ""
-"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org.tr"
-"\">Documentations</a>"
+"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
+"tr\">Documentations</a>"
 msgstr ""
-"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org.tr"
-"\">Belgeler</a>"
+"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
+"tr\">Belgeler</a>"
 
 #: ui/MainWindow.glade:1204
 msgid ""
@@ -262,11 +262,11 @@ msgstr ""
 
 #: ui/MainWindow.glade:1217
 msgid ""
-"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org.tr"
-"\">Forum</a>"
+"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
+"tr\">Forum</a>"
 msgstr ""
-"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org.tr"
-"\">Forum</a>"
+"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
+"tr\">Forum</a>"
 
 #: ui/MainWindow.glade:1253 ui/MainWindow.glade:1281
 msgid "<small></small>"
@@ -286,7 +286,7 @@ msgstr "<span size=\"xx-large\"><b>444 5 773</b></span>"
 
 #: ui/MainWindow.glade:1661
 msgid "Next"
-msgstr "İleri"
+msgstr "Sonraki"
 
 #: ui/MainWindow.glade:1674
 msgid "Close"
@@ -294,7 +294,7 @@ msgstr "Kapat"
 
 #: ui/MainWindow.glade:1700
 msgid "Previous"
-msgstr "Geri"
+msgstr "Önceki"
 
 #: ui/MainWindow.glade:1734 src/MainWindow.py:117
 msgid "Pardus Greeter"
@@ -326,7 +326,7 @@ msgstr "Tema Ayarları"
 
 #: src/MainWindow.py:146
 msgid "Display Settings"
-msgstr "Görüntü Ayarları"
+msgstr "Görünüm Ayarları"
 
 #: src/MainWindow.py:147
 msgid "Keyboard Settings"
@@ -334,15 +334,4 @@ msgstr "Klavye Ayarları"
 
 #: src/MainWindow.py:148
 msgid "Support & Community"
-msgstr "Destek & Topluluk"
-
-#~ msgid ""
-#~ "<span size=\"14000\">Support:</span>\n"
-#~ "+90 <span size=\"16000\"><b>444 5 773</b></span>\n"
-#~ "<a href=\"https://talep.pardus.org.tr/servicedesk/customer/"
-#~ "portal/1\">talep.pardus.org.tr</a>"
-#~ msgstr ""
-#~ "<span size=\"14000\">Destek:</span>\n"
-#~ "+90 <span size=\"16000\"><b>444 5 773</b></span>\n"
-#~ "<a href=\"https://talep.pardus.org.tr/servicedesk/customer/"
-#~ "portal/1\">talep.pardus.org.tr</a>"
+msgstr "Destek ve Topluluk"
