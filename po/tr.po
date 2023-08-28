@@ -98,7 +98,7 @@ msgstr ""
 
 #: ui/MainWindow.glade:887
 msgid "Show Language Indicator on Panel"
-msgstr "Dil Göstergesini Panelde Göster"
+msgstr "Klavye Göstergesini Panelde Göster"
 
 #: ui/MainWindow.glade:958
 msgid "Shortcuts"
@@ -326,7 +326,7 @@ msgstr "Tema Ayarları"
 
 #: src/MainWindow.py:146
 msgid "Display Settings"
-msgstr "Ekran Ayarları"
+msgstr "Görünüm Ayarları"
 
 #: src/MainWindow.py:147
 msgid "Keyboard Settings"
