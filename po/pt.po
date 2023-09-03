@@ -1,4 +1,4 @@
-# Portuguese translation for pardus-welcome.
+# Portuguese translation of pardus-xfce-greeter.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: pardus-welcome\n"
+"Project-Id-Version: pardus-xfce-greeter\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-28 20:42+0300\n"
-"PO-Revision-Date: 2023-08-29 00:00+0100\n"
+"PO-Revision-Date: 2023-09-03 23:47+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <hugokarvalho@hotmail.com>\n"
 "Language: pt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: ui/MainWindow.glade:114
 msgid ""
@@ -55,7 +55,7 @@ msgstr "<b>Tamanho do cursor do rato</b> (px):"
 
 #: ui/MainWindow.glade:505
 msgid "Add / Remove Keyboard layouts"
-msgstr "Adicionar / Remover esquemas de teclado"
+msgstr "Adicionar / Remover disposições de teclado"
 
 #: ui/MainWindow.glade:547 ui/MainWindow.glade:588
 msgid "Turkish - Q Keyboard"
@@ -92,7 +92,7 @@ msgid ""
 "<span size=\"10000\">You can switch between keyboard layouts with:\n"
 "<b>Super + Space</b></span>"
 msgstr ""
-"<span size=\"10000\">Pode alternar entre esquemas de teclado com:\n"
+"<span size=\"10000\">Pode alternar entre disposições de teclado com:\n"
 "<b>Super + Espaço</b></span>"
 
 #: ui/MainWindow.glade:887
@@ -297,7 +297,7 @@ msgstr "Anterior"
 
 #: ui/MainWindow.glade:1734 src/MainWindow.py:117
 msgid "Pardus Greeter"
-msgstr "Gestor de sessões Pardus"
+msgstr "Bem-vindo ao Pardus"
 
 #: ui/MainWindow.glade:1779
 msgid "Tool that helps you to get Pardus ready."
