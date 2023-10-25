@@ -13,6 +13,10 @@ from gi.repository import Gtk, GdkPixbuf, GLib
 import locale
 from locale import gettext as _
 from pathlib import Path
+import apt
+from pathlib import Path
+import json
+
 
 # Translation Constants:
 APPNAME = "pardus-xfce-greeter"
@@ -108,6 +112,9 @@ class MainWindow:
         # Last Variable Definitions
         self.defineLastVariables()
 
+        # control special pardus themes
+        self.control_special_themes()
+
     def defineComponents(self):
         def getUI(str):
             return self.builder.get_object(str)
@@ -153,6 +160,13 @@ class MainWindow:
         self.flow_wallpapers = getUI("flow_wallpapers")
         self.rb_darkTheme = getUI("rb_darkTheme")
         self.rb_lightTheme = getUI("rb_lightTheme")
+        self.img_lightTheme = getUI("img_lightTheme")
+        self.img_darkTheme = getUI("img_darkTheme")
+        self.special_light_label = getUI("special_light_label")
+        self.special_light_img = getUI("special_light_img")
+        self.special_dark_label = getUI("special_dark_label")
+        self.special_dark_img = getUI("special_dark_img")
+        self.ui_special_theme_box = getUI("ui_special_theme_box")
 
         # - Scaling Settings:
         self.lbl_panelSize = getUI("lbl_panelSize")
@@ -199,6 +213,96 @@ class MainWindow:
             self.box_progressDots.remove(self.box_progressDots.get_children()[0])
 
         self.updateProgressDots()
+
+        self.ui_special_theme_box.set_visible(False)
+
+    def control_special_themes(self):
+
+        theme_packages = ["pardus-yuzyil"]
+        package_found = False
+
+        try:
+            cache = apt.Cache()
+            for package in theme_packages:
+                if cache[package].is_installed:
+                    package_found = True
+                    print("{} found.".format(package))
+        except Exception as e:
+            print("{}".format(e))
+
+        if package_found:
+            user = "{}".format(Path.home())
+            user_json_file = "{}/.config/pardus/pardus-xfce-greeter/special_theme.json".format(user)
+            system_json_file = "/usr/share/pardus/pardus-special-theme/special_theme.json"
+
+            user_json_file_ok = False
+            system_json_file_ok = False
+
+            # firstly look for user json file (setted from theme desktop file)
+            try:
+                if os.path.isfile(user_json_file):
+                    special_json_file = json.load(open(user_json_file))
+                    user_json_file_ok = True
+            except Exception as e:
+                print("{}".format(e))
+
+            # if user json file is not found then look for system json file (setted from theme package file)
+            if not user_json_file_ok:
+                try:
+                    if os.path.isfile(system_json_file):
+                        special_json_file = json.load(open(system_json_file))
+                        system_json_file_ok = True
+                except Exception as e:
+                    print("{}".format(e))
+
+            # system json file not exists too so return
+            if not user_json_file_ok and not system_json_file_ok:
+                print("{}\n{}\nfiles not exists!".format(user_json_file, system_json_file))
+                return
+
+            try:
+                self.special_light_name = special_json_file["light"]["name"].replace("@@desktop@@", currentDesktop)
+                self.special_light_pretty_tr = special_json_file["light"]["pretty_tr"]
+                self.special_light_pretty_en = special_json_file["light"]["pretty_en"]
+                self.special_light_background = special_json_file["light"]["background"]
+                self.special_light_image = special_json_file["light"]["image"]
+                self.special_dark_name = special_json_file["dark"]["name"].replace("@@desktop@@", currentDesktop)
+                self.special_dark_pretty_tr = special_json_file["dark"]["pretty_tr"]
+                self.special_dark_pretty_en = special_json_file["dark"]["pretty_en"]
+                self.special_dark_background = special_json_file["dark"]["background"]
+                self.special_dark_image = special_json_file["dark"]["image"]
+            except Exception as e:
+                print("{}".format(e))
+                return
+
+            if not os.path.exists(self.special_light_background):
+                print("{} not exists.".format(self.special_light_background))
+                return
+
+            if not os.path.exists(self.special_light_image):
+                print("{} not exists.".format(self.special_light_image))
+                return
+
+            if not os.path.exists(self.special_dark_background):
+                print("{} not exists.".format(self.special_dark_background))
+                return
+
+            if not os.path.exists(self.special_dark_image):
+                print("{} not exists.".format(self.special_dark_image))
+                return
+
+            print("everything looks ok so setting theme page")
+            self.img_lightTheme.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file_at_size(
+                os.path.dirname(os.path.abspath(__file__)) + "/../assets/theme-light.png", 233, 233))
+            self.img_darkTheme.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file_at_size(
+                os.path.dirname(os.path.abspath(__file__)) + "/../assets/theme-dark.png", 233, 233))
+
+            self.special_light_img.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file_at_size(
+                self.special_light_image, 233, 233))
+            self.special_dark_img.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file_at_size(
+                self.special_dark_image, 233, 233))
+
+            self.ui_special_theme_box.set_visible(True)
 
     def addSliderMarks(self):
         self.sli_scaling.add_mark(0, Gtk.PositionType.BOTTOM, "%100")
