@@ -66,11 +66,14 @@ def setIconTheme(theme):
 
 
 def getTheme():
-    return subprocess.check_output([
-        "xfconf-query",
-        "-c", "xsettings",
-        "-p", "/Net/ThemeName"
-    ]).decode("utf-8").rstrip()
+    try:
+        return subprocess.check_output([
+            "xfconf-query",
+            "-c", "xsettings",
+            "-p", "/Net/ThemeName"
+        ]).decode("utf-8").rstrip()
+    except:
+        return ""
 
 
 def getWindowTheme():
