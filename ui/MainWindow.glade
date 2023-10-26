@@ -135,126 +135,6 @@ This application helps you to configure Pardus.</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">8</property>
                     <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="margin-bottom">21</property>
-                        <property name="spacing">13</property>
-                        <property name="homogeneous">True</property>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">13</property>
-                            <child>
-                              <object class="GtkRadioButton" id="rb_lightTheme">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="halign">center</property>
-                                <property name="margin-top">13</property>
-                                <property name="active">True</property>
-                                <property name="draw-indicator">False</property>
-                                <signal name="clicked" handler="on_rb_lightTheme_clicked" swapped="no"/>
-                                <child>
-                                  <object class="GtkImage" id="img_lightTheme">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="pixbuf">../assets/theme-light.png</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Light</property>
-                                <attributes>
-                                  <attribute name="size" value="21000"/>
-                                </attributes>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">13</property>
-                            <child>
-                              <object class="GtkRadioButton" id="rb_darkTheme">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="halign">center</property>
-                                <property name="margin-top">13</property>
-                                <property name="draw-indicator">False</property>
-                                <property name="group">rb_lightTheme</property>
-                                <signal name="clicked" handler="on_rb_darkTheme_clicked" swapped="no"/>
-                                <child>
-                                  <object class="GtkImage" id="img_darkTheme">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="pixbuf">../assets/theme-dark.png</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Dark</property>
-                                <attributes>
-                                  <attribute name="size" value="21000"/>
-                                </attributes>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkBox" id="ui_special_theme_box">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
@@ -279,7 +159,6 @@ This application helps you to configure Pardus.</property>
                                 <property name="active">True</property>
                                 <property name="draw-indicator">False</property>
                                 <property name="group">rb_lightTheme</property>
-                                <signal name="clicked" handler="on_special_light_rb_clicked" swapped="no"/>
                                 <child>
                                   <object class="GtkImage" id="special_light_img">
                                     <property name="visible">True</property>
@@ -331,11 +210,11 @@ This application helps you to configure Pardus.</property>
                                 <property name="margin-top">13</property>
                                 <property name="draw-indicator">False</property>
                                 <property name="group">rb_lightTheme</property>
-                                <signal name="clicked" handler="on_special_dark_rb_clicked" swapped="no"/>
                                 <child>
                                   <object class="GtkImage" id="special_dark_img">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
+                                    <property name="icon-name">image-missing</property>
                                   </object>
                                 </child>
                               </object>
@@ -347,6 +226,124 @@ This application helps you to configure Pardus.</property>
                             </child>
                             <child>
                               <object class="GtkLabel" id="special_dark_label">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">Dark</property>
+                                <attributes>
+                                  <attribute name="size" value="21000"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">21</property>
+                        <property name="spacing">13</property>
+                        <property name="homogeneous">True</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">13</property>
+                            <child>
+                              <object class="GtkRadioButton" id="rb_lightTheme">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">False</property>
+                                <property name="halign">center</property>
+                                <property name="margin-top">13</property>
+                                <property name="active">True</property>
+                                <property name="draw-indicator">False</property>
+                                <child>
+                                  <object class="GtkImage" id="img_lightTheme">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="pixbuf">../assets/theme-light.png</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="label" translatable="yes">Light</property>
+                                <attributes>
+                                  <attribute name="size" value="21000"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">13</property>
+                            <child>
+                              <object class="GtkRadioButton" id="rb_darkTheme">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="receives-default">False</property>
+                                <property name="halign">center</property>
+                                <property name="margin-top">13</property>
+                                <property name="draw-indicator">False</property>
+                                <property name="group">rb_lightTheme</property>
+                                <child>
+                                  <object class="GtkImage" id="img_darkTheme">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="pixbuf">../assets/theme-dark.png</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="label" translatable="yes">Dark</property>
@@ -1820,7 +1817,6 @@ Super + ←  →</property>
                   <object class="GtkButton" id="btn_prev">
                     <property name="label" translatable="yes">Previous</property>
                     <property name="visible">True</property>
-                    <property name="sensitive">False</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
                     <signal name="clicked" handler="on_btn_prev_clicked" swapped="no"/>

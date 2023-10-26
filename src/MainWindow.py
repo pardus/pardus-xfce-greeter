@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import subprocess
 import threading
 
 import gi
@@ -16,7 +17,7 @@ from pathlib import Path
 import apt
 from pathlib import Path
 import json
-
+from locale import getlocale
 
 # Translation Constants:
 APPNAME = "pardus-xfce-greeter"
@@ -35,6 +36,7 @@ if "xfce" in getenv("SESSION").lower() or "xfce" in getenv("XDG_CURRENT_DESKTOP"
     import xfce.ThemeManager as ThemeManager
     import xfce.ScaleManager as ScaleManager
     import xfce.KeyboardManager as KeyboardManager
+    import xfce.WhiskerManager as WhiskerManager
 
     currentDesktop = "xfce"
 
@@ -68,6 +70,8 @@ except OSError:
 
 class MainWindow:
     def __init__(self, application):
+        self.Application = application
+
         # Gtk Builder
         self.builder = Gtk.Builder()
         self.builder.add_from_file(os.path.dirname(os.path.abspath(__file__)) + "/../ui/MainWindow.glade")
@@ -93,9 +97,6 @@ class MainWindow:
         thread.daemon = True
         thread.start()
 
-        # Set theme to system-default:
-        self.getThemeDefaults()
-
         # Set scales to system-default:
         self.getScalingDefaults()
 
@@ -103,17 +104,25 @@ class MainWindow:
         if currentDesktop == "xfce":
             self.getKeyboardDefaults()
 
+        # Last Variable Definitions
+        self.defineVariables()
+
+        # control args
+        self.control_args()
+
         # Show Screen:
         self.window.show_all()
 
         # Hide widgets:
         self.hideWidgets()
 
-        # Last Variable Definitions
-        self.defineLastVariables()
-
         # control special pardus themes
         self.control_special_themes()
+
+        # Set theme to system-default:
+        self.getThemeDefaults()
+
+        self.set_signals()
 
     def defineComponents(self):
         def getUI(str):
@@ -160,6 +169,8 @@ class MainWindow:
         self.flow_wallpapers = getUI("flow_wallpapers")
         self.rb_darkTheme = getUI("rb_darkTheme")
         self.rb_lightTheme = getUI("rb_lightTheme")
+        self.special_light_rb = getUI("special_light_rb")
+        self.special_dark_rb = getUI("special_dark_rb")
         self.img_lightTheme = getUI("img_lightTheme")
         self.img_darkTheme = getUI("img_darkTheme")
         self.special_light_label = getUI("special_light_label")
@@ -192,29 +203,43 @@ class MainWindow:
         tabTitle = self.stk_pages.get_visible_child().name
         self.lbl_headerTitle.set_text(tabTitle)
 
-    def defineLastVariables(self):
+    def defineVariables(self):
         self.currentpage = 0
         self.stk_len = 0
         for row in self.stk_pages:
             self.stk_len += 1
 
+        self.special_theme_active = False
+
+        self.pardus_default_whisker_icon = "start-pardus"
+        self.pardus_default_wallpaper_light = "/usr/share/backgrounds/pardus23-0_default-light.svg"
+        self.pardus_default_wallpaper_dark = "/usr/share/backgrounds/pardus23-0_default-dark.svg"
+
+    def set_signals(self):
+        self.rb_lightTheme.connect("clicked", self.on_rb_lightTheme_clicked)
+        self.rb_darkTheme.connect("clicked", self.on_rb_darkTheme_clicked)
+        self.special_light_rb.connect("clicked", self.on_special_light_rb_clicked)
+        self.special_dark_rb.connect("clicked", self.on_special_dark_rb_clicked)
+
     # =========== UI Preparing functions:
     def hideWidgets(self):
         # Remove panel and desktop icon sizes if GNOME
-        if currentDesktop == "gnome":
-            self.sli_panel.set_visible(False)
-            self.sli_desktopIcon.set_visible(False)
-            self.lbl_panelSize.set_visible(False)
-            self.lbl_desktopIconSize.set_visible(False)
+        # if currentDesktop == "gnome":
+        #     self.sli_panel.set_visible(False)
+        #     self.sli_desktopIcon.set_visible(False)
+        #     self.lbl_panelSize.set_visible(False)
+        #     self.lbl_desktopIconSize.set_visible(False)
 
         # Remove Keyboard settings if not XFCE
-        if currentDesktop != "xfce":
-            self.page_keyboard.destroy()
-            self.box_progressDots.remove(self.box_progressDots.get_children()[0])
+        # if currentDesktop != "xfce":
+        #     self.page_keyboard.destroy()
+        #     self.box_progressDots.remove(self.box_progressDots.get_children()[0])
 
         self.updateProgressDots()
 
         self.ui_special_theme_box.set_visible(False)
+
+        self.btn_prev.set_sensitive(self.currentpage != 0)
 
     def control_special_themes(self):
 
@@ -232,8 +257,8 @@ class MainWindow:
 
         if package_found:
             user = "{}".format(Path.home())
-            user_json_file = "{}/.config/pardus/pardus-xfce-greeter/special_theme.json".format(user)
-            system_json_file = "/usr/share/pardus/pardus-special-theme/special_theme.json"
+            user_json_file = "{}/.config/pardus/pardus-special-theme/special_theme.json".format(user)
+            system_json_file = "/usr/share/pardus/pardus-special-theme/special-theme.json"
 
             user_json_file_ok = False
             system_json_file_ok = False
@@ -266,11 +291,14 @@ class MainWindow:
                 self.special_light_pretty_en = special_json_file["light"]["pretty_en"]
                 self.special_light_background = special_json_file["light"]["background"]
                 self.special_light_image = special_json_file["light"]["image"]
+                self.special_light_panel = special_json_file["light"]["panel"]
+
                 self.special_dark_name = special_json_file["dark"]["name"].replace("@@desktop@@", currentDesktop)
                 self.special_dark_pretty_tr = special_json_file["dark"]["pretty_tr"]
                 self.special_dark_pretty_en = special_json_file["dark"]["pretty_en"]
                 self.special_dark_background = special_json_file["dark"]["background"]
                 self.special_dark_image = special_json_file["dark"]["image"]
+                self.special_dark_panel = special_json_file["dark"]["panel"]
             except Exception as e:
                 print("{}".format(e))
                 return
@@ -283,6 +311,10 @@ class MainWindow:
                 print("{} not exists.".format(self.special_light_image))
                 return
 
+            if not os.path.exists(self.special_light_panel):
+                print("{} not exists.".format(self.special_light_panel))
+                return
+
             if not os.path.exists(self.special_dark_background):
                 print("{} not exists.".format(self.special_dark_background))
                 return
@@ -290,6 +322,12 @@ class MainWindow:
             if not os.path.exists(self.special_dark_image):
                 print("{} not exists.".format(self.special_dark_image))
                 return
+
+            if not os.path.exists(self.special_dark_panel):
+                print("{} not exists.".format(self.special_dark_panel))
+                return
+
+            self.special_theme_active = True
 
             print("everything looks ok so setting theme page")
             self.img_lightTheme.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file_at_size(
@@ -302,7 +340,36 @@ class MainWindow:
             self.special_dark_img.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file_at_size(
                 self.special_dark_image, 233, 233))
 
+            self.locale = self.get_locale()
+
+            if self.locale == "tr":
+                self.special_light_label.set_text("{}".format(self.special_light_pretty_tr))
+                self.special_dark_label.set_text("{}".format(self.special_dark_pretty_tr))
+            else:
+                self.special_light_label.set_text("{}".format(self.special_light_pretty_en))
+                self.special_dark_label.set_text("{}".format(self.special_dark_pretty_en))
+
             self.ui_special_theme_box.set_visible(True)
+
+    def control_args(self):
+        if "page" in self.Application.args.keys():
+            page = self.Application.args["page"]
+            self.stk_pages.set_visible_child_name("{}".format(page))
+            self.currentpage = 1
+
+    def get_locale(self):
+        try:
+            user_locale = os.getenv("LANG").split(".")[0].split("_")[0]
+        except Exception as e:
+            print("{}".format(e))
+            try:
+                user_locale = getlocale()[0].split("_")[0]
+            except Exception as e:
+                print("{}".format(e))
+                user_locale = "en"
+        if user_locale != "tr" and user_locale != "en":
+            user_locale = "en"
+        return user_locale
 
     def addSliderMarks(self):
         self.sli_scaling.add_mark(0, Gtk.PositionType.BOTTOM, "%100")
@@ -343,11 +410,19 @@ class MainWindow:
 
     def getThemeDefaults(self):
         theme = ThemeManager.getTheme()
+        icon_theme = ThemeManager.getIconTheme()
 
         if theme == "pardus-xfce":
             self.rb_lightTheme.set_active(True)
+            if self.special_theme_active:
+                if icon_theme == self.special_light_name:
+                    self.special_light_rb.set_active(True)
+
         elif theme == "pardus-xfce-dark":
             self.rb_darkTheme.set_active(True)
+            if self.special_theme_active:
+                if icon_theme == self.special_dark_name:
+                    self.special_dark_rb.set_active(True)
 
     def getScalingDefaults(self):
         if currentDesktop == "xfce":
@@ -483,11 +558,23 @@ class MainWindow:
     # - Theme Selection:
     def on_rb_lightTheme_clicked(self, rb):
         if rb.get_active():
+
             GLib.idle_add(ThemeManager.setTheme, "pardus-xfce")
             GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce")
 
             # Window Theme
             self.changeWindowTheme(ScaleManager.getScale() == 2.0, False)
+
+            if self.special_theme_active:
+                # Wallpaper
+                WallpaperManager.setWallpaper(self.pardus_default_wallpaper_light)
+
+                # Whisker
+                WhiskerManager.set("button-icon", self.pardus_default_whisker_icon)
+                WhiskerManager.saveFile()
+
+                # Refresh panel
+                subprocess.call(["xfce4-panel", "-r"])
 
     def on_rb_darkTheme_clicked(self, rb):
         if rb.get_active():
@@ -496,6 +583,57 @@ class MainWindow:
 
             # Window Theme
             self.changeWindowTheme(ScaleManager.getScale() == 2.0, True)
+
+            if self.special_theme_active:
+                # Wallpaper
+                WallpaperManager.setWallpaper(self.pardus_default_wallpaper_dark)
+
+                # Whisker
+                WhiskerManager.set("button-icon", self.pardus_default_whisker_icon)
+                WhiskerManager.saveFile()
+
+                # Refresh panel
+                subprocess.call(["xfce4-panel", "-r"])
+
+    def on_special_light_rb_clicked(self, rb):
+        print("on_special_light_rb_clicked")
+        if rb.get_active():
+            print("on_special_light_rb_clicked active")
+            GLib.idle_add(ThemeManager.setTheme, "pardus-xfce")
+            GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce-yuzyil")
+
+            # Window Theme
+            self.changeWindowTheme(ScaleManager.getScale() == 2.0, False)
+
+            # Wallpaper
+            WallpaperManager.setWallpaper(self.special_light_background)
+
+            # Whisker
+            WhiskerManager.set("button-icon", self.special_light_panel)
+            WhiskerManager.saveFile()
+
+            # Refresh panel
+            subprocess.call(["xfce4-panel", "-r"])
+
+    def on_special_dark_rb_clicked(self, rb):
+        print("on_special_dark_rb_clicked")
+        if rb.get_active():
+            print("on_special_dark_rb_clicked active")
+            GLib.idle_add(ThemeManager.setTheme, "pardus-xfce-dark")
+            GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce-yuzyil-dark")
+
+            # Window Theme
+            self.changeWindowTheme(ScaleManager.getScale() == 2.0, True)
+
+            # Wallpaper
+            WallpaperManager.setWallpaper(self.special_dark_background)
+
+            # Whisker
+            WhiskerManager.set("button-icon", self.special_dark_panel)
+            WhiskerManager.saveFile()
+
+            # Refresh panel
+            subprocess.call(["xfce4-panel", "-r"])
 
     # - Scale Changed:
     def on_sli_scaling_button_release(self, slider, b):
