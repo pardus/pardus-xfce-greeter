@@ -494,6 +494,9 @@ class MainWindow:
             else:
                 GLib.idle_add(ThemeManager.setWindowTheme, "pardus-xfce")
 
+    def refresh_panel(self):
+        subprocess.call(["xfce4-panel", "-r"])
+
     # - stack prev and next page controls
     def get_next_page(self, page):
         increase = 0
@@ -570,11 +573,11 @@ class MainWindow:
                 WallpaperManager.setWallpaper(self.pardus_default_wallpaper_light)
 
                 # Whisker
-                WhiskerManager.set("button-icon", self.pardus_default_whisker_icon)
-                WhiskerManager.saveFile()
+                GLib.idle_add(WhiskerManager.set, "button-icon", self.pardus_default_whisker_icon)
+                GLib.idle_add(WhiskerManager.saveFile)
 
                 # Refresh panel
-                subprocess.call(["xfce4-panel", "-r"])
+                GLib.idle_add(self.refresh_panel)
 
     def on_rb_darkTheme_clicked(self, rb):
         if rb.get_active():
@@ -589,11 +592,11 @@ class MainWindow:
                 WallpaperManager.setWallpaper(self.pardus_default_wallpaper_dark)
 
                 # Whisker
-                WhiskerManager.set("button-icon", self.pardus_default_whisker_icon)
-                WhiskerManager.saveFile()
+                GLib.idle_add(WhiskerManager.set, "button-icon", self.pardus_default_whisker_icon)
+                GLib.idle_add(WhiskerManager.saveFile)
 
                 # Refresh panel
-                subprocess.call(["xfce4-panel", "-r"])
+                GLib.idle_add(self.refresh_panel)
 
     def on_special_light_rb_clicked(self, rb):
         print("on_special_light_rb_clicked")
@@ -609,11 +612,11 @@ class MainWindow:
             WallpaperManager.setWallpaper(self.special_light_background)
 
             # Whisker
-            WhiskerManager.set("button-icon", self.special_light_panel)
-            WhiskerManager.saveFile()
+            GLib.idle_add(WhiskerManager.set, "button-icon", self.special_light_panel)
+            GLib.idle_add(WhiskerManager.saveFile)
 
             # Refresh panel
-            subprocess.call(["xfce4-panel", "-r"])
+            GLib.idle_add(self.refresh_panel)
 
     def on_special_dark_rb_clicked(self, rb):
         print("on_special_dark_rb_clicked")
@@ -629,11 +632,11 @@ class MainWindow:
             WallpaperManager.setWallpaper(self.special_dark_background)
 
             # Whisker
-            WhiskerManager.set("button-icon", self.special_dark_panel)
-            WhiskerManager.saveFile()
+            GLib.idle_add(WhiskerManager.set, "button-icon", self.special_dark_panel)
+            GLib.idle_add(WhiskerManager.saveFile)
 
             # Refresh panel
-            subprocess.call(["xfce4-panel", "-r"])
+            GLib.idle_add(self.refresh_panel)
 
     # - Scale Changed:
     def on_sli_scaling_button_release(self, slider, b):
