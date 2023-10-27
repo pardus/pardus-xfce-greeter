@@ -1,3 +1,13 @@
+pardus-xfce-greeter (1.0.3) unstable; urgency=medium
+
+  * Add exception to get theme name
+  * Change theme and wallpaper order
+  * Add special theme controls, in development yet
+  * Add arg handling and Update special theme controls
+  * Add GLib idle to whisker manager funcs
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Fri, 27 Oct 2023 11:23:59 +0300
+
 pardus-xfce-greeter (1.0.2) unstable; urgency=medium
 
   [ Hugo Carvalho ]
