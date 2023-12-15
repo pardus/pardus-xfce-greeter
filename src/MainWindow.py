@@ -562,10 +562,8 @@ class MainWindow:
         label.set_text("{}".format(pretty_name))
         label.set_line_wrap(True)
         label.set_max_width_chars(21)
-        label.name = package_name
 
         box = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
-
         box.pack_start(icon, False, True, 0)
         box.pack_start(label, False, True, 0)
         box.set_margin_start(8)
@@ -578,6 +576,7 @@ class MainWindow:
         listbox.set_selection_mode(Gtk.SelectionMode.NONE)
         listbox.get_style_context().add_class("pardus-software-listbox")
         listbox.add(box)
+        listbox.name = package_name
 
         frame = Gtk.Frame.new()
         frame.get_style_context().add_class("pardus-software-frame")
@@ -587,7 +586,6 @@ class MainWindow:
         GLib.idle_add(self.ui_apps_flowbox.insert, frame, GLib.PRIORITY_DEFAULT_IDLE)
 
         GLib.idle_add(self.ui_apps_flowbox.show_all)
-
 
     def ServerGet(self, response):
         if "error" not in response.keys():
@@ -799,3 +797,22 @@ class MainWindow:
             KeyboardManager.createKeyboardPlugin()
         else:
             KeyboardManager.removeKeyboardPlugin()
+
+    def on_ui_apps_flowbox_child_activated(self, flow_box, child):
+        package_name = child.get_children()[0].get_children()[0].name
+        try:
+            subprocess.Popen(["pardus-software", "-d", package_name])
+        except Exception as e:
+            ErrorDialog(_("Error"), "{}".format(e))
+
+    def on_ui_pardus_software_button_clicked(self, button):
+        try:
+            subprocess.Popen(["pardus-software"])
+        except Exception as e:
+            ErrorDialog(_("Error"), "{}".format(e))
+
+    def on_ui_pardus_tweaks_button_clicked(self, button):
+        try:
+            subprocess.Popen(["pardus-xfce-tweaks"])
+        except Exception as e:
+            ErrorDialog(_("Error"), "{}".format(e))

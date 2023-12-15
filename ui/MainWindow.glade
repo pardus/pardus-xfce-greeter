@@ -1117,6 +1117,7 @@ This application helps you to configure Pardus.</property>
                             <property name="row-spacing">5</property>
                             <property name="max-children-per-line">6</property>
                             <property name="selection-mode">none</property>
+                            <signal name="child-activated" handler="on_ui_apps_flowbox_child_activated" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -1194,10 +1195,11 @@ This application helps you to configure Pardus.</property>
                             <property name="spacing">13</property>
                             <property name="homogeneous">True</property>
                             <child>
-                              <object class="GtkButton">
+                              <object class="GtkButton" id="ui_pardus_software_button">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
+                                <signal name="clicked" handler="on_ui_pardus_software_button_clicked" swapped="no"/>
                                 <child>
                                   <object class="GtkBox">
                                     <property name="visible">True</property>
@@ -1237,10 +1239,11 @@ This application helps you to configure Pardus.</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkButton">
+                              <object class="GtkButton" id="ui_pardus_tweaks_button">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
                                 <property name="receives-default">True</property>
+                                <signal name="clicked" handler="on_ui_pardus_tweaks_button_clicked" swapped="no"/>
                                 <child>
                                   <object class="GtkBox">
                                     <property name="visible">True</property>
