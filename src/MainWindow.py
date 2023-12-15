@@ -10,7 +10,7 @@ import utils
 from utils import getenv, ErrorDialog
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, GdkPixbuf, GLib
+from gi.repository import Gtk, GdkPixbuf, GLib, Gdk
 import locale
 from locale import gettext as _
 from pathlib import Path
@@ -37,6 +37,9 @@ if "xfce" in getenv("SESSION").lower() or "xfce" in getenv("XDG_CURRENT_DESKTOP"
     import xfce.ScaleManager as ScaleManager
     import xfce.KeyboardManager as KeyboardManager
     import xfce.WhiskerManager as WhiskerManager
+
+    from Server import Server
+    from Stream import Stream
 
     currentDesktop = "xfce"
 
@@ -86,6 +89,10 @@ class MainWindow:
         self.window.set_application(application)
         self.window.connect('destroy', self.onDestroy)
 
+        self.user_locale = self.get_user_locale()
+
+        self.set_css()
+
         # Component Definitions
         self.defineComponents()
 
@@ -107,6 +114,9 @@ class MainWindow:
         # Last Variable Definitions
         self.defineVariables()
 
+        # set pardus-software apps
+        self.set_pardussoftware_apps()
+
         # control args
         self.control_args()
 
@@ -123,6 +133,34 @@ class MainWindow:
         self.getThemeDefaults()
 
         self.set_signals()
+
+    def get_user_locale(self):
+        try:
+            user_locale = os.getenv("LANG").split(".")[0].split("_")[0]
+        except Exception as e:
+            print("{}".format(e))
+            try:
+                user_locale = getlocale()[0].split("_")[0]
+            except Exception as e:
+                print("{}".format(e))
+                user_locale = "en"
+        if user_locale != "tr" and user_locale != "en":
+            user_locale = "en"
+        return user_locale
+
+    def set_css(self):
+        settings = Gtk.Settings.get_default()
+        theme_name = "{}".format(settings.get_property('gtk-theme-name')).lower().strip()
+        cssProvider = Gtk.CssProvider()
+        if theme_name.startswith("pardus") or theme_name.startswith("adwaita"):
+            cssProvider.load_from_path(os.path.dirname(os.path.abspath(__file__)) + "/../assets/css/all.css")
+        elif theme_name.startswith("adw-gtk3"):
+            cssProvider.load_from_path(os.path.dirname(os.path.abspath(__file__)) + "/../assets/css/adw.css")
+        else:
+            cssProvider.load_from_path(os.path.dirname(os.path.abspath(__file__)) + "/../assets/css/base.css")
+        screen = Gdk.Screen.get_default()
+        styleContext = Gtk.StyleContext()
+        styleContext.add_provider_for_screen(screen, cssProvider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
     def defineComponents(self):
         def getUI(str):
@@ -153,6 +191,7 @@ class MainWindow:
         self.page_theme = getUI("page_theme")
         self.page_display = getUI("page_display")
         self.page_keyboard = getUI("page_keyboard")
+        self.page_applications = getUI("page_applications")
         self.page_support = getUI("page_support")
 
         # FIX this solution later. Because we are not getting stack title in this gtk version.
@@ -161,6 +200,7 @@ class MainWindow:
         self.page_theme.name = _("Theme Settings")
         self.page_display.name = _("Display Settings")
         self.page_keyboard.name = _("Keyboard Settings")
+        self.page_applications.name = _("Applications")
         self.page_support.name = _("Support & Community")
 
         # - Display Settings:
@@ -202,6 +242,8 @@ class MainWindow:
 
         tabTitle = self.stk_pages.get_visible_child().name
         self.lbl_headerTitle.set_text(tabTitle)
+
+        self.ui_apps_flowbox = getUI("ui_apps_flowbox")
 
     def defineVariables(self):
         self.currentpage = 0
@@ -496,6 +538,67 @@ class MainWindow:
 
     def refresh_panel(self):
         subprocess.call(["xfce4-panel", "-r"])
+
+    def set_pardussoftware_apps(self):
+
+        url = "https://apps.pardus.org.tr/api/greeter"
+        self.stream = Stream()
+        self.stream.StreamGet = self.StreamGet
+        self.server_response = None
+        self.server = Server()
+        self.server.ServerGet = self.ServerGet
+        self.server.get(url)
+
+    def StreamGet(self, pixbuf, data):
+        lang = f"pretty_{self.user_locale}"
+
+        pretty_name = data[lang]
+        package_name = data["name"]
+
+        icon = Gtk.Image.new()
+        icon.set_from_pixbuf(pixbuf)
+
+        label = Gtk.Label.new()
+        label.set_text("{}".format(pretty_name))
+        label.set_line_wrap(True)
+        label.set_max_width_chars(21)
+        label.name = package_name
+
+        box = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
+
+        box.pack_start(icon, False, True, 0)
+        box.pack_start(label, False, True, 0)
+        box.set_margin_start(8)
+        box.set_margin_end(8)
+        box.set_margin_top(3)
+        box.set_margin_bottom(3)
+        box.set_spacing(8)
+
+        listbox = Gtk.ListBox.new()
+        listbox.set_selection_mode(Gtk.SelectionMode.NONE)
+        listbox.get_style_context().add_class("pardus-software-listbox")
+        listbox.add(box)
+
+        frame = Gtk.Frame.new()
+        frame.get_style_context().add_class("pardus-software-frame")
+        frame.add(listbox)
+
+        self.ui_apps_flowbox.get_style_context().add_class("pardus-software-flowbox")
+        GLib.idle_add(self.ui_apps_flowbox.insert, frame, GLib.PRIORITY_DEFAULT_IDLE)
+
+        GLib.idle_add(self.ui_apps_flowbox.show_all)
+
+
+    def ServerGet(self, response):
+        if "error" not in response.keys():
+            datas = response["greeter"]["suggestions"]
+            if len(datas) > 0:
+                for data in datas:
+                    self.stream.fetch(data)
+        else:
+            error_message = response["message"]
+            # error_label = Gtk.Label("{}".format(error_message))
+            print(error_message)
 
     # - stack prev and next page controls
     def get_next_page(self, page):
