@@ -39,6 +39,11 @@ data_files = [
   ["assets/pardus-xfce-greeter.svg", "assets/pardus-logo.svg", "assets/theme-light.png",
    "assets/theme-dark.png", "assets/progress-dot-on.svg", "assets/progress-dot-off.svg",
    "assets/whisker.png", "assets/discord.svg", "assets/github.svg"]),
+ ("/usr/share/pardus/pardus-xfce-greeter/assets/css",
+  ["assets/css/adw.css",
+   "assets/css/all.css",
+   "assets/css/base.css"]
+  ),
  ("/usr/share/pardus/pardus-xfce-greeter/src",
   ["src/Main.py",
    "src/MainWindow.py",
