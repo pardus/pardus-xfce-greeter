@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 20:42+0300\n"
+"POT-Creation-Date: 2023-12-19 16:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,79 +24,99 @@ msgid ""
 "This application helps you to configure Pardus."
 msgstr ""
 
-#: ui/MainWindow.glade:223
+#: ui/MainWindow.glade:180 ui/MainWindow.glade:298
 msgid "Light"
 msgstr ""
 
-#: ui/MainWindow.glade:275
+#: ui/MainWindow.glade:231 ui/MainWindow.glade:349
 msgid "Dark"
 msgstr ""
 
-#: ui/MainWindow.glade:354
+#: ui/MainWindow.glade:472
 msgid "<b>Display Scaling:</b>"
 msgstr ""
 
-#: ui/MainWindow.glade:386
+#: ui/MainWindow.glade:504
 msgid "<b>Panel Size</b> (px):"
 msgstr ""
 
-#: ui/MainWindow.glade:416
+#: ui/MainWindow.glade:534
 msgid "<b>Desktop Icon Size</b> (px):"
 msgstr ""
 
-#: ui/MainWindow.glade:446
+#: ui/MainWindow.glade:564
 msgid "<b>Mouse Cursor Size</b> (px):"
 msgstr ""
 
-#: ui/MainWindow.glade:505
+#: ui/MainWindow.glade:623
 msgid "Add / Remove Keyboard layouts"
 msgstr ""
 
-#: ui/MainWindow.glade:547 ui/MainWindow.glade:588
+#: ui/MainWindow.glade:665 ui/MainWindow.glade:706
 msgid "Turkish - Q Keyboard"
 msgstr ""
 
-#: ui/MainWindow.glade:557 ui/MainWindow.glade:658 ui/MainWindow.glade:759
+#: ui/MainWindow.glade:675 ui/MainWindow.glade:776 ui/MainWindow.glade:877
 msgid "Add"
 msgstr ""
 
-#: ui/MainWindow.glade:576 ui/MainWindow.glade:677 ui/MainWindow.glade:778
-#: ui/MainWindow.glade:1669
+#: ui/MainWindow.glade:694 ui/MainWindow.glade:795 ui/MainWindow.glade:896
+#: ui/MainWindow.glade:2037
 msgid "page0"
 msgstr ""
 
-#: ui/MainWindow.glade:598 ui/MainWindow.glade:699 ui/MainWindow.glade:800
+#: ui/MainWindow.glade:716 ui/MainWindow.glade:817 ui/MainWindow.glade:918
 msgid "Remove"
 msgstr ""
 
-#: ui/MainWindow.glade:617 ui/MainWindow.glade:718 ui/MainWindow.glade:819
-#: ui/MainWindow.glade:1686
+#: ui/MainWindow.glade:735 ui/MainWindow.glade:836 ui/MainWindow.glade:937
+#: ui/MainWindow.glade:2054
 msgid "page1"
 msgstr ""
 
-#: ui/MainWindow.glade:648 ui/MainWindow.glade:689
+#: ui/MainWindow.glade:766 ui/MainWindow.glade:807
 msgid "Turkish - F Keyboard"
 msgstr ""
 
-#: ui/MainWindow.glade:749 ui/MainWindow.glade:790
+#: ui/MainWindow.glade:867 ui/MainWindow.glade:908
 msgid "English Keyboard"
 msgstr ""
 
-#: ui/MainWindow.glade:844
+#: ui/MainWindow.glade:962
 msgid ""
 "<span size=\"10000\">You can switch between keyboard layouts with:\n"
 "<b>Super + Space</b></span>"
 msgstr ""
 
-#: ui/MainWindow.glade:887
+#: ui/MainWindow.glade:1005
 msgid "Show Keyboard Indicator on Panel"
 msgstr ""
 
-#: ui/MainWindow.glade:958
+#: ui/MainWindow.glade:1087
+msgid "<span size='x-large'><b>Pardus Software Center</b></span>"
+msgstr ""
+
+#: ui/MainWindow.glade:1155
+msgid "For more application"
+msgstr ""
+
+#: ui/MainWindow.glade:1171
+msgid "For more settings"
+msgstr ""
+
+#: ui/MainWindow.glade:1224
+msgid "Pardus Software Center"
+msgstr ""
+
+#: ui/MainWindow.glade:1268
+msgid "Pardus Xfce Tweaks"
+msgstr ""
+
+#: ui/MainWindow.glade:1326
 msgid "Shortcuts"
 msgstr ""
 
-#: ui/MainWindow.glade:993
+#: ui/MainWindow.glade:1361
 msgid ""
 "<b>Screenshot (Active Window):</b>\n"
 "Alt + Print Screen\n"
@@ -117,7 +137,7 @@ msgid ""
 "Ctrl + Alt + T"
 msgstr ""
 
-#: ui/MainWindow.glade:1033
+#: ui/MainWindow.glade:1401
 msgid ""
 "<b>Change Workspace:</b>\n"
 "Ctrl + Alt + ←  → ↑ ↓\n"
@@ -138,7 +158,7 @@ msgid ""
 "Super + ←  →"
 msgstr ""
 
-#: ui/MainWindow.glade:1072
+#: ui/MainWindow.glade:1440
 msgid ""
 "<b>Screenshot (Active Window):</b>\n"
 "Alt + Print Screen\n"
@@ -153,7 +173,7 @@ msgid ""
 "Super"
 msgstr ""
 
-#: ui/MainWindow.glade:1106
+#: ui/MainWindow.glade:1474
 msgid ""
 "<b>Change Workspace:</b>\n"
 "Ctrl + Alt + ↑ ↓\n"
@@ -168,98 +188,103 @@ msgid ""
 "Super + ←  →"
 msgstr ""
 
-#: ui/MainWindow.glade:1165
+#: ui/MainWindow.glade:1533
 msgid "<span size=\"large\">Links</span>"
 msgstr ""
 
-#: ui/MainWindow.glade:1178
+#: ui/MainWindow.glade:1546
 msgid ""
-"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org.tr"
-"\">Home Page</a>"
+"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
+"tr\">Home Page</a>"
 msgstr ""
 
-#: ui/MainWindow.glade:1191
+#: ui/MainWindow.glade:1559
 msgid ""
-"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org.tr"
-"\">Documentations</a>"
+"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
+"tr\">Documentations</a>"
 msgstr ""
 
-#: ui/MainWindow.glade:1204
+#: ui/MainWindow.glade:1572
 msgid ""
 "<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
 "tr\">Community</a>"
 msgstr ""
 
-#: ui/MainWindow.glade:1217
+#: ui/MainWindow.glade:1585
 msgid ""
-"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org.tr"
-"\">Forum</a>"
+"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
+"tr\">Forum</a>"
 msgstr ""
 
-#: ui/MainWindow.glade:1253 ui/MainWindow.glade:1281
+#: ui/MainWindow.glade:1621 ui/MainWindow.glade:1649
 msgid "<small></small>"
 msgstr ""
 
-#: ui/MainWindow.glade:1268
+#: ui/MainWindow.glade:1636
 msgid "<small>+90</small>"
 msgstr ""
 
-#: ui/MainWindow.glade:1309
+#: ui/MainWindow.glade:1677
 msgid "<span size=\"large\">Support</span>"
 msgstr ""
 
-#: ui/MainWindow.glade:1322
+#: ui/MainWindow.glade:1690
 msgid "<span size=\"xx-large\"><b>444 5 773</b></span>"
 msgstr ""
 
-#: ui/MainWindow.glade:1661
+#: ui/MainWindow.glade:2029
 msgid "Next"
 msgstr ""
 
-#: ui/MainWindow.glade:1674
+#: ui/MainWindow.glade:2042
 msgid "Close"
 msgstr ""
 
-#: ui/MainWindow.glade:1700
+#: ui/MainWindow.glade:2068
 msgid "Previous"
 msgstr ""
 
-#: ui/MainWindow.glade:1734 src/MainWindow.py:117
+#: ui/MainWindow.glade:2101 src/MainWindow.py:171
 msgid "Pardus Greeter"
 msgstr ""
 
-#: ui/MainWindow.glade:1779
+#: ui/MainWindow.glade:2146
 msgid "Tool that helps you to get Pardus ready."
 msgstr ""
 
-#: src/MainWindow.py:45
+#: src/MainWindow.py:54 src/MainWindow.py:806 src/MainWindow.py:812
+#: src/MainWindow.py:818
 msgid "Error"
 msgstr ""
 
-#: src/MainWindow.py:45
+#: src/MainWindow.py:54
 msgid "Your desktop environment is not supported."
 msgstr ""
 
-#: src/MainWindow.py:143
+#: src/MainWindow.py:198
 msgid "Welcome"
 msgstr ""
 
-#: src/MainWindow.py:144
+#: src/MainWindow.py:199
 msgid "Select Wallpaper"
 msgstr ""
 
-#: src/MainWindow.py:145
+#: src/MainWindow.py:200
 msgid "Theme Settings"
 msgstr ""
 
-#: src/MainWindow.py:146
+#: src/MainWindow.py:201
 msgid "Display Settings"
 msgstr ""
 
-#: src/MainWindow.py:147
+#: src/MainWindow.py:202
 msgid "Keyboard Settings"
 msgstr ""
 
-#: src/MainWindow.py:148
+#: src/MainWindow.py:203
+msgid "Applications"
+msgstr ""
+
+#: src/MainWindow.py:204
 msgid "Support & Community"
 msgstr ""
