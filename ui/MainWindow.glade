@@ -1107,17 +1107,39 @@ This application helps you to configure Pardus.</property>
                         <property name="valign">center</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkFlowBox" id="ui_apps_flowbox">
+                          <object class="GtkStack" id="ui_apps_stack">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="halign">center</property>
-                            <property name="hexpand">True</property>
-                            <property name="homogeneous">True</property>
-                            <property name="column-spacing">5</property>
-                            <property name="row-spacing">5</property>
-                            <property name="max-children-per-line">6</property>
-                            <property name="selection-mode">none</property>
-                            <signal name="child-activated" handler="on_ui_apps_flowbox_child_activated" swapped="no"/>
+                            <child>
+                              <object class="GtkFlowBox" id="ui_apps_flowbox">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="halign">center</property>
+                                <property name="hexpand">True</property>
+                                <property name="homogeneous">True</property>
+                                <property name="column-spacing">5</property>
+                                <property name="row-spacing">5</property>
+                                <property name="max-children-per-line">6</property>
+                                <property name="selection-mode">none</property>
+                                <signal name="child-activated" handler="on_ui_apps_flowbox_child_activated" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="name">apps</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="ui_apps_error_label">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="halign">center</property>
+                                <property name="justify">center</property>
+                                <property name="wrap">True</property>
+                              </object>
+                              <packing>
+                                <property name="name">error</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">False</property>

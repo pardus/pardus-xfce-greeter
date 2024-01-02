@@ -244,6 +244,8 @@ class MainWindow:
         self.lbl_headerTitle.set_text(tabTitle)
 
         self.ui_apps_flowbox = getUI("ui_apps_flowbox")
+        self.ui_apps_error_label = getUI("ui_apps_error_label")
+        self.ui_apps_stack = getUI("ui_apps_stack")
 
     def defineVariables(self):
         self.currentpage = 0
@@ -589,6 +591,7 @@ class MainWindow:
 
     def ServerGet(self, response):
         if "error" not in response.keys():
+            self.ui_apps_stack.set_visible_child_name("apps")
             datas = response["greeter"]["suggestions"]
             if len(datas) > 0:
                 for data in datas:
@@ -597,6 +600,8 @@ class MainWindow:
             error_message = response["message"]
             # error_label = Gtk.Label("{}".format(error_message))
             print(error_message)
+            self.ui_apps_stack.set_visible_child_name("error")
+            self.ui_apps_error_label.set_text(error_message)
 
     # - stack prev and next page controls
     def get_next_page(self, page):
