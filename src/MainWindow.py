@@ -259,6 +259,9 @@ class MainWindow:
         self.pardus_default_wallpaper_light = "/usr/share/backgrounds/pardus23-0_default-light.svg"
         self.pardus_default_wallpaper_dark = "/usr/share/backgrounds/pardus23-0_default-dark.svg"
 
+        self.apps_url = "https://apps.pardus.org.tr/api/greeter"
+        self.non_tls_tried = False
+
     def set_signals(self):
         self.rb_lightTheme.connect("clicked", self.on_rb_lightTheme_clicked)
         self.rb_darkTheme.connect("clicked", self.on_rb_darkTheme_clicked)
@@ -543,13 +546,12 @@ class MainWindow:
 
     def set_pardussoftware_apps(self):
 
-        url = "https://apps.pardus.org.tr/api/greeter"
         self.stream = Stream()
         self.stream.StreamGet = self.StreamGet
         self.server_response = None
         self.server = Server()
         self.server.ServerGet = self.ServerGet
-        self.server.get(url)
+        self.server.get(self.apps_url)
 
     def StreamGet(self, pixbuf, data):
         lang = f"pretty_{self.user_locale}"
@@ -595,13 +597,20 @@ class MainWindow:
             datas = response["greeter"]["suggestions"]
             if len(datas) > 0:
                 for data in datas:
+                    if self.non_tls_tried:
+                        data["icon"] = data["icon"].replace("https", "http")
                     self.stream.fetch(data)
         else:
-            error_message = response["message"]
-            # error_label = Gtk.Label("{}".format(error_message))
-            print(error_message)
-            self.ui_apps_stack.set_visible_child_name("error")
-            self.ui_apps_error_label.set_text(error_message)
+            if "tlserror" in response.keys() and not self.non_tls_tried:
+                self.non_tls_tried = True
+                self.apps_url = self.apps_url.replace("https", "http")
+                print("trying {}".format(self.apps_url))
+                self.server.get(self.apps_url)
+            else:
+                error_message = response["message"]
+                print(error_message)
+                self.ui_apps_stack.set_visible_child_name("error")
+                self.ui_apps_error_label.set_text(error_message)
 
     # - stack prev and next page controls
     def get_next_page(self, page):

@@ -27,11 +27,14 @@ class Server(object):
             success, data, etag = file.load_contents_finish(result)
         except GLib.Error as error:
             self.error_message = error.message
-            print(
-                "{} _open_stream Error: {}, {}".format(
-                    type, error.domain, error.message
-                )
-            )
+            print("_open_stream Error: {}, {}".format(error.domain, error.message))
+
+            # if error.matches(Gio.tls_error_quark(),  Gio.TlsError.BAD_CERTIFICATE):
+            if error.domain == GLib.quark_to_string(Gio.tls_error_quark()):
+                response = {"error": True, "tlserror": True, "message": error.message}
+                self.ServerGet(response=response)  # Send to MainWindow
+                return response
+
             response = {"error": True, "message": error.message}
             self.ServerGet(response=response)  # Send to MainWindow
             return response
