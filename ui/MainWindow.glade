@@ -2066,7 +2066,7 @@ Super + ←  →</property>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label">TÜBİTAK ULAKBİM | 2023</property>
+                    <property name="label">TÜBİTAK ULAKBİM | 2024</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -2196,7 +2196,7 @@ Super + ←  →</property>
     <property name="type-hint">dialog</property>
     <property name="program-name">Pardus Greeter</property>
     <property name="version">0.1.0</property>
-    <property name="copyright">© 2023 Pardus</property>
+    <property name="copyright">© 2024 Pardus</property>
     <property name="comments" translatable="yes">Tool that helps you to get Pardus ready.</property>
     <property name="website">https://github.com/pardus/pardus-xfce-greeter</property>
     <property name="authors">Emin Fedar
