@@ -1,3 +1,24 @@
+pardus-xfce-greeter (1.1.0) unstable; urgency=medium
+
+  [ Fatih Altun ]
+  * Add Pardus Software Apps page
+  * Add action funcs to Apps page
+  * Update pot file
+  * Update Turkish translations
+  * Add missing files to setup.py
+  * Add missing css files to setup.py
+
+  [ Hugo Carvalho ]
+  * Update Portuguese translations
+
+  [ Fatih Altun ]
+  * Add missing dot for apps page
+  * Add error information label for apps page
+  * Add handle for Gio.tls_error_quark
+  * Update copyright to 2024
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Tue, 16 Jan 2024 11:21:21 +0300
+
 pardus-xfce-greeter (1.0.3) unstable; urgency=medium
 
   * Add exception to get theme name
