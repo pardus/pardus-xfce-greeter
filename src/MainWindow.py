@@ -169,6 +169,13 @@ class MainWindow:
         # about dialog
         self.ui_about_dialog = self.builder.get_object("ui_about_dialog")
         self.ui_about_dialog.set_program_name(_("Pardus Greeter"))
+        if self.ui_about_dialog.get_titlebar() is None:
+            about_headerbar = Gtk.HeaderBar.new()
+            about_headerbar.set_show_close_button(True)
+            about_headerbar.set_title(_("About Pardus Greeter"))
+            about_headerbar.pack_start(Gtk.Image.new_from_icon_name("pardus-greeter", Gtk.IconSize.LARGE_TOOLBAR))
+            about_headerbar.show_all()
+            self.ui_about_dialog.set_titlebar(about_headerbar)
         # Set version
         # If not getted from __version__ file then accept version in MainWindow.glade file
         try:
