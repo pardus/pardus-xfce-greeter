@@ -2199,9 +2199,9 @@ Super + ←  →</property>
     <property name="copyright">© 2024 Pardus</property>
     <property name="comments" translatable="yes">Tool that helps you to get Pardus ready.</property>
     <property name="website">https://github.com/pardus/pardus-xfce-greeter</property>
-    <property name="authors">Emin Fedar
-Fatih Altun</property>
-    <property name="translator-credits">Fatih Altun</property>
+    <property name="authors">Emin Fedar &lt;emin.fedar@pardus.org.tr&gt;
+Fatih Altun &lt;fatih.altun@pardus.org.tr&gt;</property>
+    <property name="translator-credits" translatable="yes" comments="Name Surname &lt;example@examplemail.com&gt;">translator-credits</property>
     <property name="logo-icon-name">pardus-xfce-greeter</property>
     <property name="license-type">gpl-3-0</property>
     <child internal-child="vbox">
