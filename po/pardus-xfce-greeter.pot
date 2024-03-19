@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-19 16:43+0300\n"
+"POT-Creation-Date: 2024-03-19 11:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,7 +61,7 @@ msgid "Add"
 msgstr ""
 
 #: ui/MainWindow.glade:694 ui/MainWindow.glade:795 ui/MainWindow.glade:896
-#: ui/MainWindow.glade:2037
+#: ui/MainWindow.glade:2091
 msgid "page0"
 msgstr ""
 
@@ -70,7 +70,7 @@ msgid "Remove"
 msgstr ""
 
 #: ui/MainWindow.glade:735 ui/MainWindow.glade:836 ui/MainWindow.glade:937
-#: ui/MainWindow.glade:2054
+#: ui/MainWindow.glade:2108
 msgid "page1"
 msgstr ""
 
@@ -96,27 +96,27 @@ msgstr ""
 msgid "<span size='x-large'><b>Pardus Software Center</b></span>"
 msgstr ""
 
-#: ui/MainWindow.glade:1155
+#: ui/MainWindow.glade:1177
 msgid "For more application"
 msgstr ""
 
-#: ui/MainWindow.glade:1171
+#: ui/MainWindow.glade:1193
 msgid "For more settings"
 msgstr ""
 
-#: ui/MainWindow.glade:1224
+#: ui/MainWindow.glade:1246
 msgid "Pardus Software Center"
 msgstr ""
 
-#: ui/MainWindow.glade:1268
+#: ui/MainWindow.glade:1290
 msgid "Pardus Xfce Tweaks"
 msgstr ""
 
-#: ui/MainWindow.glade:1326
+#: ui/MainWindow.glade:1348
 msgid "Shortcuts"
 msgstr ""
 
-#: ui/MainWindow.glade:1361
+#: ui/MainWindow.glade:1383
 msgid ""
 "<b>Screenshot (Active Window):</b>\n"
 "Alt + Print Screen\n"
@@ -137,7 +137,7 @@ msgid ""
 "Ctrl + Alt + T"
 msgstr ""
 
-#: ui/MainWindow.glade:1401
+#: ui/MainWindow.glade:1423
 msgid ""
 "<b>Change Workspace:</b>\n"
 "Ctrl + Alt + ←  → ↑ ↓\n"
@@ -158,7 +158,7 @@ msgid ""
 "Super + ←  →"
 msgstr ""
 
-#: ui/MainWindow.glade:1440
+#: ui/MainWindow.glade:1462
 msgid ""
 "<b>Screenshot (Active Window):</b>\n"
 "Alt + Print Screen\n"
@@ -173,7 +173,7 @@ msgid ""
 "Super"
 msgstr ""
 
-#: ui/MainWindow.glade:1474
+#: ui/MainWindow.glade:1496
 msgid ""
 "<b>Change Workspace:</b>\n"
 "Ctrl + Alt + ↑ ↓\n"
@@ -188,72 +188,77 @@ msgid ""
 "Super + ←  →"
 msgstr ""
 
-#: ui/MainWindow.glade:1533
+#: ui/MainWindow.glade:1555
 msgid "<span size=\"large\">Links</span>"
 msgstr ""
 
-#: ui/MainWindow.glade:1546
+#: ui/MainWindow.glade:1568
 msgid ""
 "<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
 "tr\">Home Page</a>"
 msgstr ""
 
-#: ui/MainWindow.glade:1559
+#: ui/MainWindow.glade:1581
 msgid ""
 "<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
 "tr\">Documentations</a>"
 msgstr ""
 
-#: ui/MainWindow.glade:1572
+#: ui/MainWindow.glade:1594
 msgid ""
 "<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
 "tr\">Community</a>"
 msgstr ""
 
-#: ui/MainWindow.glade:1585
+#: ui/MainWindow.glade:1607
 msgid ""
 "<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
 "tr\">Forum</a>"
 msgstr ""
 
-#: ui/MainWindow.glade:1621 ui/MainWindow.glade:1649
+#: ui/MainWindow.glade:1643 ui/MainWindow.glade:1671
 msgid "<small></small>"
 msgstr ""
 
-#: ui/MainWindow.glade:1636
+#: ui/MainWindow.glade:1658
 msgid "<small>+90</small>"
 msgstr ""
 
-#: ui/MainWindow.glade:1677
+#: ui/MainWindow.glade:1699
 msgid "<span size=\"large\">Support</span>"
 msgstr ""
 
-#: ui/MainWindow.glade:1690
+#: ui/MainWindow.glade:1712
 msgid "<span size=\"xx-large\"><b>444 5 773</b></span>"
 msgstr ""
 
-#: ui/MainWindow.glade:2029
+#: ui/MainWindow.glade:2083
 msgid "Next"
 msgstr ""
 
-#: ui/MainWindow.glade:2042
+#: ui/MainWindow.glade:2096
 msgid "Close"
 msgstr ""
 
-#: ui/MainWindow.glade:2068
+#: ui/MainWindow.glade:2122
 msgid "Previous"
 msgstr ""
 
-#: ui/MainWindow.glade:2101 src/MainWindow.py:171
+#: ui/MainWindow.glade:2155 src/MainWindow.py:171
 msgid "Pardus Greeter"
 msgstr ""
 
-#: ui/MainWindow.glade:2146
+#: ui/MainWindow.glade:2201
 msgid "Tool that helps you to get Pardus ready."
 msgstr ""
 
-#: src/MainWindow.py:54 src/MainWindow.py:806 src/MainWindow.py:812
-#: src/MainWindow.py:818
+#. Name Surname <example@examplemail.com>
+#: ui/MainWindow.glade:2205
+msgid "translator-credits"
+msgstr ""
+
+#: src/MainWindow.py:54 src/MainWindow.py:827 src/MainWindow.py:833
+#: src/MainWindow.py:839
 msgid "Error"
 msgstr ""
 
@@ -261,30 +266,34 @@ msgstr ""
 msgid "Your desktop environment is not supported."
 msgstr ""
 
-#: src/MainWindow.py:198
+#: src/MainWindow.py:175
+msgid "About Pardus Greeter"
+msgstr ""
+
+#: src/MainWindow.py:205
 msgid "Welcome"
 msgstr ""
 
-#: src/MainWindow.py:199
+#: src/MainWindow.py:206
 msgid "Select Wallpaper"
 msgstr ""
 
-#: src/MainWindow.py:200
+#: src/MainWindow.py:207
 msgid "Theme Settings"
 msgstr ""
 
-#: src/MainWindow.py:201
+#: src/MainWindow.py:208
 msgid "Display Settings"
 msgstr ""
 
-#: src/MainWindow.py:202
+#: src/MainWindow.py:209
 msgid "Keyboard Settings"
 msgstr ""
 
-#: src/MainWindow.py:203
+#: src/MainWindow.py:210
 msgid "Applications"
 msgstr ""
 
-#: src/MainWindow.py:204
+#: src/MainWindow.py:211
 msgid "Support & Community"
 msgstr ""
