@@ -54,7 +54,7 @@ else:
     ErrorDialog(_("Error"), _("Your desktop environment is not supported."))
     exit(0)
 
-autostart_file = str(Path.home()) + "/.config/autostart/tr.org.pardus.xfce-greeter.desktop"
+autostart_file = "{}/autostart/tr.org.pardus.xfce-greeter.desktop".format(GLib.get_user_config_dir())
 
 # In live mode, the application should not welcome the user
 if utils.check_live() and os.path.isfile(autostart_file):
@@ -310,8 +310,7 @@ class MainWindow:
             print("{}".format(e))
 
         if package_found:
-            user = "{}".format(Path.home())
-            user_json_file = "{}/.config/pardus/pardus-special-theme/special_theme.json".format(user)
+            user_json_file = "{}/pardus/pardus-special-theme/special_theme.json".format(GLib.get_user_config_dir())
             system_json_file = "/usr/share/pardus/pardus-special-theme/special-theme.json"
 
             user_json_file_ok = False
