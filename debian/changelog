@@ -1,3 +1,9 @@
+pardus-xfce-greeter (1.2.1) unstable; urgency=medium
+
+  * Update copyright
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Thu, 28 Nov 2024 17:37:20 +0300
+
 pardus-xfce-greeter (1.2.0) unstable; urgency=medium
 
   [ bariscodefx ]
