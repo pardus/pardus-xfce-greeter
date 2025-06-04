@@ -129,6 +129,195 @@ This application helps you to configure Pardus.</property>
                   </packing>
                 </child>
                 <child>
+                  <object class="GtkBox" id="page_system_info">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">8</property>
+                    <child>
+                      <object class="GtkGrid">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="row-spacing">8</property>
+                        <property name="column-spacing">16</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">Operating System:</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                            </attributes>
+                          </object>
+                          <packing>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="lbl_sysinfo_os">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label">Pardus</property> <!-- Placeholder text -->
+                          </object>
+                          <packing>
+                            <property name="left-attach">1</property>
+                            <property name="top-attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">XFCE Version:</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                            </attributes>
+                          </object>
+                          <packing>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="lbl_sysinfo_xfce_version">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label">4.18</property> <!-- Placeholder text -->
+                          </object>
+                          <packing>
+                            <property name="left-attach">1</property>
+                            <property name="top-attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">Kernel Version:</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                            </attributes>
+                          </object>
+                          <packing>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="lbl_sysinfo_kernel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label">5.10.0-19-amd64</property> <!-- Placeholder text -->
+                          </object>
+                          <packing>
+                            <property name="left-attach">1</property>
+                            <property name="top-attach">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">Hostname:</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                            </attributes>
+                          </object>
+                          <packing>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="lbl_sysinfo_hostname">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label">pardus-vm</property> <!-- Placeholder text -->
+                          </object>
+                          <packing>
+                            <property name="left-attach">1</property>
+                            <property name="top-attach">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">GTK Theme:</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                            </attributes>
+                          </object>
+                          <packing>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">4</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="lbl_sysinfo_gtk_theme">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label">Adwaita</property> <!-- Placeholder text -->
+                          </object>
+                          <packing>
+                            <property name="left-attach">1</property>
+                            <property name="top-attach">4</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">Icon Theme:</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                            </attributes>
+                          </object>
+                          <packing>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">5</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="lbl_sysinfo_icon_theme">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label">Papirus</property> <!-- Placeholder text -->
+                          </object>
+                          <packing>
+                            <property name="left-attach">1</property>
+                            <property name="top-attach">5</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="name">1</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkBox" id="page_theme">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
@@ -373,8 +562,8 @@ This application helps you to configure Pardus.</property>
                     </child>
                   </object>
                   <packing>
-                    <property name="name">1</property>
-                    <property name="position">1</property>
+                    <property name="name">2</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
                 <child>
@@ -417,8 +606,8 @@ This application helps you to configure Pardus.</property>
                     </child>
                   </object>
                   <packing>
-                    <property name="name">2</property>
-                    <property name="position">2</property>
+                    <property name="name">3</property>
+                    <property name="position">3</property>
                   </packing>
                 </child>
                 <child>
@@ -596,8 +785,8 @@ This application helps you to configure Pardus.</property>
                     </child>
                   </object>
                   <packing>
-                    <property name="name">3</property>
-                    <property name="position">3</property>
+                    <property name="name">4</property>
+                    <property name="position">4</property>
                   </packing>
                 </child>
                 <child>
@@ -1048,8 +1237,8 @@ This application helps you to configure Pardus.</property>
                     </child>
                   </object>
                   <packing>
-                    <property name="name">4</property>
-                    <property name="position">4</property>
+                    <property name="name">5</property>
+                    <property name="position">5</property>
                   </packing>
                 </child>
                 <child>
@@ -1320,8 +1509,8 @@ This application helps you to configure Pardus.</property>
                     </child>
                   </object>
                   <packing>
-                    <property name="name">5</property>
-                    <property name="position">5</property>
+                    <property name="name">6</property>
+                    <property name="position">6</property>
                   </packing>
                 </child>
                 <child>
@@ -1796,8 +1985,8 @@ Super + ←  →</property>
                     </child>
                   </object>
                   <packing>
-                    <property name="name">6</property>
-                    <property name="position">6</property>
+                    <property name="name">7</property>
+                    <property name="position">7</property>
                   </packing>
                 </child>
               </object>
