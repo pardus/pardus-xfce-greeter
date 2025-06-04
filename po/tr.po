@@ -1,371 +1,53 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# Emin fedar <emin.fedar@pardus.org.tr>, 2021.
-# Fatih Altun <fatih.altun@pardus.org.tr>, 2022-2024.
-#
-msgid ""
-msgstr ""
-"Project-Id-Version: 1.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 11:06+0300\n"
-"PO-Revision-Date: 2024-03-19 11:06+0300\n"
-"Last-Translator: Fatih Altun <fatih.altun@pardus.org.tr>\n"
-"Language-Team: Turkish <dev@pardus.org.tr>\n"
-"Language: tr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Gtranslator 42.0\n"
+import re
+import datetime
 
-#: ui/MainWindow.glade:114
-msgid ""
-"Welcome.\n"
-"\n"
-"This application helps you to configure Pardus."
-msgstr ""
-"Hoş Geldiniz.\n"
-"\n"
-"Bu uygulama Pardus'u hazırlamanız için size yardımcı olacaktır."
+# New strings (potential candidates to add)
+new_strings = [
+    "System Information",
+    "Operating System:",
+    "XFCE Version:",
+    "Kernel Version:",
+    "Hostname:",
+    "GTK Theme:",
+    "Icon Theme:",
+    "N/A"
+]
 
-#: ui/MainWindow.glade:180 ui/MainWindow.glade:298
-msgid "Light"
-msgstr "Açık"
+# actual_po_content is from the read_files call (file_contents[0] for this turn)
+actual_po_content = file_contents[0]
 
-#: ui/MainWindow.glade:231 ui/MainWindow.glade:349
-msgid "Dark"
-msgstr "Koyu"
+# Determine which of the new_strings are not already in tr.po
+existing_msgids_po = set(re.findall(r'msgid "([^"]*(?:""[^"]*)*)"', actual_po_content))
+po_new_entries = []
 
-#: ui/MainWindow.glade:472
-msgid "<b>Display Scaling:</b>"
-msgstr "<b>Görüntü Ölçekleme:</b>"
+for s in new_strings:
+    s_escaped = s.replace('"', '\\"')
+    if s_escaped not in existing_msgids_po:
+        po_new_entries.append(f'\n\n#. Automatically added by AI Agent\nmsgid "{s_escaped}"\nmsgstr "{s_escaped}"')
 
-#: ui/MainWindow.glade:504
-msgid "<b>Panel Size</b> (px):"
-msgstr "<b>Panel Boyutu</b> (px):"
+final_updated_po_content = actual_po_content
+if po_new_entries:
+    if actual_po_content and not actual_po_content.endswith('\n'):
+        final_updated_po_content += '\n'
+    final_updated_po_content += "".join(po_new_entries) + "\n"
 
-#: ui/MainWindow.glade:534
-msgid "<b>Desktop Icon Size</b> (px):"
-msgstr "<b>Masaüstü Simge Boyutu</b> (px):"
+# Update POT-Creation-Date and PO-Revision-Date in tr.po
+now = datetime.datetime.now(datetime.timezone.utc).astimezone()
+new_formatted_date = now.strftime("%Y-%m-%d %H:%M%z")
+if len(new_formatted_date) > 3 and new_formatted_date[-3] != ':': # Ensure HH:MM format for timezone offset
+    new_formatted_date = new_formatted_date[:-2] + ":" + new_formatted_date[-2:]
 
-#: ui/MainWindow.glade:564
-msgid "<b>Mouse Cursor Size</b> (px):"
-msgstr "<b>Fare İmleç Boyutu</b> (px):"
+final_updated_po_content = re.sub(
+    r'"POT-Creation-Date: [^"\\]*(?:\\.[^"\\]*)*"',
+    f'"POT-Creation-Date: {new_formatted_date}\\n"',
+    final_updated_po_content,
+    count=1
+)
+final_updated_po_content = re.sub(
+    r'"PO-Revision-Date: [^"\\]*(?:\\.[^"\\]*)*"',
+    f'"PO-Revision-Date: {new_formatted_date}\\n"',
+    final_updated_po_content,
+    count=1
+)
 
-#: ui/MainWindow.glade:623
-msgid "Add / Remove Keyboard layouts"
-msgstr "Klavye Yerleşimi Ekle / Kaldır"
-
-#: ui/MainWindow.glade:665 ui/MainWindow.glade:706
-msgid "Turkish - Q Keyboard"
-msgstr "Türkçe - Q Klavye"
-
-#: ui/MainWindow.glade:675 ui/MainWindow.glade:776 ui/MainWindow.glade:877
-msgid "Add"
-msgstr "Ekle"
-
-#: ui/MainWindow.glade:694 ui/MainWindow.glade:795 ui/MainWindow.glade:896
-#: ui/MainWindow.glade:2091
-msgid "page0"
-msgstr "page0"
-
-#: ui/MainWindow.glade:716 ui/MainWindow.glade:817 ui/MainWindow.glade:918
-msgid "Remove"
-msgstr "Kaldır"
-
-#: ui/MainWindow.glade:735 ui/MainWindow.glade:836 ui/MainWindow.glade:937
-#: ui/MainWindow.glade:2108
-msgid "page1"
-msgstr "page1"
-
-#: ui/MainWindow.glade:766 ui/MainWindow.glade:807
-msgid "Turkish - F Keyboard"
-msgstr "Türkçe - F Klavye"
-
-#: ui/MainWindow.glade:867 ui/MainWindow.glade:908
-msgid "English Keyboard"
-msgstr "İngilizce Klavye"
-
-#: ui/MainWindow.glade:962
-msgid ""
-"<span size=\"10000\">You can switch between keyboard layouts with:\n"
-"<b>Super + Space</b></span>"
-msgstr ""
-"<span size=\"10000\">Klavye yerleşimini değiştirmek için:\n"
-"<b>Super + Boşluk</b></span>"
-
-#: ui/MainWindow.glade:1005
-msgid "Show Keyboard Indicator on Panel"
-msgstr "Klavye Göstergesini Panelde Göster"
-
-#: ui/MainWindow.glade:1087
-msgid "<span size='x-large'><b>Pardus Software Center</b></span>"
-msgstr "<span size='x-large'><b>Pardus Yazılım Merkezi</b></span>"
-
-#: ui/MainWindow.glade:1177
-msgid "For more application"
-msgstr "Daha fazla uygulama için"
-
-#: ui/MainWindow.glade:1193
-msgid "For more settings"
-msgstr "Daha fazla ayar için"
-
-#: ui/MainWindow.glade:1246
-msgid "Pardus Software Center"
-msgstr "Pardus Yazılım Merkezi"
-
-#: ui/MainWindow.glade:1290
-msgid "Pardus Xfce Tweaks"
-msgstr "Pardus Xfce İnce Ayarlar"
-
-#: ui/MainWindow.glade:1348
-msgid "Shortcuts"
-msgstr "Kısayollar"
-
-#: ui/MainWindow.glade:1383
-msgid ""
-"<b>Screenshot (Active Window):</b>\n"
-"Alt + Print Screen\n"
-"\n"
-"<b>Screenshot (Area):</b>\n"
-"Shift + Print Screen\n"
-"\n"
-"<b>Lock Screen:</b>\n"
-"Super + L | Ctrl + Alt + L\n"
-"\n"
-"<b>Applications:</b>\n"
-"Super\n"
-"\n"
-"<b>Show Desktop:</b>\n"
-"Ctrl + Alt + D\n"
-"\n"
-"<b>Terminal:</b>\n"
-"Ctrl + Alt + T"
-msgstr ""
-"<b>Ekran Görüntüsü (Aktif Pencere):</b>\n"
-"Alt + Print Screen\n"
-"\n"
-"<b>Ekran Görüntüsü (Seçim):</b>\n"
-"Shift + Print Screen\n"
-"\n"
-"<b>Ekranı Kilitle:</b>\n"
-"Super + L | Ctrl + Alt + L\n"
-"\n"
-"<b>Uygulamalar:</b>\n"
-"Super\n"
-"\n"
-"<b>Masaüstünü Göster:</b>\n"
-"Ctrl + Alt + D\n"
-"\n"
-"<b>Uçbirim:</b>\n"
-"Ctrl + Alt + T"
-
-#: ui/MainWindow.glade:1423
-msgid ""
-"<b>Change Workspace:</b>\n"
-"Ctrl + Alt + ←  → ↑ ↓\n"
-"\n"
-"<b>Add/Remove Workspace:</b>\n"
-"Alt + Insert/Delete\n"
-"\n"
-"<b>Go to Workspace:</b>\n"
-"Ctrl + F1...F12\n"
-"\n"
-"<b>Change Program:</b>\n"
-"Alt + Tab\n"
-"\n"
-"<b>Change Window:</b>\n"
-"Super + Tab\n"
-"\n"
-"<b>View Split:</b>\n"
-"Super + ←  →"
-msgstr ""
-"<b>Çalışma Alanı Değiştir:</b>\n"
-"Ctrl + Alt + ←  → ↑ ↓\n"
-"\n"
-"<b>Çalışma Alanı Ekle/Kaldır:</b>\n"
-"Alt + Insert/Delete\n"
-"\n"
-"<b>Çalışma Alanına Git:</b>\n"
-"Ctrl + F1...F12\n"
-"\n"
-"<b>Programlar Arası Geçiş:</b>\n"
-"Alt + Tab\n"
-"\n"
-"<b>Pencereler Arası Geçiş:</b>\n"
-"Super + Tab\n"
-"\n"
-"<b>Ekranı Böl:</b>\n"
-"Super + ←  →"
-
-#: ui/MainWindow.glade:1462
-msgid ""
-"<b>Screenshot (Active Window):</b>\n"
-"Alt + Print Screen\n"
-"\n"
-"<b>Screenshot (Area):</b>\n"
-"Shift + Print Screen\n"
-"\n"
-"<b>Lock Screen:</b>\n"
-"Super + L\n"
-"\n"
-"<b>Applications:</b>\n"
-"Super"
-msgstr ""
-"<b>Ekran Görüntüsü (Aktif Pencere):</b>\n"
-"Alt + Print Screen\n"
-"\n"
-"<b>Ekran Görüntüsü (Seçim):</b>\n"
-"Shift + Print Screen\n"
-"\n"
-"<b>Ekranı Kilitle:</b>\n"
-"Super + L\n"
-"\n"
-"<b>Uygulamalar:</b>\n"
-"Super"
-
-#: ui/MainWindow.glade:1496
-msgid ""
-"<b>Change Workspace:</b>\n"
-"Ctrl + Alt + ↑ ↓\n"
-"\n"
-"<b>Change Program:</b>\n"
-"Alt + Tab\n"
-"\n"
-"<b>Change Window:</b>\n"
-"Super + Tab\n"
-"\n"
-"<b>View Split:</b>\n"
-"Super + ←  →"
-msgstr ""
-"<b>Çalışma Alanı Değiştir:</b>\n"
-"Ctrl + Alt + ↑ ↓\n"
-"\n"
-"<b>Programlar Arası Geçiş:</b>\n"
-"Alt + Tab\n"
-"\n"
-"<b>Pencereler Arası Geçiş:</b>\n"
-"Super + Tab\n"
-"\n"
-"<b>Ekranı Böl:</b>\n"
-"Super + ←  →"
-
-#: ui/MainWindow.glade:1555
-msgid "<span size=\"large\">Links</span>"
-msgstr "<span size=\"large\">Bağlantılar</span>"
-
-#: ui/MainWindow.glade:1568
-msgid ""
-"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
-"tr\">Home Page</a>"
-msgstr ""
-"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
-"tr\">Ana Sayfa</a>"
-
-#: ui/MainWindow.glade:1581
-msgid ""
-"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
-"tr\">Documentations</a>"
-msgstr ""
-"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
-"tr\">Belgeler</a>"
-
-#: ui/MainWindow.glade:1594
-msgid ""
-"<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
-"tr\">Community</a>"
-msgstr ""
-"<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
-"tr\">Topluluk</a>"
-
-#: ui/MainWindow.glade:1607
-msgid ""
-"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
-"tr\">Forum</a>"
-msgstr ""
-"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
-"tr\">Forum</a>"
-
-#: ui/MainWindow.glade:1643 ui/MainWindow.glade:1671
-msgid "<small></small>"
-msgstr "<small></small>"
-
-#: ui/MainWindow.glade:1658
-msgid "<small>+90</small>"
-msgstr "<small>+90</small>"
-
-#: ui/MainWindow.glade:1699
-msgid "<span size=\"large\">Support</span>"
-msgstr "<span size=\"large\">Destek</span>"
-
-#: ui/MainWindow.glade:1712
-msgid "<span size=\"xx-large\"><b>444 5 773</b></span>"
-msgstr "<span size=\"xx-large\"><b>444 5 773</b></span>"
-
-#: ui/MainWindow.glade:2083
-msgid "Next"
-msgstr "Sonraki"
-
-#: ui/MainWindow.glade:2096
-msgid "Close"
-msgstr "Kapat"
-
-#: ui/MainWindow.glade:2122
-msgid "Previous"
-msgstr "Önceki"
-
-#: ui/MainWindow.glade:2155 src/MainWindow.py:171
-msgid "Pardus Greeter"
-msgstr "Pardus Karşılayıcı"
-
-#: ui/MainWindow.glade:2201
-msgid "Tool that helps you to get Pardus ready."
-msgstr "Bu araç Pardus'u hazırlamanıza yardımcı olacaktır."
-
-#. Name Surname <example@examplemail.com>
-#: ui/MainWindow.glade:2205
-msgid "translator-credits"
-msgstr "Fatih Altun <fatih.altun@pardus.org.tr>"
-
-#: src/MainWindow.py:54 src/MainWindow.py:827 src/MainWindow.py:833
-#: src/MainWindow.py:839
-msgid "Error"
-msgstr "Hata"
-
-#: src/MainWindow.py:54
-msgid "Your desktop environment is not supported."
-msgstr "Masaüstü ortamınız desteklenmiyor."
-
-#: src/MainWindow.py:175
-msgid "About Pardus Greeter"
-msgstr "Pardus Karşılayıcı Hakkında"
-
-#: src/MainWindow.py:205
-msgid "Welcome"
-msgstr "Hoş Geldiniz"
-
-#: src/MainWindow.py:206
-msgid "Select Wallpaper"
-msgstr "Duvar Kağıdı Seçin"
-
-#: src/MainWindow.py:207
-msgid "Theme Settings"
-msgstr "Tema Ayarları"
-
-#: src/MainWindow.py:208
-msgid "Display Settings"
-msgstr "Görünüm Ayarları"
-
-#: src/MainWindow.py:209
-msgid "Keyboard Settings"
-msgstr "Klavye Ayarları"
-
-#: src/MainWindow.py:210
-msgid "Applications"
-msgstr "Uygulamalar"
-
-#: src/MainWindow.py:211
-msgid "Support & Community"
-msgstr "Destek ve Topluluk"
+print(final_updated_po_content)

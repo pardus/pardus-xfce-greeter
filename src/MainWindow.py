@@ -114,6 +114,9 @@ class MainWindow:
         # Last Variable Definitions
         self.defineVariables()
 
+        # Populate System Info
+        self.populate_system_info()
+
         # set pardus-software apps
         self.set_pardussoftware_apps()
 
@@ -200,15 +203,25 @@ class MainWindow:
         self.page_keyboard = getUI("page_keyboard")
         self.page_applications = getUI("page_applications")
         self.page_support = getUI("page_support")
+        self.page_system_info = getUI("page_system_info")
 
         # FIX this solution later. Because we are not getting stack title in this gtk version.
         self.page_welcome.name = _("Welcome")
-        self.page_wallpaper.name = _("Select Wallpaper")
+        self.page_system_info.name = _("System Information")
         self.page_theme.name = _("Theme Settings")
+        self.page_wallpaper.name = _("Select Wallpaper")
         self.page_display.name = _("Display Settings")
         self.page_keyboard.name = _("Keyboard Settings")
         self.page_applications.name = _("Applications")
         self.page_support.name = _("Support & Community")
+
+        # - System Info Labels:
+        self.lbl_sysinfo_os = getUI("lbl_sysinfo_os")
+        self.lbl_sysinfo_xfce_version = getUI("lbl_sysinfo_xfce_version")
+        self.lbl_sysinfo_kernel = getUI("lbl_sysinfo_kernel")
+        self.lbl_sysinfo_hostname = getUI("lbl_sysinfo_hostname")
+        self.lbl_sysinfo_gtk_theme = getUI("lbl_sysinfo_gtk_theme")
+        self.lbl_sysinfo_icon_theme = getUI("lbl_sysinfo_icon_theme")
 
         # - Display Settings:
         self.lst_themes = getUI("lst_themes")
@@ -558,6 +571,93 @@ class MainWindow:
         self.server = Server()
         self.server.ServerGet = self.ServerGet
         self.server.get(self.apps_url)
+
+    def populate_system_info(self):
+        # OS Version
+        try:
+            # Try to read Pardus version first
+            if os.path.exists("/etc/pardus_version"):
+                with open("/etc/pardus_version", "r") as f:
+                    os_version = f.read().strip()
+            elif os.path.exists("/etc/os-release"):
+                # Fallback to os-release
+                with open("/etc/os-release", "r") as f:
+                    for line in f:
+                        if line.startswith("PRETTY_NAME="):
+                            os_version = line.split("=")[1].strip().strip('"')
+                            break
+                    else:
+                        os_version = _("N/A")
+            else:
+                os_version = _("N/A")
+            self.lbl_sysinfo_os.set_text(os_version)
+        except Exception as e:
+            print(f"Error getting OS version: {e}")
+            self.lbl_sysinfo_os.set_text(_("N/A"))
+
+        # XFCE Version
+        try:
+            # First, try xfce4-session --version
+            result = subprocess.run(['xfce4-session', '--version'], capture_output=True, text=True, check=False)
+            if result.returncode == 0 and result.stdout:
+                 # Expected output might be like: "xfce4-session 4.18.1
+Usage: xfce4-session [OPTION...]"
+                 # Or "Xfce PolicyKit Agent 0.4.1" if that's what gets run.
+                 # We need to parse this carefully.
+                lines = result.stdout.splitlines()
+                if lines:
+                    # Look for a line starting with "xfce4-session"
+                    session_line = next((line for line in lines if line.lower().startswith("xfce4-session")), None)
+                    if session_line:
+                        xfce_version = session_line.split()[-1] # Get the last part
+                    else: # If not found, maybe the first line is enough if it's simple version output
+                        xfce_version = lines[0].split()[-1] if lines[0].split() else _("N/A")
+
+                else:
+                    xfce_version = _("N/A")
+            else: # Fallback if command fails or gives no output
+                 # Check common environment variables (less reliable for specific version)
+                xdg_current_desktop = getenv("XDG_CURRENT_DESKTOP", "N/A").lower()
+                if "xfce" in xdg_current_desktop:
+                    xfce_version = _("XFCE") # Generic if version not found
+                else:
+                    xfce_version = _("N/A")
+            self.lbl_sysinfo_xfce_version.set_text(xfce_version)
+        except Exception as e:
+            print(f"Error getting XFCE version: {e}")
+            self.lbl_sysinfo_xfce_version.set_text(_("N/A"))
+
+        # Kernel Version
+        try:
+            kernel_version = subprocess.check_output(['uname', '-r']).decode('utf-8').strip()
+            self.lbl_sysinfo_kernel.set_text(kernel_version)
+        except Exception as e:
+            print(f"Error getting kernel version: {e}")
+            self.lbl_sysinfo_kernel.set_text(_("N/A"))
+
+        # Hostname
+        try:
+            hostname = subprocess.check_output(['hostname']).decode('utf-8').strip()
+            self.lbl_sysinfo_hostname.set_text(hostname)
+        except Exception as e:
+            print(f"Error getting hostname: {e}")
+            self.lbl_sysinfo_hostname.set_text(_("N/A"))
+
+        # GTK Theme
+        try:
+            gtk_theme = ThemeManager.getTheme()
+            self.lbl_sysinfo_gtk_theme.set_text(gtk_theme if gtk_theme else _("N/A"))
+        except Exception as e:
+            print(f"Error getting GTK theme: {e}")
+            self.lbl_sysinfo_gtk_theme.set_text(_("N/A"))
+
+        # Icon Theme
+        try:
+            icon_theme = ThemeManager.getIconTheme()
+            self.lbl_sysinfo_icon_theme.set_text(icon_theme if icon_theme else _("N/A"))
+        except Exception as e:
+            print(f"Error getting icon theme: {e}")
+            self.lbl_sysinfo_icon_theme.set_text(_("N/A"))
 
     def StreamGet(self, pixbuf, data):
         lang = f"pretty_{self.user_locale}"
