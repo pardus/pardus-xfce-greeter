@@ -4,15 +4,12 @@ import os
 
 import gi
 
-gi.require_version('Gtk', '3.0')
+gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
 
 def getenv(name):
-    if name in os.environ:
-        return os.environ[name]
-    else:
-        return ""
+    return os.environ.get(name, default="")
 
 
 def check_live():
