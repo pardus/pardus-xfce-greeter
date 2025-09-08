@@ -3,35 +3,35 @@
 import os
 import subprocess
 import threading
-
-import gi
+import json
+import apt
 
 import utils
 from utils import getenv, ErrorDialog
 
-gi.require_version('Gtk', '3.0')
+import gi
+
+gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GdkPixbuf, GLib, Gdk
+
 import locale
 from locale import gettext as _
-from pathlib import Path
-import apt
-from pathlib import Path
-import json
 from locale import getlocale
 
 # Translation Constants:
 APPNAME = "pardus-xfce-greeter"
 TRANSLATIONS_PATH = "/usr/share/locale"
-# SYSTEM_LANGUAGE = os.environ.get("LANG")
 
 # Translation functions:
 locale.bindtextdomain(APPNAME, TRANSLATIONS_PATH)
 locale.textdomain(APPNAME)
-# locale.setlocale(locale.LC_ALL, SYSTEM_LANGUAGE)
 
 
-currentDesktop = ""
-if "xfce" in getenv("SESSION").lower() or "xfce" in getenv("XDG_CURRENT_DESKTOP").lower():
+currentDesktop = "xfce"
+if (
+    "xfce" in getenv("SESSION").lower()
+    or "xfce" in getenv("XDG_CURRENT_DESKTOP").lower()
+):
     import xfce.WallpaperManager as WallpaperManager
     import xfce.ThemeManager as ThemeManager
     import xfce.ScaleManager as ScaleManager
@@ -40,21 +40,13 @@ if "xfce" in getenv("SESSION").lower() or "xfce" in getenv("XDG_CURRENT_DESKTOP"
 
     from Server import Server
     from Stream import Stream
-
-    currentDesktop = "xfce"
-
-# elif "gnome" in getenv("SESSION").lower() or "gnome" in getenv("XDG_CURRENT_DESKTOP").lower():
-#     import gnome.WallpaperManager as WallpaperManager
-#     import gnome.ThemeManager as ThemeManager
-#     import gnome.ScaleManager as ScaleManager
-#
-#     currentDesktop = "gnome"
-
 else:
-    ErrorDialog(_("Error"), _("Your desktop environment is not supported."))
+    ErrorDialog(_("Error"), _("Only XFCE is supported."))
     exit(0)
 
-autostart_file = "{}/autostart/tr.org.pardus.xfce-greeter.desktop".format(GLib.get_user_config_dir())
+autostart_file = "{}/autostart/tr.org.pardus.xfce-greeter.desktop".format(
+    GLib.get_user_config_dir()
+)
 
 # In live mode, the application should not welcome the user
 if utils.check_live() and os.path.isfile(autostart_file):
@@ -77,7 +69,9 @@ class MainWindow:
 
         # Gtk Builder
         self.builder = Gtk.Builder()
-        self.builder.add_from_file(os.path.dirname(os.path.abspath(__file__)) + "/../ui/MainWindow.glade")
+        self.builder.add_from_file(
+            os.path.dirname(os.path.abspath(__file__)) + "/../ui/MainWindow.glade"
+        )
         self.builder.connect_signals(self)
 
         # Translate things on glade:
@@ -87,7 +81,7 @@ class MainWindow:
         self.window = self.builder.get_object("window")
         self.window.set_position(Gtk.WindowPosition.CENTER)
         self.window.set_application(application)
-        self.window.connect('destroy', self.onDestroy)
+        self.window.connect("destroy", self.onDestroy)
 
         self.user_locale = self.get_user_locale()
 
@@ -100,7 +94,9 @@ class MainWindow:
         self.addSliderMarks()
 
         # Put Wallpapers on a Grid
-        thread = threading.Thread(target=self.addWallpapers, args=(WallpaperManager.getWallpaperList(),))
+        thread = threading.Thread(
+            target=self.addWallpapers, args=(WallpaperManager.getWallpaperList(),)
+        )
         thread.daemon = True
         thread.start()
 
@@ -150,17 +146,27 @@ class MainWindow:
 
     def set_css(self):
         settings = Gtk.Settings.get_default()
-        theme_name = "{}".format(settings.get_property('gtk-theme-name')).lower().strip()
+        theme_name = (
+            "{}".format(settings.get_property("gtk-theme-name")).lower().strip()
+        )
         cssProvider = Gtk.CssProvider()
         if theme_name.startswith("pardus") or theme_name.startswith("adwaita"):
-            cssProvider.load_from_path(os.path.dirname(os.path.abspath(__file__)) + "/../assets/css/all.css")
+            cssProvider.load_from_path(
+                os.path.dirname(os.path.abspath(__file__)) + "/../assets/css/all.css"
+            )
         elif theme_name.startswith("adw-gtk3"):
-            cssProvider.load_from_path(os.path.dirname(os.path.abspath(__file__)) + "/../assets/css/adw.css")
+            cssProvider.load_from_path(
+                os.path.dirname(os.path.abspath(__file__)) + "/../assets/css/adw.css"
+            )
         else:
-            cssProvider.load_from_path(os.path.dirname(os.path.abspath(__file__)) + "/../assets/css/base.css")
+            cssProvider.load_from_path(
+                os.path.dirname(os.path.abspath(__file__)) + "/../assets/css/base.css"
+            )
         screen = Gdk.Screen.get_default()
         styleContext = Gtk.StyleContext()
-        styleContext.add_provider_for_screen(screen, cssProvider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
+        styleContext.add_provider_for_screen(
+            screen, cssProvider, Gtk.STYLE_PROVIDER_PRIORITY_USER
+        )
 
     def defineComponents(self):
         def getUI(str):
@@ -173,13 +179,19 @@ class MainWindow:
             about_headerbar = Gtk.HeaderBar.new()
             about_headerbar.set_show_close_button(True)
             about_headerbar.set_title(_("About Pardus Greeter"))
-            about_headerbar.pack_start(Gtk.Image.new_from_icon_name("pardus-greeter", Gtk.IconSize.LARGE_TOOLBAR))
+            about_headerbar.pack_start(
+                Gtk.Image.new_from_icon_name(
+                    "pardus-greeter", Gtk.IconSize.LARGE_TOOLBAR
+                )
+            )
             about_headerbar.show_all()
             self.ui_about_dialog.set_titlebar(about_headerbar)
         # Set version
         # If not getted from __version__ file then accept version in MainWindow.glade file
         try:
-            version = open(os.path.dirname(os.path.abspath(__file__)) + "/__version__").readline()
+            version = open(
+                os.path.dirname(os.path.abspath(__file__)) + "/__version__"
+            ).readline()
             self.ui_about_dialog.set_version(version)
         except:
             pass
@@ -263,8 +275,12 @@ class MainWindow:
         self.special_theme_active = False
 
         self.pardus_default_whisker_icon = "start-pardus"
-        self.pardus_default_wallpaper_light = "/usr/share/backgrounds/pardus23-0_default-light.svg"
-        self.pardus_default_wallpaper_dark = "/usr/share/backgrounds/pardus23-0_default-dark.svg"
+        self.pardus_default_wallpaper_light = (
+            "/usr/share/backgrounds/pardus23-0_default-light.svg"
+        )
+        self.pardus_default_wallpaper_dark = (
+            "/usr/share/backgrounds/pardus23-0_default-dark.svg"
+        )
 
         self.apps_url = "https://apps.pardus.org.tr/api/greeter"
         self.non_tls_tried = False
@@ -296,7 +312,6 @@ class MainWindow:
         self.btn_prev.set_sensitive(self.currentpage != 0)
 
     def control_special_themes(self):
-
         theme_packages = ["pardus-yuzyil"]
         package_found = False
 
@@ -310,8 +325,12 @@ class MainWindow:
             print("{}".format(e))
 
         if package_found:
-            user_json_file = "{}/pardus/pardus-special-theme/special_theme.json".format(GLib.get_user_config_dir())
-            system_json_file = "/usr/share/pardus/pardus-special-theme/special-theme.json"
+            user_json_file = "{}/pardus/pardus-special-theme/special_theme.json".format(
+                GLib.get_user_config_dir()
+            )
+            system_json_file = (
+                "/usr/share/pardus/pardus-special-theme/special-theme.json"
+            )
 
             user_json_file_ok = False
             system_json_file_ok = False
@@ -335,18 +354,24 @@ class MainWindow:
 
             # system json file not exists too so return
             if not user_json_file_ok and not system_json_file_ok:
-                print("{}\n{}\nfiles not exists!".format(user_json_file, system_json_file))
+                print(
+                    "{}\n{}\nfiles not exists!".format(user_json_file, system_json_file)
+                )
                 return
 
             try:
-                self.special_light_name = special_json_file["light"]["name"].replace("@@desktop@@", currentDesktop)
+                self.special_light_name = special_json_file["light"]["name"].replace(
+                    "@@desktop@@", currentDesktop
+                )
                 self.special_light_pretty_tr = special_json_file["light"]["pretty_tr"]
                 self.special_light_pretty_en = special_json_file["light"]["pretty_en"]
                 self.special_light_background = special_json_file["light"]["background"]
                 self.special_light_image = special_json_file["light"]["image"]
                 self.special_light_panel = special_json_file["light"]["panel"]
 
-                self.special_dark_name = special_json_file["dark"]["name"].replace("@@desktop@@", currentDesktop)
+                self.special_dark_name = special_json_file["dark"]["name"].replace(
+                    "@@desktop@@", currentDesktop
+                )
                 self.special_dark_pretty_tr = special_json_file["dark"]["pretty_tr"]
                 self.special_dark_pretty_en = special_json_file["dark"]["pretty_en"]
                 self.special_dark_background = special_json_file["dark"]["background"]
@@ -383,24 +408,50 @@ class MainWindow:
             self.special_theme_active = True
 
             print("everything looks ok so setting theme page")
-            self.img_lightTheme.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file_at_size(
-                os.path.dirname(os.path.abspath(__file__)) + "/../assets/theme-light.png", 233, 233))
-            self.img_darkTheme.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file_at_size(
-                os.path.dirname(os.path.abspath(__file__)) + "/../assets/theme-dark.png", 233, 233))
+            self.img_lightTheme.set_from_pixbuf(
+                GdkPixbuf.Pixbuf.new_from_file_at_size(
+                    os.path.dirname(os.path.abspath(__file__))
+                    + "/../assets/theme-light.png",
+                    233,
+                    233,
+                )
+            )
+            self.img_darkTheme.set_from_pixbuf(
+                GdkPixbuf.Pixbuf.new_from_file_at_size(
+                    os.path.dirname(os.path.abspath(__file__))
+                    + "/../assets/theme-dark.png",
+                    233,
+                    233,
+                )
+            )
 
-            self.special_light_img.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file_at_size(
-                self.special_light_image, 233, 233))
-            self.special_dark_img.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file_at_size(
-                self.special_dark_image, 233, 233))
+            self.special_light_img.set_from_pixbuf(
+                GdkPixbuf.Pixbuf.new_from_file_at_size(
+                    self.special_light_image, 233, 233
+                )
+            )
+            self.special_dark_img.set_from_pixbuf(
+                GdkPixbuf.Pixbuf.new_from_file_at_size(
+                    self.special_dark_image, 233, 233
+                )
+            )
 
             self.locale = self.get_locale()
 
             if self.locale == "tr":
-                self.special_light_label.set_text("{}".format(self.special_light_pretty_tr))
-                self.special_dark_label.set_text("{}".format(self.special_dark_pretty_tr))
+                self.special_light_label.set_text(
+                    "{}".format(self.special_light_pretty_tr)
+                )
+                self.special_dark_label.set_text(
+                    "{}".format(self.special_dark_pretty_tr)
+                )
             else:
-                self.special_light_label.set_text("{}".format(self.special_light_pretty_en))
-                self.special_dark_label.set_text("{}".format(self.special_dark_pretty_en))
+                self.special_light_label.set_text(
+                    "{}".format(self.special_light_pretty_en)
+                )
+                self.special_dark_label.set_text(
+                    "{}".format(self.special_dark_pretty_en)
+                )
 
             self.ui_special_theme_box.set_visible(True)
 
@@ -484,8 +535,7 @@ class MainWindow:
 
         currentScale = int((ScaleManager.getScale() / 0.25) - 4)
         self.sli_scaling.set_value(currentScale)
-        self.sli_cursor.set_value((ScaleManager.getPointerSize()/16)-1)
-
+        self.sli_cursor.set_value((ScaleManager.getPointerSize() / 16) - 1)
 
     # Keyboard Settings:
     def getKeyboardDefaults(self):
@@ -517,11 +567,17 @@ class MainWindow:
     def keyboardSelectionDisablingCheck(self):
         # print(f"trq:{self.stk_trq.get_visible_child_name()}, trf:{self.stk_trf.get_visible_child_name()}, en:{self.stk_en.get_visible_child_name()}")
         self.btn_trf_remove.set_sensitive(
-            self.stk_trq.get_visible_child_name() == "remove" or self.stk_en.get_visible_child_name() == "remove")
+            self.stk_trq.get_visible_child_name() == "remove"
+            or self.stk_en.get_visible_child_name() == "remove"
+        )
         self.btn_trq_remove.set_sensitive(
-            self.stk_trf.get_visible_child_name() == "remove" or self.stk_en.get_visible_child_name() == "remove")
+            self.stk_trf.get_visible_child_name() == "remove"
+            or self.stk_en.get_visible_child_name() == "remove"
+        )
         self.btn_en_remove.set_sensitive(
-            self.stk_trq.get_visible_child_name() == "remove" or self.stk_trf.get_visible_child_name() == "remove")
+            self.stk_trq.get_visible_child_name() == "remove"
+            or self.stk_trf.get_visible_child_name() == "remove"
+        )
 
     def updateProgressDots(self):
         currentpage = int(self.stk_pages.get_visible_child_name())
@@ -538,7 +594,9 @@ class MainWindow:
 
         if isHdpi:
             if isDark:
-                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-xfce-dark-default-hdpi")
+                GLib.idle_add(
+                    ThemeManager.setWindowTheme, "pardus-xfce-dark-default-hdpi"
+                )
             else:
                 GLib.idle_add(ThemeManager.setWindowTheme, "pardus-xfce-default-hdpi")
         else:
@@ -551,7 +609,6 @@ class MainWindow:
         subprocess.call(["xfce4-panel", "-r"])
 
     def set_pardussoftware_apps(self):
-
         self.stream = Stream()
         self.stream.StreamGet = self.StreamGet
         self.server_response = None
@@ -635,7 +692,7 @@ class MainWindow:
                 return page + increase
         return None
 
-    # =========== SIGNALS:    
+    # =========== SIGNALS:
     def onDestroy(self, b):
         self.window.get_application().quit()
 
@@ -645,11 +702,15 @@ class MainWindow:
 
     # - NAVIGATION:
     def on_btn_next_clicked(self, btn):
-        self.stk_pages.set_visible_child_name("{}".format(self.get_next_page(self.currentpage)))
+        self.stk_pages.set_visible_child_name(
+            "{}".format(self.get_next_page(self.currentpage))
+        )
 
         self.currentpage = int(self.stk_pages.get_visible_child_name())
 
-        nextButtonPage = "next" if self.get_next_page(self.currentpage) != None else "close"
+        nextButtonPage = (
+            "next" if self.get_next_page(self.currentpage) != None else "close"
+        )
         self.stk_btn_next.set_visible_child_name(nextButtonPage)
 
         self.btn_prev.set_sensitive(self.currentpage != 0)
@@ -661,7 +722,9 @@ class MainWindow:
         self.updateProgressDots()
 
     def on_btn_prev_clicked(self, btn):
-        self.stk_pages.set_visible_child_name("{}".format(self.get_prev_page(self.currentpage)))
+        self.stk_pages.set_visible_child_name(
+            "{}".format(self.get_prev_page(self.currentpage))
+        )
 
         self.currentpage = int(self.stk_pages.get_visible_child_name())
 
@@ -682,7 +745,6 @@ class MainWindow:
     # - Theme Selection:
     def on_rb_lightTheme_clicked(self, rb):
         if rb.get_active():
-
             GLib.idle_add(ThemeManager.setTheme, "pardus-xfce")
             GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce")
 
@@ -694,7 +756,9 @@ class MainWindow:
                 WallpaperManager.setWallpaper(self.pardus_default_wallpaper_light)
 
                 # Whisker
-                GLib.idle_add(WhiskerManager.set, "button-icon", self.pardus_default_whisker_icon)
+                GLib.idle_add(
+                    WhiskerManager.set, "button-icon", self.pardus_default_whisker_icon
+                )
                 GLib.idle_add(WhiskerManager.saveFile)
 
                 # Refresh panel
@@ -713,7 +777,9 @@ class MainWindow:
                 WallpaperManager.setWallpaper(self.pardus_default_wallpaper_dark)
 
                 # Whisker
-                GLib.idle_add(WhiskerManager.set, "button-icon", self.pardus_default_whisker_icon)
+                GLib.idle_add(
+                    WhiskerManager.set, "button-icon", self.pardus_default_whisker_icon
+                )
                 GLib.idle_add(WhiskerManager.saveFile)
 
                 # Refresh panel
@@ -762,7 +828,9 @@ class MainWindow:
     # - Scale Changed:
     def on_sli_scaling_button_release(self, slider, b):
         value = int(slider.get_value()) * 0.25 + 1
-        self.changeWindowTheme(value == 2.0, ThemeManager.getTheme() == "pardus-xfce-dark")
+        self.changeWindowTheme(
+            value == 2.0, ThemeManager.getTheme() == "pardus-xfce-dark"
+        )
         ScaleManager.setScale(value)
 
     def on_sli_scaling_format_value(self, sli, value):
