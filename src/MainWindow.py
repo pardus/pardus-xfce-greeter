@@ -3,8 +3,6 @@
 import os
 import subprocess
 import threading
-import json
-import apt
 
 import utils
 from utils import getenv, ErrorDialog
@@ -122,9 +120,6 @@ class MainWindow:
         # Hide widgets:
         self.hideWidgets()
 
-        # control special pardus themes
-        self.control_special_themes()
-
         # Set theme to system-default:
         self.getThemeDefaults()
 
@@ -228,15 +223,8 @@ class MainWindow:
         self.flow_wallpapers = getUI("flow_wallpapers")
         self.rb_darkTheme = getUI("rb_darkTheme")
         self.rb_lightTheme = getUI("rb_lightTheme")
-        self.special_light_rb = getUI("special_light_rb")
-        self.special_dark_rb = getUI("special_dark_rb")
         self.img_lightTheme = getUI("img_lightTheme")
         self.img_darkTheme = getUI("img_darkTheme")
-        self.special_light_label = getUI("special_light_label")
-        self.special_light_img = getUI("special_light_img")
-        self.special_dark_label = getUI("special_dark_label")
-        self.special_dark_img = getUI("special_dark_img")
-        self.ui_special_theme_box = getUI("ui_special_theme_box")
 
         # - Scaling Settings:
         self.lbl_panelSize = getUI("lbl_panelSize")
@@ -272,8 +260,6 @@ class MainWindow:
         for row in self.stk_pages:
             self.stk_len += 1
 
-        self.special_theme_active = False
-
         self.pardus_default_whisker_icon = "start-pardus"
         self.pardus_default_wallpaper_light = (
             "/usr/share/backgrounds/pardus23-0_default-light.svg"
@@ -288,8 +274,6 @@ class MainWindow:
     def set_signals(self):
         self.rb_lightTheme.connect("clicked", self.on_rb_lightTheme_clicked)
         self.rb_darkTheme.connect("clicked", self.on_rb_darkTheme_clicked)
-        self.special_light_rb.connect("clicked", self.on_special_light_rb_clicked)
-        self.special_dark_rb.connect("clicked", self.on_special_dark_rb_clicked)
 
     # =========== UI Preparing functions:
     def hideWidgets(self):
@@ -307,153 +291,7 @@ class MainWindow:
 
         self.updateProgressDots()
 
-        self.ui_special_theme_box.set_visible(False)
-
         self.btn_prev.set_sensitive(self.currentpage != 0)
-
-    def control_special_themes(self):
-        theme_packages = ["pardus-yuzyil"]
-        package_found = False
-
-        try:
-            cache = apt.Cache()
-            for package in theme_packages:
-                if cache[package].is_installed:
-                    package_found = True
-                    print("{} found.".format(package))
-        except Exception as e:
-            print("{}".format(e))
-
-        if package_found:
-            user_json_file = "{}/pardus/pardus-special-theme/special_theme.json".format(
-                GLib.get_user_config_dir()
-            )
-            system_json_file = (
-                "/usr/share/pardus/pardus-special-theme/special-theme.json"
-            )
-
-            user_json_file_ok = False
-            system_json_file_ok = False
-
-            # firstly look for user json file (setted from theme desktop file)
-            try:
-                if os.path.isfile(user_json_file):
-                    special_json_file = json.load(open(user_json_file))
-                    user_json_file_ok = True
-            except Exception as e:
-                print("{}".format(e))
-
-            # if user json file is not found then look for system json file (setted from theme package file)
-            if not user_json_file_ok:
-                try:
-                    if os.path.isfile(system_json_file):
-                        special_json_file = json.load(open(system_json_file))
-                        system_json_file_ok = True
-                except Exception as e:
-                    print("{}".format(e))
-
-            # system json file not exists too so return
-            if not user_json_file_ok and not system_json_file_ok:
-                print(
-                    "{}\n{}\nfiles not exists!".format(user_json_file, system_json_file)
-                )
-                return
-
-            try:
-                self.special_light_name = special_json_file["light"]["name"].replace(
-                    "@@desktop@@", currentDesktop
-                )
-                self.special_light_pretty_tr = special_json_file["light"]["pretty_tr"]
-                self.special_light_pretty_en = special_json_file["light"]["pretty_en"]
-                self.special_light_background = special_json_file["light"]["background"]
-                self.special_light_image = special_json_file["light"]["image"]
-                self.special_light_panel = special_json_file["light"]["panel"]
-
-                self.special_dark_name = special_json_file["dark"]["name"].replace(
-                    "@@desktop@@", currentDesktop
-                )
-                self.special_dark_pretty_tr = special_json_file["dark"]["pretty_tr"]
-                self.special_dark_pretty_en = special_json_file["dark"]["pretty_en"]
-                self.special_dark_background = special_json_file["dark"]["background"]
-                self.special_dark_image = special_json_file["dark"]["image"]
-                self.special_dark_panel = special_json_file["dark"]["panel"]
-            except Exception as e:
-                print("{}".format(e))
-                return
-
-            if not os.path.exists(self.special_light_background):
-                print("{} not exists.".format(self.special_light_background))
-                return
-
-            if not os.path.exists(self.special_light_image):
-                print("{} not exists.".format(self.special_light_image))
-                return
-
-            if not os.path.exists(self.special_light_panel):
-                print("{} not exists.".format(self.special_light_panel))
-                return
-
-            if not os.path.exists(self.special_dark_background):
-                print("{} not exists.".format(self.special_dark_background))
-                return
-
-            if not os.path.exists(self.special_dark_image):
-                print("{} not exists.".format(self.special_dark_image))
-                return
-
-            if not os.path.exists(self.special_dark_panel):
-                print("{} not exists.".format(self.special_dark_panel))
-                return
-
-            self.special_theme_active = True
-
-            print("everything looks ok so setting theme page")
-            self.img_lightTheme.set_from_pixbuf(
-                GdkPixbuf.Pixbuf.new_from_file_at_size(
-                    os.path.dirname(os.path.abspath(__file__))
-                    + "/../assets/theme-light.png",
-                    233,
-                    233,
-                )
-            )
-            self.img_darkTheme.set_from_pixbuf(
-                GdkPixbuf.Pixbuf.new_from_file_at_size(
-                    os.path.dirname(os.path.abspath(__file__))
-                    + "/../assets/theme-dark.png",
-                    233,
-                    233,
-                )
-            )
-
-            self.special_light_img.set_from_pixbuf(
-                GdkPixbuf.Pixbuf.new_from_file_at_size(
-                    self.special_light_image, 233, 233
-                )
-            )
-            self.special_dark_img.set_from_pixbuf(
-                GdkPixbuf.Pixbuf.new_from_file_at_size(
-                    self.special_dark_image, 233, 233
-                )
-            )
-
-            self.locale = self.get_locale()
-
-            if self.locale == "tr":
-                self.special_light_label.set_text(
-                    "{}".format(self.special_light_pretty_tr)
-                )
-                self.special_dark_label.set_text(
-                    "{}".format(self.special_dark_pretty_tr)
-                )
-            else:
-                self.special_light_label.set_text(
-                    "{}".format(self.special_light_pretty_en)
-                )
-                self.special_dark_label.set_text(
-                    "{}".format(self.special_dark_pretty_en)
-                )
-
-            self.ui_special_theme_box.set_visible(True)
 
     def control_args(self):
         if "page" in self.Application.args.keys():
@@ -518,15 +356,9 @@ class MainWindow:
 
         if theme == "pardus-xfce":
             self.rb_lightTheme.set_active(True)
-            if self.special_theme_active:
-                if icon_theme == self.special_light_name:
-                    self.special_light_rb.set_active(True)
 
         elif theme == "pardus-xfce-dark":
             self.rb_darkTheme.set_active(True)
-            if self.special_theme_active:
-                if icon_theme == self.special_dark_name:
-                    self.special_dark_rb.set_active(True)
 
     def getScalingDefaults(self):
         if currentDesktop == "xfce":
@@ -751,19 +583,6 @@ class MainWindow:
             # Window Theme
             self.changeWindowTheme(ScaleManager.getScale() == 2.0, False)
 
-            if self.special_theme_active:
-                # Wallpaper
-                WallpaperManager.setWallpaper(self.pardus_default_wallpaper_light)
-
-                # Whisker
-                GLib.idle_add(
-                    WhiskerManager.set, "button-icon", self.pardus_default_whisker_icon
-                )
-                GLib.idle_add(WhiskerManager.saveFile)
-
-                # Refresh panel
-                GLib.idle_add(self.refresh_panel)
-
     def on_rb_darkTheme_clicked(self, rb):
         if rb.get_active():
             GLib.idle_add(ThemeManager.setTheme, "pardus-xfce-dark")
@@ -771,59 +590,6 @@ class MainWindow:
 
             # Window Theme
             self.changeWindowTheme(ScaleManager.getScale() == 2.0, True)
-
-            if self.special_theme_active:
-                # Wallpaper
-                WallpaperManager.setWallpaper(self.pardus_default_wallpaper_dark)
-
-                # Whisker
-                GLib.idle_add(
-                    WhiskerManager.set, "button-icon", self.pardus_default_whisker_icon
-                )
-                GLib.idle_add(WhiskerManager.saveFile)
-
-                # Refresh panel
-                GLib.idle_add(self.refresh_panel)
-
-    def on_special_light_rb_clicked(self, rb):
-        print("on_special_light_rb_clicked")
-        if rb.get_active():
-            print("on_special_light_rb_clicked active")
-            GLib.idle_add(ThemeManager.setTheme, "pardus-xfce")
-            GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce-yuzyil")
-
-            # Window Theme
-            self.changeWindowTheme(ScaleManager.getScale() == 2.0, False)
-
-            # Wallpaper
-            WallpaperManager.setWallpaper(self.special_light_background)
-
-            # Whisker
-            GLib.idle_add(WhiskerManager.set, "button-icon", self.special_light_panel)
-            GLib.idle_add(WhiskerManager.saveFile)
-
-            # Refresh panel
-            GLib.idle_add(self.refresh_panel)
-
-    def on_special_dark_rb_clicked(self, rb):
-        print("on_special_dark_rb_clicked")
-        if rb.get_active():
-            print("on_special_dark_rb_clicked active")
-            GLib.idle_add(ThemeManager.setTheme, "pardus-xfce-dark")
-            GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce-yuzyil-dark")
-
-            # Window Theme
-            self.changeWindowTheme(ScaleManager.getScale() == 2.0, True)
-
-            # Wallpaper
-            WallpaperManager.setWallpaper(self.special_dark_background)
-
-            # Whisker
-            GLib.idle_add(WhiskerManager.set, "button-icon", self.special_dark_panel)
-            GLib.idle_add(WhiskerManager.saveFile)
-
-            # Refresh panel
-            GLib.idle_add(self.refresh_panel)
 
     # - Scale Changed:
     def on_sli_scaling_button_release(self, slider, b):
