@@ -3,9 +3,9 @@
 import os
 import subprocess
 import threading
+import requests
 
-import utils
-from utils import getenv, ErrorDialog
+from utils import ErrorDialog
 
 import gi
 
@@ -16,6 +16,13 @@ import locale
 from locale import gettext as _
 from locale import getlocale
 
+
+import xfce.WallpaperManager as WallpaperManager
+import xfce.ThemeManager as ThemeManager
+import xfce.ScaleManager as ScaleManager
+import xfce.KeyboardManager as KeyboardManager
+# import xfce.WhiskerManager as WhiskerManager
+
 # Translation Constants:
 APPNAME = "pardus-xfce-greeter"
 TRANSLATIONS_PATH = "/usr/share/locale"
@@ -24,41 +31,8 @@ TRANSLATIONS_PATH = "/usr/share/locale"
 locale.bindtextdomain(APPNAME, TRANSLATIONS_PATH)
 locale.textdomain(APPNAME)
 
-
-currentDesktop = "xfce"
-if (
-    "xfce" in getenv("SESSION").lower()
-    or "xfce" in getenv("XDG_CURRENT_DESKTOP").lower()
-):
-    import xfce.WallpaperManager as WallpaperManager
-    import xfce.ThemeManager as ThemeManager
-    import xfce.ScaleManager as ScaleManager
-    import xfce.KeyboardManager as KeyboardManager
-    import xfce.WhiskerManager as WhiskerManager
-
-    from Server import Server
-    from Stream import Stream
-else:
-    ErrorDialog(_("Error"), _("Only XFCE is supported."))
-    exit(0)
-
-autostart_file = "{}/autostart/tr.org.pardus.xfce-greeter.desktop".format(
-    GLib.get_user_config_dir()
-)
-
-# In live mode, the application should not welcome the user
-if utils.check_live() and os.path.isfile(autostart_file):
-    try:
-        os.remove(autostart_file)
-    except OSError:
-        pass
-    exit(0)
-
-# Let the application greet the user only on the first boot
-try:
-    os.remove(autostart_file)
-except OSError:
-    pass
+# Pardus Software Center API
+PARDUS_SOFTWARE_CENTER_API = "https://apps.pardus.org.tr/api/greeter"
 
 
 class MainWindow:
@@ -107,8 +81,8 @@ class MainWindow:
         # Last Variable Definitions
         self.defineVariables()
 
-        # set pardus-software apps
-        self.set_pardussoftware_apps()
+        # Show pardus software popular apps
+        self.fetch_pardus_software_apps()
 
         # control args
         self.control_args()
@@ -242,10 +216,6 @@ class MainWindow:
         self.btn_en_remove = getUI("btn_en_remove")
         self.sw_lang_indicator = getUI("sw_lang_indicator")
 
-        # - Shortcut Page
-        self.stk_shortcuts = getUI("stk_shortcuts")
-        self.stk_shortcuts.set_visible_child_name(currentDesktop)
-
         tabTitle = self.stk_pages.get_visible_child().name
         self.lbl_headerTitle.set_text(tabTitle)
 
@@ -266,9 +236,6 @@ class MainWindow:
         self.pardus_default_wallpaper_dark = (
             "/usr/share/backgrounds/pardus23-0_default-dark.svg"
         )
-
-        self.apps_url = "https://apps.pardus.org.tr/api/greeter"
-        self.non_tls_tried = False
 
     def set_signals(self):
         self.rb_lightTheme.connect("clicked", self.on_rb_lightTheme_clicked)
@@ -360,11 +327,10 @@ class MainWindow:
             self.rb_darkTheme.set_active(True)
 
     def getScalingDefaults(self):
-        if currentDesktop == "xfce":
-            self.sli_panel.set_value(ScaleManager.getPanelSize())
-            self.sli_desktopIcon.set_value(ScaleManager.getDesktopIconSize())
-
         currentScale = int((ScaleManager.getScale() / 0.25) - 4)
+
+        self.sli_panel.set_value(ScaleManager.getPanelSize())
+        self.sli_desktopIcon.set_value(ScaleManager.getDesktopIconSize())
         self.sli_scaling.set_value(currentScale)
         self.sli_cursor.set_value((ScaleManager.getPointerSize() / 16) - 1)
 
@@ -418,9 +384,6 @@ class MainWindow:
                 self.box_progressDots.get_children()[i].set_visible_child_name("off")
 
     def changeWindowTheme(self, isHdpi, isDark):
-        if currentDesktop != "xfce":
-            return
-
         if isHdpi:
             if isDark:
                 GLib.idle_add(
@@ -436,6 +399,10 @@ class MainWindow:
 
     def refresh_panel(self):
         subprocess.call(["xfce4-panel", "-r"])
+
+    def fetch_pardus_software_apps(self):
+        r = requests.get(PARDUS_SOFTWARE_CENTER_API)
+        print("fetched softwares:", r.json())
 
     def set_pardussoftware_apps(self):
         self.stream = Stream()
