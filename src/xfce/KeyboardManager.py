@@ -1,249 +1,174 @@
-#!/usr/bin/env python3
-
-import re
 import subprocess
+import gi
 
-keyboardLayouts = ["tr", "tr", "us"]
-keyboardVariants = ["", "f", ""]
-keyboardStatus = [False, False, False]
+gi.require_version("Xfconf", "0")
+from gi.repository import Xfconf
 
-keyboardPlugin = ""
+keyboard_layout = Xfconf.Channel.new("keyboard-layout")
+xfce4_panel = Xfconf.Channel.new("xfce4-panel")
 
 
-def initializeSettings():
+def init():
     # Add Super + Space combination to change layouts
-    subprocess.call([
-        "xfconf-query",
-        "-c", "keyboard-layout",
-        "-p", "/Default/XkbOptions/Group",
-        "-s", "grp:win_space_toggle",
-        "--type", "string",
-        "--create"
-    ])
+    keyboard_layout.set_string("/Default/XkbOptions/Group", "grp:win_space_toggle")
 
     # Get system settings if disabled
-    try:
-        useSystemKeyboard = subprocess.check_output([
-            "xfconf-query",
-            "-c", "keyboard-layout",
-            "-p", "/Default/XkbDisable",
-        ]).decode("utf-8").rstrip() == "true"
-    except Exception as e:
-        print("{}".format(e))
-        useSystemKeyboard = True
+    use_system_keyboard = keyboard_layout.get_bool("/Default/XkbDisable", False)
 
-    if useSystemKeyboard:
-        getSystemKeyboardState()
-        setKeyboardState()
+    if use_system_keyboard:
+        get_system_keyboards()
 
 
-def setKeyboardState():
-    layoutString = ""
-    variantString = ""
-    for i in range(len(keyboardLayouts)):
-        if keyboardStatus[i]:
-            layoutString += keyboardLayouts[i] + ","
-            variantString += keyboardVariants[i] + ","
+def get_layouts():
+    layouts = keyboard_layout.get_string("/Default/XkbLayout", "")  # "tr,tr,us"
+    variants = keyboard_layout.get_string("/Default/XkbVariant", "")  # ",f,"
 
-    layoutString = layoutString[:-1]
-    variantString = variantString[:-1]
+    # "tr,tr,us"
+    # "",f,""
+    # Result => ["tr-", "tr-f", "us-"]
+    layouts = layouts.split(",")
+    variants = variants.split(",")
+    result = [f"{a}-{b}" for a, b in zip(layouts, variants)]
 
-    subprocess.call([
-        "xfconf-query",
-        "-c", "keyboard-layout",
-        "-p", "/Default/XkbLayout",
-        "-s", layoutString,
-        "--type", "string",
-        "--create"
-    ])
-    subprocess.call([
-        "xfconf-query",
-        "-c", "keyboard-layout",
-        "-p", "/Default/XkbVariant",
-        "-s", variantString,
-        "--type", "string",
-        "--create"
-    ])
-    subprocess.call([
-        "xfconf-query",
-        "-c", "keyboard-layout",
-        "-p", "/Default/XkbDisable",
-        "-s", "false",
-        "--type", "bool",
-        "--create"
-    ])
+    return result
 
 
-# Add Keyboard Layouts:
-def setTurkishQ(state):
-    keyboardStatus[0] = state
-    setKeyboardState()
+def save_layouts(new_layouts):
+    # Result to separate string
+    layouts = []
+    variants = []
+    for e in new_layouts:
+        layout, variant = e.split("-")
+        layouts.append(layout)
+        variants.append(variant)
+
+    layouts = ",".join(layouts)
+    variants = ",".join(variants)
+
+    # Save
+    keyboard_layout.set_string("/Default/XkbLayout", layouts)
+    keyboard_layout.set_string("/Default/XkbVariant", variants)
 
 
-def setTurkishF(state):
-    keyboardStatus[1] = state
-    setKeyboardState()
+def add_layout(new_layout):
+    # PARAM new_layout e.g.: "tr-f", "tr-", "us-"
+    # Read Layouts
+    new_layouts = get_layouts()
+
+    # Add layout:
+    if new_layout in new_layouts:
+        return
+
+    new_layouts.append(new_layout)
+
+    # Save
+    save_layouts(new_layouts)
 
 
-def setEnglish(state):
-    keyboardStatus[2] = state
-    setKeyboardState()
+def remove_layout(new_layout):
+    # PARAM new_layout e.g.: "tr-f", "tr-", "us-"
+    # Read Layouts
+    new_layouts = get_layouts()
+
+    # Remove layout:
+    if new_layout not in new_layouts:
+        return
+
+    new_layouts.remove(new_layout)
+
+    # Save
+    save_layouts(new_layouts)
 
 
 # Get System's Keyboard
-def getSystemKeyboardState():
-    layoutProcess = subprocess.run("cat /etc/default/keyboard | grep XKBLAYOUT | tr -d '\"'", shell=True,
-                                   capture_output=True)
-    variantProcess = subprocess.run("cat /etc/default/keyboard | grep XKBVARIANT | tr -d '\"'", shell=True,
-                                    capture_output=True)
+def get_system_keyboards():
+    layout_process = subprocess.run(
+        "cat /etc/default/keyboard | grep XKBLAYOUT | tr -d '\"'",
+        shell=True,
+        capture_output=True,
+    )
+    variant_process = subprocess.run(
+        "cat /etc/default/keyboard | grep XKBVARIANT | tr -d '\"'",
+        shell=True,
+        capture_output=True,
+    )
 
-    layout = layoutProcess.stdout.decode("utf-8").rstrip().split("=")[1]
-    variant = variantProcess.stdout.decode("utf-8").rstrip().split("=")[1]
+    layouts = layout_process.stdout.decode("utf-8").rstrip().split("=")[1].split(",")
+    variants = variant_process.stdout.decode("utf-8").rstrip().split("=")[1].split(",")
 
-    global keyboardLayouts
-    global keyboardVariants
-    global keyboardStatus
-
-    for j in range(len(keyboardLayouts)):
-        if layout == keyboardLayouts[j] and variant == keyboardVariants[j]:
-            keyboardStatus[j] = True
-
-    return keyboardStatus
+    for i in range(len(layouts)):
+        new_layout = f"{layouts[i]}-{variants[i]}"
+        add_layout(new_layout)
 
 
-# Get Current Keyboard State
-def getKeyboardState():
-    try:
-        layouts = subprocess.check_output([
-            "xfconf-query",
-            "-c", "keyboard-layout",
-            "-p", "/Default/XkbLayout"
-        ]).decode("utf-8").rstrip().split(",")
-        variants = subprocess.check_output([
-            "xfconf-query",
-            "-c", "keyboard-layout",
-            "-p", "/Default/XkbVariant"
-        ]).decode("utf-8").rstrip().split(",")
-
-        global keyboardLayouts
-        global keyboardVariants
-        global keyboardStatus
-
-        for i in range(len(layouts)):
-            for j in range(len(keyboardLayouts)):
-                if layouts[i] == keyboardLayouts[j] and variants[i] == keyboardVariants[j]:
-                    keyboardStatus[j] = True
-
-        return keyboardStatus
-    except subprocess.CalledProcessError:
-        getSystemKeyboardState()  # First get systemwide keyboard
-        setKeyboardState()  # Save it
-        return keyboardStatus
+def refresh_panel():
+    subprocess.call(["xfce4-panel", "-r"])
 
 
 # PLUGIN:
-def createKeyboardPlugin():
+def create_keyboard_plugin():
+    global xfce4_panel
     # Add keyboard
-    subprocess.call([
-        "xfce4-panel",
-        "--add=xkb"
-    ])
+    subprocess.call(["xfce4-panel", "--add=xkb"])
 
-    getKeyboardPlugin()
-    changeKeyboardPluginPlacement()
+    keyboard_plugin = get_keyboard_plugin()
+    if keyboard_plugin:
+        set_keyboard_plugin_place(keyboard_plugin)
 
     # Display Language Name (not country)
-    subprocess.call([
-        "xfconf-query",
-        "-c", "xfce4-panel",
-        "-p", f"/plugins/{keyboardPlugin}/display-name",
-        "-s", "1",
-        "--type", "int",
-        "--create"
-    ])
+    xfce4_panel.set_uint(f"/plugins/{keyboard_plugin}/display-name", 1)
 
     # Display text (not flag)
-    subprocess.call([
-        "xfconf-query",
-        "-c", "xfce4-panel",
-        "-p", f"/plugins/{keyboardPlugin}/display-type",
-        "-s", "2",
-        "--type", "int",
-        "--create"
-    ])
+    xfce4_panel.set_uint(f"/plugins/{keyboard_plugin}/display-type", 2)
 
     # Enable globally (not program-wide)
-    subprocess.call([
-        "xfconf-query",
-        "-c", "xfce4-panel",
-        "-p", f"/plugins/{keyboardPlugin}/group-policy",
-        "-s", "0",
-        "--type", "int",
-        "--create"
-    ])
+    xfce4_panel.set_uint(f"/plugins/{keyboard_plugin}/group-policy", 0)
 
 
-def removeKeyboardPlugin():
+def remove_keyboard_plugin():
+    global xfce4_panel
+
+    keyboard_plugin = get_keyboard_plugin()
+    if not keyboard_plugin:
+        return
+
     # Remove plugin
-    subprocess.call([
-        "xfconf-query",
-        "-c", "xfce4-panel",
-        "-p", f"/plugins/{keyboardPlugin}",
-        "-r", "-R"
-    ])
+    plugin_id = int(keyboard_plugin.split("-")[-1])
+    xfce4_panel.reset_property(f"/plugins/{keyboard_plugin}", True)
+
+    # Remove plugin id from list
+    plugin_ids = xfce4_panel.get_arrayv("/panels/panel-1/plugin-ids")
+    plugin_ids.remove(plugin_id)
+    xfce4_panel.set_arrayv("/panels/panel-1/plugin-ids", plugin_ids)
+
     # Refresh panel
-    subprocess.call([
-        "xfce4-panel",
-        "-r"
-    ])
+    refresh_panel()
 
 
-def getKeyboardPlugin():
-    global keyboardPlugin
+def get_keyboard_plugin():
+    for key, value in xfce4_panel.get_properties("/plugins").items():
+        if type(value) is str and "xkb" == value:
+            keyboard_plugin = key.split("/")[2]
 
-    pluginList = subprocess.check_output([
-        "xfconf-query",
-        "-c", "xfce4-panel",
-        "-l", "-v"
-    ]).decode("utf-8").splitlines()
-
-    for line in pluginList:
-        if len(re.findall("xkb", line)) > 0:
-            keyboardPlugin = line.split("/")[2].split(" ")[0]
-            return keyboardPlugin
+            return keyboard_plugin
 
     return ""
 
 
-def changeKeyboardPluginPlacement():
-    pluginList = subprocess.check_output([
-        "xfconf-query",
-        "-c", "xfce4-panel",
-        "-p", "/panels/panel-1/plugin-ids"
-    ]).decode("utf-8").splitlines()[2:]
-
-    if keyboardPlugin.split("-")[1] == pluginList[-2]:
+def set_keyboard_plugin_place(keyboard_plugin):
+    global xfce4_panel
+    if keyboard_plugin == "":
         return
 
-    pluginList[-1], pluginList[-2] = pluginList[-2], pluginList[-1]
+    plugins = xfce4_panel.get_arrayv("/panels/panel-1/plugin-ids")
+    plugin_id = int(keyboard_plugin.split("-")[1])
+    if plugin_id not in plugins:
+        plugins.append(plugin_id)
+    elif plugin_id == plugins[-2]:
+        return
 
-    setArrayCommand = []
-    for i in range(len(pluginList)):
-        setArrayCommand.append("-t")
-        setArrayCommand.append("int")
+    plugins[-1], plugins[-2] = plugins[-2], plugins[-1]
 
-    for i in range(len(pluginList)):
-        setArrayCommand.append("-s")
-        setArrayCommand.append(pluginList[i])
+    xfce4_panel.set_arrayv("/panels/panel-1/plugin-ids", plugins)
 
-    subprocess.call([
-                        "xfconf-query",
-                        "-c", "xfce4-panel",
-                        "-p", "/panels/panel-1/plugin-ids",
-                        "-n"
-                    ] + setArrayCommand)
-
-    subprocess.call([
-        "xfce4-panel",
-        "-r"
-    ])
+    refresh_panel()

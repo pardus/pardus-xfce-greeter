@@ -102,8 +102,7 @@ class MainWindow:
         self.getScalingDefaults()
 
         # Keyboard
-        if currentDesktop == "xfce":
-            self.getKeyboardDefaults()
+        self.getKeyboardDefaults()
 
         # Last Variable Definitions
         self.defineVariables()
@@ -371,33 +370,31 @@ class MainWindow:
 
     # Keyboard Settings:
     def getKeyboardDefaults(self):
-        # We can choose the layout:
-        KeyboardManager.initializeSettings()
+        KeyboardManager.init()
 
-        states = KeyboardManager.getKeyboardState()
+        layouts = KeyboardManager.get_layouts()
 
-        if states[0] == True:
+        if "tr-" in layouts:
             self.stk_trq.set_visible_child_name("remove")
         else:
             self.stk_trq.set_visible_child_name("add")
 
-        if states[1] == True:
+        if "tr-f" in layouts:
             self.stk_trf.set_visible_child_name("remove")
         else:
             self.stk_trf.set_visible_child_name("add")
 
-        if states[2] == True:
+        if "us-" in layouts:
             self.stk_en.set_visible_child_name("remove")
         else:
             self.stk_en.set_visible_child_name("add")
 
-        self.keyboardSelectionDisablingCheck()
+        self.keyboard_selection_disabling_check()
 
-        keyboardPlugin = KeyboardManager.getKeyboardPlugin()
-        self.sw_lang_indicator.set_active(len(keyboardPlugin) > 0)
+        keyboard_plugin = KeyboardManager.get_keyboard_plugin()
+        self.sw_lang_indicator.set_active(len(keyboard_plugin) > 0)
 
-    def keyboardSelectionDisablingCheck(self):
-        # print(f"trq:{self.stk_trq.get_visible_child_name()}, trf:{self.stk_trf.get_visible_child_name()}, en:{self.stk_en.get_visible_child_name()}")
+    def keyboard_selection_disabling_check(self):
         self.btn_trf_remove.set_sensitive(
             self.stk_trq.get_visible_child_name() == "remove"
             or self.stk_en.get_visible_child_name() == "remove"
@@ -617,41 +614,48 @@ class MainWindow:
 
     # - Keyboard Layout Changed:
     def on_btn_trf_add_clicked(self, button):
-        KeyboardManager.setTurkishF(True)
+        KeyboardManager.add_layout("tr-f")
+
         self.stk_trf.set_visible_child_name("remove")
-        self.keyboardSelectionDisablingCheck()
+        self.keyboard_selection_disabling_check()
 
     def on_btn_trf_remove_clicked(self, button):
-        KeyboardManager.setTurkishF(False)
+        KeyboardManager.remove_layout("tr-f")
+
         self.stk_trf.set_visible_child_name("add")
-        self.keyboardSelectionDisablingCheck()
+        self.keyboard_selection_disabling_check()
 
     def on_btn_trq_add_clicked(self, button):
-        KeyboardManager.setTurkishQ(True)
+        KeyboardManager.add_layout("tr-")
+
         self.stk_trq.set_visible_child_name("remove")
-        self.keyboardSelectionDisablingCheck()
+        self.keyboard_selection_disabling_check()
 
     def on_btn_trq_remove_clicked(self, button):
-        KeyboardManager.setTurkishQ(False)
+        KeyboardManager.remove_layout("tr-")
+
         self.stk_trq.set_visible_child_name("add")
-        self.keyboardSelectionDisablingCheck()
+        self.keyboard_selection_disabling_check()
 
     def on_btn_en_add_clicked(self, button):
-        KeyboardManager.setEnglish(True)
+        KeyboardManager.add_layout("us-")
+
         self.stk_en.set_visible_child_name("remove")
-        self.keyboardSelectionDisablingCheck()
+        self.keyboard_selection_disabling_check()
 
     def on_btn_en_remove_clicked(self, button):
-        KeyboardManager.setEnglish(False)
+        KeyboardManager.remove_layout("us-")
+
         self.stk_en.set_visible_child_name("add")
-        self.keyboardSelectionDisablingCheck()
+        self.keyboard_selection_disabling_check()
 
     def on_sw_lang_indicator_state_set(self, switch, state):
         if state:
-            KeyboardManager.createKeyboardPlugin()
+            KeyboardManager.create_keyboard_plugin()
         else:
-            KeyboardManager.removeKeyboardPlugin()
+            KeyboardManager.remove_keyboard_plugin()
 
+    # Pardus Software Apps
     def on_ui_apps_flowbox_child_activated(self, flow_box, child):
         package_name = child.get_children()[0].get_children()[0].name
         try:
