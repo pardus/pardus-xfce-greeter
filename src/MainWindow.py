@@ -2,7 +2,6 @@
 
 import os
 import subprocess
-import threading
 import requests
 
 from utils import ErrorDialog
@@ -67,11 +66,8 @@ class MainWindow:
         self.add_slider_marks()
 
         # Put Wallpapers on a Grid
-        thread = threading.Thread(
-            target=self.add_wallpapers, args=(WallpaperManager.getWallpaperList(),)
-        )
-        thread.daemon = True
-        thread.start()
+        get_wallpapers_task = Gio.Task.new()
+        get_wallpapers_task.run_in_thread(self.get_wallpapers)
 
         # Set scales to system-default:
         self.get_scaling_defaults()
@@ -233,10 +229,10 @@ class MainWindow:
 
         self.pardus_default_whisker_icon = "start-pardus"
         self.pardus_default_wallpaper_light = (
-            "/usr/share/backgrounds/pardus23-0_default-light.svg"
+            "/usr/share/backgrounds/pardus25-0_default-light.svg"
         )
         self.pardus_default_wallpaper_dark = (
-            "/usr/share/backgrounds/pardus23-0_default-dark.svg"
+            "/usr/share/backgrounds/pardus25-0_default-dark.svg"
         )
 
     def set_signals(self):
@@ -291,6 +287,26 @@ class MainWindow:
     # =========== Settings Functions:
 
     # Add wallpapers to the grid:
+    def get_wallpapers(self, task, source_object, task_data, cancellable):
+        wallpaper_paths = WallpaperManager.get_wallpapers()
+
+        for w in wallpaper_paths:
+            self.append_wallpaper(w)
+
+    def append_wallpaper(self, path):
+        # Image
+        bitmap = GdkPixbuf.Pixbuf.new_from_file(path)
+        bitmap = bitmap.scale_simple(240, 135, GdkPixbuf.InterpType.BILINEAR)
+
+        img_wallpaper = Gtk.Image.new_from_pixbuf(bitmap)
+        img_wallpaper.img_path = path
+
+        tooltip = path.split("pardus23-0_")[-1].split("pardus25-0_")[-1]
+        img_wallpaper.set_tooltip_text(tooltip)
+
+        self.flow_wallpapers.add(img_wallpaper)
+        self.flow_wallpapers.show_all()
+
     def add_wallpapers(self, wallpaperList):
         for i in range(len(wallpaperList)):
             # Image
@@ -555,7 +571,7 @@ class MainWindow:
     # - Wallpaper Select:
     def on_wallpaper_selected(self, flowbox, wallpaper):
         filename = str(wallpaper.get_children()[0].img_path)
-        WallpaperManager.setWallpaper(filename)
+        WallpaperManager.set_wallpaper(filename)
 
     # - Theme Selection:
     def on_rb_lightTheme_clicked(self, rb):
