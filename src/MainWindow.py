@@ -10,7 +10,8 @@ from utils import ErrorDialog
 import gi
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, GdkPixbuf, GLib, Gdk
+gi.require_version("GdkPixbuf", "2.0")
+from gi.repository import Gtk, GdkPixbuf, GLib, Gdk, Gio
 
 import locale
 from locale import gettext as _
@@ -82,7 +83,8 @@ class MainWindow:
         self.defineVariables()
 
         # Show pardus software popular apps
-        self.fetch_pardus_software_apps()
+        fetch_apps_task = Gio.Task.new()
+        fetch_apps_task.run_in_thread(self.fetch_pardus_software_apps)
 
         # control args
         self.control_args()
@@ -400,76 +402,93 @@ class MainWindow:
     def refresh_panel(self):
         subprocess.call(["xfce4-panel", "-r"])
 
-    def fetch_pardus_software_apps(self):
-        r = requests.get(PARDUS_SOFTWARE_CENTER_API)
-        print("fetched softwares:", r.json())
+    def fetch_pardus_software_apps(self, task, source_object, task_data, cancellable):
+        try:
+            r = requests.get(PARDUS_SOFTWARE_CENTER_API)
+        except requests.exceptions.SSLError as e:
+            print(f"SSL Error: {e}")
+            print("Trying http url...")
 
-    def set_pardussoftware_apps(self):
-        self.stream = Stream()
-        self.stream.StreamGet = self.StreamGet
-        self.server_response = None
-        self.server = Server()
-        self.server.ServerGet = self.ServerGet
-        self.server.get(self.apps_url)
+            http_url = PARDUS_SOFTWARE_CENTER_API.replace("https", "http")
+            try:
+                r = requests.get(http_url)
+            except Exception as e:
+                print(_("Couldn't fetch suggested apps from pardus software."))
+                print(e)
 
-    def StreamGet(self, pixbuf, data):
+                self.ui_apps_stack.set_visible_child_name("error")
+                self.ui_apps_error_label.set_text(
+                    _("Couldn't fetch suggested apps from pardus software.")
+                )
+            return
+        except Exception as e:
+            print(_("Couldn't fetch suggested apps from pardus software."))
+            print(e)
+
+            self.ui_apps_stack.set_visible_child_name("error")
+            self.ui_apps_error_label.set_text(
+                _("Couldn't fetch suggested apps from pardus software.")
+            )
+            return
+
+        # Failed api return
+        json_response = r.json()
+        if r.status_code != 200:
+            print("Server returned failure:")
+            print(json_response)
+            self.ui_apps_stack.set_visible_child_name("error")
+            self.ui_apps_error_label.set_text(
+                _("Couldn't fetch suggested apps from pardus software.")
+            )
+            return
+
+        suggested_apps = json_response["greeter"]["suggestions"]
+
+        for app in suggested_apps:
+            self.append_app_to_suggested_flowbox(app)
+
+    def append_app_to_suggested_flowbox(self, app):
         lang = f"pretty_{self.user_locale}"
 
-        pretty_name = data[lang]
-        package_name = data["name"]
+        name = app[lang]
+        package_name = app["name"]
+        icon_url = app["icon"]
 
-        icon = Gtk.Image.new()
-        icon.set_from_pixbuf(pixbuf)
+        box = Gtk.HBox(
+            spacing=8,
+            margin_start=8,
+            margin_end=8,
+            margin_top=3,
+            margin_bottom=3,
+            halign="start",
+        )
 
+        # Fetch Image file from url:
+        img_file = Gio.File.new_for_uri(icon_url)
+        suffix = icon_url.split(".")[-1]
+        (is_success, data, _etag) = img_file.load_contents()
+        if is_success:
+            tmp_filepath = f"/tmp/par-gr-{package_name}.{suffix}"
+            tmp_img_file = Gio.File.new_for_path(tmp_filepath)
+
+            is_success = img_file.copy(tmp_img_file, Gio.FileCopyFlags.OVERWRITE)
+            if is_success:
+                icon = Gtk.Image.new_from_file(tmp_filepath)
+                box.add(icon)
+
+        # Add Label
         label = Gtk.Label.new()
-        label.set_text("{}".format(pretty_name))
+        label.set_text(f"{name}")
         label.set_line_wrap(True)
         label.set_max_width_chars(21)
+        box.add(label)
 
-        box = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
-        box.pack_start(icon, False, True, 0)
-        box.pack_start(label, False, True, 0)
-        box.set_margin_start(8)
-        box.set_margin_end(8)
-        box.set_margin_top(3)
-        box.set_margin_bottom(3)
-        box.set_spacing(8)
+        button = Gtk.Button()
+        button.connect("clicked", self.on_btn_suggested_app_clicked, package_name)
+        button.add(box)
 
-        listbox = Gtk.ListBox.new()
-        listbox.set_selection_mode(Gtk.SelectionMode.NONE)
-        listbox.get_style_context().add_class("pardus-software-listbox")
-        listbox.add(box)
-        listbox.name = package_name
-
-        frame = Gtk.Frame.new()
-        frame.get_style_context().add_class("pardus-software-frame")
-        frame.add(listbox)
-
-        self.ui_apps_flowbox.get_style_context().add_class("pardus-software-flowbox")
-        GLib.idle_add(self.ui_apps_flowbox.insert, frame, GLib.PRIORITY_DEFAULT_IDLE)
-
-        GLib.idle_add(self.ui_apps_flowbox.show_all)
-
-    def ServerGet(self, response):
-        if "error" not in response.keys():
-            self.ui_apps_stack.set_visible_child_name("apps")
-            datas = response["greeter"]["suggestions"]
-            if len(datas) > 0:
-                for data in datas:
-                    if self.non_tls_tried:
-                        data["icon"] = data["icon"].replace("https", "http")
-                    self.stream.fetch(data)
-        else:
-            if "tlserror" in response.keys() and not self.non_tls_tried:
-                self.non_tls_tried = True
-                self.apps_url = self.apps_url.replace("https", "http")
-                print("trying {}".format(self.apps_url))
-                self.server.get(self.apps_url)
-            else:
-                error_message = response["message"]
-                print(error_message)
-                self.ui_apps_stack.set_visible_child_name("error")
-                self.ui_apps_error_label.set_text(error_message)
+        self.ui_apps_flowbox.add(button)
+        self.ui_apps_flowbox.show_all()
 
     # - stack prev and next page controls
     def get_next_page(self, page):
@@ -623,6 +642,12 @@ class MainWindow:
             KeyboardManager.remove_keyboard_plugin()
 
     # Pardus Software Apps
+    def on_btn_suggested_app_clicked(self, btn, package_name):
+        try:
+            subprocess.Popen(["pardus-software", "-d", package_name])
+        except Exception as e:
+            ErrorDialog(_("Error"), "{}".format(e))
+
     def on_ui_apps_flowbox_child_activated(self, flow_box, child):
         package_name = child.get_children()[0].get_children()[0].name
         try:

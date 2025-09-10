@@ -70,8 +70,6 @@ data_files = [
         [
             "src/Main.py",
             "src/MainWindow.py",
-            "src/Server.py",
-            "src/Stream.py",
             "src/utils.py",
             "src/__version__",
         ],
