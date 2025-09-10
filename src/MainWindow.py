@@ -38,7 +38,7 @@ PARDUS_SOFTWARE_CENTER_API = "https://apps.pardus.org.tr/api/greeter"
 
 class MainWindow:
     def __init__(self, application):
-        self.Application = application
+        self.application = application
 
         # Gtk Builder
         self.builder = Gtk.Builder()
@@ -54,33 +54,33 @@ class MainWindow:
         self.window = self.builder.get_object("window")
         self.window.set_position(Gtk.WindowPosition.CENTER)
         self.window.set_application(application)
-        self.window.connect("destroy", self.onDestroy)
+        self.window.connect("destroy", self.on_destroy)
 
         self.user_locale = self.get_user_locale()
 
         self.set_css()
 
         # Component Definitions
-        self.defineComponents()
+        self.define_components()
 
         # Add Scaling Slider Marks
-        self.addSliderMarks()
+        self.add_slider_marks()
 
         # Put Wallpapers on a Grid
         thread = threading.Thread(
-            target=self.addWallpapers, args=(WallpaperManager.getWallpaperList(),)
+            target=self.add_wallpapers, args=(WallpaperManager.getWallpaperList(),)
         )
         thread.daemon = True
         thread.start()
 
         # Set scales to system-default:
-        self.getScalingDefaults()
+        self.get_scaling_defaults()
 
         # Keyboard
-        self.getKeyboardDefaults()
+        self.get_keyboard_defaults()
 
         # Last Variable Definitions
-        self.defineVariables()
+        self.define_variables()
 
         # Show pardus software popular apps
         fetch_apps_task = Gio.Task.new()
@@ -93,10 +93,10 @@ class MainWindow:
         self.window.show_all()
 
         # Hide widgets:
-        self.hideWidgets()
+        self.hide_widgets()
 
         # Set theme to system-default:
-        self.getThemeDefaults()
+        self.get_theme_defaults()
 
         self.set_signals()
 
@@ -138,8 +138,8 @@ class MainWindow:
             screen, cssProvider, Gtk.STYLE_PROVIDER_PRIORITY_USER
         )
 
-    def defineComponents(self):
-        def getUI(str):
+    def define_components(self):
+        def UI(str):
             return self.builder.get_object(str)
 
         # about dialog
@@ -167,21 +167,21 @@ class MainWindow:
             pass
 
         # - Navigation:
-        self.lbl_headerTitle = getUI("lbl_headerTitle")
-        self.stk_pages = getUI("stk_pages")
-        self.stk_btn_next = getUI("stk_btn_next")
-        self.btn_next = getUI("btn_next")
-        self.btn_prev = getUI("btn_prev")
-        self.box_progressDots = getUI("box_progressDots")
+        self.lbl_headerTitle = UI("lbl_headerTitle")
+        self.stk_pages = UI("stk_pages")
+        self.stk_btn_next = UI("stk_btn_next")
+        self.btn_next = UI("btn_next")
+        self.btn_prev = UI("btn_prev")
+        self.box_progressDots = UI("box_progressDots")
 
         # - Stack Pages:
-        self.page_welcome = getUI("page_welcome")
-        self.page_wallpaper = getUI("page_wallpaper")
-        self.page_theme = getUI("page_theme")
-        self.page_display = getUI("page_display")
-        self.page_keyboard = getUI("page_keyboard")
-        self.page_applications = getUI("page_applications")
-        self.page_support = getUI("page_support")
+        self.page_welcome = UI("page_welcome")
+        self.page_wallpaper = UI("page_wallpaper")
+        self.page_theme = UI("page_theme")
+        self.page_display = UI("page_display")
+        self.page_keyboard = UI("page_keyboard")
+        self.page_applications = UI("page_applications")
+        self.page_support = UI("page_support")
 
         # FIX this solution later. Because we are not getting stack title in this gtk version.
         self.page_welcome.name = _("Welcome")
@@ -193,39 +193,39 @@ class MainWindow:
         self.page_support.name = _("Support & Community")
 
         # - Display Settings:
-        self.lst_themes = getUI("lst_themes")
-        self.lst_windowThemes = getUI("lst_windowThemes")
-        self.flow_wallpapers = getUI("flow_wallpapers")
-        self.rb_darkTheme = getUI("rb_darkTheme")
-        self.rb_lightTheme = getUI("rb_lightTheme")
-        self.img_lightTheme = getUI("img_lightTheme")
-        self.img_darkTheme = getUI("img_darkTheme")
+        self.lst_themes = UI("lst_themes")
+        self.lst_windowThemes = UI("lst_windowThemes")
+        self.flow_wallpapers = UI("flow_wallpapers")
+        self.rb_darkTheme = UI("rb_darkTheme")
+        self.rb_lightTheme = UI("rb_lightTheme")
+        self.img_lightTheme = UI("img_lightTheme")
+        self.img_darkTheme = UI("img_darkTheme")
 
         # - Scaling Settings:
-        self.lbl_panelSize = getUI("lbl_panelSize")
-        self.lbl_desktopIconSize = getUI("lbl_desktopIconSize")
-        self.sli_panel = getUI("sli_panel")
-        self.sli_scaling = getUI("sli_scaling")
-        self.sli_desktopIcon = getUI("sli_desktopIcon")
-        self.sli_cursor = getUI("sli_cursor")
+        self.lbl_panelSize = UI("lbl_panelSize")
+        self.lbl_desktopIconSize = UI("lbl_desktopIconSize")
+        self.sli_panel = UI("sli_panel")
+        self.sli_scaling = UI("sli_scaling")
+        self.sli_desktopIcon = UI("sli_desktopIcon")
+        self.sli_cursor = UI("sli_cursor")
 
         # - Keyboard Settings:
-        self.stk_trf = getUI("stk_trf")
-        self.stk_trq = getUI("stk_trq")
-        self.stk_en = getUI("stk_en")
-        self.btn_trq_remove = getUI("btn_trq_remove")
-        self.btn_trf_remove = getUI("btn_trf_remove")
-        self.btn_en_remove = getUI("btn_en_remove")
-        self.sw_lang_indicator = getUI("sw_lang_indicator")
+        self.stk_trf = UI("stk_trf")
+        self.stk_trq = UI("stk_trq")
+        self.stk_en = UI("stk_en")
+        self.btn_trq_remove = UI("btn_trq_remove")
+        self.btn_trf_remove = UI("btn_trf_remove")
+        self.btn_en_remove = UI("btn_en_remove")
+        self.sw_lang_indicator = UI("sw_lang_indicator")
 
         tabTitle = self.stk_pages.get_visible_child().name
         self.lbl_headerTitle.set_text(tabTitle)
 
-        self.ui_apps_flowbox = getUI("ui_apps_flowbox")
-        self.ui_apps_error_label = getUI("ui_apps_error_label")
-        self.ui_apps_stack = getUI("ui_apps_stack")
+        self.ui_apps_flowbox = UI("ui_apps_flowbox")
+        self.ui_apps_error_label = UI("ui_apps_error_label")
+        self.ui_apps_stack = UI("ui_apps_stack")
 
-    def defineVariables(self):
+    def define_variables(self):
         self.currentpage = 0
         self.stk_len = 0
         for row in self.stk_pages:
@@ -244,7 +244,7 @@ class MainWindow:
         self.rb_darkTheme.connect("clicked", self.on_rb_darkTheme_clicked)
 
     # =========== UI Preparing functions:
-    def hideWidgets(self):
+    def hide_widgets(self):
         # Remove panel and desktop icon sizes if GNOME
         # if currentDesktop == "gnome":
         #     self.sli_panel.set_visible(False)
@@ -257,13 +257,13 @@ class MainWindow:
         #     self.page_keyboard.destroy()
         #     self.box_progressDots.remove(self.box_progressDots.get_children()[0])
 
-        self.updateProgressDots()
+        self.update_progress_dots()
 
         self.btn_prev.set_sensitive(self.currentpage != 0)
 
     def control_args(self):
-        if "page" in self.Application.args.keys():
-            page = self.Application.args["page"]
+        if "page" in self.application.args.keys():
+            page = self.application.args["page"]
             self.stk_pages.set_visible_child_name("{}".format(page))
             self.currentpage = 1
 
@@ -281,7 +281,7 @@ class MainWindow:
             user_locale = "en"
         return user_locale
 
-    def addSliderMarks(self):
+    def add_slider_marks(self):
         self.sli_scaling.add_mark(0, Gtk.PositionType.BOTTOM, "%100")
         self.sli_scaling.add_mark(1, Gtk.PositionType.BOTTOM, "%125")
         self.sli_scaling.add_mark(2, Gtk.PositionType.BOTTOM, "%150")
@@ -291,7 +291,7 @@ class MainWindow:
     # =========== Settings Functions:
 
     # Add wallpapers to the grid:
-    def addWallpapers(self, wallpaperList):
+    def add_wallpapers(self, wallpaperList):
         for i in range(len(wallpaperList)):
             # Image
             bitmap = GdkPixbuf.Pixbuf.new_from_file(wallpaperList[i])
@@ -318,7 +318,7 @@ class MainWindow:
             GLib.idle_add(self.flow_wallpapers.insert, img_wallpaper, -1)
             GLib.idle_add(self.flow_wallpapers.show_all)
 
-    def getThemeDefaults(self):
+    def get_theme_defaults(self):
         theme = ThemeManager.getTheme()
         icon_theme = ThemeManager.getIconTheme()
 
@@ -328,7 +328,7 @@ class MainWindow:
         elif theme == "pardus-xfce-dark":
             self.rb_darkTheme.set_active(True)
 
-    def getScalingDefaults(self):
+    def get_scaling_defaults(self):
         currentScale = int((ScaleManager.getScale() / 0.25) - 4)
 
         self.sli_panel.set_value(ScaleManager.getPanelSize())
@@ -337,7 +337,7 @@ class MainWindow:
         self.sli_cursor.set_value((ScaleManager.getPointerSize() / 16) - 1)
 
     # Keyboard Settings:
-    def getKeyboardDefaults(self):
+    def get_keyboard_defaults(self):
         KeyboardManager.init()
 
         layouts = KeyboardManager.get_layouts()
@@ -376,7 +376,7 @@ class MainWindow:
             or self.stk_trf.get_visible_child_name() == "remove"
         )
 
-    def updateProgressDots(self):
+    def update_progress_dots(self):
         currentpage = int(self.stk_pages.get_visible_child_name())
 
         for i in range(len(self.box_progressDots.get_children())):
@@ -385,7 +385,7 @@ class MainWindow:
             else:
                 self.box_progressDots.get_children()[i].set_visible_child_name("off")
 
-    def changeWindowTheme(self, isHdpi, isDark):
+    def change_window_theme(self, isHdpi, isDark):
         if isHdpi:
             if isDark:
                 GLib.idle_add(
@@ -508,7 +508,7 @@ class MainWindow:
         return None
 
     # =========== SIGNALS:
-    def onDestroy(self, b):
+    def on_destroy(self, b):
         self.window.get_application().quit()
 
     def on_ui_about_button_clicked(self, button):
@@ -534,7 +534,7 @@ class MainWindow:
         tabTitle = self.stk_pages.get_visible_child().name
         self.lbl_headerTitle.set_text(tabTitle)
 
-        self.updateProgressDots()
+        self.update_progress_dots()
 
     def on_btn_prev_clicked(self, btn):
         self.stk_pages.set_visible_child_name(
@@ -550,7 +550,7 @@ class MainWindow:
         tabTitle = self.stk_pages.get_visible_child().name
         self.lbl_headerTitle.set_text(tabTitle)
 
-        self.updateProgressDots()
+        self.update_progress_dots()
 
     # - Wallpaper Select:
     def on_wallpaper_selected(self, flowbox, wallpaper):
@@ -564,7 +564,7 @@ class MainWindow:
             GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce")
 
             # Window Theme
-            self.changeWindowTheme(ScaleManager.getScale() == 2.0, False)
+            self.change_window_theme(ScaleManager.getScale() == 2.0, False)
 
     def on_rb_darkTheme_clicked(self, rb):
         if rb.get_active():
@@ -572,12 +572,12 @@ class MainWindow:
             GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce-dark")
 
             # Window Theme
-            self.changeWindowTheme(ScaleManager.getScale() == 2.0, True)
+            self.change_window_theme(ScaleManager.getScale() == 2.0, True)
 
     # - Scale Changed:
     def on_sli_scaling_button_release(self, slider, b):
         value = int(slider.get_value()) * 0.25 + 1
-        self.changeWindowTheme(
+        self.change_window_theme(
             value == 2.0, ThemeManager.getTheme() == "pardus-xfce-dark"
         )
         ScaleManager.setScale(value)
