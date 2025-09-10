@@ -55,7 +55,7 @@ class MainWindow:
         self.window.set_application(application)
         self.window.connect("destroy", self.on_destroy)
 
-        self.user_locale = self.get_user_locale()
+        self.user_locale = self.get_locale()
 
         self.set_css()
 
@@ -96,7 +96,7 @@ class MainWindow:
 
         self.set_signals()
 
-    def get_user_locale(self):
+    def get_locale(self):
         try:
             user_locale = os.getenv("LANG").split(".")[0].split("_")[0]
         except Exception as e:
@@ -135,8 +135,8 @@ class MainWindow:
         )
 
     def define_components(self):
-        def UI(str):
-            return self.builder.get_object(str)
+        def UI(s):
+            return self.builder.get_object(s)
 
         # about dialog
         self.ui_about_dialog = self.builder.get_object("ui_about_dialog")
@@ -241,18 +241,6 @@ class MainWindow:
 
     # =========== UI Preparing functions:
     def hide_widgets(self):
-        # Remove panel and desktop icon sizes if GNOME
-        # if currentDesktop == "gnome":
-        #     self.sli_panel.set_visible(False)
-        #     self.sli_desktopIcon.set_visible(False)
-        #     self.lbl_panelSize.set_visible(False)
-        #     self.lbl_desktopIconSize.set_visible(False)
-
-        # Remove Keyboard settings if not XFCE
-        # if currentDesktop != "xfce":
-        #     self.page_keyboard.destroy()
-        #     self.box_progressDots.remove(self.box_progressDots.get_children()[0])
-
         self.update_progress_dots()
 
         self.btn_prev.set_sensitive(self.currentpage != 0)
@@ -262,20 +250,6 @@ class MainWindow:
             page = self.application.args["page"]
             self.stk_pages.set_visible_child_name("{}".format(page))
             self.currentpage = 1
-
-    def get_locale(self):
-        try:
-            user_locale = os.getenv("LANG").split(".")[0].split("_")[0]
-        except Exception as e:
-            print("{}".format(e))
-            try:
-                user_locale = getlocale()[0].split("_")[0]
-            except Exception as e:
-                print("{}".format(e))
-                user_locale = "en"
-        if user_locale != "tr" and user_locale != "en":
-            user_locale = "en"
-        return user_locale
 
     def add_slider_marks(self):
         self.sli_scaling.add_mark(0, Gtk.PositionType.BOTTOM, "%100")
