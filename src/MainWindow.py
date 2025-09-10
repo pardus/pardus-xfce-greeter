@@ -278,8 +278,8 @@ class MainWindow:
         tooltip = path.split("pardus23-0_")[-1].split("pardus25-0_")[-1]
         img_wallpaper.set_tooltip_text(tooltip)
 
-        self.flow_wallpapers.add(img_wallpaper)
-        self.flow_wallpapers.show_all()
+        GLib.idle_add(self.flow_wallpapers.add, img_wallpaper)
+        GLib.idle_add(self.flow_wallpapers.show_all)
 
     def add_wallpapers(self, wallpaperList):
         for i in range(len(wallpaperList)):
@@ -477,8 +477,8 @@ class MainWindow:
         button.connect("clicked", self.on_btn_suggested_app_clicked, package_name)
         button.add(box)
 
-        self.ui_apps_flowbox.add(button)
-        self.ui_apps_flowbox.show_all()
+        GLib.idle_add(self.ui_apps_flowbox.add, button)
+        GLib.idle_add(self.ui_apps_flowbox.show_all)
 
     # - stack prev and next page controls
     def get_next_page(self, page):
