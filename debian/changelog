@@ -1,5 +1,7 @@
-pardus-xfce-greeter (1.2.2) yirmiuc; urgency=medium
+pardus-xfce-greeter (2.0.0~alpha1) yirmibes; urgency=medium
 
+  [ Emin Fedar ]
+  * fix: remove libsoup dependency
   * fix: update control file
   * fix: deb packaging errors
   * fix: remove gnome
@@ -14,7 +16,10 @@ pardus-xfce-greeter (1.2.2) yirmiuc; urgency=medium
   * fix: improve wallpaper loading
   * fix: remove unnecessary
 
- -- Emin Fedar <emin.fedar@pardus.org.tr>  Wed, 10 Sep 2025 17:33:06 +0300
+  [ Fatih Altun ]
+  * fix: use GLib.idle_add for ui updates to avoid thread segfault
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Mon, 06 Oct 2025 23:01:26 +0300
 
 pardus-xfce-greeter (1.2.1) yirmiuc; urgency=medium
 
