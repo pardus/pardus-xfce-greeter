@@ -233,7 +233,7 @@ This application helps you to configure Pardus.</property>
                                     <property name="halign">center</property>
                                     <property name="margin-top">13</property>
                                     <property name="draw-indicator">True</property>
-                                    <property name="group">rb_lightTheme</property>
+                                    <property name="group">rb_light_theme</property>
                                     <child>
                                       <object class="GtkImage" id="img_darkTheme">
                                         <property name="visible">True</property>
@@ -313,7 +313,7 @@ This application helps you to configure Pardus.</property>
                                       <object class="GtkImage">
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
-                                        <property name="pixbuf">../assets/pardus25-icons2.png</property>
+                                        <property name="pixbuf">../assets/pardus25-icons.png</property>
                                       </object>
                                     </child>
                                   </object>
