@@ -572,7 +572,6 @@ class MainWindow:
 
     # - Theme Selection:
     def on_rb_theme_toggled(self, btn, theme):
-        print(btn, btn.get_active(), theme)
         if not btn.get_active():
             return
 
