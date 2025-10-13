@@ -372,7 +372,7 @@ class MainWindow:
 
         self.keyboard_selection_disabling_check()
 
-        keyboard_plugin = KeyboardManager.get_keyboard_plugin()
+        keyboard_plugin = PanelManager.find_plugin("xkb")
         self.sw_lang_indicator.set_active(len(keyboard_plugin) > 0)
 
     def keyboard_selection_disabling_check(self):
