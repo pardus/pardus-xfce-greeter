@@ -14,7 +14,7 @@ Depends: ${misc:Depends},
          python3-gi,
          gir1.2-gtk-3.0,
          python3-requests,
-         pardus-lib-xfce
+         pardus-lib-xfce (>=0.1)
 Breaks: pardus-welcome (>=0.1)
 Description: Make your XFCE ready to use after installation
  Simple Gtk+ and Python based greeter application after login.
