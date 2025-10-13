@@ -59,6 +59,9 @@ data_files = [
             "assets/whisker.png",
             "assets/discord.svg",
             "assets/github.svg",
+            "assets/pardus25-icons.png",
+            "assets/pardus25-brown-icons.png",
+            "assets/pardus25-gray-icons.png",
         ],
     ),
     (
@@ -72,17 +75,6 @@ data_files = [
             "src/MainWindow.py",
             "src/utils.py",
             "src/__version__",
-        ],
-    ),
-    (
-        "/usr/share/pardus/pardus-xfce-greeter/src/xfce",
-        [
-            "src/xfce/WallpaperManager.py",
-            "src/xfce/ThemeManager.py",
-            "src/xfce/ScaleManager.py",
-            "src/xfce/KeyboardManager.py",
-            "src/xfce/WhiskerManager.py",
-            "src/xfce/PanelManager.py",
         ],
     ),
     ("/usr/share/pardus/pardus-xfce-greeter/ui", ["ui/MainWindow.glade"]),

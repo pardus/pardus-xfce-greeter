@@ -10,18 +10,21 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 gi.require_version("GdkPixbuf", "2.0")
-from gi.repository import Gtk, GdkPixbuf, GLib, Gdk, Gio
+gi.require_version("Xfconf", "0")
+from gi.repository import Gtk, GdkPixbuf, GLib, Gdk, Gio, Xfconf
+
+Xfconf.init()  # init this first
 
 import locale
 from locale import gettext as _
 from locale import getlocale
 
 
-import xfce.WallpaperManager as WallpaperManager
-import xfce.ThemeManager as ThemeManager
-import xfce.ScaleManager as ScaleManager
-import xfce.KeyboardManager as KeyboardManager
-# import xfce.WhiskerManager as WhiskerManager
+import libpardus_xfce_tweaks.WallpaperManager as WallpaperManager
+import libpardus_xfce_tweaks.ThemeManager as ThemeManager
+import libpardus_xfce_tweaks.ScaleManager as ScaleManager
+import libpardus_xfce_tweaks.KeyboardManager as KeyboardManager
+import libpardus_xfce_tweaks.WhiskerManager as WhiskerManager
 
 # Translation Constants:
 APPNAME = "pardus-xfce-greeter"
@@ -94,7 +97,7 @@ class MainWindow:
         # Set theme to system-default:
         self.get_theme_defaults()
 
-        self.set_signals()
+        self.set_signals_later()
 
     def get_locale(self):
         try:
@@ -115,23 +118,23 @@ class MainWindow:
         theme_name = (
             "{}".format(settings.get_property("gtk-theme-name")).lower().strip()
         )
-        cssProvider = Gtk.CssProvider()
+        css_provider = Gtk.CssProvider()
         if theme_name.startswith("pardus") or theme_name.startswith("adwaita"):
-            cssProvider.load_from_path(
+            css_provider.load_from_path(
                 os.path.dirname(os.path.abspath(__file__)) + "/../assets/css/all.css"
             )
         elif theme_name.startswith("adw-gtk3"):
-            cssProvider.load_from_path(
+            css_provider.load_from_path(
                 os.path.dirname(os.path.abspath(__file__)) + "/../assets/css/adw.css"
             )
         else:
-            cssProvider.load_from_path(
+            css_provider.load_from_path(
                 os.path.dirname(os.path.abspath(__file__)) + "/../assets/css/base.css"
             )
         screen = Gdk.Screen.get_default()
         styleContext = Gtk.StyleContext()
         styleContext.add_provider_for_screen(
-            screen, cssProvider, Gtk.STYLE_PROVIDER_PRIORITY_USER
+            screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
         )
 
     def define_components(self):
@@ -192,10 +195,11 @@ class MainWindow:
         self.lst_themes = UI("lst_themes")
         self.lst_windowThemes = UI("lst_windowThemes")
         self.flow_wallpapers = UI("flow_wallpapers")
-        self.rb_darkTheme = UI("rb_darkTheme")
-        self.rb_lightTheme = UI("rb_lightTheme")
-        self.img_lightTheme = UI("img_lightTheme")
-        self.img_darkTheme = UI("img_darkTheme")
+        self.rb_dark_theme = UI("rb_dark_theme")
+        self.rb_light_theme = UI("rb_light_theme")
+        self.rb_default_icons = UI("rb_default_icons")
+        self.rb_brown_icons = UI("rb_brown_icons")
+        self.rb_gray_icons = UI("rb_gray_icons")
 
         # - Scaling Settings:
         self.lbl_panelSize = UI("lbl_panelSize")
@@ -235,9 +239,19 @@ class MainWindow:
             "/usr/share/backgrounds/pardus25-0_default-dark.svg"
         )
 
-    def set_signals(self):
-        self.rb_lightTheme.connect("clicked", self.on_rb_lightTheme_clicked)
-        self.rb_darkTheme.connect("clicked", self.on_rb_darkTheme_clicked)
+    def set_signals_later(self):
+        self.rb_light_theme.connect("toggled", self.on_rb_theme_toggled, "light")
+        self.rb_dark_theme.connect("toggled", self.on_rb_theme_toggled, "dark")
+
+        self.rb_default_icons.connect(
+            "toggled", self.on_rb_icons_toggled, "pardus-xfce"
+        )
+        self.rb_brown_icons.connect(
+            "toggled", self.on_rb_icons_toggled, "pardus-xfce-brown"
+        )
+        self.rb_gray_icons.connect(
+            "toggled", self.on_rb_icons_toggled, "pardus-xfce-gray"
+        )
 
     # =========== UI Preparing functions:
     def hide_widgets(self):
@@ -311,12 +325,13 @@ class MainWindow:
     def get_theme_defaults(self):
         theme = ThemeManager.getTheme()
         icon_theme = ThemeManager.getIconTheme()
+        print("icon-theme:", icon_theme)
 
         if theme == "pardus-xfce":
-            self.rb_lightTheme.set_active(True)
+            self.rb_light_theme.set_active(True)
 
         elif theme == "pardus-xfce-dark":
-            self.rb_darkTheme.set_active(True)
+            self.rb_dark_theme.set_active(True)
 
     def get_scaling_defaults(self):
         currentScale = int((ScaleManager.getScale() / 0.25) - 4)
@@ -548,21 +563,27 @@ class MainWindow:
         WallpaperManager.set_wallpaper(filename)
 
     # - Theme Selection:
-    def on_rb_lightTheme_clicked(self, rb):
-        if rb.get_active():
+    def on_rb_theme_toggled(self, btn, theme):
+        print(btn, btn.get_active(), theme)
+        if not btn.get_active():
+            return
+
+        if theme == "light":
             GLib.idle_add(ThemeManager.setTheme, "pardus-xfce")
-            GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce")
+            # GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce")
 
             # Window Theme
             self.change_window_theme(ScaleManager.getScale() == 2.0, False)
-
-    def on_rb_darkTheme_clicked(self, rb):
-        if rb.get_active():
+        elif theme == "dark":
             GLib.idle_add(ThemeManager.setTheme, "pardus-xfce-dark")
-            GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce-dark")
+            # GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce-dark")
 
             # Window Theme
             self.change_window_theme(ScaleManager.getScale() == 2.0, True)
+
+    def on_rb_icons_toggled(self, btn, icon_theme):
+        if btn.get_active():
+            GLib.idle_add(ThemeManager.setIconTheme, icon_theme)
 
     # - Scale Changed:
     def on_sli_scaling_button_release(self, slider, b):
