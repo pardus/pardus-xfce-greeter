@@ -1,3 +1,10 @@
+pardus-xfce-greeter (2.0.0~alpha2) UNRELEASED; urgency=medium
+
+  * feat!: convert to libpardus-xfce-tweaks & added pardus 25 icon themes
+  * feat: new version.py
+
+ -- Emin Fedar <emin.fedar@pardus.org.tr>  Mon, 13 Oct 2025 14:27:37 +0300
+
 pardus-xfce-greeter (2.0.0~alpha1) yirmibes; urgency=medium
 
   [ Emin Fedar ]
