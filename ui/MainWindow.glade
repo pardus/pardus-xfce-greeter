@@ -157,7 +157,7 @@ This application helps you to configure Pardus.</property>
                             <property name="halign">start</property>
                             <property name="label" translatable="yes">Appearance</property>
                             <style>
-                              <class name="title-4"/>
+                              <class name="title-3"/>
                             </style>
                           </object>
                           <packing>
@@ -205,7 +205,7 @@ This application helps you to configure Pardus.</property>
                                     <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">Light</property>
                                     <style>
-                                      <class name="title-3"/>
+                                      <class name="title-4"/>
                                     </style>
                                   </object>
                                   <packing>
@@ -256,7 +256,7 @@ This application helps you to configure Pardus.</property>
                                     <property name="can-focus">False</property>
                                     <property name="label" translatable="yes">Dark</property>
                                     <style>
-                                      <class name="title-3"/>
+                                      <class name="title-4"/>
                                     </style>
                                   </object>
                                   <packing>
@@ -280,19 +280,30 @@ This application helps you to configure Pardus.</property>
                           </packing>
                         </child>
                         <child>
+                          <object class="GtkSeparator">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="halign">start</property>
                             <property name="label" translatable="yes">Icons</property>
                             <style>
-                              <class name="title-4"/>
+                              <class name="title-3"/>
                             </style>
                           </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="position">2</property>
+                            <property name="position">3</property>
                           </packing>
                         </child>
                         <child>
@@ -306,46 +317,62 @@ This application helps you to configure Pardus.</property>
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">11</property>
                                 <child>
-                                  <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="label" translatable="yes">Aqua</property>
-                                    <style>
-                                      <class name="title-4"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
                                   <object class="GtkRadioButton" id="rb_default_icons">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
                                     <property name="receives-default">False</property>
                                     <property name="halign">center</property>
+                                    <property name="active">True</property>
                                     <property name="draw-indicator">True</property>
                                     <child>
                                       <object class="GtkBox">
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
-                                        <property name="margin-start">7</property>
-                                        <property name="margin-end">7</property>
-                                        <property name="spacing">11</property>
+                                        <property name="margin-start">11</property>
+                                        <property name="margin-end">11</property>
+                                        <property name="margin-top">11</property>
+                                        <property name="margin-bottom">11</property>
                                         <property name="homogeneous">True</property>
                                         <child>
                                           <object class="GtkBox">
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
-                                            <property name="orientation">vertical</property>
-                                            <property name="spacing">11</property>
+                                            <property name="margin-start">22</property>
+                                            <property name="margin-end">22</property>
+                                            <property name="margin-top">11</property>
+                                            <property name="margin-bottom">11</property>
+                                            <property name="spacing">32</property>
+                                            <property name="homogeneous">True</property>
                                             <child>
-                                              <object class="GtkImage">
+                                              <object class="GtkBox">
                                                 <property name="visible">True</property>
                                                 <property name="can-focus">False</property>
-                                                <property name="pixbuf">usr/share/icons/pardus-xfce/places/folder.svg</property>
+                                                <property name="orientation">vertical</property>
+                                                <property name="spacing">11</property>
+                                                <child>
+                                                  <object class="GtkImage">
+                                                    <property name="visible">True</property>
+                                                    <property name="can-focus">False</property>
+                                                    <property name="pixbuf">/usr/share/icons/pardus-xfce/places/folder.svg</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">True</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkLabel">
+                                                    <property name="visible">True</property>
+                                                    <property name="can-focus">False</property>
+                                                    <property name="label" translatable="yes">Pardus 25</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">True</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -354,10 +381,35 @@ This application helps you to configure Pardus.</property>
                                               </packing>
                                             </child>
                                             <child>
-                                              <object class="GtkLabel">
+                                              <object class="GtkBox">
                                                 <property name="visible">True</property>
                                                 <property name="can-focus">False</property>
-                                                <property name="label" translatable="yes">Pardus 25</property>
+                                                <property name="orientation">vertical</property>
+                                                <property name="spacing">11</property>
+                                                <child>
+                                                  <object class="GtkImage">
+                                                    <property name="visible">True</property>
+                                                    <property name="can-focus">False</property>
+                                                    <property name="pixbuf">/usr/share/icons/pardus-xfce/places/user-home.svg</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">True</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkLabel">
+                                                    <property name="visible">True</property>
+                                                    <property name="can-focus">False</property>
+                                                    <property name="label" translatable="yes">Ev</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">True</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -372,43 +424,9 @@ This application helps you to configure Pardus.</property>
                                             <property name="position">0</property>
                                           </packing>
                                         </child>
-                                        <child>
-                                          <object class="GtkBox">
-                                            <property name="visible">True</property>
-                                            <property name="can-focus">False</property>
-                                            <property name="orientation">vertical</property>
-                                            <property name="spacing">11</property>
-                                            <child>
-                                              <object class="GtkImage">
-                                                <property name="visible">True</property>
-                                                <property name="can-focus">False</property>
-                                                <property name="pixbuf">usr/share/icons/pardus-xfce/places/user-home.svg</property>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="fill">True</property>
-                                                <property name="position">0</property>
-                                              </packing>
-                                            </child>
-                                            <child>
-                                              <object class="GtkLabel">
-                                                <property name="visible">True</property>
-                                                <property name="can-focus">False</property>
-                                                <property name="label" translatable="yes">Ev</property>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="fill">True</property>
-                                                <property name="position">1</property>
-                                              </packing>
-                                            </child>
-                                          </object>
-                                          <packing>
-                                            <property name="expand">False</property>
-                                            <property name="fill">True</property>
-                                            <property name="position">1</property>
-                                          </packing>
-                                        </child>
+                                        <style>
+                                          <class name="view"/>
+                                        </style>
                                       </object>
                                     </child>
                                   </object>
@@ -432,21 +450,6 @@ This application helps you to configure Pardus.</property>
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">11</property>
                                 <child>
-                                  <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="label" translatable="yes">Brown</property>
-                                    <style>
-                                      <class name="title-4"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
                                   <object class="GtkRadioButton" id="rb_brown_icons">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
@@ -459,21 +462,51 @@ This application helps you to configure Pardus.</property>
                                       <object class="GtkBox">
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
-                                        <property name="margin-start">7</property>
-                                        <property name="margin-end">7</property>
-                                        <property name="spacing">11</property>
+                                        <property name="margin-start">11</property>
+                                        <property name="margin-end">11</property>
+                                        <property name="margin-top">11</property>
+                                        <property name="margin-bottom">11</property>
                                         <property name="homogeneous">True</property>
                                         <child>
                                           <object class="GtkBox">
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
-                                            <property name="orientation">vertical</property>
-                                            <property name="spacing">11</property>
+                                            <property name="margin-start">22</property>
+                                            <property name="margin-end">22</property>
+                                            <property name="margin-top">11</property>
+                                            <property name="margin-bottom">11</property>
+                                            <property name="spacing">32</property>
+                                            <property name="homogeneous">True</property>
                                             <child>
-                                              <object class="GtkImage">
+                                              <object class="GtkBox">
                                                 <property name="visible">True</property>
                                                 <property name="can-focus">False</property>
-                                                <property name="pixbuf">usr/share/icons/pardus-xfce-brown/places/folder.svg</property>
+                                                <property name="orientation">vertical</property>
+                                                <property name="spacing">11</property>
+                                                <child>
+                                                  <object class="GtkImage">
+                                                    <property name="visible">True</property>
+                                                    <property name="can-focus">False</property>
+                                                    <property name="pixbuf">/usr/share/icons/pardus-xfce-brown/places/folder.svg</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">True</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkLabel">
+                                                    <property name="visible">True</property>
+                                                    <property name="can-focus">False</property>
+                                                    <property name="label" translatable="yes">Pardus 25</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">True</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -482,10 +515,35 @@ This application helps you to configure Pardus.</property>
                                               </packing>
                                             </child>
                                             <child>
-                                              <object class="GtkLabel">
+                                              <object class="GtkBox">
                                                 <property name="visible">True</property>
                                                 <property name="can-focus">False</property>
-                                                <property name="label" translatable="yes">Pardus 25</property>
+                                                <property name="orientation">vertical</property>
+                                                <property name="spacing">11</property>
+                                                <child>
+                                                  <object class="GtkImage">
+                                                    <property name="visible">True</property>
+                                                    <property name="can-focus">False</property>
+                                                    <property name="pixbuf">/usr/share/icons/pardus-xfce-brown/places/user-home.svg</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">True</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkLabel">
+                                                    <property name="visible">True</property>
+                                                    <property name="can-focus">False</property>
+                                                    <property name="label" translatable="yes">Ev</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">True</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -500,43 +558,9 @@ This application helps you to configure Pardus.</property>
                                             <property name="position">0</property>
                                           </packing>
                                         </child>
-                                        <child>
-                                          <object class="GtkBox">
-                                            <property name="visible">True</property>
-                                            <property name="can-focus">False</property>
-                                            <property name="orientation">vertical</property>
-                                            <property name="spacing">11</property>
-                                            <child>
-                                              <object class="GtkImage">
-                                                <property name="visible">True</property>
-                                                <property name="can-focus">False</property>
-                                                <property name="pixbuf">usr/share/icons/pardus-xfce-brown/places/user-home.svg</property>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="fill">True</property>
-                                                <property name="position">0</property>
-                                              </packing>
-                                            </child>
-                                            <child>
-                                              <object class="GtkLabel">
-                                                <property name="visible">True</property>
-                                                <property name="can-focus">False</property>
-                                                <property name="label" translatable="yes">Ev</property>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="fill">True</property>
-                                                <property name="position">1</property>
-                                              </packing>
-                                            </child>
-                                          </object>
-                                          <packing>
-                                            <property name="expand">False</property>
-                                            <property name="fill">True</property>
-                                            <property name="position">1</property>
-                                          </packing>
-                                        </child>
+                                        <style>
+                                          <class name="view"/>
+                                        </style>
                                       </object>
                                     </child>
                                   </object>
@@ -558,22 +582,7 @@ This application helps you to configure Pardus.</property>
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="orientation">vertical</property>
-                                <property name="spacing">11</property>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="label" translatable="yes">Gray</property>
-                                    <style>
-                                      <class name="title-4"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
+                                <property name="spacing">110</property>
                                 <child>
                                   <object class="GtkRadioButton" id="rb_gray_icons">
                                     <property name="visible">True</property>
@@ -587,21 +596,51 @@ This application helps you to configure Pardus.</property>
                                       <object class="GtkBox">
                                         <property name="visible">True</property>
                                         <property name="can-focus">False</property>
-                                        <property name="margin-start">7</property>
-                                        <property name="margin-end">7</property>
-                                        <property name="spacing">11</property>
+                                        <property name="margin-start">11</property>
+                                        <property name="margin-end">11</property>
+                                        <property name="margin-top">11</property>
+                                        <property name="margin-bottom">11</property>
                                         <property name="homogeneous">True</property>
                                         <child>
                                           <object class="GtkBox">
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
-                                            <property name="orientation">vertical</property>
-                                            <property name="spacing">11</property>
+                                            <property name="margin-start">22</property>
+                                            <property name="margin-end">22</property>
+                                            <property name="margin-top">11</property>
+                                            <property name="margin-bottom">11</property>
+                                            <property name="spacing">32</property>
+                                            <property name="homogeneous">True</property>
                                             <child>
-                                              <object class="GtkImage">
+                                              <object class="GtkBox">
                                                 <property name="visible">True</property>
                                                 <property name="can-focus">False</property>
-                                                <property name="pixbuf">usr/share/icons/pardus-xfce-gray/places/folder.svg</property>
+                                                <property name="orientation">vertical</property>
+                                                <property name="spacing">11</property>
+                                                <child>
+                                                  <object class="GtkImage">
+                                                    <property name="visible">True</property>
+                                                    <property name="can-focus">False</property>
+                                                    <property name="pixbuf">/usr/share/icons/pardus-xfce-gray/places/folder.svg</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">True</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkLabel">
+                                                    <property name="visible">True</property>
+                                                    <property name="can-focus">False</property>
+                                                    <property name="label" translatable="yes">Pardus 25</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">True</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -610,10 +649,35 @@ This application helps you to configure Pardus.</property>
                                               </packing>
                                             </child>
                                             <child>
-                                              <object class="GtkLabel">
+                                              <object class="GtkBox">
                                                 <property name="visible">True</property>
                                                 <property name="can-focus">False</property>
-                                                <property name="label" translatable="yes">Pardus 25</property>
+                                                <property name="orientation">vertical</property>
+                                                <property name="spacing">11</property>
+                                                <child>
+                                                  <object class="GtkImage">
+                                                    <property name="visible">True</property>
+                                                    <property name="can-focus">False</property>
+                                                    <property name="pixbuf">/usr/share/icons/pardus-xfce-gray/places/user-home.svg</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">True</property>
+                                                    <property name="position">0</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkLabel">
+                                                    <property name="visible">True</property>
+                                                    <property name="can-focus">False</property>
+                                                    <property name="label" translatable="yes">Ev</property>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">True</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
                                               </object>
                                               <packing>
                                                 <property name="expand">False</property>
@@ -628,43 +692,9 @@ This application helps you to configure Pardus.</property>
                                             <property name="position">0</property>
                                           </packing>
                                         </child>
-                                        <child>
-                                          <object class="GtkBox">
-                                            <property name="visible">True</property>
-                                            <property name="can-focus">False</property>
-                                            <property name="orientation">vertical</property>
-                                            <property name="spacing">11</property>
-                                            <child>
-                                              <object class="GtkImage">
-                                                <property name="visible">True</property>
-                                                <property name="can-focus">False</property>
-                                                <property name="pixbuf">usr/share/icons/pardus-xfce-gray/places/user-home.svg</property>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="fill">True</property>
-                                                <property name="position">0</property>
-                                              </packing>
-                                            </child>
-                                            <child>
-                                              <object class="GtkLabel">
-                                                <property name="visible">True</property>
-                                                <property name="can-focus">False</property>
-                                                <property name="label" translatable="yes">Ev</property>
-                                              </object>
-                                              <packing>
-                                                <property name="expand">False</property>
-                                                <property name="fill">True</property>
-                                                <property name="position">1</property>
-                                              </packing>
-                                            </child>
-                                          </object>
-                                          <packing>
-                                            <property name="expand">False</property>
-                                            <property name="fill">True</property>
-                                            <property name="position">1</property>
-                                          </packing>
-                                        </child>
+                                        <style>
+                                          <class name="view"/>
+                                        </style>
                                       </object>
                                     </child>
                                   </object>
@@ -685,7 +715,7 @@ This application helps you to configure Pardus.</property>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="position">3</property>
+                            <property name="position">4</property>
                           </packing>
                         </child>
                       </object>
