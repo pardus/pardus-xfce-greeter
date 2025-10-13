@@ -24,7 +24,7 @@ import libpardus_xfce_tweaks.WallpaperManager as WallpaperManager
 import libpardus_xfce_tweaks.ThemeManager as ThemeManager
 import libpardus_xfce_tweaks.ScaleManager as ScaleManager
 import libpardus_xfce_tweaks.KeyboardManager as KeyboardManager
-import libpardus_xfce_tweaks.WhiskerManager as WhiskerManager
+import libpardus_xfce_tweaks.PanelManager as PanelManager
 
 import version
 
@@ -322,23 +322,32 @@ class MainWindow:
             GLib.idle_add(self.flow_wallpapers.show_all)
 
     def get_theme_defaults(self):
-        theme = ThemeManager.getTheme()
-        icon_theme = ThemeManager.getIconTheme()
+        theme = ThemeManager.get_theme()
+        icon_theme = ThemeManager.get_icon_theme()
+        print("theme:", theme)
         print("icon-theme:", icon_theme)
 
+        # Theme
         if theme == "pardus-xfce":
             self.rb_light_theme.set_active(True)
-
         elif theme == "pardus-xfce-dark":
             self.rb_dark_theme.set_active(True)
 
-    def get_scaling_defaults(self):
-        currentScale = int((ScaleManager.getScale() / 0.25) - 4)
+        # Icons
+        if "pardus-xfce-brown" in icon_theme:
+            self.rb_brown_icons.set_active(True)
+        elif "pardus-xfce-gray" in icon_theme:
+            self.rb_gray_icons.set_active(True)
+        elif "pardus-xfce" in icon_theme:
+            self.rb_default_icons.set_active(True)
 
-        self.sli_panel.set_value(ScaleManager.getPanelSize())
-        self.sli_desktopIcon.set_value(ScaleManager.getDesktopIconSize())
+    def get_scaling_defaults(self):
+        currentScale = int((ScaleManager.get_scale() / 0.25) - 4)
+
+        self.sli_panel.set_value(ScaleManager.get_panel_size())
+        self.sli_desktopIcon.set_value(ScaleManager.get_desktop_icon_size())
         self.sli_scaling.set_value(currentScale)
-        self.sli_cursor.set_value((ScaleManager.getPointerSize() / 16) - 1)
+        self.sli_cursor.set_value((ScaleManager.get_pointer_size() / 16) - 1)
 
     # Keyboard Settings:
     def get_keyboard_defaults(self):
@@ -393,15 +402,15 @@ class MainWindow:
         if isHdpi:
             if isDark:
                 GLib.idle_add(
-                    ThemeManager.setWindowTheme, "pardus-xfce-dark-default-hdpi"
+                    ThemeManager.set_window_theme, "pardus-xfce-dark-default-hdpi"
                 )
             else:
-                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-xfce-default-hdpi")
+                GLib.idle_add(ThemeManager.set_window_theme, "pardus-xfce-default-hdpi")
         else:
             if isDark:
-                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-xfce-dark")
+                GLib.idle_add(ThemeManager.set_window_theme, "pardus-xfce-dark")
             else:
-                GLib.idle_add(ThemeManager.setWindowTheme, "pardus-xfce")
+                GLib.idle_add(ThemeManager.set_window_theme, "pardus-xfce")
 
     def refresh_panel(self):
         subprocess.call(["xfce4-panel", "-r"])
@@ -567,46 +576,68 @@ class MainWindow:
         if not btn.get_active():
             return
 
+        # Icon theme
+        current_icon_theme = ThemeManager.get_icon_theme()
+
         if theme == "light":
-            GLib.idle_add(ThemeManager.setTheme, "pardus-xfce")
-            # GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce")
+            GLib.idle_add(ThemeManager.set_theme, "pardus-xfce")
+            GLib.idle_add(
+                PanelManager.set_startup_icon,
+                "/usr/share/icons/pardus-xfce/statusbar/start-pardus-25.svg",
+            )
+
+            if "-dark" in current_icon_theme:
+                new_icon_theme = current_icon_theme[:-5]  # remove -dark suffix
+                GLib.idle_add(ThemeManager.set_icon_theme, new_icon_theme)
 
             # Window Theme
-            self.change_window_theme(ScaleManager.getScale() == 2.0, False)
+            self.change_window_theme(ScaleManager.get_scale() == 2.0, False)
         elif theme == "dark":
-            GLib.idle_add(ThemeManager.setTheme, "pardus-xfce-dark")
-            # GLib.idle_add(ThemeManager.setIconTheme, "pardus-xfce-dark")
+            GLib.idle_add(ThemeManager.set_theme, "pardus-xfce-dark")
+            GLib.idle_add(
+                PanelManager.set_startup_icon,
+                "/usr/share/icons/pardus-xfce/statusbar/start-pardus-25-dark.svg",
+            )
+
+            if "-dark" not in current_icon_theme:
+                new_icon_theme = current_icon_theme + "-dark"  # remove -dark suffix
+                GLib.idle_add(ThemeManager.set_icon_theme, new_icon_theme)
 
             # Window Theme
-            self.change_window_theme(ScaleManager.getScale() == 2.0, True)
+            self.change_window_theme(ScaleManager.get_scale() == 2.0, True)
 
     def on_rb_icons_toggled(self, btn, icon_theme):
         if btn.get_active():
-            GLib.idle_add(ThemeManager.setIconTheme, icon_theme)
+            current_theme = ThemeManager.get_icon_theme()
+
+            if "-dark" in current_theme:
+                icon_theme += "-dark"
+
+            GLib.idle_add(ThemeManager.set_icon_theme, icon_theme)
 
     # - Scale Changed:
     def on_sli_scaling_button_release(self, slider, b):
         value = int(slider.get_value()) * 0.25 + 1
         self.change_window_theme(
-            value == 2.0, ThemeManager.getTheme() == "pardus-xfce-dark"
+            value == 2.0, ThemeManager.get_theme() == "pardus-xfce-dark"
         )
-        ScaleManager.setScale(value)
+        ScaleManager.set_scale(value)
 
     def on_sli_scaling_format_value(self, sli, value):
         return f"%{int(value * 25 + 100)}"
 
     # - Panel Size Changed:
     def on_sli_panel_value_changed(self, sli):
-        ScaleManager.setPanelSize(int(sli.get_value()))
+        ScaleManager.set_panel_size(int(sli.get_value()))
 
     def on_sli_desktopIcon_value_changed(self, sli):
-        ScaleManager.setDesktopIconSize(int(sli.get_value()))
+        ScaleManager.set_desktop_icon_size(int(sli.get_value()))
 
     def on_sli_cursor_format_value(self, sli, value):
         return f"{int(value + 1) * 16}"
 
     def on_sli_cursor_value_changed(self, sli):
-        ScaleManager.setPointerSize(int(sli.get_value() + 1) * 16)
+        ScaleManager.set_pointer_size(int(sli.get_value() + 1) * 16)
 
     # - Keyboard Layout Changed:
     def on_btn_trf_add_clicked(self, button):
