@@ -74,7 +74,7 @@ data_files = [
             "src/Main.py",
             "src/MainWindow.py",
             "src/utils.py",
-            "src/__version__",
+            "src/version.py",
         ],
     ),
     ("/usr/share/pardus/pardus-xfce-greeter/ui", ["ui/MainWindow.glade"]),

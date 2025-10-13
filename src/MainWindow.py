@@ -26,6 +26,8 @@ import libpardus_xfce_tweaks.ScaleManager as ScaleManager
 import libpardus_xfce_tweaks.KeyboardManager as KeyboardManager
 import libpardus_xfce_tweaks.WhiskerManager as WhiskerManager
 
+import version
+
 # Translation Constants:
 APPNAME = "pardus-xfce-greeter"
 TRANSLATIONS_PATH = "/usr/share/locale"
@@ -137,13 +139,13 @@ class MainWindow:
             screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER
         )
 
-    def define_components(self):
-        def UI(s):
-            return self.builder.get_object(s)
-
+    def define_about_dialog(self):
         # about dialog
         self.ui_about_dialog = self.builder.get_object("ui_about_dialog")
         self.ui_about_dialog.set_program_name(_("Pardus Greeter"))
+        self.ui_about_dialog.set_version(version.VERSION)
+
+        # Set titlebar
         if self.ui_about_dialog.get_titlebar() is None:
             about_headerbar = Gtk.HeaderBar.new()
             about_headerbar.set_show_close_button(True)
@@ -155,15 +157,12 @@ class MainWindow:
             )
             about_headerbar.show_all()
             self.ui_about_dialog.set_titlebar(about_headerbar)
-        # Set version
-        # If not getted from __version__ file then accept version in MainWindow.glade file
-        try:
-            version = open(
-                os.path.dirname(os.path.abspath(__file__)) + "/__version__"
-            ).readline()
-            self.ui_about_dialog.set_version(version)
-        except:
-            pass
+
+    def define_components(self):
+        def UI(s):
+            return self.builder.get_object(s)
+
+        self.define_about_dialog()
 
         # - Navigation:
         self.lbl_headerTitle = UI("lbl_headerTitle")
