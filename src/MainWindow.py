@@ -20,11 +20,11 @@ from locale import gettext as _
 from locale import getlocale
 
 
-import libpardus_xfce_tweaks.WallpaperManager as WallpaperManager
-import libpardus_xfce_tweaks.ThemeManager as ThemeManager
-import libpardus_xfce_tweaks.ScaleManager as ScaleManager
-import libpardus_xfce_tweaks.KeyboardManager as KeyboardManager
-import libpardus_xfce_tweaks.PanelManager as PanelManager
+import pardus_lib_xfce.WallpaperManager as WallpaperManager
+import pardus_lib_xfce.ThemeManager as ThemeManager
+import pardus_lib_xfce.ScaleManager as ScaleManager
+import pardus_lib_xfce.KeyboardManager as KeyboardManager
+import pardus_lib_xfce.PanelManager as PanelManager
 
 import version
 
@@ -605,6 +605,8 @@ class MainWindow:
 
             # Window Theme
             self.change_window_theme(ScaleManager.get_scale() == 2.0, True)
+
+        self.refresh_panel()
 
     def on_rb_icons_toggled(self, btn, icon_theme):
         if btn.get_active():
