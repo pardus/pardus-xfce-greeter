@@ -147,7 +147,8 @@ This application helps you to configure Pardus.</property>
                         <property name="valign">center</property>
                         <property name="margin-start">11</property>
                         <property name="margin-end">11</property>
-                        <property name="margin-bottom">21</property>
+                        <property name="margin-top">11</property>
+                        <property name="margin-bottom">11</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">13</property>
                         <child>
@@ -170,6 +171,7 @@ This application helps you to configure Pardus.</property>
                           <object class="GtkBox">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="spacing">11</property>
                             <child>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
@@ -184,7 +186,7 @@ This application helps you to configure Pardus.</property>
                                     <property name="halign">center</property>
                                     <property name="margin-top">13</property>
                                     <property name="active">True</property>
-                                    <property name="draw-indicator">True</property>
+                                    <property name="draw-indicator">False</property>
                                     <child>
                                       <object class="GtkImage" id="img_lightTheme">
                                         <property name="visible">True</property>
@@ -234,7 +236,7 @@ This application helps you to configure Pardus.</property>
                                     <property name="receives-default">False</property>
                                     <property name="halign">center</property>
                                     <property name="margin-top">13</property>
-                                    <property name="draw-indicator">True</property>
+                                    <property name="draw-indicator">False</property>
                                     <property name="group">rb_light_theme</property>
                                     <child>
                                       <object class="GtkImage" id="img_darkTheme">
@@ -310,6 +312,7 @@ This application helps you to configure Pardus.</property>
                           <object class="GtkBox">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="spacing">11</property>
                             <child>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
@@ -323,7 +326,7 @@ This application helps you to configure Pardus.</property>
                                     <property name="receives-default">False</property>
                                     <property name="halign">center</property>
                                     <property name="active">True</property>
-                                    <property name="draw-indicator">True</property>
+                                    <property name="draw-indicator">False</property>
                                     <child>
                                       <object class="GtkBox">
                                         <property name="visible">True</property>
@@ -456,7 +459,7 @@ This application helps you to configure Pardus.</property>
                                     <property name="receives-default">False</property>
                                     <property name="halign">center</property>
                                     <property name="active">True</property>
-                                    <property name="draw-indicator">True</property>
+                                    <property name="draw-indicator">False</property>
                                     <property name="group">rb_default_icons</property>
                                     <child>
                                       <object class="GtkBox">
@@ -590,7 +593,7 @@ This application helps you to configure Pardus.</property>
                                     <property name="receives-default">False</property>
                                     <property name="halign">center</property>
                                     <property name="active">True</property>
-                                    <property name="draw-indicator">True</property>
+                                    <property name="draw-indicator">False</property>
                                     <property name="group">rb_default_icons</property>
                                     <child>
                                       <object class="GtkBox">
