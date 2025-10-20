@@ -373,7 +373,7 @@ class MainWindow:
         self.keyboard_selection_disabling_check()
 
         keyboard_plugin = PanelManager.find_plugin("xkb")
-        self.sw_lang_indicator.set_active(len(keyboard_plugin) > 0)
+        self.sw_lang_indicator.set_active(True if keyboard_plugin else False)
 
     def keyboard_selection_disabling_check(self):
         self.btn_trf_remove.set_sensitive(
