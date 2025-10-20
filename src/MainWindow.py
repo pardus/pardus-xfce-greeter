@@ -595,7 +595,7 @@ class MainWindow:
             GLib.idle_add(ThemeManager.set_theme, "pardus-xfce-dark")
             GLib.idle_add(
                 PanelManager.set_startup_icon,
-                "/usr/share/icons/pardus-xfce/statusbar/start-pardus-25-dark.svg",
+                "/usr/share/icons/pardus-xfce-dark/statusbar/start-pardus-25.svg",
             )
 
             if "-dark" not in current_icon_theme:
