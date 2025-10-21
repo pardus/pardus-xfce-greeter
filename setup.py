@@ -3,6 +3,7 @@
 
 import os
 import subprocess
+import src.version as Version
 
 from setuptools import setup, find_packages
 
@@ -33,18 +34,6 @@ def create_mo_files():
     return mo
 
 
-changelog = "debian/changelog"
-version = "0.1.0"
-if os.path.exists(changelog):
-    head = open(changelog).readline()
-    try:
-        version = head.split("(")[1].split(")")[0]
-    except:
-        print("debian/changelog format is wrong for get version")
-    f = open("src/__version__", "w")
-    f.write(version)
-    f.close()
-
 data_files = [
     ("/usr/share/applications/", ["tr.org.pardus.xfce-greeter.desktop"]),
     (
@@ -56,12 +45,7 @@ data_files = [
             "assets/theme-dark.png",
             "assets/progress-dot-on.svg",
             "assets/progress-dot-off.svg",
-            "assets/whisker.png",
-            "assets/discord.svg",
             "assets/github.svg",
-            "assets/pardus25-icons.png",
-            "assets/pardus25-brown-icons.png",
-            "assets/pardus25-gray-icons.png",
         ],
     ),
     (
@@ -85,7 +69,7 @@ data_files = [
 
 setup(
     name="Pardus XFCE Greeter",
-    version=version,
+    version=Version.VERSION,
     packages=find_packages(),
     scripts=["pardus-xfce-greeter"],
     install_requires=["PyGObject"],
