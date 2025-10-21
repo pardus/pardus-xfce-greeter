@@ -1,3 +1,17 @@
+pardus-xfce-greeter (2.0.0~beta1) yirmibes; urgency=medium
+
+  * feat: remove radio button indicators on ThemeSettings
+  * fix: find_plugin None control
+  * fix: change panel startup icon path
+  * fix: remove discord logo
+  * feat: remove radio button indicators on ThemeSettings
+  * fix: find_plugin None control
+  * fix: change panel startup icon path
+  * fix: remove discord logo
+  * fix: remove unused files
+
+ -- Emin Fedar <emin.fedar@pardus.org.tr>  Tue, 21 Oct 2025 11:29:08 +0300
+
 pardus-xfce-greeter (2.0.0~alpha2) yirmibes; urgency=medium
 
   * feat!: convert to libpardus-xfce-tweaks & added pardus 25 icon themes
