@@ -1,3 +1,9 @@
+pardus-xfce-greeter (2.0.0~beta2) yirmibes; urgency=medium
+
+  * Fix invalid version on setup.py
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Fri, 24 Oct 2025 14:22:42 +0300
+
 pardus-xfce-greeter (2.0.0~beta1) yirmibes; urgency=medium
 
   * feat: remove radio button indicators on ThemeSettings
