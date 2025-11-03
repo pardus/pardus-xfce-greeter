@@ -3,6 +3,7 @@
 import os
 import subprocess
 import requests
+import shutil
 
 from utils import ErrorDialog
 
@@ -750,7 +751,15 @@ class MainWindow:
         print(app.get_id(), app.get_filename(), state)
         if state:
             # Add app to startup
-            ApplicationManager.add_application_to_startup(app)
+            app_path = app.get_filename()
+            app_id = app.get_id()
+            if app_id == "xfce4-clipman.desktop":
+                app_new_path = f"{ApplicationManager.STARTUP_PATH}/xfce4-clipman-plugin-autostart.desktop"
+            else:
+                app_new_path = f"{ApplicationManager.STARTUP_PATH}/{app_id}"
+
+            if not os.path.exists(app_new_path):
+                shutil.copy2(app_path, app_new_path)
         else:
             # Remove app from startup
             if os.path.exists(autostart_file):
