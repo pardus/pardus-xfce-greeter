@@ -800,7 +800,7 @@ This application helps you to configure Pardus.</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
                             <property name="margin-bottom">34</property>
-                            <property name="pixel-size">150</property>
+                            <property name="pixel-size">96</property>
                             <property name="icon-name">computer-symbolic</property>
                           </object>
                           <packing>
@@ -1410,6 +1410,66 @@ This application helps you to configure Pardus.</property>
                   </packing>
                 </child>
                 <child>
+                  <object class="GtkBox" id="page_startup_apps">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">8</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="name">Startup Apps</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">21</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">8</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">Select apps to run at startup</property>
+                            <style>
+                              <class name="title-4"/>
+                            </style>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox" id="box_startup_apps">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">7</property>
+                            <child>
+                              <placeholder/>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="name">5</property>
+                    <property name="position">5</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkBox" id="page_applications">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
@@ -1677,8 +1737,8 @@ This application helps you to configure Pardus.</property>
                     </child>
                   </object>
                   <packing>
-                    <property name="name">5</property>
-                    <property name="position">5</property>
+                    <property name="name">6</property>
+                    <property name="position">6</property>
                   </packing>
                 </child>
                 <child>
@@ -2054,8 +2114,8 @@ Super + ←  →</property>
                     </child>
                   </object>
                   <packing>
-                    <property name="name">6</property>
-                    <property name="position">6</property>
+                    <property name="name">7</property>
+                    <property name="position">7</property>
                   </packing>
                 </child>
               </object>
@@ -2307,6 +2367,38 @@ Super + ←  →</property>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
                         <property name="position">6</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkStack">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-off.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">off</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="pixbuf">../assets/progress-dot-on.svg</property>
+                          </object>
+                          <packing>
+                            <property name="name">on</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">7</property>
                       </packing>
                     </child>
                   </object>

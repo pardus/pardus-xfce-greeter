@@ -19,7 +19,7 @@ import locale
 from locale import gettext as _
 from locale import getlocale
 
-
+import pardus_lib_xfce.ApplicationManager as ApplicationManager
 import pardus_lib_xfce.WallpaperManager as WallpaperManager
 import pardus_lib_xfce.ThemeManager as ThemeManager
 import pardus_lib_xfce.ScaleManager as ScaleManager
@@ -38,6 +38,14 @@ locale.textdomain(APPNAME)
 
 # Pardus Software Center API
 PARDUS_SOFTWARE_CENTER_API = "https://apps.pardus.org.tr/api/greeter"
+
+# Startup Apps:
+STARTUP_APPS = [
+    "tr.org.pardus.night-light.desktop",
+    "tr.org.pardus.power-manager.desktop",
+    "sticky.desktop",
+    "xfce4-clipman.desktop",
+]
 
 
 class MainWindow:
@@ -66,6 +74,9 @@ class MainWindow:
 
         # Component Definitions
         self.define_components()
+
+        # Add Startup Apps widgets
+        self.add_startup_applications()
 
         # Add Scaling Slider Marks
         self.add_slider_marks()
@@ -179,6 +190,7 @@ class MainWindow:
         self.page_display = UI("page_display")
         self.page_keyboard = UI("page_keyboard")
         self.page_applications = UI("page_applications")
+        self.page_startup_apps = UI("page_startup_apps")
         self.page_support = UI("page_support")
 
         # FIX this solution later. Because we are not getting stack title in this gtk version.
@@ -188,6 +200,7 @@ class MainWindow:
         self.page_display.name = _("Display Settings")
         self.page_keyboard.name = _("Keyboard Settings")
         self.page_applications.name = _("Applications")
+        self.page_startup_apps.name = _("Startup Applications")
         self.page_support.name = _("Support & Community")
 
         # - Display Settings:
@@ -217,9 +230,13 @@ class MainWindow:
         self.btn_en_remove = UI("btn_en_remove")
         self.sw_lang_indicator = UI("sw_lang_indicator")
 
+        # - Startup Apps
+        self.box_startup_apps = UI("box_startup_apps")
+
         tabTitle = self.stk_pages.get_visible_child().name
         self.lbl_headerTitle.set_text(tabTitle)
 
+        # - Software Center
         self.ui_apps_flowbox = UI("ui_apps_flowbox")
         self.ui_apps_error_label = UI("ui_apps_error_label")
         self.ui_apps_stack = UI("ui_apps_stack")
@@ -414,6 +431,51 @@ class MainWindow:
 
     def refresh_panel(self):
         subprocess.call(["xfce4-panel", "-r"])
+
+    def add_startup_applications(self):
+        all_startup_applications = ApplicationManager.get_startup_applications()
+
+        for app_id in STARTUP_APPS:
+            # get app object
+            try:
+                app = Gio.DesktopAppInfo.new(app_id)
+            except Exception as e:
+                print(f"{app_id} not found as application. Skipping.")
+                continue
+
+            hbox = Gtk.Box(spacing=7, margin=7)
+            icon = (
+                app.get_string("Icon")
+                if app.get_string("Icon") is not None
+                else "image-missing"
+            )
+            hbox.add(Gtk.Image(icon_name=icon, pixel_size=32))
+            hbox.add(Gtk.Label(label=app.get_name(), hexpand=True))
+
+            existing_autostart_file = ""
+            for s in all_startup_applications:
+                if (s["executable"] and app.get_executable()) and s[
+                    "executable"
+                ] == app.get_executable():
+                    existing_autostart_file = s["application_file"]
+                    break
+
+            switch = Gtk.Switch(
+                active=True if existing_autostart_file else False, valign="center"
+            )
+            switch.connect(
+                "state-set", self.on_startup_apps_switched, app, existing_autostart_file
+            )
+            hbox.add(switch)
+
+            box = Gtk.Box(orientation="vertical", spacing=7)
+            box.get_style_context().add_class("view")
+            box.add(hbox)
+
+            frame = Gtk.Frame()
+            frame.add(box)
+
+            self.box_startup_apps.add(frame)
 
     def fetch_pardus_software_apps(self, task, source_object, task_data, cancellable):
         try:
@@ -682,6 +744,23 @@ class MainWindow:
             KeyboardManager.create_keyboard_plugin()
         else:
             KeyboardManager.remove_keyboard_plugin()
+
+    # Startup Apps
+    def on_startup_apps_switched(self, switch, state, app, autostart_file):
+        print(app.get_id(), app.get_filename(), state)
+        if state:
+            # Add app to startup
+            ApplicationManager.add_application_to_startup(app)
+        else:
+            # Remove app from startup
+            if os.path.exists(autostart_file):
+                os.remove(autostart_file)
+
+            # Remove also app_id.desktop file if exists
+            app_id = app.get_id()
+            autostart_app_path = f"{ApplicationManager.STARTUP_PATH}/{app_id}"
+            if os.path.exists(autostart_app_path):
+                os.remove(autostart_app_path)
 
     # Pardus Software Apps
     def on_btn_suggested_app_clicked(self, btn, package_name):
