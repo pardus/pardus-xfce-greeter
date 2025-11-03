@@ -35,3 +35,38 @@ def ErrorDialog(*args):
     dialog = Dialog(Gtk.MessageType.ERROR, Gtk.ButtonsType.NONE, *args)
     dialog.add_button("OK", Gtk.ResponseType.OK)
     return dialog.show()
+
+
+def change_lines_in_file(filepath, old_lines, new_lines):
+    """
+    Change lines in a file, whole line, not a word. Example usage:
+
+    `change_lines_in_file("file.txt", ["old line 1", "old line 2"], ["new line 1", "new line 2"])`
+
+    file.txt content:
+
+    old line 1
+    old line 2
+    old line 3
+
+    -- becomes:
+
+    new line 1
+    new line 2
+    old line 3
+    """
+    with open(filepath, "r+") as f:
+        content = f.read()
+        f.seek(0)
+        for line in content.splitlines():
+            try:
+                index = old_lines.index(line)
+                new_line = new_lines[index]
+                f.write(new_line + "\n")
+                continue
+            except ValueError as e:
+                pass
+            except IndexError as e:
+                pass
+
+            f.write(line + "\n")

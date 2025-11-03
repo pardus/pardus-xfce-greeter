@@ -5,7 +5,7 @@ import subprocess
 import requests
 import shutil
 
-from utils import ErrorDialog
+from utils import ErrorDialog, change_lines_in_file
 
 import gi
 
@@ -453,20 +453,18 @@ class MainWindow:
             hbox.add(Gtk.Image(icon_name=icon, pixel_size=32))
             hbox.add(Gtk.Label(label=app.get_name(), hexpand=True))
 
-            existing_autostart_file = ""
+            is_autostart_exists = False
             for s in all_startup_applications:
                 if (s["executable"] and app.get_executable()) and s[
                     "executable"
                 ] == app.get_executable():
-                    existing_autostart_file = s["application_file"]
+                    is_autostart_exists = True
                     break
 
             switch = Gtk.Switch(
-                active=True if existing_autostart_file else False, valign="center"
+                active=True if is_autostart_exists else False, valign="center"
             )
-            switch.connect(
-                "state-set", self.on_startup_apps_switched, app, existing_autostart_file
-            )
+            switch.connect("state-set", self.on_startup_apps_switched, app)
             hbox.add(switch)
 
             box = Gtk.Box(orientation="vertical", spacing=7)
@@ -747,22 +745,46 @@ class MainWindow:
             KeyboardManager.remove_keyboard_plugin()
 
     # Startup Apps
-    def on_startup_apps_switched(self, switch, state, app, autostart_file):
-        print(app.get_id(), app.get_filename(), state)
+    def on_startup_apps_switched(self, switch, state, app):
+        print(app.get_id(), state)
+        # Add app to startup
+        app_path = app.get_filename()
+        app_id = app.get_id()
         if state:
-            # Add app to startup
-            app_path = app.get_filename()
-            app_id = app.get_id()
             if app_id == "xfce4-clipman.desktop":
                 app_new_path = f"{ApplicationManager.STARTUP_PATH}/xfce4-clipman-plugin-autostart.desktop"
+            elif app_id == "tr.org.pardus.night-light.desktop":
+                app_path = "/usr/share/pardus/pardus-night-light/data/tr.org.pardus.night-light-autostart.desktop"
+                app_new_path = f"{ApplicationManager.STARTUP_PATH}/tr.org.pardus.night-light-autostart.desktop"
             else:
                 app_new_path = f"{ApplicationManager.STARTUP_PATH}/{app_id}"
 
             if not os.path.exists(app_new_path):
                 shutil.copy2(app_path, app_new_path)
+
+            # Edit .desktop files after copy
+            if app_id == "sticky.desktop":
+                change_lines_in_file(
+                    app_new_path,
+                    ["Exec=sticky"],
+                    ["Exec=sticky --autostart"],
+                )
+            elif app_id == "tr.org.pardus.power-manager.desktop":
+                change_lines_in_file(
+                    app_new_path,
+                    ["Exec=pardus-power-manager"],
+                    ["Exec=pardus-power-manager --tray"],
+                )
+
         else:
+            autostart_file = ""
+            if app_id == "tr.org.pardus.night-light.desktop":
+                autostart_file = f"{ApplicationManager.STARTUP_PATH}/tr.org.pardus.night-light-autostart.desktop"
+            elif app_id == "xfce4-clipman.desktop":
+                autostart_file = f"{ApplicationManager.STARTUP_PATH}/xfce4-clipman-plugin-autostart.desktop"
+
             # Remove app from startup
-            if os.path.exists(autostart_file):
+            if autostart_file and os.path.exists(autostart_file):
                 os.remove(autostart_file)
 
             # Remove also app_id.desktop file if exists
