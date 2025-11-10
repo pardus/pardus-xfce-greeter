@@ -1,3 +1,9 @@
+pardus-xfce-greeter (2.0.0~beta2) yirmibes; urgency=medium
+
+  * Fix invalid version on setup.py
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Fri, 24 Oct 2025 14:22:42 +0300
+
 pardus-xfce-greeter (2.0.0~beta1) yirmibes; urgency=medium
 
   * feat: remove radio button indicators on ThemeSettings
@@ -9,8 +15,10 @@ pardus-xfce-greeter (2.0.0~beta1) yirmibes; urgency=medium
   * fix: change panel startup icon path
   * fix: remove discord logo
   * fix: remove unused files
+  * fix: setup.py
+  * fix: setup.py dynamic version generating on build
 
- -- Emin Fedar <emin.fedar@pardus.org.tr>  Tue, 21 Oct 2025 11:29:08 +0300
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Fri, 24 Oct 2025 14:06:52 +0300
 
 pardus-xfce-greeter (2.0.0~alpha2) yirmibes; urgency=medium
 
