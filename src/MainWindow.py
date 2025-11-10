@@ -41,12 +41,26 @@ locale.textdomain(APPNAME)
 PARDUS_SOFTWARE_CENTER_API = "https://apps.pardus.org.tr/api/greeter"
 
 # Startup Apps:
-STARTUP_APPS = [
-    "tr.org.pardus.night-light.desktop",
-    "tr.org.pardus.power-manager.desktop",
-    "sticky.desktop",
-    "xfce4-clipman.desktop",
-]
+STARTUP_APPS = {
+    "tr.org.pardus.night-light.desktop": {
+        "autostart_file": "/usr/share/pardus/pardus-night-light/data/tr.org.pardus.night-light-autostart.desktop",
+    },
+    "tr.org.pardus.power-manager.desktop": {
+        "autostart_file": "/etc/xdg/autostart/tr.org.pardus.power-manager-autostart.desktop",
+    },
+    "sticky.desktop": {
+        "autostart_file": "/etc/xdg/autostart/sticky.desktop",
+    },
+    "xfce4-clipman.desktop": {
+        "autostart_file": "/etc/xdg/autostart/xfce4-clipman-plugin-autostart.desktop"
+    },
+}
+
+DISABLED_STARTUP_DESKTOP_CONTENT = """
+[Desktop Entry]
+Hidden=true
+
+"""
 
 
 class MainWindow:
@@ -455,6 +469,7 @@ class MainWindow:
 
             is_autostart_exists = False
             for s in all_startup_applications:
+                print("startup app info:", s)
                 if (s["executable"] and app.get_executable()) and s[
                     "executable"
                 ] == app.get_executable():
@@ -748,50 +763,48 @@ class MainWindow:
     def on_startup_apps_switched(self, switch, state, app):
         print(app.get_id(), state)
         # Add app to startup
-        app_path = app.get_filename()
         app_id = app.get_id()
-        if state:
-            if app_id == "xfce4-clipman.desktop":
-                app_new_path = f"{ApplicationManager.STARTUP_PATH}/xfce4-clipman-plugin-autostart.desktop"
-            elif app_id == "tr.org.pardus.night-light.desktop":
-                app_path = "/usr/share/pardus/pardus-night-light/data/tr.org.pardus.night-light-autostart.desktop"
-                app_new_path = f"{ApplicationManager.STARTUP_PATH}/tr.org.pardus.night-light-autostart.desktop"
+        try:
+            if state:
+                if app_id not in STARTUP_APPS:
+                    print("Undefined app:", app_id, "Aborted.")
+                    return True  # stop signal switches the state
+
+                autostart_desktop_file = STARTUP_APPS[app_id]["autostart_file"]
+                file_basename = autostart_desktop_file.split("/")[-1]
+                local_desktop_file = (
+                    f"{ApplicationManager.STARTUP_PATH}/{file_basename}"
+                )
+
+                if not os.path.exists(autostart_desktop_file):
+                    print("No autostart .desktop file to copy. Aborted.")
+                    return True
+
+                shutil.copy2(autostart_desktop_file, local_desktop_file)
+
+                change_lines_in_file(
+                    local_desktop_file, ["Hidden=true"], ["Hidden=false"]
+                )
             else:
-                app_new_path = f"{ApplicationManager.STARTUP_PATH}/{app_id}"
+                if app_id not in STARTUP_APPS:
+                    print("Undefined app:", app_id, "Aborted.")
+                    return True
 
-            if not os.path.exists(app_new_path):
-                shutil.copy2(app_path, app_new_path)
-
-            # Edit .desktop files after copy
-            if app_id == "sticky.desktop":
-                change_lines_in_file(
-                    app_new_path,
-                    ["Exec=sticky"],
-                    ["Exec=sticky --autostart"],
-                )
-            elif app_id == "tr.org.pardus.power-manager.desktop":
-                change_lines_in_file(
-                    app_new_path,
-                    ["Exec=pardus-power-manager"],
-                    ["Exec=pardus-power-manager --tray"],
+                autostart_desktop_file = STARTUP_APPS[app_id]["autostart_file"]
+                file_basename = autostart_desktop_file.split("/")[-1]
+                local_desktop_file = (
+                    f"{ApplicationManager.STARTUP_PATH}/{file_basename}"
                 )
 
-        else:
-            autostart_file = ""
-            if app_id == "tr.org.pardus.night-light.desktop":
-                autostart_file = f"{ApplicationManager.STARTUP_PATH}/tr.org.pardus.night-light-autostart.desktop"
-            elif app_id == "xfce4-clipman.desktop":
-                autostart_file = f"{ApplicationManager.STARTUP_PATH}/xfce4-clipman-plugin-autostart.desktop"
+                # Make the desktop file Hidden flag true.
+                if os.path.exists(local_desktop_file):
+                    with open(local_desktop_file, "w") as f:
+                        f.write(DISABLED_STARTUP_DESKTOP_CONTENT)
+        except Exception as e:
+            print("Exception on startup apps switched:", e)
+            return True
 
-            # Remove app from startup
-            if autostart_file and os.path.exists(autostart_file):
-                os.remove(autostart_file)
-
-            # Remove also app_id.desktop file if exists
-            app_id = app.get_id()
-            autostart_app_path = f"{ApplicationManager.STARTUP_PATH}/{app_id}"
-            if os.path.exists(autostart_app_path):
-                os.remove(autostart_app_path)
+        return False
 
     # Pardus Software Apps
     def on_btn_suggested_app_clicked(self, btn, package_name):

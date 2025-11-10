@@ -55,13 +55,19 @@ def change_lines_in_file(filepath, old_lines, new_lines):
     new line 2
     old line 3
     """
-    with open(filepath, "r+") as f:
+    content = ""
+    with open(filepath, "r") as f:
         content = f.read()
-        f.seek(0)
+
+    if not content:
+        return
+
+    with open(filepath, "w") as f:
         for line in content.splitlines():
             try:
                 index = old_lines.index(line)
                 new_line = new_lines[index]
+
                 f.write(new_line + "\n")
                 continue
             except ValueError as e:
