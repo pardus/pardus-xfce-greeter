@@ -1,3 +1,13 @@
+pardus-xfce-greeter (2.0.0~beta3) yirmibes; urgency=medium
+
+  * feat: add switch for special startup apps
+  * fix: add xfce4-clipman special autostart
+  * fix: add sticky, night light, power manager tray autostart lines in desktop file
+  * fix: improved autostart applications
+  * feat: update pardus-lib-xfce version 0.1 -> 0.2
+
+ -- Emin Fedar <emin.fedar@pardus.org.tr>  Mon, 10 Nov 2025 16:46:40 +0300
+
 pardus-xfce-greeter (2.0.0~beta2) yirmibes; urgency=medium
 
   * Fix invalid version on setup.py
