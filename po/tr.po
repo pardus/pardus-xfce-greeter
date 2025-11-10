@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-19 11:06+0300\n"
+"POT-Creation-Date: 2025-11-10 16:57+0300\n"
 "PO-Revision-Date: 2024-03-19 11:06+0300\n"
 "Last-Translator: Fatih Altun <fatih.altun@pardus.org.tr>\n"
 "Language-Team: Turkish <dev@pardus.org.tr>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Gtranslator 42.0\n"
 
-#: ui/MainWindow.glade:114
+#: ui/MainWindow.glade:119
 msgid ""
 "Welcome.\n"
 "\n"
@@ -30,65 +30,67 @@ msgstr ""
 "\n"
 "Bu uygulama Pardus'u hazırlamanız için size yardımcı olacaktır."
 
-#: ui/MainWindow.glade:180 ui/MainWindow.glade:298
+#: ui/MainWindow.glade:159
+msgid "Appearance"
+msgstr "Görünüm"
+
+#: ui/MainWindow.glade:208
 msgid "Light"
 msgstr "Açık"
 
-#: ui/MainWindow.glade:231 ui/MainWindow.glade:349
+#: ui/MainWindow.glade:259
 msgid "Dark"
 msgstr "Koyu"
 
-#: ui/MainWindow.glade:472
+#: ui/MainWindow.glade:300
+msgid "Icons"
+msgstr "İkonlar"
+
+#: ui/MainWindow.glade:408 ui/MainWindow.glade:542 ui/MainWindow.glade:676
+msgid "Home"
+msgstr "Ev"
+
+#: ui/MainWindow.glade:829
 msgid "<b>Display Scaling:</b>"
 msgstr "<b>Görüntü Ölçekleme:</b>"
 
-#: ui/MainWindow.glade:504
+#: ui/MainWindow.glade:861
 msgid "<b>Panel Size</b> (px):"
 msgstr "<b>Panel Boyutu</b> (px):"
 
-#: ui/MainWindow.glade:534
+#: ui/MainWindow.glade:891
 msgid "<b>Desktop Icon Size</b> (px):"
 msgstr "<b>Masaüstü Simge Boyutu</b> (px):"
 
-#: ui/MainWindow.glade:564
+#: ui/MainWindow.glade:921
 msgid "<b>Mouse Cursor Size</b> (px):"
 msgstr "<b>Fare İmleç Boyutu</b> (px):"
 
-#: ui/MainWindow.glade:623
+#: ui/MainWindow.glade:980
 msgid "Add / Remove Keyboard layouts"
 msgstr "Klavye Yerleşimi Ekle / Kaldır"
 
-#: ui/MainWindow.glade:665 ui/MainWindow.glade:706
+#: ui/MainWindow.glade:1022 ui/MainWindow.glade:1062
 msgid "Turkish - Q Keyboard"
 msgstr "Türkçe - Q Klavye"
 
-#: ui/MainWindow.glade:675 ui/MainWindow.glade:776 ui/MainWindow.glade:877
+#: ui/MainWindow.glade:1032 ui/MainWindow.glade:1131 ui/MainWindow.glade:1230
 msgid "Add"
 msgstr "Ekle"
 
-#: ui/MainWindow.glade:694 ui/MainWindow.glade:795 ui/MainWindow.glade:896
-#: ui/MainWindow.glade:2091
-msgid "page0"
-msgstr "page0"
-
-#: ui/MainWindow.glade:716 ui/MainWindow.glade:817 ui/MainWindow.glade:918
+#: ui/MainWindow.glade:1072 ui/MainWindow.glade:1171 ui/MainWindow.glade:1270
 msgid "Remove"
 msgstr "Kaldır"
 
-#: ui/MainWindow.glade:735 ui/MainWindow.glade:836 ui/MainWindow.glade:937
-#: ui/MainWindow.glade:2108
-msgid "page1"
-msgstr "page1"
-
-#: ui/MainWindow.glade:766 ui/MainWindow.glade:807
+#: ui/MainWindow.glade:1121 ui/MainWindow.glade:1161
 msgid "Turkish - F Keyboard"
 msgstr "Türkçe - F Klavye"
 
-#: ui/MainWindow.glade:867 ui/MainWindow.glade:908
+#: ui/MainWindow.glade:1220 ui/MainWindow.glade:1260
 msgid "English Keyboard"
 msgstr "İngilizce Klavye"
 
-#: ui/MainWindow.glade:962
+#: ui/MainWindow.glade:1313
 msgid ""
 "<span size=\"10000\">You can switch between keyboard layouts with:\n"
 "<b>Super + Space</b></span>"
@@ -96,35 +98,39 @@ msgstr ""
 "<span size=\"10000\">Klavye yerleşimini değiştirmek için:\n"
 "<b>Super + Boşluk</b></span>"
 
-#: ui/MainWindow.glade:1005
+#: ui/MainWindow.glade:1356
 msgid "Show Keyboard Indicator on Panel"
 msgstr "Klavye Göstergesini Panelde Göster"
 
-#: ui/MainWindow.glade:1087
+#: ui/MainWindow.glade:1426
+msgid "Select apps to run at startup"
+msgstr "Başlangıçta açılacak uygulamaları seçin"
+
+#: ui/MainWindow.glade:1498
 msgid "<span size='x-large'><b>Pardus Software Center</b></span>"
 msgstr "<span size='x-large'><b>Pardus Yazılım Merkezi</b></span>"
 
-#: ui/MainWindow.glade:1177
+#: ui/MainWindow.glade:1588
 msgid "For more application"
 msgstr "Daha fazla uygulama için"
 
-#: ui/MainWindow.glade:1193
+#: ui/MainWindow.glade:1604
 msgid "For more settings"
 msgstr "Daha fazla ayar için"
 
-#: ui/MainWindow.glade:1246
+#: ui/MainWindow.glade:1657
 msgid "Pardus Software Center"
 msgstr "Pardus Yazılım Merkezi"
 
-#: ui/MainWindow.glade:1290
+#: ui/MainWindow.glade:1701
 msgid "Pardus Xfce Tweaks"
 msgstr "Pardus Xfce İnce Ayarlar"
 
-#: ui/MainWindow.glade:1348
+#: ui/MainWindow.glade:1758
 msgid "Shortcuts"
 msgstr "Kısayollar"
 
-#: ui/MainWindow.glade:1383
+#: ui/MainWindow.glade:1789
 msgid ""
 "<b>Screenshot (Active Window):</b>\n"
 "Alt + Print Screen\n"
@@ -162,7 +168,7 @@ msgstr ""
 "<b>Uçbirim:</b>\n"
 "Ctrl + Alt + T"
 
-#: ui/MainWindow.glade:1423
+#: ui/MainWindow.glade:1829
 msgid ""
 "<b>Change Workspace:</b>\n"
 "Ctrl + Alt + ←  → ↑ ↓\n"
@@ -200,63 +206,11 @@ msgstr ""
 "<b>Ekranı Böl:</b>\n"
 "Super + ←  →"
 
-#: ui/MainWindow.glade:1462
-msgid ""
-"<b>Screenshot (Active Window):</b>\n"
-"Alt + Print Screen\n"
-"\n"
-"<b>Screenshot (Area):</b>\n"
-"Shift + Print Screen\n"
-"\n"
-"<b>Lock Screen:</b>\n"
-"Super + L\n"
-"\n"
-"<b>Applications:</b>\n"
-"Super"
-msgstr ""
-"<b>Ekran Görüntüsü (Aktif Pencere):</b>\n"
-"Alt + Print Screen\n"
-"\n"
-"<b>Ekran Görüntüsü (Seçim):</b>\n"
-"Shift + Print Screen\n"
-"\n"
-"<b>Ekranı Kilitle:</b>\n"
-"Super + L\n"
-"\n"
-"<b>Uygulamalar:</b>\n"
-"Super"
-
-#: ui/MainWindow.glade:1496
-msgid ""
-"<b>Change Workspace:</b>\n"
-"Ctrl + Alt + ↑ ↓\n"
-"\n"
-"<b>Change Program:</b>\n"
-"Alt + Tab\n"
-"\n"
-"<b>Change Window:</b>\n"
-"Super + Tab\n"
-"\n"
-"<b>View Split:</b>\n"
-"Super + ←  →"
-msgstr ""
-"<b>Çalışma Alanı Değiştir:</b>\n"
-"Ctrl + Alt + ↑ ↓\n"
-"\n"
-"<b>Programlar Arası Geçiş:</b>\n"
-"Alt + Tab\n"
-"\n"
-"<b>Pencereler Arası Geçiş:</b>\n"
-"Super + Tab\n"
-"\n"
-"<b>Ekranı Böl:</b>\n"
-"Super + ←  →"
-
-#: ui/MainWindow.glade:1555
+#: ui/MainWindow.glade:1888
 msgid "<span size=\"large\">Links</span>"
 msgstr "<span size=\"large\">Bağlantılar</span>"
 
-#: ui/MainWindow.glade:1568
+#: ui/MainWindow.glade:1901
 msgid ""
 "<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
 "tr\">Home Page</a>"
@@ -264,7 +218,7 @@ msgstr ""
 "<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
 "tr\">Ana Sayfa</a>"
 
-#: ui/MainWindow.glade:1581
+#: ui/MainWindow.glade:1914
 msgid ""
 "<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
 "tr\">Documentations</a>"
@@ -272,7 +226,7 @@ msgstr ""
 "<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
 "tr\">Belgeler</a>"
 
-#: ui/MainWindow.glade:1594
+#: ui/MainWindow.glade:1927
 msgid ""
 "<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
 "tr\">Community</a>"
@@ -280,7 +234,7 @@ msgstr ""
 "<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
 "tr\">Topluluk</a>"
 
-#: ui/MainWindow.glade:1607
+#: ui/MainWindow.glade:1940
 msgid ""
 "<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
 "tr\">Forum</a>"
@@ -288,84 +242,97 @@ msgstr ""
 "<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
 "tr\">Forum</a>"
 
-#: ui/MainWindow.glade:1643 ui/MainWindow.glade:1671
+#: ui/MainWindow.glade:1976 ui/MainWindow.glade:2004
 msgid "<small></small>"
 msgstr "<small></small>"
 
-#: ui/MainWindow.glade:1658
+#: ui/MainWindow.glade:1991
 msgid "<small>+90</small>"
 msgstr "<small>+90</small>"
 
-#: ui/MainWindow.glade:1699
+#: ui/MainWindow.glade:2032
 msgid "<span size=\"large\">Support</span>"
 msgstr "<span size=\"large\">Destek</span>"
 
-#: ui/MainWindow.glade:1712
+#: ui/MainWindow.glade:2045
 msgid "<span size=\"xx-large\"><b>444 5 773</b></span>"
 msgstr "<span size=\"xx-large\"><b>444 5 773</b></span>"
 
-#: ui/MainWindow.glade:2083
+#: ui/MainWindow.glade:2426
 msgid "Next"
 msgstr "Sonraki"
 
-#: ui/MainWindow.glade:2096
+#: ui/MainWindow.glade:2434
+msgid "page0"
+msgstr "page0"
+
+#: ui/MainWindow.glade:2439
 msgid "Close"
 msgstr "Kapat"
 
-#: ui/MainWindow.glade:2122
+#: ui/MainWindow.glade:2451
+msgid "page1"
+msgstr "page1"
+
+#: ui/MainWindow.glade:2465
 msgid "Previous"
 msgstr "Önceki"
 
-#: ui/MainWindow.glade:2155 src/MainWindow.py:171
+#: ui/MainWindow.glade:2498 src/MainWindow.py:171
 msgid "Pardus Greeter"
 msgstr "Pardus Karşılayıcı"
 
-#: ui/MainWindow.glade:2201
+#: ui/MainWindow.glade:2544
 msgid "Tool that helps you to get Pardus ready."
 msgstr "Bu araç Pardus'u hazırlamanıza yardımcı olacaktır."
 
 #. Name Surname <example@examplemail.com>
-#: ui/MainWindow.glade:2205
+#: ui/MainWindow.glade:2548
 msgid "translator-credits"
 msgstr "Fatih Altun <fatih.altun@pardus.org.tr>"
 
-#: src/MainWindow.py:54 src/MainWindow.py:827 src/MainWindow.py:833
-#: src/MainWindow.py:839
-msgid "Error"
-msgstr "Hata"
-
-#: src/MainWindow.py:54
-msgid "Your desktop environment is not supported."
-msgstr "Masaüstü ortamınız desteklenmiyor."
-
-#: src/MainWindow.py:175
+#: src/MainWindow.py:178
 msgid "About Pardus Greeter"
 msgstr "Pardus Karşılayıcı Hakkında"
 
-#: src/MainWindow.py:205
+#: src/MainWindow.py:212
 msgid "Welcome"
 msgstr "Hoş Geldiniz"
 
-#: src/MainWindow.py:206
+#: src/MainWindow.py:213
 msgid "Select Wallpaper"
 msgstr "Duvar Kağıdı Seçin"
 
-#: src/MainWindow.py:207
+#: src/MainWindow.py:214
 msgid "Theme Settings"
 msgstr "Tema Ayarları"
 
-#: src/MainWindow.py:208
+#: src/MainWindow.py:215
 msgid "Display Settings"
 msgstr "Görünüm Ayarları"
 
-#: src/MainWindow.py:209
+#: src/MainWindow.py:216
 msgid "Keyboard Settings"
 msgstr "Klavye Ayarları"
 
-#: src/MainWindow.py:210
+#: src/MainWindow.py:217
 msgid "Applications"
 msgstr "Uygulamalar"
 
-#: src/MainWindow.py:211
+#: src/MainWindow.py:218
+msgid "Startup Applications"
+msgstr "Başlangıç Uygulamaları"
+
+#: src/MainWindow.py:219
 msgid "Support & Community"
 msgstr "Destek ve Topluluk"
+
+#: src/MainWindow.py:505 src/MainWindow.py:510 src/MainWindow.py:514
+#: src/MainWindow.py:519 src/MainWindow.py:530
+msgid "Couldn't fetch suggested apps from pardus software."
+msgstr "Önerilen uygulamalar Pardus Yazılım Merkezinden indirilemedi."
+
+#: src/MainWindow.py:814 src/MainWindow.py:821 src/MainWindow.py:827
+#: src/MainWindow.py:833
+msgid "Error"
+msgstr "Hata"

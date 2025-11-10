@@ -368,7 +368,7 @@ This application helps you to configure Pardus.</property>
                                                   <object class="GtkLabel">
                                                     <property name="visible">True</property>
                                                     <property name="can-focus">False</property>
-                                                    <property name="label" translatable="yes">Pardus 25</property>
+                                                    <property name="label">Pardus 25</property>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">False</property>
@@ -405,7 +405,7 @@ This application helps you to configure Pardus.</property>
                                                   <object class="GtkLabel">
                                                     <property name="visible">True</property>
                                                     <property name="can-focus">False</property>
-                                                    <property name="label" translatable="yes">Ev</property>
+                                                    <property name="label" translatable="yes">Home</property>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">False</property>
@@ -502,7 +502,7 @@ This application helps you to configure Pardus.</property>
                                                   <object class="GtkLabel">
                                                     <property name="visible">True</property>
                                                     <property name="can-focus">False</property>
-                                                    <property name="label" translatable="yes">Pardus 25</property>
+                                                    <property name="label">Pardus 25</property>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">False</property>
@@ -539,7 +539,7 @@ This application helps you to configure Pardus.</property>
                                                   <object class="GtkLabel">
                                                     <property name="visible">True</property>
                                                     <property name="can-focus">False</property>
-                                                    <property name="label" translatable="yes">Ev</property>
+                                                    <property name="label" translatable="yes">Home</property>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">False</property>
@@ -636,7 +636,7 @@ This application helps you to configure Pardus.</property>
                                                   <object class="GtkLabel">
                                                     <property name="visible">True</property>
                                                     <property name="can-focus">False</property>
-                                                    <property name="label" translatable="yes">Pardus 25</property>
+                                                    <property name="label">Pardus 25</property>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">False</property>
@@ -673,7 +673,7 @@ This application helps you to configure Pardus.</property>
                                                   <object class="GtkLabel">
                                                     <property name="visible">True</property>
                                                     <property name="can-focus">False</property>
-                                                    <property name="label" translatable="yes">Ev</property>
+                                                    <property name="label" translatable="yes">Home</property>
                                                   </object>
                                                   <packing>
                                                     <property name="expand">False</property>
@@ -1048,7 +1048,6 @@ This application helps you to configure Pardus.</property>
                                           </object>
                                           <packing>
                                             <property name="name">add</property>
-                                            <property name="title" translatable="yes">page0</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -1089,7 +1088,6 @@ This application helps you to configure Pardus.</property>
                                           </object>
                                           <packing>
                                             <property name="name">remove</property>
-                                            <property name="title" translatable="yes">page1</property>
                                             <property name="position">1</property>
                                           </packing>
                                         </child>
@@ -1149,7 +1147,6 @@ This application helps you to configure Pardus.</property>
                                           </object>
                                           <packing>
                                             <property name="name">add</property>
-                                            <property name="title" translatable="yes">page0</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -1190,7 +1187,6 @@ This application helps you to configure Pardus.</property>
                                           </object>
                                           <packing>
                                             <property name="name">remove</property>
-                                            <property name="title" translatable="yes">page1</property>
                                             <property name="position">1</property>
                                           </packing>
                                         </child>
@@ -1250,7 +1246,6 @@ This application helps you to configure Pardus.</property>
                                           </object>
                                           <packing>
                                             <property name="name">add</property>
-                                            <property name="title" translatable="yes">page0</property>
                                           </packing>
                                         </child>
                                         <child>
@@ -1291,7 +1286,6 @@ This application helps you to configure Pardus.</property>
                                           </object>
                                           <packing>
                                             <property name="name">remove</property>
-                                            <property name="title" translatable="yes">page1</property>
                                             <property name="position">1</property>
                                           </packing>
                                         </child>
