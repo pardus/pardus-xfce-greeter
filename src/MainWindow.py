@@ -6,6 +6,7 @@ import requests
 import shutil
 
 from utils import ErrorDialog, change_lines_in_file
+from configparser import ConfigParser
 
 import gi
 
@@ -44,12 +45,17 @@ PARDUS_SOFTWARE_CENTER_API = "https://apps.pardus.org.tr/api/greeter"
 STARTUP_APPS = {
     "tr.org.pardus.night-light.desktop": {
         "autostart_file": "/usr/share/pardus/pardus-night-light/data/tr.org.pardus.night-light-autostart.desktop",
+        "config": None,
+        "config_file": "{}/pardus/pardus-night-light/settings.ini".format(
+            GLib.get_user_config_dir()
+        ),
     },
     "tr.org.pardus.power-manager.desktop": {
         "autostart_file": "/etc/xdg/autostart/tr.org.pardus.power-manager-autostart.desktop",
     },
     "sticky.desktop": {
         "autostart_file": "/etc/xdg/autostart/sticky.desktop",
+        "schema": None,
     },
     "xfce4-clipman.desktop": {
         "autostart_file": "/etc/xdg/autostart/xfce4-clipman-plugin-autostart.desktop"
@@ -482,7 +488,18 @@ class MainWindow:
                 if settings_lookup.lookup("org.x.sticky", False):
                     # schema exists:
                     settings = Gio.Settings.new("org.x.sticky")
+                    STARTUP_APPS["sticky.desktop"]["schema"] = settings
+
                     is_autostart_exists = settings.get_boolean("autostart")
+
+            # Pardus Night Light special
+            if app_id == "tr.org.pardus.night-light.desktop":
+                app_obj = STARTUP_APPS["tr.org.pardus.night-light.desktop"]
+
+                config = ConfigParser(strict=False)
+                config.read(app_obj["config_file"])
+                app_obj["config"] = config
+                is_autostart_exists = config["Main"]["autostart"] == "True"
 
             switch = Gtk.Switch(
                 active=True if is_autostart_exists else False, valign="center"
@@ -773,24 +790,17 @@ class MainWindow:
         # Add app to startup
         app_id = app.get_id()
         try:
-            # Sticky special
-            if app_id == "sticky.desktop":
-                settings_lookup = Gio.SettingsSchemaSource.get_default()
-                if settings_lookup.lookup("org.x.sticky", False):
-                    # schema exists:
-                    sticky_settings = Gio.Settings.new("org.x.sticky")
+            if app_id not in STARTUP_APPS:
+                print("Undefined app:", app_id, "Aborted.")
+                return True  # stop signal switches the state
+
+            app_obj = STARTUP_APPS[app_id]
+
+            autostart_desktop_file = app_obj["autostart_file"]
+            file_basename = autostart_desktop_file.split("/")[-1]
+            local_desktop_file = f"{ApplicationManager.STARTUP_PATH}/{file_basename}"
 
             if state:
-                if app_id not in STARTUP_APPS:
-                    print("Undefined app:", app_id, "Aborted.")
-                    return True  # stop signal switches the state
-
-                autostart_desktop_file = STARTUP_APPS[app_id]["autostart_file"]
-                file_basename = autostart_desktop_file.split("/")[-1]
-                local_desktop_file = (
-                    f"{ApplicationManager.STARTUP_PATH}/{file_basename}"
-                )
-
                 if not os.path.exists(autostart_desktop_file):
                     print("No autostart .desktop file to copy. Aborted.")
                     return True
@@ -801,26 +811,21 @@ class MainWindow:
                     local_desktop_file, ["Hidden=true"], ["Hidden=false"]
                 )
 
-                if app_id == "sticky.desktop":
-                    sticky_settings.set_boolean("autostart", True)
             else:
-                if app_id not in STARTUP_APPS:
-                    print("Undefined app:", app_id, "Aborted.")
-                    return True
-
-                autostart_desktop_file = STARTUP_APPS[app_id]["autostart_file"]
-                file_basename = autostart_desktop_file.split("/")[-1]
-                local_desktop_file = (
-                    f"{ApplicationManager.STARTUP_PATH}/{file_basename}"
-                )
-
                 # Make the desktop file Hidden flag true.
                 if os.path.exists(local_desktop_file):
                     with open(local_desktop_file, "w") as f:
                         f.write(DISABLED_STARTUP_DESKTOP_CONTENT)
 
-                if app_id == "sticky.desktop":
-                    sticky_settings.set_boolean("autostart", False)
+            # Sticky special
+            if app_id == "sticky.desktop":
+                app_obj["schema"].set_boolean("autostart", state)
+            # Pardus Night Light special
+            elif app_id == "tr.org.pardus.night-light.desktop":
+                app_obj["config"]["Main"]["autostart"] = str(state)
+                with open(app_obj["config_file"], "w") as f:
+                    app_obj["config"].write(f)
+
         except Exception as e:
             print("Exception on startup apps switched:", e)
             return True
