@@ -476,6 +476,14 @@ class MainWindow:
                     is_autostart_exists = True
                     break
 
+            # Sticky special:
+            if app_id == "sticky.desktop":
+                settings_lookup = Gio.SettingsSchemaSource.get_default()
+                if settings_lookup.lookup("org.x.sticky", False):
+                    # schema exists:
+                    settings = Gio.Settings.new("org.x.sticky")
+                    is_autostart_exists = settings.get_boolean("autostart")
+
             switch = Gtk.Switch(
                 active=True if is_autostart_exists else False, valign="center"
             )
@@ -765,6 +773,13 @@ class MainWindow:
         # Add app to startup
         app_id = app.get_id()
         try:
+            # Sticky special
+            if app_id == "sticky.desktop":
+                settings_lookup = Gio.SettingsSchemaSource.get_default()
+                if settings_lookup.lookup("org.x.sticky", False):
+                    # schema exists:
+                    sticky_settings = Gio.Settings.new("org.x.sticky")
+
             if state:
                 if app_id not in STARTUP_APPS:
                     print("Undefined app:", app_id, "Aborted.")
@@ -785,6 +800,9 @@ class MainWindow:
                 change_lines_in_file(
                     local_desktop_file, ["Hidden=true"], ["Hidden=false"]
                 )
+
+                if app_id == "sticky.desktop":
+                    sticky_settings.set_boolean("autostart", True)
             else:
                 if app_id not in STARTUP_APPS:
                     print("Undefined app:", app_id, "Aborted.")
@@ -800,6 +818,9 @@ class MainWindow:
                 if os.path.exists(local_desktop_file):
                     with open(local_desktop_file, "w") as f:
                         f.write(DISABLED_STARTUP_DESKTOP_CONTENT)
+
+                if app_id == "sticky.desktop":
+                    sticky_settings.set_boolean("autostart", False)
         except Exception as e:
             print("Exception on startup apps switched:", e)
             return True
