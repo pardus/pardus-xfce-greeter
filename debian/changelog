@@ -1,3 +1,10 @@
+pardus-xfce-greeter (2.0.0) yirmibes; urgency=medium
+
+  * fix: Sticky app additions on autostart
+  * fix: Pardus Night Light additions on autostart and improvements
+
+ -- Emin Fedar <emin.fedar@pardus.org.tr>  Fri, 21 Nov 2025 17:49:21 +0300
+
 pardus-xfce-greeter (2.0.0~beta3) yirmibes; urgency=medium
 
   * feat: add switch for special startup apps
