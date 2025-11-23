@@ -1,5 +1,5 @@
-.pardus-software-listbox{
-    background-color:transparent;
+.pardus-software-listbox {
+    background-color: transparent;
 }
 
 /*
@@ -7,3 +7,7 @@
     background-color:transparent;
 }
 */
+
+.p-8 {
+    padding: 8px;
+}

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-10 16:57+0300\n"
+"POT-Creation-Date: 2025-11-24 00:03+0300\n"
 "PO-Revision-Date: 2024-03-19 11:06+0300\n"
 "Last-Translator: Fatih Altun <fatih.altun@pardus.org.tr>\n"
 "Language-Team: Turkish <dev@pardus.org.tr>\n"
@@ -278,7 +278,7 @@ msgstr "page1"
 msgid "Previous"
 msgstr "Önceki"
 
-#: ui/MainWindow.glade:2498 src/MainWindow.py:171
+#: ui/MainWindow.glade:2498 src/MainWindow.py:183
 msgid "Pardus Greeter"
 msgstr "Pardus Karşılayıcı"
 
@@ -291,48 +291,64 @@ msgstr "Bu araç Pardus'u hazırlamanıza yardımcı olacaktır."
 msgid "translator-credits"
 msgstr "Fatih Altun <fatih.altun@pardus.org.tr>"
 
-#: src/MainWindow.py:178
+#: src/MainWindow.py:53
+msgid "Turn the screen to warm color to reduce eye strain at night."
+msgstr "Gece göz yorgunluğunu azaltmak için ekranı sıcak renge çevirin."
+
+#: src/MainWindow.py:58
+msgid "Switch between Power Save and Performance modes."
+msgstr "Güç tasarrufu ve yüksek performans modları arasında geçiş yapın."
+
+#: src/MainWindow.py:63
+msgid "Create and organize sticky notes on the desktop."
+msgstr "Masaüstünde yapışkan notlar oluşturun ve düzenleyin."
+
+#: src/MainWindow.py:67
+msgid "Manage clipboard history."
+msgstr "Kopyalama geçmişinizi yönetin."
+
+#: src/MainWindow.py:190
 msgid "About Pardus Greeter"
 msgstr "Pardus Karşılayıcı Hakkında"
 
-#: src/MainWindow.py:212
+#: src/MainWindow.py:224
 msgid "Welcome"
 msgstr "Hoş Geldiniz"
 
-#: src/MainWindow.py:213
+#: src/MainWindow.py:225
 msgid "Select Wallpaper"
 msgstr "Duvar Kağıdı Seçin"
 
-#: src/MainWindow.py:214
+#: src/MainWindow.py:226
 msgid "Theme Settings"
 msgstr "Tema Ayarları"
 
-#: src/MainWindow.py:215
+#: src/MainWindow.py:227
 msgid "Display Settings"
 msgstr "Görünüm Ayarları"
 
-#: src/MainWindow.py:216
+#: src/MainWindow.py:228
 msgid "Keyboard Settings"
 msgstr "Klavye Ayarları"
 
-#: src/MainWindow.py:217
+#: src/MainWindow.py:229
 msgid "Applications"
 msgstr "Uygulamalar"
 
-#: src/MainWindow.py:218
+#: src/MainWindow.py:230
 msgid "Startup Applications"
 msgstr "Başlangıç Uygulamaları"
 
-#: src/MainWindow.py:219
+#: src/MainWindow.py:231
 msgid "Support & Community"
 msgstr "Destek ve Topluluk"
 
-#: src/MainWindow.py:505 src/MainWindow.py:510 src/MainWindow.py:514
-#: src/MainWindow.py:519 src/MainWindow.py:530
+#: src/MainWindow.py:545 src/MainWindow.py:550 src/MainWindow.py:554
+#: src/MainWindow.py:559 src/MainWindow.py:570
 msgid "Couldn't fetch suggested apps from pardus software."
 msgstr "Önerilen uygulamalar Pardus Yazılım Merkezinden indirilemedi."
 
-#: src/MainWindow.py:814 src/MainWindow.py:821 src/MainWindow.py:827
-#: src/MainWindow.py:833
+#: src/MainWindow.py:855 src/MainWindow.py:862 src/MainWindow.py:868
+#: src/MainWindow.py:874
 msgid "Error"
 msgstr "Hata"

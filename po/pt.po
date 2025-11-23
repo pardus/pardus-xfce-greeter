@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pardus-xfce-greeter\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-10 16:57+0300\n"
+"POT-Creation-Date: 2025-11-24 00:03+0300\n"
 "PO-Revision-Date: 2024-03-20 18:00+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <hugokarvalho@hotmail.com>\n"
@@ -276,7 +276,7 @@ msgstr "página1"
 msgid "Previous"
 msgstr "Anterior"
 
-#: ui/MainWindow.glade:2498 src/MainWindow.py:171
+#: ui/MainWindow.glade:2498 src/MainWindow.py:183
 msgid "Pardus Greeter"
 msgstr "Bem-vindo ao Pardus"
 
@@ -289,50 +289,66 @@ msgstr "Ferramenta que o ajuda a preparar o Pardus."
 msgid "translator-credits"
 msgstr "Hugo Carvalho <hugokarvalho@hotmail.com>"
 
-#: src/MainWindow.py:178
+#: src/MainWindow.py:53
+msgid "Turn the screen to warm color to reduce eye strain at night."
+msgstr ""
+
+#: src/MainWindow.py:58
+msgid "Switch between Power Save and Performance modes."
+msgstr ""
+
+#: src/MainWindow.py:63
+msgid "Create and organize sticky notes on the desktop."
+msgstr ""
+
+#: src/MainWindow.py:67
+msgid "Manage clipboard history."
+msgstr ""
+
+#: src/MainWindow.py:190
 msgid "About Pardus Greeter"
 msgstr "Acerca do Bem-vindo ao Pardus"
 
-#: src/MainWindow.py:212
+#: src/MainWindow.py:224
 msgid "Welcome"
 msgstr "Bem-vindo"
 
-#: src/MainWindow.py:213
+#: src/MainWindow.py:225
 msgid "Select Wallpaper"
 msgstr "Selecionar papel de parede"
 
-#: src/MainWindow.py:214
+#: src/MainWindow.py:226
 msgid "Theme Settings"
 msgstr "Definições do tema"
 
-#: src/MainWindow.py:215
+#: src/MainWindow.py:227
 msgid "Display Settings"
 msgstr "Definições do ecrã"
 
-#: src/MainWindow.py:216
+#: src/MainWindow.py:228
 msgid "Keyboard Settings"
 msgstr "Definições do teclado"
 
-#: src/MainWindow.py:217
+#: src/MainWindow.py:229
 msgid "Applications"
 msgstr "Aplicações"
 
-#: src/MainWindow.py:218
+#: src/MainWindow.py:230
 #, fuzzy
 msgid "Startup Applications"
 msgstr "Aplicações"
 
-#: src/MainWindow.py:219
+#: src/MainWindow.py:231
 msgid "Support & Community"
 msgstr "Suporte e Comunidade"
 
-#: src/MainWindow.py:505 src/MainWindow.py:510 src/MainWindow.py:514
-#: src/MainWindow.py:519 src/MainWindow.py:530
+#: src/MainWindow.py:545 src/MainWindow.py:550 src/MainWindow.py:554
+#: src/MainWindow.py:559 src/MainWindow.py:570
 msgid "Couldn't fetch suggested apps from pardus software."
 msgstr ""
 
-#: src/MainWindow.py:814 src/MainWindow.py:821 src/MainWindow.py:827
-#: src/MainWindow.py:833
+#: src/MainWindow.py:855 src/MainWindow.py:862 src/MainWindow.py:868
+#: src/MainWindow.py:874
 msgid "Error"
 msgstr "Erro"
 

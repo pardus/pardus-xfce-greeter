@@ -49,16 +49,22 @@ STARTUP_APPS = {
         "config_file": "{}/pardus/pardus-night-light/settings.ini".format(
             GLib.get_user_config_dir()
         ),
+        "description": _(
+            "Turn the screen to warm color to reduce eye strain at night."
+        ),
     },
     "tr.org.pardus.power-manager.desktop": {
         "autostart_file": "/etc/xdg/autostart/tr.org.pardus.power-manager-autostart.desktop",
+        "description": _("Switch between Power Save and Performance modes."),
     },
     "sticky.desktop": {
         "autostart_file": "/etc/xdg/autostart/sticky.desktop",
         "schema": None,
+        "description": _("Create and organize sticky notes on the desktop."),
     },
     "xfce4-clipman.desktop": {
-        "autostart_file": "/etc/xdg/autostart/xfce4-clipman-plugin-autostart.desktop"
+        "autostart_file": "/etc/xdg/autostart/xfce4-clipman-plugin-autostart.desktop",
+        "description": _("Manage clipboard history."),
     },
 }
 
@@ -457,6 +463,7 @@ class MainWindow:
         all_startup_applications = ApplicationManager.get_startup_applications()
 
         for app_id in STARTUP_APPS:
+            app_obj = STARTUP_APPS[app_id]
             # get app object
             try:
                 app = Gio.DesktopAppInfo.new(app_id)
@@ -464,18 +471,26 @@ class MainWindow:
                 print(f"{app_id} not found as application. Skipping.")
                 continue
 
-            hbox = Gtk.Box(spacing=7, margin=7)
+            hbox = Gtk.Box(spacing=8)
             icon = (
                 app.get_string("Icon")
                 if app.get_string("Icon") is not None
                 else "image-missing"
             )
-            hbox.add(Gtk.Image(icon_name=icon, pixel_size=32))
-            hbox.add(Gtk.Label(label=app.get_name(), hexpand=True))
+            hbox.add(Gtk.Image(icon_name=icon, pixel_size=48))
+
+            vbox = Gtk.Box(
+                orientation="vertical", spacing=8, halign="start", valign="center"
+            )
+            lbl_name = Gtk.Label(label=app.get_name(), hexpand=True, halign="start")
+            lbl_name.get_style_context().add_class("heading")
+            vbox.add(lbl_name)
+            vbox.add(Gtk.Label(label=app_obj["description"], halign="start"))
+            hbox.add(vbox)
 
             is_autostart_exists = False
             for s in all_startup_applications:
-                print("startup app info:", s)
+                # print("startup app info:", s)
                 if (s["executable"] and app.get_executable()) and s[
                     "executable"
                 ] == app.get_executable():
@@ -483,19 +498,18 @@ class MainWindow:
                     break
 
             # Sticky special:
+
             if app_id == "sticky.desktop":
                 settings_lookup = Gio.SettingsSchemaSource.get_default()
                 if settings_lookup.lookup("org.x.sticky", False):
                     # schema exists:
                     settings = Gio.Settings.new("org.x.sticky")
-                    STARTUP_APPS["sticky.desktop"]["schema"] = settings
+                    app_obj["schema"] = settings
 
                     is_autostart_exists = settings.get_boolean("autostart")
 
             # Pardus Night Light special
             if app_id == "tr.org.pardus.night-light.desktop":
-                app_obj = STARTUP_APPS["tr.org.pardus.night-light.desktop"]
-
                 config = ConfigParser(strict=False)
                 config.read(app_obj["config_file"])
                 app_obj["config"] = config
@@ -507,8 +521,9 @@ class MainWindow:
             switch.connect("state-set", self.on_startup_apps_switched, app)
             hbox.add(switch)
 
-            box = Gtk.Box(orientation="vertical", spacing=7)
+            box = Gtk.Box(orientation="vertical", spacing=8)
             box.get_style_context().add_class("view")
+            box.get_style_context().add_class("p-8")
             box.add(hbox)
 
             frame = Gtk.Frame()
