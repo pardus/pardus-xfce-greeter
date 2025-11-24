@@ -1,3 +1,11 @@
+pardus-xfce-greeter (2.0.2) yirmibes; urgency=medium
+
+  [ Emin Fedar ]
+  * feat: add short description on startup apps
+  * fix: settings key exist checks
+
+ -- Fatih Altun <fatih.altun@pardus.org.tr>  Mon, 24 Nov 2025 11:07:47 +0300
+
 pardus-xfce-greeter (2.0.1) yirmibes; urgency=medium
 
   * Update app icon
