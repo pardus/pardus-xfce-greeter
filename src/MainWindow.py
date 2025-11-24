@@ -506,14 +506,19 @@ class MainWindow:
                     settings = Gio.Settings.new("org.x.sticky")
                     app_obj["schema"] = settings
 
-                    is_autostart_exists = settings.get_boolean("autostart")
+                    if "autostart" in settings.keys():
+                        is_autostart_exists = settings.get_boolean("autostart")
 
             # Pardus Night Light special
             if app_id == "tr.org.pardus.night-light.desktop":
-                config = ConfigParser(strict=False)
-                config.read(app_obj["config_file"])
-                app_obj["config"] = config
-                is_autostart_exists = config["Main"]["autostart"] == "True"
+                try:
+                    config = ConfigParser(strict=False)
+                    config.read(app_obj["config_file"])
+                    app_obj["config"] = config
+                    if "Main" in config and "autostart" in config["Main"]:
+                        is_autostart_exists = config["Main"]["autostart"] == "True"
+                except Exception as e:
+                    print("Exception on night-light config read:", e)
 
             switch = Gtk.Switch(
                 active=True if is_autostart_exists else False, valign="center"
@@ -834,12 +839,21 @@ class MainWindow:
 
             # Sticky special
             if app_id == "sticky.desktop":
-                app_obj["schema"].set_boolean("autostart", state)
+                try:
+                    app_obj["schema"].set_boolean("autostart", state)
+                except Exception as e:
+                    print("Exception on sticky schema settings change:", e)
             # Pardus Night Light special
             elif app_id == "tr.org.pardus.night-light.desktop":
-                app_obj["config"]["Main"]["autostart"] = str(state)
-                with open(app_obj["config_file"], "w") as f:
-                    app_obj["config"].write(f)
+                try:
+                    if "Main" not in app_obj["config"]:
+                        app_obj["Main"] = {"autostart": "", "temp": "", "status": ""}
+
+                    app_obj["config"]["Main"]["autostart"] = str(state)
+                    with open(app_obj["config_file"], "w") as f:
+                        app_obj["config"].write(f)
+                except Exception as e:
+                    print("Exception on night-light config saving:", e)
 
         except Exception as e:
             print("Exception on startup apps switched:", e)
