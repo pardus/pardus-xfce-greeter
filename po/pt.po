@@ -1,14 +1,14 @@
 # Portuguese translation of pardus-xfce-greeter.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the pardus-xfce-greeter package.
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2022, 2023, 2024.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2022, 2023, 2024, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pardus-xfce-greeter\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-24 00:03+0300\n"
-"PO-Revision-Date: 2024-03-20 18:00+0000\n"
+"PO-Revision-Date: 2025-11-25 11:52+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <hugokarvalho@hotmail.com>\n"
 "Language: pt\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.8\n"
 
 #: ui/MainWindow.glade:119
 msgid ""
@@ -30,7 +30,7 @@ msgstr ""
 
 #: ui/MainWindow.glade:159
 msgid "Appearance"
-msgstr ""
+msgstr "Aparência"
 
 #: ui/MainWindow.glade:208
 msgid "Light"
@@ -42,11 +42,11 @@ msgstr "Escuro"
 
 #: ui/MainWindow.glade:300
 msgid "Icons"
-msgstr ""
+msgstr "Ícones"
 
 #: ui/MainWindow.glade:408 ui/MainWindow.glade:542 ui/MainWindow.glade:676
 msgid "Home"
-msgstr ""
+msgstr "Pasta Pessoal"
 
 #: ui/MainWindow.glade:829
 msgid "<b>Display Scaling:</b>"
@@ -102,7 +102,7 @@ msgstr "Mostrar indicador de teclado no painel"
 
 #: ui/MainWindow.glade:1426
 msgid "Select apps to run at startup"
-msgstr ""
+msgstr "Selecione as aplicações a serem executadas no arranque"
 
 #: ui/MainWindow.glade:1498
 msgid "<span size='x-large'><b>Pardus Software Center</b></span>"
@@ -210,35 +210,35 @@ msgstr "<span size=\"large\">Ligações</span>"
 
 #: ui/MainWindow.glade:1901
 msgid ""
-"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
-"tr\">Home Page</a>"
+"<a href=\"https://www.pardus.org.tr\" title=\"https://"
+"www.pardus.org.tr\">Home Page</a>"
 msgstr ""
-"<a href=\"https://www.pardus.org.tr\" title=\"https://www.pardus.org."
-"tr\">Página inicial</a>"
+"<a href=\"https://www.pardus.org.tr\" title=\"https://"
+"www.pardus.org.tr\">Página inicial</a>"
 
 #: ui/MainWindow.glade:1914
 msgid ""
-"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
-"tr\">Documentations</a>"
+"<a href=\"https://belge.pardus.org.tr\" title=\"https://"
+"belge.pardus.org.tr\">Documentations</a>"
 msgstr ""
-"<a href=\"https://belge.pardus.org.tr\" title=\"https://belge.pardus.org."
-"tr\">Documentação</a>"
+"<a href=\"https://belge.pardus.org.tr\" title=\"https://"
+"belge.pardus.org.tr\">Documentação</a>"
 
 #: ui/MainWindow.glade:1927
 msgid ""
-"<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
-"tr\">Community</a>"
+"<a href=\"https://gonullu.pardus.org.tr\" title=\"https://"
+"gonullu.pardus.org.tr\">Community</a>"
 msgstr ""
-"<a href=\"https://gonullu.pardus.org.tr\" title=\"https://gonullu.pardus.org."
-"tr\">Comunidade</a>"
+"<a href=\"https://gonullu.pardus.org.tr\" title=\"https://"
+"gonullu.pardus.org.tr\">Comunidade</a>"
 
 #: ui/MainWindow.glade:1940
 msgid ""
-"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
-"tr\">Forum</a>"
+"<a href=\"https://forum.pardus.org.tr\" title=\"https://"
+"forum.pardus.org.tr\">Forum</a>"
 msgstr ""
-"<a href=\"https://forum.pardus.org.tr\" title=\"https://forum.pardus.org."
-"tr\">Fórum</a>"
+"<a href=\"https://forum.pardus.org.tr\" title=\"https://"
+"forum.pardus.org.tr\">Fórum</a>"
 
 #: ui/MainWindow.glade:1976 ui/MainWindow.glade:2004
 msgid "<small></small>"
@@ -292,18 +292,20 @@ msgstr "Hugo Carvalho <hugokarvalho@hotmail.com>"
 #: src/MainWindow.py:53
 msgid "Turn the screen to warm color to reduce eye strain at night."
 msgstr ""
+"Altere a cor do ecrã para tons quentes para reduzir o cansaço visual à "
+"noite."
 
 #: src/MainWindow.py:58
 msgid "Switch between Power Save and Performance modes."
-msgstr ""
+msgstr "Alterne entre os modos Poupança de energia e Desempenho."
 
 #: src/MainWindow.py:63
 msgid "Create and organize sticky notes on the desktop."
-msgstr ""
+msgstr "Crie e organize notas adesivas na área de trabalho."
 
 #: src/MainWindow.py:67
 msgid "Manage clipboard history."
-msgstr ""
+msgstr "Gerir o histórico da área de transferência."
 
 #: src/MainWindow.py:190
 msgid "About Pardus Greeter"
@@ -334,9 +336,8 @@ msgid "Applications"
 msgstr "Aplicações"
 
 #: src/MainWindow.py:230
-#, fuzzy
 msgid "Startup Applications"
-msgstr "Aplicações"
+msgstr "Aplicações de arranque"
 
 #: src/MainWindow.py:231
 msgid "Support & Community"
@@ -345,7 +346,7 @@ msgstr "Suporte e Comunidade"
 #: src/MainWindow.py:545 src/MainWindow.py:550 src/MainWindow.py:554
 #: src/MainWindow.py:559 src/MainWindow.py:570
 msgid "Couldn't fetch suggested apps from pardus software."
-msgstr ""
+msgstr "Não foi possível obter as aplicações sugeridas do software Pardus."
 
 #: src/MainWindow.py:855 src/MainWindow.py:862 src/MainWindow.py:868
 #: src/MainWindow.py:874
