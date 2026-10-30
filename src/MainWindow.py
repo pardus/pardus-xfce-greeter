@@ -536,44 +536,32 @@ class MainWindow:
 
             self.box_startup_apps.add(frame)
 
+    def show_apps_error(self):
+        # gtk calls must run in the main loop, this is called from the task thread
+        def show():
+            self.ui_apps_stack.set_visible_child_name("error")
+            self.ui_apps_error_label.set_text(
+                _("Couldn't fetch suggested apps from pardus software.")
+            )
+        GLib.idle_add(show)
+
     def fetch_pardus_software_apps(self, task, source_object, task_data, cancellable):
+        # No plain http fallback on SSL errors: it would hand the list to
+        # anyone in between, and its result was never used anyway.
         try:
-            r = requests.get(PARDUS_SOFTWARE_CENTER_API)
-        except requests.exceptions.SSLError as e:
-            print(f"SSL Error: {e}")
-            print("Trying http url...")
-
-            http_url = PARDUS_SOFTWARE_CENTER_API.replace("https", "http")
-            try:
-                r = requests.get(http_url)
-            except Exception as e:
-                print(_("Couldn't fetch suggested apps from pardus software."))
-                print(e)
-
-                self.ui_apps_stack.set_visible_child_name("error")
-                self.ui_apps_error_label.set_text(
-                    _("Couldn't fetch suggested apps from pardus software.")
-                )
-            return
+            r = requests.get(PARDUS_SOFTWARE_CENTER_API, timeout=15)
+            json_response = r.json()
         except Exception as e:
             print(_("Couldn't fetch suggested apps from pardus software."))
             print(e)
-
-            self.ui_apps_stack.set_visible_child_name("error")
-            self.ui_apps_error_label.set_text(
-                _("Couldn't fetch suggested apps from pardus software.")
-            )
+            self.show_apps_error()
             return
 
         # Failed api return
-        json_response = r.json()
         if r.status_code != 200:
             print("Server returned failure:")
             print(json_response)
-            self.ui_apps_stack.set_visible_child_name("error")
-            self.ui_apps_error_label.set_text(
-                _("Couldn't fetch suggested apps from pardus software.")
-            )
+            self.show_apps_error()
             return
 
         suggested_apps = json_response["greeter"]["suggestions"]
@@ -597,18 +585,17 @@ class MainWindow:
             halign="start",
         )
 
-        # Fetch Image file from url:
+        # Fetch Image file from url and load it from memory. Copying it to
+        # /tmp downloaded it a second time and left the file there.
         img_file = Gio.File.new_for_uri(icon_url)
-        suffix = icon_url.split(".")[-1]
-        (is_success, data, _etag) = img_file.load_contents()
-        if is_success:
-            tmp_filepath = f"/tmp/par-gr-{package_name}.{suffix}"
-            tmp_img_file = Gio.File.new_for_path(tmp_filepath)
-
-            is_success = img_file.copy(tmp_img_file, Gio.FileCopyFlags.OVERWRITE)
+        try:
+            (is_success, data, _etag) = img_file.load_contents()
             if is_success:
-                icon = Gtk.Image.new_from_file(tmp_filepath)
-                box.add(icon)
+                stream = Gio.MemoryInputStream.new_from_bytes(GLib.Bytes.new(data))
+                pixbuf = GdkPixbuf.Pixbuf.new_from_stream(stream, None)
+                box.add(Gtk.Image.new_from_pixbuf(pixbuf))
+        except GLib.Error as e:
+            print(f"Couldn't load icon of {package_name}: {e}")
 
         # Add Label
         label = Gtk.Label.new()
