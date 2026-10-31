@@ -326,8 +326,7 @@ class MainWindow:
 
     def append_wallpaper(self, path):
         # Image
-        bitmap = GdkPixbuf.Pixbuf.new_from_file(path)
-        bitmap = bitmap.scale_simple(240, 135, GdkPixbuf.InterpType.BILINEAR)
+        bitmap = GdkPixbuf.Pixbuf.new_from_file_at_scale(path, 240, 135, False)
 
         img_wallpaper = Gtk.Image.new_from_pixbuf(bitmap)
         img_wallpaper.img_path = path
@@ -341,8 +340,7 @@ class MainWindow:
     def add_wallpapers(self, wallpaperList):
         for i in range(len(wallpaperList)):
             # Image
-            bitmap = GdkPixbuf.Pixbuf.new_from_file(wallpaperList[i])
-            bitmap = bitmap.scale_simple(240, 135, GdkPixbuf.InterpType.BILINEAR)
+            bitmap = GdkPixbuf.Pixbuf.new_from_file_at_scale(wallpaperList[i], 240, 135, False)
 
             img_wallpaper = Gtk.Image.new_from_pixbuf(bitmap)
             img_wallpaper.img_path = wallpaperList[i]
